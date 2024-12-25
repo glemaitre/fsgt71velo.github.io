@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block header %}
+{% include 'header.html' %}
+{% endblock %}
+
+{% block footer %}
+{% include 'footer.html' %}
+{% endblock %}
+
+{% block content %}
+{{ super() }}
+{% if page %}
+<section class="tg-haslayout" id="euroscipy-page">
+	<div class="container">
+		<div class="row">
+			<div>Hello World</div>
+		</div>
+	</div>
+</section>
+{% endif %}
+{% endblock %}

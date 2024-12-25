@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block header %}
+{% include 'header.html' %}
+{% endblock %}
+
+{% block footer %}
+{% include 'footer.html' %}
+{% endblock %}
+
+{% block content %}
+{{ super() }}
+<div>
+    <h1>Hello World</h1>
+</div>
+{% endblock %}

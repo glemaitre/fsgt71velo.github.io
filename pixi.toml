@@ -1,0 +1,15 @@
+[project]
+authors = ["Guillaume Lemaitre <guillaume@probabl.ai>", "Cedric Lemaitre <c.lemaitre58@gmail.com>"]
+channels = ["conda-forge"]
+description = "Official website of the the FSGT 71 - Activités Cyclistes"
+name = "fsgt71velo.github.io"
+platforms = ["osx-arm64", "osx-64", "linux-64", "win-64"]
+version = "0.1.0"
+
+[tasks]
+build = { cmd = "pelican content -t theme/fsgt --verbose" }
+preview = { cmd = "pelican --listen", depends-on = ["build"]}
+
+[dependencies]
+pelican = ">=4.10.2,<5"
+markdown = ">=3.6,<4"
