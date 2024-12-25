@@ -33,3 +33,12 @@ DEFAULT_PAGINATION = False
 
 # Uncomment following line if you want document-relative URLs when developing
 # RELATIVE_URLS = True
+
+ARTICLE_PATHS = ['news']  # Directory containing news articles
+DEFAULT_CATEGORY = 'news'  # Optional: sets default category for articles without one
+
+MARKDOWN = {
+    'extension_configs': {
+        'markdown.extensions.attr_list': {},
+    }
+}
