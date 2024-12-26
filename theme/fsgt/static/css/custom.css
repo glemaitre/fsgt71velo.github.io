@@ -16,7 +16,7 @@ body {
 @media (min-width: 992px) {
     .container-fluid {
         display: grid;
-        grid-template-columns: 320px 1fr;
+        grid-template-columns: 260px 1fr;
         grid-template-areas: "sidebar main";
         gap: 1.5rem;
     }
@@ -26,10 +26,14 @@ body {
 @media (min-width: 1000px) {
     .container-fluid {
         display: grid;
-        grid-template-columns: 320px 1fr;
+        grid-template-columns: 260px 1fr;
         grid-template-areas: "sidebar main";
         gap: 1.5rem;
         padding-left: 1rem;
+    }
+
+    .bd-sidebar {
+        width: 260px;
     }
 }
 
@@ -56,7 +60,7 @@ body {
         padding-left: 0.25rem;
         margin-left: 0.25rem;
         overflow-y: auto;
-        width: 320px;
+        width: 280px;
     }
 }
 
@@ -99,7 +103,7 @@ body {
     /* Add container grid layout */
     .container-fluid {
         display: grid;
-        grid-template-columns: 320px 1fr;
+        grid-template-columns: 280px 1fr;
         grid-template-areas: "sidebar main";
         gap: 1.5rem;
     }
@@ -369,5 +373,18 @@ body {
 @media (max-width: 999.98px) {
     .d-1000-none {
         display: block !important;
+    }
+}
+
+/* Add padding to navbar brand image */
+.navbar-brand img {
+    padding-right: 190px;
+    padding-left: 0.75rem;
+}
+
+/* Remove padding on mobile */
+@media (max-width: 999.98px) {
+    .navbar-brand img {
+        padding-right: 0;
     }
 }
