@@ -168,3 +168,66 @@ body {
 .dropdown:hover .dropdown-menu {
     display: block;
 }
+
+/* Specific styles for bureau tables */
+.bd-content table {
+    width: 100%;
+    margin-bottom: 1rem;
+    border-collapse: collapse;
+}
+
+.bd-content table td {
+    padding: 1rem;
+    vertical-align: top;
+    border-top: 1px solid #dee2e6;
+}
+
+.bd-content table th {
+    padding: 1rem;
+    vertical-align: bottom;
+    border-bottom: 2px solid #dee2e6;
+    background-color: #f8f9fa;
+}
+
+/* Add some spacing between contact information lines */
+.bd-content table td i.fas {
+    width: 20px;
+    margin-right: 8px;
+}
+
+.bd-content table td br {
+    margin-bottom: 8px;
+    content: "";
+    display: block;
+}
+
+/* Optional: Add some hover effect */
+.bd-content table tr:hover {
+    background-color: rgba(0,0,0,0.02);
+}
+
+/* Make the table responsive */
+@media (max-width: 768px) {
+    .bd-content table {
+        display: block;
+        overflow-x: auto;
+    }
+}
+
+/* Add spacing after section titles */
+.bd-content h2 {
+    margin-bottom: 3rem !important; /* equivalent to Bootstrap's mb-5 */
+}
+
+/* Specific class for contact info nested tables */
+.contact-info-table {
+    width: auto !important;
+    margin: 0 !important;
+    border: none !important;
+}
+
+.contact-info-table td {
+    padding: 0 !important;
+    border: none !important;
+    vertical-align: top !important;
+}

@@ -34,11 +34,19 @@ DEFAULT_PAGINATION = False
 # Uncomment following line if you want document-relative URLs when developing
 # RELATIVE_URLS = True
 
-ARTICLE_PATHS = ['news']  # Directory containing news articles
-DEFAULT_CATEGORY = 'news'  # Optional: sets default category for articles without one
+# The articles are related to the news feed.
+ARTICLE_PATHS = ['news']
+# to avoid conflict with the pages, we use the date in the URL.
+ARTICLE_URL = '{date:%Y}/{date:%m}/{date:%d}/{slug}.html'
+ARTICLE_SAVE_AS = '{date:%Y}/{date:%m}/{date:%d}/{slug}.html'
+DEFAULT_CATEGORY = 'news'
+
+# Pages are defined for the general website
+PAGE_PATHS = ['pages']
 
 MARKDOWN = {
     'extension_configs': {
         'markdown.extensions.attr_list': {},
+        'markdown.extensions.tables': {},
     }
 }
