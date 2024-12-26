@@ -29,6 +29,7 @@ body {
         grid-template-columns: 320px 1fr;
         grid-template-areas: "sidebar main";
         gap: 1.5rem;
+        padding-left: 1rem;
     }
 }
 
@@ -91,7 +92,7 @@ body {
 }
 
 .bd-content {
-    padding: 1rem;
+    padding: 1.5rem;
 }
 
 @media (min-width: 992px) {
@@ -183,7 +184,8 @@ body {
     border-bottom: 1px solid rgba(0,0,0,0.1);
 }
 
-.dropdown:hover .dropdown-menu {
+/* We can keep this to ensure proper display when clicked */
+.dropdown-menu.show {
     display: block;
 }
 
@@ -278,35 +280,6 @@ body {
     background: white;
 }
 
-/* Sidebar mobile styles */
-@media (max-width: 999.98px) {
-    .navbar-expand-md .navbar-collapse {
-        display: none !important;
-    }
-
-    .navbar-expand-md .navbar-toggler {
-        display: block !important;
-    }
-
-    .navbar-expand-md .navbar-nav {
-        flex-direction: column !important;
-    }
-}
-
-@media (min-width: 1000px) {
-    .navbar-expand-md .navbar-collapse {
-        display: flex !important;
-    }
-
-    .navbar-expand-md .navbar-toggler {
-        display: none !important;
-    }
-
-    .navbar-expand-md .navbar-nav {
-        flex-direction: row !important;
-    }
-}
-
 /* Update other responsive breakpoints to match */
 @media (max-width: 999.98px) {
     .container-fluid {
@@ -326,6 +299,19 @@ body {
 
     .bd-sidebar.show {
         left: 0;
+    }
+
+    /* Navbar collapse positioning */
+    .navbar .navbar-collapse {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: white;
+        padding: 1rem;
+        padding-left: 55px;  /* Added left padding */
+        border-bottom: 1px solid rgba(0,0,0,0.1);
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
 }
 
