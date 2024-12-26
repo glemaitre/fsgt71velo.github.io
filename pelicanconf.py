@@ -1,3 +1,5 @@
+from datetime import datetime
+
 AUTHOR = 'Guillaume Lemaitre'
 SITENAME = 'FSGT 71'
 SITEURL = ""
@@ -50,3 +52,5 @@ MARKDOWN = {
         'markdown.extensions.tables': {},
     }
 }
+
+BUILD_TIME = datetime.now()

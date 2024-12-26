@@ -1,5 +1,14 @@
 <!--***** Sidebar Start *****-->
-<div class="bd-sidebar">
+<div class="bd-sidebar" id="sidebar">
+    <!-- Add persistent toggle button -->
+    <button class="btn btn-link sidebar-toggle-persistent" id="sidebarTogglePersistent">
+        <i class="fa-solid fa-chevron-left"></i>
+    </button>
+
+    <!-- Existing mobile toggle -->
+    <button class="btn btn-link sidebar-toggle d-1000-none" id="sidebarToggleMobile">
+        <i class="fa-solid fa-xmark"></i>
+    </button>
     <nav class="bd-links w-100" id="bd-docs-nav" aria-label="Docs navigation">
         <ul class="bd-links-nav list-unstyled mb-0 pb-3 pb-md-2 pe-lg-2">
             <li class="bd-links-group py-2">
@@ -115,4 +124,9 @@
         </ul>
     </nav>
 </div>
+
+<!-- Add toggle button for mobile -->
+<button class="btn position-fixed sidebar-toggle-mobile d-1000-none" id="sidebarShowMobile">
+    <i class="fa-solid fa-chevron-right"></i>
+</button>
 <!--***** Sidebar End *****-->

@@ -1,6 +1,7 @@
 /* Show it's not fixed to the top */
 body {
     min-height: 75rem;
+    padding-top: 80px;
 }
 
 /* Container layout */
@@ -21,6 +22,16 @@ body {
     }
 }
 
+/* Change this to 1000px to match navbar */
+@media (min-width: 1000px) {
+    .container-fluid {
+        display: grid;
+        grid-template-columns: 320px 1fr;
+        grid-template-areas: "sidebar main";
+        gap: 1.5rem;
+    }
+}
+
 /* Sidebar styles */
 .bd-sidebar {
     grid-area: sidebar;
@@ -32,9 +43,10 @@ body {
     top: 5rem;
     height: calc(100vh - 6rem);
     overflow-y: auto;
+    transition: width 0.3s ease, left 0.3s ease-in-out;
 }
 
-@media (min-width: 992px) {
+@media (min-width: 1000px) {
     .bd-sidebar {
         position: sticky;
         top: 5rem;
@@ -125,6 +137,12 @@ body {
 
 /* Copyright text style */
 .footer-copyright {
+    color: #666;
+    font-size: 0.9rem;
+}
+
+/* Last update text style */
+.footer-updated {
     color: #666;
     font-size: 0.9rem;
 }
@@ -230,4 +248,140 @@ body {
     padding: 0 !important;
     border: none !important;
     vertical-align: top !important;
+}
+
+/* Sidebar toggle buttons */
+.sidebar-toggle {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    z-index: 1;
+    color: #666;
+}
+
+.sidebar-toggle-mobile {
+    left: 5px;
+    top: 90px;
+    z-index: 1030;
+    color: #666;
+    background: white;
+    padding: 8px 12px;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    position: fixed;
+    text-decoration: none;
+    border: none;
+}
+
+.sidebar-toggle-mobile:hover {
+    color: #333;
+    background: white;
+}
+
+/* Sidebar mobile styles */
+@media (max-width: 999.98px) {
+    .navbar-expand-md .navbar-collapse {
+        display: none !important;
+    }
+
+    .navbar-expand-md .navbar-toggler {
+        display: block !important;
+    }
+
+    .navbar-expand-md .navbar-nav {
+        flex-direction: column !important;
+    }
+}
+
+@media (min-width: 1000px) {
+    .navbar-expand-md .navbar-collapse {
+        display: flex !important;
+    }
+
+    .navbar-expand-md .navbar-toggler {
+        display: none !important;
+    }
+
+    .navbar-expand-md .navbar-nav {
+        flex-direction: row !important;
+    }
+}
+
+/* Update other responsive breakpoints to match */
+@media (max-width: 999.98px) {
+    .container-fluid {
+        display: block;
+    }
+
+    .bd-sidebar {
+        position: fixed;
+        top: 80px;
+        left: -100%;
+        height: calc(100vh - 80px);
+        z-index: 1035;
+        transition: left 0.3s ease-in-out;
+        background: white;
+        box-shadow: 2px 0 8px rgba(0,0,0,0.1);
+    }
+
+    .bd-sidebar.show {
+        left: 0;
+    }
+}
+
+/* Persistent toggle button */
+.sidebar-toggle-persistent {
+    position: absolute;
+    right: -40px;
+    top: 10px;
+    z-index: 1040;
+    color: #666;
+    background: white;
+    padding: 8px 12px;
+    border-radius: 0 4px 4px 0;
+    box-shadow: 2px 0 4px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+/* Rotate icon when sidebar is collapsed */
+.sidebar-collapsed .sidebar-toggle-persistent i {
+    transform: rotate(180deg);
+}
+
+/* Hide persistent toggle on mobile */
+@media (max-width: 999.98px) {
+    .sidebar-toggle-persistent {
+        display: none;
+    }
+}
+
+/* Collapsed sidebar styles */
+@media (min-width: 1000px) {
+    .sidebar-collapsed {
+        width: 0 !important;
+        min-width: 0 !important;
+        padding: 0 !important;
+        border: none !important;
+    }
+
+    .sidebar-collapsed * {
+        display: none !important;
+    }
+
+    /* Keep toggle button visible when sidebar is collapsed */
+    .sidebar-collapsed .sidebar-toggle-persistent {
+        display: block !important;
+        right: -40px !important;
+    }
+}
+
+/* Custom display utilities for 1000px breakpoint */
+.d-1000-none {
+    display: none;
+}
+
+@media (max-width: 999.98px) {
+    .d-1000-none {
+        display: block !important;
+    }
 }
