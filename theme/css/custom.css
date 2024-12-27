@@ -1,437 +1,437 @@
 /* Show it's not fixed to the top */
 body {
-    min-height: 75rem;
-    padding-top: 80px;
+  min-height: 75rem;
+  padding-top: 80px;
 }
 
 /* Container layout */
 .container-fluid {
-    width: 100%;
-    padding-right: 15px;
-    padding-left: 15px;
-    margin-right: auto;
-    margin-left: auto;
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
 }
 
 @media (min-width: 992px) {
-    .container-fluid {
-        display: grid;
-        grid-template-columns: 260px 1fr;
-        grid-template-areas: "sidebar main";
-        gap: 1.5rem;
-    }
+  .container-fluid {
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    grid-template-areas: "sidebar main";
+    gap: 1.5rem;
+  }
 }
 
 /* Change this to 1000px to match navbar */
 @media (min-width: 1000px) {
-    .container-fluid {
-        display: grid;
-        grid-template-columns: 260px 1fr;
-        grid-template-areas: "sidebar main";
-        gap: 1.5rem;
-        padding-left: 1rem;
-    }
+  .container-fluid {
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    grid-template-areas: "sidebar main";
+    gap: 1.5rem;
+    padding-left: 1rem;
+  }
 
-    .bd-sidebar {
-        width: 260px;
-    }
+  .bd-sidebar {
+    width: 260px;
+  }
 }
 
 /* Sidebar styles */
 .bd-sidebar {
-    grid-area: sidebar;
-    width: 100%;
-    border-right: 1px solid rgba(0,0,0,0.1);
-    background: #ffffff;
-    padding-top: 1rem;
-    position: sticky;
-    top: 5rem;
-    height: calc(100vh - 6rem);
-    overflow-y: auto;
-    transition: width 0.3s ease, left 0.3s ease-in-out;
+  grid-area: sidebar;
+  width: 100%;
+  border-right: 1px solid rgba(0, 0, 0, 0.1);
+  background: #ffffff;
+  padding-top: 1rem;
+  position: sticky;
+  top: 5rem;
+  height: calc(100vh - 6rem);
+  overflow-y: auto;
+  transition: width 0.3s ease, left 0.3s ease-in-out;
 }
 
 @media (min-width: 1000px) {
-    .bd-sidebar {
-        position: sticky;
-        top: 5rem;
-        display: block !important;
-        height: calc(100vh - 6rem);
-        padding-left: 0.25rem;
-        margin-left: 0.25rem;
-        overflow-y: auto;
-        width: 280px;
-    }
+  .bd-sidebar {
+    position: sticky;
+    top: 5rem;
+    display: block !important;
+    height: calc(100vh - 6rem);
+    padding-left: 0.25rem;
+    margin-left: 0.25rem;
+    overflow-y: auto;
+    width: 280px;
+  }
 }
 
 /* Links styles */
 .bd-links-link {
-    padding: 0.1875rem 0.5rem;
-    margin-top: 0.125rem;
-    margin-left: 1.25rem;
-    color: rgba(0,0,0,0.65);
-    text-decoration: none;
+  padding: 0.1875rem 0.5rem;
+  margin-top: 0.125rem;
+  margin-left: 1.25rem;
+  color: rgba(0, 0, 0, 0.65);
+  text-decoration: none;
 }
 
 .bd-links-link:hover,
 .bd-links-link:focus {
-    color: rgba(0,0,0,0.85);
-    background-color: rgba(121,82,179,0.1);
+  color: rgba(0, 0, 0, 0.85);
+  background-color: rgba(121, 82, 179, 0.1);
 }
 
 .bd-links-heading {
-    color: #2f2f2f;
-    padding: 0.25rem 0.5rem;
-    font-size: 0.875rem;
+  color: #2f2f2f;
+  padding: 0.25rem 0.5rem;
+  font-size: 0.875rem;
 }
 
 .bd-links-heading i {
-    margin-right: 0.5rem;
+  margin-right: 0.5rem;
 }
 
 /* Main content styles */
 .bd-main {
-    grid-area: main;
-    width: 100%;
+  grid-area: main;
+  width: 100%;
 }
 
 .bd-content {
-    padding: 1.5rem;
+  padding: 1.5rem;
 }
 
 @media (min-width: 992px) {
-    /* Add container grid layout */
-    .container-fluid {
-        display: grid;
-        grid-template-columns: 280px 1fr;
-        grid-template-areas: "sidebar main";
-        gap: 1.5rem;
-    }
+  /* Add container grid layout */
+  .container-fluid {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    grid-template-areas: "sidebar main";
+    gap: 1.5rem;
+  }
 
-    .bd-main {
-        display: grid;
-        grid-template-areas: "intro" "toc" "content";
-        grid-template-rows: auto auto 1fr;
-        gap: 1rem;
-        padding: 1rem;
-    }
+  .bd-main {
+    display: grid;
+    grid-template-areas: "intro" "toc" "content";
+    grid-template-rows: auto auto 1fr;
+    gap: 1rem;
+    padding: 1rem;
+  }
 }
 
 /* Main footer container */
 .footer {
-    padding: 2rem 0;
-    background-color: #ffffff;
-    border-top: 1px solid #eee;
+  padding: 2rem 0;
+  background-color: #ffffff;
+  border-top: 1px solid #eee;
 }
 
 /* Container to center and limit content width */
 .footer-content {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
 }
 
 /* Footer elements layout */
 .footer-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
 }
 
 /* Copyright text style */
 .footer-copyright {
-    color: #666;
-    font-size: 0.9rem;
+  color: #666;
+  font-size: 0.9rem;
 }
 
 /* Last update text style */
 .footer-updated {
-    color: #666;
-    font-size: 0.9rem;
+  color: #666;
+  font-size: 0.9rem;
 }
 
 /* Links container */
 .footer-links {
-    display: flex;
-    gap: 2rem;
+  display: flex;
+  gap: 2rem;
 }
 
 /* Links style */
 .footer-links a {
-    color: #666;
-    text-decoration: none;
-    font-size: 0.9rem;
-    transition: color 0.2s;
+  color: #666;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: color 0.2s;
 }
 
 /* Links hover effect */
 .footer-links a:hover {
-    color: #333;
+  color: #333;
 }
 
 /* Mobile adaptation */
 @media (max-width: 768px) {
-    .footer-row {
-        flex-direction: column;
-        text-align: center;
-    }
+  .footer-row {
+    flex-direction: column;
+    text-align: center;
+  }
 
-    .footer-links {
-        justify-content: center;
-    }
+  .footer-links {
+    justify-content: center;
+  }
 }
 
 .navbar.bg-white {
-    background-color: #ffffff !important;
-    border-bottom: 1px solid rgba(0,0,0,0.1);
+  background-color: #ffffff !important;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 /* We can keep this to ensure proper display when clicked */
 .dropdown-menu.show {
-    display: block;
+  display: block;
 }
 
 /* Specific styles for bureau tables */
 .bd-content table {
-    width: 100%;
-    margin-bottom: 1rem;
-    border-collapse: collapse;
+  width: 100%;
+  margin-bottom: 1rem;
+  border-collapse: collapse;
 }
 
 .bd-content table td {
-    padding: 1rem;
-    vertical-align: top;
-    border-top: 1px solid #dee2e6;
+  padding: 1rem;
+  vertical-align: top;
+  border-top: 1px solid #dee2e6;
 }
 
 .bd-content table th {
-    padding: 1rem;
-    vertical-align: bottom;
-    border-bottom: 2px solid #dee2e6;
-    background-color: #f8f9fa;
+  padding: 1rem;
+  vertical-align: bottom;
+  border-bottom: 2px solid #dee2e6;
+  background-color: #f8f9fa;
 }
 
 /* Add some spacing between contact information lines */
 .bd-content table td i.fas {
-    width: 20px;
-    margin-right: 8px;
+  width: 20px;
+  margin-right: 8px;
 }
 
 .bd-content table td br {
-    margin-bottom: 0px;
-    content: "";
-    display: block;
+  margin-bottom: 0px;
+  content: "";
+  display: block;
 }
 
 /* Optional: Add some hover effect */
 .bd-content table tr:hover {
-    background-color: rgba(0,0,0,0.02);
+  background-color: rgba(0, 0, 0, 0.02);
 }
 
 /* Make the table responsive */
 @media (max-width: 768px) {
-    .bd-content table {
-        display: block;
-        overflow-x: auto;
-    }
+  .bd-content table {
+    display: block;
+    overflow-x: auto;
+  }
 }
 
 /* Add spacing after section titles */
 .bd-content h2 {
-    margin-bottom: 3rem !important; /* equivalent to Bootstrap's mb-5 */
+  margin-bottom: 3rem !important; /* equivalent to Bootstrap's mb-5 */
 }
 .bd-content h3 {
-    margin-bottom: 2rem !important; /* equivalent to Bootstrap's mb-5 */
+  margin-bottom: 2rem !important; /* equivalent to Bootstrap's mb-5 */
 }
 
 /* Specific class for contact info nested tables */
 .contact-info-table {
-    width: auto !important;
-    margin: 0 !important;
-    border: none !important;
+  width: auto !important;
+  margin: 0 !important;
+  border: none !important;
 }
 
 .contact-info-table td {
-    padding: 0 !important;
-    border: none !important;
-    vertical-align: top !important;
+  padding: 0 !important;
+  border: none !important;
+  vertical-align: top !important;
 }
 
 /* Sidebar toggle buttons */
 .sidebar-toggle {
-    position: absolute;
-    right: 10px;
-    top: 10px;
-    z-index: 1;
-    color: #666;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  z-index: 1;
+  color: #666;
 }
 
 .sidebar-toggle-mobile {
-    left: 5px;
-    top: 90px;
-    z-index: 1030;
-    color: #666;
-    background: white;
-    padding: 8px 12px;
-    border-radius: 4px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    position: fixed;
-    text-decoration: none;
-    border: none;
+  left: 5px;
+  top: 90px;
+  z-index: 1030;
+  color: #666;
+  background: white;
+  padding: 8px 12px;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  text-decoration: none;
+  border: none;
 }
 
 .sidebar-toggle-mobile:hover {
-    color: #333;
-    background: white;
+  color: #333;
+  background: white;
 }
 
 /* Update other responsive breakpoints to match */
 @media (max-width: 999.98px) {
-    .container-fluid {
-        display: block;
-    }
+  .container-fluid {
+    display: block;
+  }
 
-    .bd-sidebar {
-        position: fixed;
-        top: 80px;
-        left: -100%;
-        height: calc(100vh - 80px);
-        z-index: 1035;
-        transition: left 0.3s ease-in-out;
-        background: white;
-        box-shadow: 2px 0 8px rgba(0,0,0,0.1);
-    }
+  .bd-sidebar {
+    position: fixed;
+    top: 80px;
+    left: -100%;
+    height: calc(100vh - 80px);
+    z-index: 1035;
+    transition: left 0.3s ease-in-out;
+    background: white;
+    box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1);
+  }
 
-    .bd-sidebar.show {
-        left: 0;
-    }
+  .bd-sidebar.show {
+    left: 0;
+  }
 
-    /* Navbar collapse positioning */
-    .navbar .navbar-collapse {
-        position: absolute;
-        top: 100%;
-        left: 0;
-        right: 0;
-        background: white;
-        padding: 1rem;
-        padding-left: 55px;  /* Added left padding */
-        border-bottom: 1px solid rgba(0,0,0,0.1);
-        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    }
+  /* Navbar collapse positioning */
+  .navbar .navbar-collapse {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: white;
+    padding: 1rem;
+    padding-left: 55px; /* Added left padding */
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
 }
 
 /* Persistent toggle button */
 .sidebar-toggle-persistent {
-    position: absolute;
-    right: -40px;
-    top: 10px;
-    z-index: 1040;
-    color: #666;
-    background: white;
-    padding: 8px 12px;
-    border-radius: 0 4px 4px 0;
-    box-shadow: 2px 0 4px rgba(0,0,0,0.1);
-    transition: transform 0.3s ease;
+  position: absolute;
+  right: -40px;
+  top: 10px;
+  z-index: 1040;
+  color: #666;
+  background: white;
+  padding: 8px 12px;
+  border-radius: 0 4px 4px 0;
+  box-shadow: 2px 0 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
 }
 
 /* Rotate icon when sidebar is collapsed */
 .sidebar-collapsed .sidebar-toggle-persistent i {
-    transform: rotate(180deg);
+  transform: rotate(180deg);
 }
 
 /* Hide persistent toggle on mobile */
 @media (max-width: 999.98px) {
-    .sidebar-toggle-persistent {
-        display: none;
-    }
+  .sidebar-toggle-persistent {
+    display: none;
+  }
 }
 
 /* Collapsed sidebar styles */
 @media (min-width: 1000px) {
-    .sidebar-collapsed {
-        width: 0 !important;
-        min-width: 0 !important;
-        padding: 0 !important;
-        border: none !important;
-    }
+  .sidebar-collapsed {
+    width: 0 !important;
+    min-width: 0 !important;
+    padding: 0 !important;
+    border: none !important;
+  }
 
-    .sidebar-collapsed * {
-        display: none !important;
-    }
+  .sidebar-collapsed * {
+    display: none !important;
+  }
 
-    /* Keep toggle button visible when sidebar is collapsed */
-    .sidebar-collapsed .sidebar-toggle-persistent {
-        display: block !important;
-        right: -40px !important;
-    }
+  /* Keep toggle button visible when sidebar is collapsed */
+  .sidebar-collapsed .sidebar-toggle-persistent {
+    display: block !important;
+    right: -40px !important;
+  }
 }
 
 /* Custom display utilities for 1000px breakpoint */
 .d-1000-none {
-    display: none;
+  display: none;
 }
 
 @media (max-width: 999.98px) {
-    .d-1000-none {
-        display: block !important;
-    }
+  .d-1000-none {
+    display: block !important;
+  }
 }
 
 /* Add padding to navbar brand image */
 .navbar-brand img {
-    padding-right: 190px;
-    padding-left: 0.75rem;
+  padding-right: 190px;
+  padding-left: 0.75rem;
 }
 
 /* Remove padding on mobile */
 @media (max-width: 999.98px) {
-    .navbar-brand img {
-        padding-right: 0;
-    }
+  .navbar-brand img {
+    padding-right: 0;
+  }
 }
 
 /* Dropdown styles within tables */
 .bd-content table .dropdown-menu {
-    position: absolute;
-    min-width: 300px;
-    background: white;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    border: 1px solid rgba(0,0,0,0.1);
+  position: absolute;
+  min-width: 300px;
+  background: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .bd-content table .btn-link {
-    padding: 0;
-    text-align: left;
-    text-decoration: none;
-    color: inherit;
-    border: none;
+  padding: 0;
+  text-align: left;
+  text-decoration: none;
+  color: inherit;
+  border: none;
 }
 
 .bd-content table .btn-link:hover,
 .bd-content table .btn-link:focus {
-    color: inherit;
-    text-decoration: none;
+  color: inherit;
+  text-decoration: none;
 }
 
 .bd-content table .dropdown-menu .contact-info-table {
-    margin: 0 !important;
+  margin: 0 !important;
 }
 
 .bd-content table td .dropdown {
-    margin: -1rem;  /* Compensate for table cell padding */
-    padding: 1rem;
+  margin: -1rem; /* Compensate for table cell padding */
+  padding: 1rem;
 }
 
 .bd-content table td .dropdown {
-    display: inline-block;
-    margin: 0;  /* Remove the negative margins */
-    padding: 0;  /* Remove the padding */
+  display: inline-block;
+  margin: 0; /* Remove the negative margins */
+  padding: 0; /* Remove the padding */
 }
 
 /* Optional: if you want to align the text vertically */
 .bd-content table td strong,
 .bd-content table td .dropdown {
-    vertical-align: middle;
+  vertical-align: middle;
 }
