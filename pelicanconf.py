@@ -2,7 +2,8 @@ from datetime import datetime
 
 AUTHOR = 'Guillaume Lemaitre'
 SITENAME = 'FSGT 71'
-SITEURL = ""
+# SITEURL = ""
+SITEURL = "https://glemaitre.github.io/fsgt71velo.github.io"
 
 PATH = "content"
 
