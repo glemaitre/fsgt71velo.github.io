@@ -1,33 +1,33 @@
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', function() {
     const searchInput = document.getElementById('clubSearch');
-    const table = document.getElementById('clubTable');
+    const clubTable = document.getElementById('clubTable');
+    const tableRows = clubTable.getElementsByTagName('tbody')[0].getElementsByTagName('tr');
 
-    if (searchInput && table) {
-        searchInput.addEventListener('input', function (e) {
-            const searchTerm = e.target.value.toLowerCase().trim();
-            const rows = table.querySelectorAll('tbody tr');
+    // Add a CSS class that only affects main table rows
+    const style = document.createElement('style');
+    style.textContent = `
+        #clubTable > tbody > tr.row-hidden {
+            display: none !important;
+        }
+    `;
+    document.head.appendChild(style);
 
-            rows.forEach(row => {
-                // Get all text content from the row, including dropdown buttons
-                const clubName = row.querySelector('td:first-child').textContent.toLowerCase();
-                const contacts = Array.from(row.querySelectorAll('.dropdown-toggle'))
-                    .map(btn => btn.textContent.toLowerCase());
+    searchInput.addEventListener('input', function() {
+        const searchTerm = this.value.toLowerCase();
 
-                // Check if search term matches club name or any contact name
-                const matchClub = clubName.includes(searchTerm);
-                const matchContact = contacts.some(contact => contact.includes(searchTerm));
+        Array.from(tableRows).forEach(row => {
+            // Get text content from the row (excluding dropdown content)
+            const visibleText = Array.from(row.children).map(cell => {
+                const button = cell.querySelector('.btn-link');
+                return button ? button.textContent : cell.textContent;
+            }).join(' ').toLowerCase();
 
-                // Show/hide row based on matches
-                row.style.display = (matchClub || matchContact) ? '' : 'none';
-            });
-        });
-
-        // Add clear search functionality
-        searchInput.addEventListener('keyup', function (e) {
-            if (e.key === 'Escape') {
-                this.value = '';
-                this.dispatchEvent(new Event('input'));
+            // Show/hide row based on search term
+            if (visibleText.includes(searchTerm)) {
+                row.classList.remove('row-hidden');
+            } else {
+                row.classList.add('row-hidden');
             }
         });
-    }
+    });
 });

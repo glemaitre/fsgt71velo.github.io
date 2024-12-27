@@ -74,7 +74,7 @@ def generate_club_listing(df_listing, df_directory):
     """
     counter_unique_dropdown = 0
     html_table = (
-        '<div class="table-responsive"><table class="table" id="clubTable"><thead><tr><th>Club</th><th>Président du Club</th>'
+        '<table class="table" id="clubTable"><thead><tr><th>Club</th><th>Président du Club</th>'
         '<th>Responsable Cyclisme</th><th>Responsable Cyclotourisme</th></tr></thead>'
         '<tbody>'
     )
@@ -91,7 +91,7 @@ def generate_club_listing(df_listing, df_directory):
             html_table += f'<td>{generate_html_table(df_directory, first_name=row["Responsable cyclotouriste Prénom"], last_name=row["Responsable cyclotouriste Nom"], counter_unique_dropdown=counter_unique_dropdown)}</td>'
             counter_unique_dropdown += 1
             html_table += "</tr>\n"
-    html_table += "</tbody></table></div>"
+    html_table += "</tbody></table>"
     return html_table
 
 
