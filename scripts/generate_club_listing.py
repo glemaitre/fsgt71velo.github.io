@@ -76,30 +76,76 @@ def generate_club_listing(df_listing, df_directory):
     html_table = (
         '<table class="table" id="clubTable"><thead><tr>'
         "<th>Club</th>"
-        "<th>Président</th>"
-        "<th>Cyclisme</th>"
-        "<th>Cyclotourisme</th>"
-        "<th>VTT</th>"
-        "<th>Vélo Enfants</th>"
+        "<th>Contacts</th>"
         "</tr></thead>"
         "<tbody>"
     )
-    for town, sub_df in df_listing.groupby("Ville", sort=True):
-        # FIXME: we can eventually revert the colspan but we need to generate a pure HTML
-        # table
-        # markdown_table += f"| **{town}** {{: colspan='4'}} |\n"
+    for _, sub_df in df_listing.groupby("Ville", sort=True):
+
         for row_id, row in sub_df.iterrows():
             html_table += f'<tr><td>{row["Nom du club"]}</td>'
-            html_table += f'<td>{generate_html_table(df_directory, first_name=row["Président Prénom"], last_name=row["Président Nom"], counter_unique_dropdown=counter_unique_dropdown)}</td>'
-            counter_unique_dropdown += 1
-            html_table += f'<td>{generate_html_table(df_directory, first_name=row["Responsable cyclisme Prénom"], last_name=row["Responsable cyclisme Nom"], counter_unique_dropdown=counter_unique_dropdown)}</td>'
-            counter_unique_dropdown += 1
-            html_table += f'<td>{generate_html_table(df_directory, first_name=row["Responsable cyclotouriste Prénom"], last_name=row["Responsable cyclotouriste Nom"], counter_unique_dropdown=counter_unique_dropdown)}</td>'
-            counter_unique_dropdown += 1
-            html_table += f'<td>{generate_html_table(df_directory, first_name=row["Correspondant VTT Prénom"], last_name=row["Correspondant VTT Nom"], counter_unique_dropdown=counter_unique_dropdown)}</td>'
-            counter_unique_dropdown += 1
-            html_table += f'<td>{generate_html_table(df_directory, first_name=row["Correspondant vélos enfants Prénom"], last_name=row["Correspondant vélos enfants Nom"], counter_unique_dropdown=counter_unique_dropdown)}</td>'
-            counter_unique_dropdown += 1
+            html_table += f"<td>"
+            if (
+                president := generate_html_table(
+                    df_directory,
+                    first_name=row["Président Prénom"],
+                    last_name=row["Président Nom"],
+                    counter_unique_dropdown=counter_unique_dropdown,
+                )
+            ) != "":
+                html_table += f"<strong>Président</strong> : {president}<br>"
+                counter_unique_dropdown += 1
+            if (
+                responsable_cyclisme := generate_html_table(
+                    df_directory,
+                    first_name=row["Responsable cyclisme Prénom"],
+                    last_name=row["Responsable cyclisme Nom"],
+                    counter_unique_dropdown=counter_unique_dropdown,
+                )
+            ) != "":
+                html_table += (
+                    f"<strong>Responsable cyclisme</strong> : "
+                    f"{responsable_cyclisme}<br>"
+                )
+                counter_unique_dropdown += 1
+            if (
+                cyclotouriste := generate_html_table(
+                    df_directory,
+                    first_name=row["Responsable cyclotouriste Prénom"],
+                    last_name=row["Responsable cyclotouriste Nom"],
+                    counter_unique_dropdown=counter_unique_dropdown,
+                )
+            ) != "":
+                html_table += (
+                    f"<strong>Responsable cyclotouriste</strong> : {cyclotouriste}<br>"
+                )
+                counter_unique_dropdown += 1
+            if (
+                correspondant_vtt := generate_html_table(
+                    df_directory,
+                    first_name=row["Correspondant VTT Prénom"],
+                    last_name=row["Correspondant VTT Nom"],
+                    counter_unique_dropdown=counter_unique_dropdown,
+                )
+            ) != "":
+                html_table += (
+                    f"<strong>Correspondant VTT</strong> : {correspondant_vtt}<br>"
+                )
+                counter_unique_dropdown += 1
+            if (
+                correspondant_velos_enfants := generate_html_table(
+                    df_directory,
+                    first_name=row["Correspondant vélos enfants Prénom"],
+                    last_name=row["Correspondant vélos enfants Nom"],
+                    counter_unique_dropdown=counter_unique_dropdown,
+                )
+            ) != "":
+                html_table += (
+                    f"<strong>Correspondant vélos enfants</strong> : "
+                    f"{correspondant_velos_enfants}<br>"
+                )
+                counter_unique_dropdown += 1
+            html_table += "</td>"
             html_table += "</tr>\n"
     html_table += "</tbody></table>"
     return html_table

@@ -16,14 +16,22 @@ document.addEventListener('DOMContentLoaded', function() {
         const searchTerm = this.value.toLowerCase();
 
         Array.from(tableRows).forEach(row => {
-            // Get text content from the row (excluding dropdown content)
-            const visibleText = Array.from(row.children).map(cell => {
+            // Get text from the main cells
+            const mainText = Array.from(row.children).map(cell => {
                 const button = cell.querySelector('.btn-link');
                 return button ? button.textContent : cell.textContent;
-            }).join(' ').toLowerCase();
+            }).join(' ');
+
+            // Get text from dropdown content (addresses, phones, emails)
+            const dropdownText = Array.from(row.querySelectorAll('.contact-info-table td'))
+                .map(td => td.textContent)
+                .join(' ');
+
+            // Combine all text and search
+            const fullText = (mainText + ' ' + dropdownText).toLowerCase();
 
             // Show/hide row based on search term
-            if (visibleText.includes(searchTerm)) {
+            if (fullText.includes(searchTerm)) {
                 row.classList.remove('row-hidden');
             } else {
                 row.classList.add('row-hidden');

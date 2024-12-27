@@ -423,3 +423,15 @@ body {
     margin: -1rem;  /* Compensate for table cell padding */
     padding: 1rem;
 }
+
+.bd-content table td .dropdown {
+    display: inline-block;
+    margin: 0;  /* Remove the negative margins */
+    padding: 0;  /* Remove the padding */
+}
+
+/* Optional: if you want to align the text vertically */
+.bd-content table td strong,
+.bd-content table td .dropdown {
+    vertical-align: middle;
+}
