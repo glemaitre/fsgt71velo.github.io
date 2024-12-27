@@ -74,9 +74,15 @@ def generate_club_listing(df_listing, df_directory):
     """
     counter_unique_dropdown = 0
     html_table = (
-        '<table class="table" id="clubTable"><thead><tr><th>Club</th><th>Président du Club</th>'
-        '<th>Responsable Cyclisme</th><th>Responsable Cyclotourisme</th></tr></thead>'
-        '<tbody>'
+        '<table class="table" id="clubTable"><thead><tr>'
+        "<th>Club</th>"
+        "<th>Président</th>"
+        "<th>Cyclisme</th>"
+        "<th>Cyclotourisme</th>"
+        "<th>VTT</th>"
+        "<th>Vélo Enfants</th>"
+        "</tr></thead>"
+        "<tbody>"
     )
     for town, sub_df in df_listing.groupby("Ville", sort=True):
         # FIXME: we can eventually revert the colspan but we need to generate a pure HTML
@@ -90,45 +96,13 @@ def generate_club_listing(df_listing, df_directory):
             counter_unique_dropdown += 1
             html_table += f'<td>{generate_html_table(df_directory, first_name=row["Responsable cyclotouriste Prénom"], last_name=row["Responsable cyclotouriste Nom"], counter_unique_dropdown=counter_unique_dropdown)}</td>'
             counter_unique_dropdown += 1
+            html_table += f'<td>{generate_html_table(df_directory, first_name=row["Correspondant VTT Prénom"], last_name=row["Correspondant VTT Nom"], counter_unique_dropdown=counter_unique_dropdown)}</td>'
+            counter_unique_dropdown += 1
+            html_table += f'<td>{generate_html_table(df_directory, first_name=row["Correspondant vélos enfants Prénom"], last_name=row["Correspondant vélos enfants Nom"], counter_unique_dropdown=counter_unique_dropdown)}</td>'
+            counter_unique_dropdown += 1
             html_table += "</tr>\n"
     html_table += "</tbody></table>"
     return html_table
-
-
-# def generate_mountain_bike_listing(df_listing, df_directory):
-#     """Create the second table with the mountain bike information."""
-#     index_only_mountain_bike = df_listing["Correspondant VTT Nom"].dropna().index
-#     df_mountain_bike = df_listing.loc[index_only_mountain_bike]
-
-#     for town, sub_df in df_mountain_bike.groupby("Ville", sort=True):
-#         # FIXME: we can eventually revert the colspan but we need to generate a pure HTML
-#         # table
-#         # markdown_table += f"| **{town}** {{: colspan='4'}} |\n"
-#         for row_id, row in sub_df.iterrows():
-#             markdown_table += f"| {row["Nom du club"]} |"
-#             markdown_table += f"{generate_html_table(df_directory, first_name=row["Président Prénom"], last_name=row["Président Nom"])}|"
-#             markdown_table += f"{generate_html_table(df_directory, first_name=row["Responsable cyclisme Prénom"], last_name=row["Responsable cyclisme Nom"])}|"
-#             markdown_table += f"{generate_html_table(df_directory, first_name=row["Responsable cyclotouriste Prénom"], last_name=row["Responsable cyclotouriste Nom"])}|"
-#             markdown_table += "\n"
-#     return markdown_table
-
-
-# def generate_kids_listing(df_listing, df_directory):
-#     """Create the third table with the kids information."""
-#     index_only_kids = df_listing["Correspondant vélos enfants Nom"].dropna().index
-#     df_kids = df_listing.loc[index_only_kids]
-
-#     for town, sub_df in df_kids.groupby("Ville", sort=True):
-#         # FIXME: we can eventually revert the colspan but we need to generate a pure HTML
-#         # table
-#         # markdown_table += f"| **{town}** {{: colspan='4'}} |\n"
-#         for row_id, row in sub_df.iterrows():
-#             markdown_table += f"| {row["Nom du club"]} |"
-#             markdown_table += f"{generate_html_table(df_directory, first_name=row["Président Prénom"], last_name=row["Président Nom"])}|"
-#             markdown_table += f"{generate_html_table(df_directory, first_name=row["Responsable cyclisme Prénom"], last_name=row["Responsable cyclisme Nom"])}|"
-#             markdown_table += f"{generate_html_table(df_directory, first_name=row["Responsable cyclotouriste Prénom"], last_name=row["Responsable cyclotouriste Nom"])}|"
-#             markdown_table += "\n"
-#     return markdown_table
 
 
 def generate_markdown_webpage(filename, *, df_listing, df_directory):
@@ -143,7 +117,7 @@ template: page
 """
         title = '## <i class="fas fa-bicycle"></i> Liste des clubs\n\n'
 
-        listing_clubs_roads = "### Correspondants clubs & routes\n\n"
+        listing_clubs_roads = "### Correspondants\n\n"
         # add a search bar
         listing_clubs_roads += """<div class="mb-3">
     <input type="text"
@@ -156,17 +130,7 @@ template: page
         listing_clubs_roads += generate_club_listing(df_listing, df_directory)
         listing_clubs_roads += "\n\n"
 
-        listing_clubs_mountain_bike = "### Correspondants VTT\n\n"
-
-        listing_clubs_kids = "### Correspondants vélos enfants\n\n"
-
-        f.write(
-            metadata
-            + title
-            + listing_clubs_roads
-            + listing_clubs_mountain_bike
-            + listing_clubs_kids
-        )
+        f.write(metadata + title + listing_clubs_roads)
 
 
 # %%
