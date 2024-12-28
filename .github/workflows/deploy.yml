@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+  workflow_dispatch:
 
 jobs:
   deploy:
@@ -12,6 +13,12 @@ jobs:
       GHA_SITE_URL: "https://glemaitre.github.io/fsgt71velo.github.io"
     steps:
       - uses: actions/checkout@v4
+      - name: Install French locale
+        run: |
+          sudo apt-get update
+          sudo apt-get install -qq language-pack-fr
+          sudo locale-gen fr_FR.UTF-8
+          sudo dpkg-reconfigure locales
       - uses: prefix-dev/setup-pixi@v0.8.1
         with:
           pixi-version: v0.39.4
