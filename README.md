@@ -1,55 +1,56 @@
 # Site internet de la FSGT 71
 
-## Prerequisites
+## Prérequis
 
-To be able to generate the website locally, you only need to install `pixi`.
-You can refer to the official documentation to install it:
+Pour pouvoir générer le site web localement, vous avez uniquement besoin d'installer
+`pixi`. Vous pouvez vous référer à la documentation officielle pour l'installer :
 [https://pixi.sh/latest/#installation](https://pixi.sh/latest/#installation).
 
-## Generate the website locally
+## Générer le site web localement
 
-You can generate locally the website using `pixi`:
+Vous pouvez générer localement le site web en utilisant `pixi` :
 
 ```shell
 pixi run build
 ```
 
-In case you want also to launch a local server, you can directly run:
+Si vous souhaitez également lancer un serveur local, vous pouvez directement exécuter :
 
-```sell
+```shell
 pixi run preview
 ```
 
-and check the website at [http://localhost:8000](http://localhost:8000).
+et consulter le site web à l'adresse [http://localhost:8000](http://localhost:8000).
 
-## Details regarding some internal files
+## Détails concernant certains fichiers internes
 
-Some webpages of the website are generated automatically by running some Python scripts.
-Usually, the webpages get the necessary data from different Google Sheets. It means
-that you need to change the content of the spreadsheet and then execute the script
-to generate the webpage (i.e. run `pixi run build`).
+Certaines pages web du site sont générées automatiquement en exécutant des scripts
+Python. Généralement, les pages web obtiennent les données nécessaires à partir de
+différents Google Sheets. Cela signifie que vous devez modifier le contenu de la feuille
+de calcul puis exécuter le script pour générer la page web (c'est-à-dire exécuter `pixi
+run build`).
 
-### Calendar generation
+### Génération du calendrier
 
-The script `scripts/generate_calendar.py` generates the calendar page based on the
-following Google Sheet:
+Le script `scripts/generate_calendar.py` génère la page du calendrier basée sur le
+Google Sheet suivant :
 
 https://docs.google.com/spreadsheets/d/1SO2i9TXqQL9wSFTjE-GLRONtXmXfvcQ5kYckTm6fY4M/edit?usp=sharing
 
-### Clubs listing generation
+### Génération de la liste des clubs
 
-The script `scripts/generate_clubs.py` generates the clubs listing page based on the
-following Google Sheet:
+Le script `scripts/generate_clubs.py` génère la page de la liste des clubs basée sur le
+Google Sheet suivant :
 
 https://docs.google.com/spreadsheets/d/1ocHqS1lCjGVwKTd_ES_L06eOFDN90Jd_Kap3OtZhgVM/edit?gid=0#gid=0
 
-## Triggering a website build on GitHub Actions
+## Déclencher une construction du site web sur GitHub Actions
 
-The website is automatically built on GitHub Actions when a push is made on the `main`
-branch.
+Le site web est automatiquement construit sur GitHub Actions lorsqu'un push est effectué
+sur la branche `main`.
 
-Alternatively, you can trigger a build manually by going to the
-[deploy workflow](https://github.com/glemaitre/fsgt71velo.github.io/actions/workflows/deploy.yml)
-and clicking on the "Run workflow" button as shown below:
+Alternativement, vous pouvez déclencher une construction manuellement en allant sur le
+[workflow de déploiement](https://github.com/glemaitre/fsgt71velo.github.io/actions/workflows/deploy.yml)
+et en cliquant sur le bouton "Run workflow" comme montré ci-dessous :
 
-![Run workflow](.github/workflows/run_workflow.png)
+![Exécuter le workflow](.github/workflows/run_workflow.png)
