@@ -58,9 +58,12 @@ def generate_html_table(df_calendar):
             "</tr>"
         )
         for _, row in df_month.iterrows():
-            html_table += f"<tr><td>{row['Date'].strftime('%a %d %b %Y').title()}</td>"
+            html_table += "<tr>"
+            html_table += f"<td>{row['Date'].strftime('%a %d %b %Y').title()}</td>"
             class_td_type_of_race = COLOR_TYPE_OF_RACE.get(row["Type de course"])
-            html_table += f"<td class='{class_td_type_of_race}'>{row['Course']}</td>"
+            html_table += (
+                f"<td class='{class_td_type_of_race}'>{row['Course']}</td>"
+            )
             class_td_circuit_length = COLOR_CIRCUIT_LENGTH.get(
                 row["Longeur circuit"],
             )
@@ -70,8 +73,9 @@ def generate_html_table(df_calendar):
                 "</td>"
             )
             html_table += (
-                f"<td>{row['Clubs'] if pd.notna(row['Clubs']) else ''}</td></tr>"
+                f"<td>{row['Clubs'].title() if pd.notna(row['Clubs']) else ''}</td>"
             )
+            html_table += "</tr>"
     html_table += "</tbody></table>"
     return html_table
 
