@@ -50,4 +50,6 @@ branch.
 
 Alternatively, you can trigger a build manually by going to the
 [deploy workflow](https://github.com/glemaitre/fsgt71velo.github.io/actions/workflows/deploy.yml)
-and clicking on the "Run workflow" button.
+and clicking on the "Run workflow" button as shown below:
+
+![Run workflow](.github/workflows/run_workflow.png)

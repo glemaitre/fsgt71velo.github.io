@@ -26,7 +26,12 @@ jobs:
       - name: build website
         run: pixi run build
         env:
+          # to get the correct SITEURL
           GHA_SITE_URL: ${{ env.GHA_SITE_URL }}
+          # to get the correct locale
+          LANG: fr_FR.UTF-8
+          LC_ALL: fr_FR.UTF-8
+          LANGUAGE: fr_FR:fr
       - name: deploy website on github pages
         uses: peaceiris/actions-gh-pages@v4
         with:
