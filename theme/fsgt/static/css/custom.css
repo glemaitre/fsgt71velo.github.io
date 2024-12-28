@@ -436,7 +436,33 @@ body {
   vertical-align: middle;
 }
 
-/* Custom background colors */
-.table-championship {
-  background-color: #ffc897 !important;
+.badge {
+  display: inline-block;
+  width: 30px;
+  margin-right: 8px;
+}
+
+/* Custom background colors for the calendar */
+.race-type-championship {
+  background-color: #fed9b8 !important;
+}
+
+.race-type-route {
+  background-color: #a3cfbb !important;
+}
+
+.race-type-contre-la-montre {
+  background-color: #e2d9f3 !important;
+}
+
+.race-type-brevet-et-randonnee {
+  background-color: #9ec5fe !important;
+}
+
+.race-type-circuit-lt-5km {
+  background-color: #e9ecef !important;
+}
+
+.race-type-circuit-gte-5km {
+  background-color: #ffeeba !important;
 }

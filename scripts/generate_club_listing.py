@@ -172,6 +172,10 @@ template: page
            placeholder="Rechercher un club ou un contact..."
            aria-label="Rechercher un club">
 </div>
+<div class="alert alert-info small" role="alert">
+    <i class="fas fa-info-circle"></i> Cliquez sur le nom d'un correspondant pour
+    afficher ses coordonnées détaillées (adresse, téléphone, email).
+</div>
 """
         listing_clubs_roads += generate_club_listing(df_listing, df_directory)
         listing_clubs_roads += "\n\n"

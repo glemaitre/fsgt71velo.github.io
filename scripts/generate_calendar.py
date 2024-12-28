@@ -17,14 +17,14 @@ MONTH_TRANSLATION = {
     "December": "Décembre",
 }
 COLOR_TYPE_OF_RACE = {
-    "Route": "table-success",
-    "Championnat": "table-championship",
-    "Contre-la-montre": "table-danger",
-    "Brevet et randonnée": "table-info",
+    "Route": "race-type-route",
+    "Championnat": "race-type-championship",
+    "Contre-la-montre": "race-type-contre-la-montre",
+    "Brevet et randonnée": "race-type-brevet-et-randonnee",
 }
 COLOR_CIRCUIT_LENGTH = {
-    "Circuit < 5km": "table-secondary",
-    "Circuit >= 5 km": "table-warning",
+    "Circuit < 5km": "race-type-circuit-lt-5km",
+    "Circuit >= 5 km": "race-type-circuit-gte-5km",
 }
 
 locale.setlocale(locale.LC_TIME, "fr_FR.UTF-8")
@@ -91,13 +91,43 @@ template: page
 """
         title = '## <i class="fas fa-calendar-alt"></i> Calendrier des événements\n\n'
 
-        # add a search bar
+        # Search bar
         calendar_table = """<div class="mb-3">
     <input type="text"
            class="form-control"
            id="calendarSearch"
            placeholder="Rechercher un événement..."
            aria-label="Rechercher un événement">
+</div>
+"""
+        # Add legend section
+        calendar_table += """<div class="row mb-3">
+    <div class="col-md-6">
+        <div class="alert alert-default border small">
+            <strong>Type de course :</strong>
+            <ul class="list-unstyled mb-0">
+"""
+        for race_type, color in COLOR_TYPE_OF_RACE.items():
+            calendar_table += f"""
+                <li><span class="badge {color}">&nbsp;</span> {race_type}</li>
+"""
+        calendar_table += """
+            </ul>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="alert alert-default border small">
+            <strong>Longueur du circuit :</strong>
+            <ul class="list-unstyled mb-0">
+"""
+        for circuit_length, color in COLOR_CIRCUIT_LENGTH.items():
+            calendar_table += f"""
+                <li><span class="badge {color}">&nbsp;</span> {circuit_length}</li>
+"""
+        calendar_table += """
+            </ul>
+        </div>
+    </div>
 </div>
 """
         calendar_table += generate_html_table(df_calendar)
