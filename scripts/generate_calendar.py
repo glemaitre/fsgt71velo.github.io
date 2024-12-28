@@ -2,6 +2,31 @@
 import pandas as pd
 import locale
 
+MONTH_TRANSLATION = {
+    "January": "Janvier",
+    "February": "Février",
+    "March": "Mars",
+    "April": "Avril",
+    "May": "Mai",
+    "June": "Juin",
+    "July": "Juillet",
+    "August": "Août",
+    "September": "Septembre",
+    "October": "Octobre",
+    "November": "Novembre",
+    "December": "Décembre",
+}
+COLOR_TYPE_OF_RACE = {
+    "Route": "table-success",
+    "Championnat": "table-championship",
+    "Contre-la-montre": "table-danger",
+    "Brevet et randonnée": "table-info",
+}
+COLOR_CIRCUIT_LENGTH = {
+    "Circuit < 5km": "table-secondary",
+    "Circuit >= 5 km": "table-warning",
+}
+
 locale.setlocale(locale.LC_TIME, "fr_FR.UTF-8")
 sheet_id = "1SO2i9TXqQL9wSFTjE-GLRONtXmXfvcQ5kYckTm6fY4M"
 sheet_calendar = "calendar"
@@ -16,21 +41,7 @@ df_calendar
 def generate_html_table(df_calendar):
     # The `locale` in `month_name` cannot be set when using the GitHub Actions runner
     # So we manually translate the month names
-    month_translation = {
-        'January': 'Janvier',
-        'February': 'Février',
-        'March': 'Mars',
-        'April': 'Avril',
-        'May': 'Mai',
-        'June': 'Juin',
-        'July': 'Juillet',
-        'August': 'Août',
-        'September': 'Septembre',
-        'October': 'Octobre',
-        'November': 'Novembre',
-        'December': 'Décembre'
-    }
-    df_calendar["Month"] = df_calendar["Date"].dt.month_name().map(month_translation)
+    df_calendar["Month"] = df_calendar["Date"].dt.month_name().map(MONTH_TRANSLATION)
     html_table = (
         '<table class="table" id="calendarTable"><thead><tr>'
         "<th>Dates</th>"
@@ -42,15 +53,25 @@ def generate_html_table(df_calendar):
     )
     for month, df_month in df_calendar.groupby("Month", sort=False):
         html_table += (
-            f'<tr>'
+            f"<tr>"
             f'<td colspan="4" class="text-center"><strong>{month.upper()}</strong></td>'
             "</tr>"
         )
         for _, row in df_month.iterrows():
             html_table += f"<tr><td>{row['Date'].strftime('%a %d %b %Y').title()}</td>"
-            html_table += f"<td>{row['Course']}</td>"
-            html_table += f"<td>{row['Catégories']}</td>"
-            html_table += f"<td>{row['Clubs']}</td></tr>"
+            class_td_type_of_race = COLOR_TYPE_OF_RACE.get(row["Type de course"])
+            html_table += f"<td class='{class_td_type_of_race}'>{row['Course']}</td>"
+            class_td_circuit_length = COLOR_CIRCUIT_LENGTH.get(
+                row["Longeur circuit"],
+            )
+            html_table += (
+                f"<td class='{class_td_circuit_length}'>"
+                f"{row['Catégories'] if pd.notna(row['Catégories']) else ''}"
+                "</td>"
+            )
+            html_table += (
+                f"<td>{row['Clubs'] if pd.notna(row['Clubs']) else ''}</td></tr>"
+            )
     html_table += "</tbody></table>"
     return html_table
 

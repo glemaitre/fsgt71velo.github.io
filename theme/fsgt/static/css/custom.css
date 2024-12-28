@@ -435,3 +435,8 @@ body {
 .bd-content table td .dropdown {
   vertical-align: middle;
 }
+
+/* Custom background colors */
+.table-championship {
+  background-color: #ffc897 !important;
+}
