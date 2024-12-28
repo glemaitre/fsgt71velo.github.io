@@ -14,7 +14,7 @@ df_calendar
 
 
 def generate_html_table(df_calendar):
-    df_calendar["Month"] = df_calendar["Date"].dt.month_name(locale="fr_FR")
+    df_calendar["Month"] = df_calendar["Date"].dt.month_name()
     html_table = (
         '<table class="table" id="calendarTable"><thead><tr>'
         "<th>Dates</th>"
