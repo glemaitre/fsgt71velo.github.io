@@ -14,7 +14,23 @@ df_calendar
 
 
 def generate_html_table(df_calendar):
-    df_calendar["Month"] = df_calendar["Date"].dt.month_name()
+    # The `locale` in `month_name` cannot be set when using the GitHub Actions runner
+    # So we manually translate the month names
+    month_translation = {
+        'January': 'Janvier',
+        'February': 'Février',
+        'March': 'Mars',
+        'April': 'Avril',
+        'May': 'Mai',
+        'June': 'Juin',
+        'July': 'Juillet',
+        'August': 'Août',
+        'September': 'Septembre',
+        'October': 'Octobre',
+        'November': 'Novembre',
+        'December': 'Décembre'
+    }
+    df_calendar["Month"] = df_calendar["Date"].dt.month_name().map(month_translation)
     html_table = (
         '<table class="table" id="calendarTable"><thead><tr>'
         "<th>Dates</th>"
