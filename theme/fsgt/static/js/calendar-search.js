@@ -26,39 +26,45 @@ document.addEventListener('DOMContentLoaded', function() {
         let currentMonthHeader = null;
         let hasVisibleEvents = false;
 
+        // First pass: check events and month headers for matches
         Array.from(tableRows).forEach(row => {
-            // Check if this is a month header row
             const isMonthHeader = row.querySelector('td[colspan]');
 
             if (isMonthHeader) {
-                // If we were processing a previous month, hide/show its header based on visible events
-                if (currentMonthHeader && !hasVisibleEvents) {
-                    currentMonthHeader.classList.add('row-hidden');
+                // Check if the month name matches the search
+                const monthText = row.textContent.toLowerCase();
+                if (monthText.includes(searchTerm)) {
+                    row.classList.remove('row-hidden');
+                    // If month matches, show all events in that month
+                    let nextRow = row.nextElementSibling;
+                    while (nextRow && !nextRow.querySelector('td[colspan]')) {
+                        nextRow.classList.remove('row-hidden');
+                        nextRow = nextRow.nextElementSibling;
+                    }
+                    return;
                 }
-                // Reset for new month
                 currentMonthHeader = row;
                 hasVisibleEvents = false;
+                row.classList.add('row-hidden');
                 return;
             }
 
-            // Get text from all cells
+            // Check event rows
             const rowText = Array.from(row.children)
                 .map(cell => cell.textContent)
                 .join(' ')
                 .toLowerCase();
 
-            // Show/hide row based on search term
             if (rowText.includes(searchTerm)) {
                 row.classList.remove('row-hidden');
+                // Show the current month header if there's a match
+                if (currentMonthHeader) {
+                    currentMonthHeader.classList.remove('row-hidden');
+                }
                 hasVisibleEvents = true;
             } else {
                 row.classList.add('row-hidden');
             }
         });
-
-        // Handle the last month section
-        if (currentMonthHeader && !hasVisibleEvents) {
-            currentMonthHeader.classList.add('row-hidden');
-        }
     });
 });
