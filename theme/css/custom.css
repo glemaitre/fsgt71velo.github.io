@@ -474,3 +474,10 @@ body {
 .race-type-circuit-gte-5km {
   background-color: #ffeeba !important;
 }
+
+/* Calendar table specific styles */
+#calendarTable td:first-child {
+  white-space: nowrap;
+  width: 1%;
+  min-width: 90px;
+}
