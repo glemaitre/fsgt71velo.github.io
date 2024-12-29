@@ -28,6 +28,10 @@ COLOR_CIRCUIT_LENGTH = {
     "Circuit < 5km": "race-type-circuit-lt-5km",
     "Circuit >= 5 km": "race-type-circuit-gte-5km",
 }
+COLOR_DURATION_RACE = {
+    "Demi-journée": "race-type-demi-journee",
+    "Journée complète": "race-type-journee-complete",
+}
 
 locale.setlocale(locale.LC_TIME, "fr_FR.UTF-8")
 sheet_id = "1SO2i9TXqQL9wSFTjE-GLRONtXmXfvcQ5kYckTm6fY4M"
@@ -61,7 +65,13 @@ def generate_html_table(df_calendar):
         )
         for _, row in df_month.iterrows():
             html_table += "<tr>"
-            html_table += f"<td>{row['Date'].strftime('%a %d %b').title()}</td>"
+            class_td_duration = COLOR_DURATION_RACE.get(row["Durée organisation"], "")
+            class_attr = f" class='{class_td_duration}'" if class_td_duration else ""
+            html_table += (
+                f"<td{class_attr}>"
+                f"{row['Date'].strftime('%a %d %b').title()}"
+                "</td>"
+            )
             class_td_type_of_race = COLOR_TYPE_OF_RACE.get(row["Type de course"])
             html_table += (
                 f"<td class='{class_td_type_of_race}'>{row['Course']}</td>"
@@ -108,7 +118,20 @@ template: page
 """
         # Add legend section
         calendar_table += """<div class="row mb-3">
-    <div class="col-md-6">
+    <div class="col-md-4">
+        <div class="alert alert-default border small">
+            <strong>Durée de l'épreuve :</strong>
+            <ul class="list-unstyled mb-0">
+"""
+        for duration, color in COLOR_DURATION_RACE.items():
+            calendar_table += f"""
+                <li><span class="badge {color}">&nbsp;</span> {duration}</li>
+"""
+        calendar_table += """
+            </ul>
+        </div>
+    </div>
+    <div class="col-md-4">
         <div class="alert alert-default border small">
             <strong>Type de course :</strong>
             <ul class="list-unstyled mb-0">
@@ -121,7 +144,7 @@ template: page
             </ul>
         </div>
     </div>
-    <div class="col-md-6">
+    <div class="col-md-4">
         <div class="alert alert-default border small">
             <strong>Longueur du circuit :</strong>
             <ul class="list-unstyled mb-0">

@@ -475,6 +475,14 @@ body {
   background-color: #ffeeba !important;
 }
 
+.race-type-demi-journee {
+  background-color: #f5b9d0 !important;
+}
+
+.race-type-journee-complete {
+  background-color: #99e9e3 !important;
+}
+
 /* Calendar table specific styles */
 #calendarTable td:first-child {
   white-space: nowrap;
