@@ -9,7 +9,7 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    environment: website-generation
+    environment: github-pages
     permissions:
       contents: read
     env:
