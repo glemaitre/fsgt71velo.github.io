@@ -14,6 +14,15 @@ document.addEventListener('DOMContentLoaded', function() {
 
     searchInput.addEventListener('input', function() {
         const searchTerm = this.value.toLowerCase();
+
+        // If search is empty, show all rows
+        if (!searchTerm) {
+            Array.from(tableRows).forEach(row => {
+                row.classList.remove('row-hidden');
+            });
+            return;
+        }
+
         let currentMonthHeader = null;
         let hasVisibleEvents = false;
 
