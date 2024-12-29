@@ -9,9 +9,6 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    environment: github-pages
-    permissions:
-      contents: read
     env:
       GHA_SITE_URL: "https://glemaitre.github.io/fsgt71velo.github.io"
     steps:
