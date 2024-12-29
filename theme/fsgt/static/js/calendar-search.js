@@ -14,10 +14,21 @@ document.addEventListener('DOMContentLoaded', function() {
 
     searchInput.addEventListener('input', function() {
         const searchTerm = this.value.toLowerCase();
+        let currentMonthHeader = null;
+        let hasVisibleEvents = false;
 
         Array.from(tableRows).forEach(row => {
-            // Skip header rows (those with colspan)
-            if (row.querySelector('td[colspan]')) {
+            // Check if this is a month header row
+            const isMonthHeader = row.querySelector('td[colspan]');
+
+            if (isMonthHeader) {
+                // If we were processing a previous month, hide/show its header based on visible events
+                if (currentMonthHeader && !hasVisibleEvents) {
+                    currentMonthHeader.classList.add('row-hidden');
+                }
+                // Reset for new month
+                currentMonthHeader = row;
+                hasVisibleEvents = false;
                 return;
             }
 
@@ -30,9 +41,15 @@ document.addEventListener('DOMContentLoaded', function() {
             // Show/hide row based on search term
             if (rowText.includes(searchTerm)) {
                 row.classList.remove('row-hidden');
+                hasVisibleEvents = true;
             } else {
                 row.classList.add('row-hidden');
             }
         });
+
+        // Handle the last month section
+        if (currentMonthHeader && !hasVisibleEvents) {
+            currentMonthHeader.classList.add('row-hidden');
+        }
     });
 });
