@@ -61,7 +61,7 @@ def generate_html_table(df_calendar):
         )
         for _, row in df_month.iterrows():
             html_table += "<tr>"
-            html_table += f"<td>{row['Date'].strftime('%a %d %b %Y').title()}</td>"
+            html_table += f"<td>{row['Date'].strftime('%a %d %b').title()}</td>"
             class_td_type_of_race = COLOR_TYPE_OF_RACE.get(row["Type de course"])
             html_table += (
                 f"<td class='{class_td_type_of_race}'>{row['Course']}</td>"
@@ -95,7 +95,7 @@ template: page
 ---
 
 """
-        title = '## <i class="fas fa-calendar-alt"></i> Calendrier des événements\n\n'
+        title = '## <i class="fas fa-calendar-alt"></i> Calendrier des événements 2025\n\n'
 
         # Search bar
         calendar_table = """<div class="mb-3">
