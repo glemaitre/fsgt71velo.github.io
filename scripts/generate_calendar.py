@@ -21,6 +21,8 @@ COLOR_TYPE_OF_RACE = {
     "Championnat": "race-type-championship",
     "Contre-la-montre": "race-type-contre-la-montre",
     "Brevet et randonnée": "race-type-brevet-et-randonnee",
+    "Cyclo-cross": "race-type-cyclo-cross",
+    "Autres": "race-type-other",
 }
 COLOR_CIRCUIT_LENGTH = {
     "Circuit < 5km": "race-type-circuit-lt-5km",

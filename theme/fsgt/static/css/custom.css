@@ -459,6 +459,14 @@ body {
   background-color: #9ec5fe !important;
 }
 
+.race-type-cyclo-cross {
+  background-color: #a4e4fd !important;
+}
+
+.race-type-other {
+  background-color: #f1aeb5 !important;
+}
+
 .race-type-circuit-lt-5km {
   background-color: #e9ecef !important;
 }
