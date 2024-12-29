@@ -32,6 +32,8 @@ jobs:
           LANG: fr_FR.UTF-8
           LC_ALL: fr_FR.UTF-8
           LANGUAGE: fr_FR:fr
+          # to deploy the website that check the content of the google drive
+          GOOGLE_SERVICE_ACCOUNT: ${{ secrets.GOOGLE_SERVICE_ACCOUNT }}
       - name: deploy website on github pages
         uses: peaceiris/actions-gh-pages@v4
         with:

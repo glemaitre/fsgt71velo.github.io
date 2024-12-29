@@ -44,6 +44,16 @@ Google Sheet suivant :
 
 https://docs.google.com/spreadsheets/d/1ocHqS1lCjGVwKTd_ES_L06eOFDN90Jd_Kap3OtZhgVM/edit?gid=0#gid=0
 
+### Génération de la page contenant les rapports des commissions
+
+Les rapports des commissions sont stockés dans un dossier Google Drive dédié avec
+un accès en lecture restreint. Le script `scripts/generate_report.py` générera la
+page contenant les rapports des commissions. L'intégration continue dispose d'un
+accès en lecture seule au dossier Google Drive pour générer la page automatiquement.
+
+Les fichiers dans ces dossiers doivent être nommés selon le format suivant
+`JJ_MM_AAAA.pdf` et placés dans le dossier `FSGT 71/Rapport Commission/AAAA`.
+
 ## Déclencher une construction du site web sur GitHub Actions
 
 Le site web est automatiquement construit sur GitHub Actions lorsqu'un push est effectué
