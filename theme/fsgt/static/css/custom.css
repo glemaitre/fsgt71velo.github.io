@@ -16,7 +16,7 @@ body {
 @media (min-width: 992px) {
   .container-fluid {
     display: grid;
-    grid-template-columns: 260px 1fr;
+    grid-template-columns: 220px 1fr;
     grid-template-areas: "sidebar main";
     gap: 1.5rem;
   }
@@ -26,21 +26,21 @@ body {
 @media (min-width: 1000px) {
   .container-fluid {
     display: grid;
-    grid-template-columns: 260px 1fr;
+    grid-template-columns: 220px 1fr;
     grid-template-areas: "sidebar main";
     gap: 1.5rem;
     padding-left: 1rem;
   }
 
   .bd-sidebar {
-    width: 260px;
+    width: 220px;
   }
 }
 
 /* Sidebar styles */
 .bd-sidebar {
   grid-area: sidebar;
-  width: 100%;
+  width: 220px;
   border-right: 1px solid rgba(0, 0, 0, 0.1);
   background: #ffffff;
   padding-top: 1rem;
@@ -60,7 +60,7 @@ body {
     padding-left: 0.25rem;
     margin-left: 0.25rem;
     overflow-y: auto;
-    width: 280px;
+    width: 220px;
   }
 }
 
@@ -103,7 +103,7 @@ body {
   /* Add container grid layout */
   .container-fluid {
     display: grid;
-    grid-template-columns: 280px 1fr;
+    grid-template-columns: 220px 1fr;
     grid-template-areas: "sidebar main";
     gap: 1.5rem;
   }
@@ -488,4 +488,9 @@ body {
   white-space: nowrap;
   width: 1%;
   min-width: 90px;
+  vertical-align: middle;
+}
+
+#calendarTable td {
+  vertical-align: middle;
 }

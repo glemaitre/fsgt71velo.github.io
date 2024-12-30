@@ -49,7 +49,7 @@ def generate_html_table(df_calendar):
     # So we manually translate the month names
     df_calendar["Month"] = df_calendar["Date"].dt.month_name().map(MONTH_TRANSLATION)
     html_table = (
-        '<table class="table" id="calendarTable"><thead><tr>'
+        '<table class="table small" id="calendarTable"><thead><tr>'
         "<th>Dates</th>"
         "<th>Courses</th>"
         "<th>Catégories</th>"
