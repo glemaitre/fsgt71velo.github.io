@@ -10,10 +10,11 @@ version = "0.1.0"
 generate_club_listing = { cmd = "python scripts/generate_club_listing.py" }
 generate_calendar = { cmd = "python scripts/generate_calendar.py" }
 generate_report = { cmd = "python scripts/generate_report.py" }
+generate_results = { cmd = "python scripts/generate_results.py" }
 
 # build the static website
 clean = { cmd = "rm -rf output" }
-build = { cmd = "pelican content -t theme/fsgt --verbose", depends-on = ["clean", "generate_club_listing", "generate_calendar", "generate_report"] }
+build = { cmd = "pelican content -t theme/fsgt --verbose", depends-on = ["clean", "generate_club_listing", "generate_calendar", "generate_report", "generate_results"] }
 preview = { cmd = "pelican --listen", depends-on = ["build"]}
 
 [dependencies]
