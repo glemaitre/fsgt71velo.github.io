@@ -55,9 +55,7 @@ def list_pdf_files(service_account_info):
     )
 
     for year_folder in year_folders:
-        pdf_query = (
-            f"'{year_folder['id']}' in parents and mimeType='application/pdf'"
-        )
+        pdf_query = f"'{year_folder['id']}' in parents and mimeType='application/pdf'"
         pdf_files = (
             service.files()
             .list(
@@ -91,15 +89,24 @@ def list_pdf_files(service_account_info):
 
 def format_date_from_filename(filename):
     # Remove .pdf extension and split by underscores
-    date_str = filename.replace('.pdf', '').split('_')
+    date_str = filename.replace(".pdf", "").split("_")
     if len(date_str) != 3:
         return filename  # Return original if not in expected format
 
     # French month names
     months = {
-        '01': 'Janvier', '02': 'Février', '03': 'Mars', '04': 'Avril',
-        '05': 'Mai', '06': 'Juin', '07': 'Juillet', '08': 'Août',
-        '09': 'Septembre', '10': 'Octobre', '11': 'Novembre', '12': 'Décembre'
+        "01": "Janvier",
+        "02": "Février",
+        "03": "Mars",
+        "04": "Avril",
+        "05": "Mai",
+        "06": "Juin",
+        "07": "Juillet",
+        "08": "Août",
+        "09": "Septembre",
+        "10": "Octobre",
+        "11": "Novembre",
+        "12": "Décembre",
     }
 
     day, month, year = date_str
@@ -117,10 +124,9 @@ template: page
 ---
 
 """
-
         title = (
             '## <i class="fas fa-file-alt"></i> Rapport des commissions '
-            'cyclistes FSGT 71\n\n'
+            "cyclistes FSGT 71\n\n"
         )
         df = list_pdf_files(service_account_info)
 
@@ -131,11 +137,21 @@ template: page
                 f'<h4 class="text-center">Année {year}</h4>\n'
                 f'<ul class="list-unstyled mb-0">\n'
             )
-            for _, row in df_year.iterrows():
+
+            df_year = df_year.copy()  # Create copy to avoid SettingWithCopyWarning
+            df_year["date"] = pd.to_datetime(
+                df_year["filename"].apply(
+                    lambda x: "_".join(x.replace(".pdf", "").split("_")[::-1])
+                ),
+                format="%Y_%m_%d",
+                errors="coerce",
+            )
+
+            for _, row in df_year.sort_values("date", ascending=False).iterrows():
                 report_listing += (
                     f'<li><a href="{row["drive_url"]}">'
                     f'Compte rendu du {format_date_from_filename(row["filename"])}'
-                    '</a></li>\n'
+                    "</a></li>\n"
                 )
             report_listing += "</ul>\n</div>\n"
 
