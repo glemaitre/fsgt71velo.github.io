@@ -73,8 +73,11 @@ def generate_html_table(df_calendar):
                 "</td>"
             )
             class_td_type_of_race = COLOR_TYPE_OF_RACE.get(row["Type de course"])
+            course_content = row['Course']
+            if pd.notna(row['Affiche']):
+                course_content = f'<a href="{row["Affiche"]}" target="_blank">{course_content}</a>'
             html_table += (
-                f"<td class='{class_td_type_of_race}'>{row['Course']}</td>"
+                f"<td class='{class_td_type_of_race}'>{course_content}</td>"
             )
             class_td_circuit_length = COLOR_CIRCUIT_LENGTH.get(
                 row["Longeur circuit"],
