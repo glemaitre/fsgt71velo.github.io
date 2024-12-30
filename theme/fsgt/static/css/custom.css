@@ -325,20 +325,19 @@ body {
 /* Persistent toggle button */
 .sidebar-toggle-persistent {
   position: absolute;
-  right: -40px;
+  right: 10px;
   top: 10px;
   z-index: 1040;
   color: #666;
   background: white;
   padding: 8px 12px;
-  border-radius: 0 4px 4px 0;
+  border-radius: 4px;
   box-shadow: 2px 0 4px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease;
 }
 
-/* Rotate icon when sidebar is collapsed */
-.sidebar-collapsed .sidebar-toggle-persistent i {
-  transform: rotate(180deg);
+.sidebar-toggle-persistent i {
+  display: inline-block;
+  transition: transform 0.3s ease;
 }
 
 /* Hide persistent toggle on mobile */
@@ -350,21 +349,34 @@ body {
 
 /* Collapsed sidebar styles */
 @media (min-width: 1000px) {
+  .container-fluid {
+    grid-template-columns: 220px 1fr;
+    transition: grid-template-columns 0.3s ease;
+  }
+
+  .container-fluid:has(.sidebar-collapsed) {
+    grid-template-columns: 60px 1fr;
+  }
+
   .sidebar-collapsed {
-    width: 0 !important;
-    min-width: 0 !important;
-    padding: 0 !important;
-    border: none !important;
+    width: 60px !important;
+    min-width: 60px !important;
+    padding: 1rem 0 !important;
+    overflow: hidden;
   }
 
-  .sidebar-collapsed * {
-    display: none !important;
+  /* Hide all sidebar content when collapsed except the toggle button */
+  .sidebar-collapsed .bd-links * {
+    opacity: 0;
+    transition: opacity 0.3s ease;
   }
 
-  /* Keep toggle button visible when sidebar is collapsed */
-  .sidebar-collapsed .sidebar-toggle-persistent {
-    display: block !important;
-    right: -40px !important;
+  /* Ensure toggle button and icon remain visible */
+  .sidebar-collapsed .sidebar-toggle-persistent,
+  .sidebar-collapsed .sidebar-toggle-persistent i {
+    opacity: 1 !important;
+    visibility: visible !important;
+    display: inline-block !important;
   }
 }
 
