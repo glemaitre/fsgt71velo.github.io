@@ -1,10 +1,10 @@
-/* Show it's not fixed to the top */
+/* Base styles */
 body {
   min-height: 75rem;
   padding-top: 80px;
 }
 
-/* Container layout */
+/* Layout */
 .container-fluid {
   width: 100%;
   padding-right: 15px;
@@ -13,6 +13,7 @@ body {
   margin-left: auto;
 }
 
+/* Grid layout breakpoints */
 @media (min-width: 992px) {
   .container-fluid {
     display: grid;
@@ -20,24 +21,23 @@ body {
     grid-template-areas: "sidebar main";
     gap: 1.5rem;
   }
+
+  .bd-main {
+    display: grid;
+    grid-template-areas: "intro" "toc" "content";
+    grid-template-rows: auto auto 1fr;
+    gap: 1rem;
+    padding: 1rem;
+  }
 }
 
-/* Change this to 1000px to match navbar */
 @media (min-width: 1000px) {
   .container-fluid {
-    display: grid;
-    grid-template-columns: 220px 1fr;
-    grid-template-areas: "sidebar main";
-    gap: 1.5rem;
     padding-left: 1rem;
-  }
-
-  .bd-sidebar {
-    width: 220px;
   }
 }
 
-/* Sidebar styles */
+/* Sidebar */
 .bd-sidebar {
   grid-area: sidebar;
   width: 220px;
@@ -64,7 +64,7 @@ body {
   }
 }
 
-/* Links styles */
+/* Sidebar navigation */
 .bd-links-link {
   padding: 0.1875rem 0.5rem;
   margin-top: 0.125rem;
@@ -89,7 +89,7 @@ body {
   margin-right: 0.5rem;
 }
 
-/* Main content styles */
+/* Main content */
 .bd-main {
   grid-area: main;
   width: 100%;
@@ -99,39 +99,19 @@ body {
   padding: 1.5rem;
 }
 
-@media (min-width: 992px) {
-  /* Add container grid layout */
-  .container-fluid {
-    display: grid;
-    grid-template-columns: 220px 1fr;
-    grid-template-areas: "sidebar main";
-    gap: 1.5rem;
-  }
-
-  .bd-main {
-    display: grid;
-    grid-template-areas: "intro" "toc" "content";
-    grid-template-rows: auto auto 1fr;
-    gap: 1rem;
-    padding: 1rem;
-  }
-}
-
-/* Main footer container */
+/* Footer */
 .footer {
   padding: 2rem 0;
   background-color: #ffffff;
   border-top: 1px solid #eee;
 }
 
-/* Container to center and limit content width */
 .footer-content {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 1rem;
 }
 
-/* Footer elements layout */
 .footer-row {
   display: flex;
   justify-content: space-between;
@@ -140,25 +120,17 @@ body {
   gap: 1rem;
 }
 
-/* Copyright text style */
-.footer-copyright {
-  color: #666;
-  font-size: 0.9rem;
-}
-
-/* Last update text style */
+.footer-copyright,
 .footer-updated {
   color: #666;
   font-size: 0.9rem;
 }
 
-/* Links container */
 .footer-links {
   display: flex;
   gap: 2rem;
 }
 
-/* Links style */
 .footer-links a {
   color: #666;
   text-decoration: none;
@@ -166,34 +138,21 @@ body {
   transition: color 0.2s;
 }
 
-/* Links hover effect */
 .footer-links a:hover {
   color: #333;
 }
 
-/* Mobile adaptation */
-@media (max-width: 768px) {
-  .footer-row {
-    flex-direction: column;
-    text-align: center;
-  }
-
-  .footer-links {
-    justify-content: center;
-  }
-}
-
+/* Navigation */
 .navbar.bg-white {
   background-color: #ffffff !important;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
-/* We can keep this to ensure proper display when clicked */
 .dropdown-menu.show {
   display: block;
 }
 
-/* Specific styles for bureau tables */
+/* Tables */
 .bd-content table {
   width: 100%;
   margin-bottom: 1rem;
@@ -213,40 +172,25 @@ body {
   background-color: #f8f9fa;
 }
 
-/* Add some spacing between contact information lines */
 .bd-content table td i.fas {
   width: 20px;
   margin-right: 8px;
 }
 
-.bd-content table td br {
-  margin-bottom: 0px;
-  content: "";
-  display: block;
-}
-
-/* Optional: Add some hover effect */
 .bd-content table tr:hover {
   background-color: rgba(0, 0, 0, 0.02);
 }
 
-/* Make the table responsive */
-@media (max-width: 768px) {
-  .bd-content table {
-    display: block;
-    overflow-x: auto;
-  }
-}
-
-/* Add spacing after section titles */
+/* Typography */
 .bd-content h2 {
-  margin-bottom: 3rem !important; /* equivalent to Bootstrap's mb-5 */
-}
-.bd-content h3 {
-  margin-bottom: 2rem !important; /* equivalent to Bootstrap's mb-5 */
+  margin-bottom: 3rem !important;
 }
 
-/* Specific class for contact info nested tables */
+.bd-content h3 {
+  margin-bottom: 2rem !important;
+}
+
+/* Contact info table */
 .contact-info-table {
   width: auto !important;
   margin: 0 !important;
@@ -259,7 +203,7 @@ body {
   vertical-align: top !important;
 }
 
-/* Sidebar toggle buttons */
+/* Sidebar toggles */
 .sidebar-toggle {
   position: absolute;
   right: 10px;
@@ -287,7 +231,24 @@ body {
   background: white;
 }
 
-/* Update other responsive breakpoints to match */
+.sidebar-toggle-persistent {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  z-index: 1040;
+  color: #666;
+  background: white;
+  padding: 8px 12px;
+  border-radius: 4px;
+  box-shadow: 2px 0 4px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar-toggle-persistent i {
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+
+/* Responsive layouts */
 @media (max-width: 999.98px) {
   .container-fluid {
     display: block;
@@ -308,46 +269,41 @@ body {
     left: 0;
   }
 
-  /* Navbar collapse positioning */
   .navbar .navbar-collapse {
     position: absolute;
     top: 100%;
     left: 0;
     right: 0;
     background: white;
-    padding: 1rem;
-    padding-left: 55px; /* Added left padding */
+    padding: 1rem 1rem 1rem 55px;
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   }
-}
 
-/* Persistent toggle button */
-.sidebar-toggle-persistent {
-  position: absolute;
-  right: 10px;
-  top: 10px;
-  z-index: 1040;
-  color: #666;
-  background: white;
-  padding: 8px 12px;
-  border-radius: 4px;
-  box-shadow: 2px 0 4px rgba(0, 0, 0, 0.1);
-}
-
-.sidebar-toggle-persistent i {
-  display: inline-block;
-  transition: transform 0.3s ease;
-}
-
-/* Hide persistent toggle on mobile */
-@media (max-width: 999.98px) {
   .sidebar-toggle-persistent {
     display: none;
   }
+
+  .footer-row {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .footer-links {
+    justify-content: center;
+  }
+
+  .navbar-brand img {
+    padding-right: 0;
+  }
+
+  .bd-content table {
+    display: block;
+    overflow-x: auto;
+  }
 }
 
-/* Collapsed sidebar styles */
+/* Desktop sidebar collapse */
 @media (min-width: 1000px) {
   .container-fluid {
     grid-template-columns: 220px 1fr;
@@ -365,13 +321,11 @@ body {
     overflow: hidden;
   }
 
-  /* Hide all sidebar content when collapsed except the toggle button */
   .sidebar-collapsed .bd-links * {
     opacity: 0;
     transition: opacity 0.3s ease;
   }
 
-  /* Ensure toggle button and icon remain visible */
   .sidebar-collapsed .sidebar-toggle-persistent,
   .sidebar-collapsed .sidebar-toggle-persistent i {
     opacity: 1 !important;
@@ -380,7 +334,7 @@ body {
   }
 }
 
-/* Custom display utilities for 1000px breakpoint */
+/* Utility classes */
 .d-1000-none {
   display: none;
 }
@@ -391,20 +345,13 @@ body {
   }
 }
 
-/* Add padding to navbar brand image */
+/* Navbar brand */
 .navbar-brand img {
   padding-right: 190px;
   padding-left: 0.75rem;
 }
 
-/* Remove padding on mobile */
-@media (max-width: 999.98px) {
-  .navbar-brand img {
-    padding-right: 0;
-  }
-}
-
-/* Dropdown styles within tables */
+/* Dropdown styles */
 .bd-content table .dropdown-menu {
   position: absolute;
   min-width: 300px;
@@ -427,75 +374,31 @@ body {
   text-decoration: none;
 }
 
-.bd-content table .dropdown-menu .contact-info-table {
-  margin: 0 !important;
-}
-
-.bd-content table td .dropdown {
-  margin: -1rem; /* Compensate for table cell padding */
-  padding: 1rem;
-}
-
 .bd-content table td .dropdown {
   display: inline-block;
-  margin: 0; /* Remove the negative margins */
-  padding: 0; /* Remove the padding */
+  margin: 0;
+  padding: 0;
 }
 
-/* Optional: if you want to align the text vertically */
-.bd-content table td strong,
-.bd-content table td .dropdown {
-  vertical-align: middle;
-}
-
+/* Badges */
 .badge {
   display: inline-block;
   width: 30px;
   margin-right: 8px;
 }
 
-/* Custom background colors for the calendar */
-.race-type-championship {
-  background-color: #fed9b8 !important;
-}
+/* Calendar styles */
+.race-type-championship { background-color: #fed9b8 !important; }
+.race-type-route { background-color: #a3cfbb !important; }
+.race-type-contre-la-montre { background-color: #e2d9f3 !important; }
+.race-type-brevet-et-randonnee { background-color: #9ec5fe !important; }
+.race-type-cyclo-cross { background-color: #a4e4fd !important; }
+.race-type-other { background-color: #f1aeb5 !important; }
+.race-type-circuit-lt-5km { background-color: #e9ecef !important; }
+.race-type-circuit-gte-5km { background-color: #ffeeba !important; }
+.race-type-demi-journee { background-color: #f5b9d0 !important; }
+.race-type-journee-complete { background-color: #99e9e3 !important; }
 
-.race-type-route {
-  background-color: #a3cfbb !important;
-}
-
-.race-type-contre-la-montre {
-  background-color: #e2d9f3 !important;
-}
-
-.race-type-brevet-et-randonnee {
-  background-color: #9ec5fe !important;
-}
-
-.race-type-cyclo-cross {
-  background-color: #a4e4fd !important;
-}
-
-.race-type-other {
-  background-color: #f1aeb5 !important;
-}
-
-.race-type-circuit-lt-5km {
-  background-color: #e9ecef !important;
-}
-
-.race-type-circuit-gte-5km {
-  background-color: #ffeeba !important;
-}
-
-.race-type-demi-journee {
-  background-color: #f5b9d0 !important;
-}
-
-.race-type-journee-complete {
-  background-color: #99e9e3 !important;
-}
-
-/* Calendar table specific styles */
 #calendarTable td:first-child {
   white-space: nowrap;
   width: 1%;
@@ -507,7 +410,7 @@ body {
   vertical-align: middle;
 }
 
-/* Icons for regulations section */
+/* Icons */
 .icon-dept-71,
 .icon-national {
   display: inline-block;
