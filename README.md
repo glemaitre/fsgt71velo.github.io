@@ -64,3 +64,9 @@ Alternativement, vous pouvez déclencher une construction manuellement en allant
 et en cliquant sur le bouton "Run workflow" comme montré ci-dessous :
 
 ![Exécuter le workflow](.github/workflows/run_workflow.png)
+
+### Attribution et licence
+
+- Logo de Saone-et-Loire - Attributions: created by Ary Prasetyo from Noun Project -
+  [Source](https://thenounproject.com/icon/saone-et-loire-department-map-5144602/)
+- Logo France - [Source](https://www.svgrepo.com/svg/480941/france-vector)

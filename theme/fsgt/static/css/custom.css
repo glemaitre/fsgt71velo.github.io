@@ -506,3 +506,23 @@ body {
 #calendarTable td {
   vertical-align: middle;
 }
+
+/* Icons for regulations section */
+.icon-dept-71,
+.icon-national {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  margin-right: 0.5rem;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.icon-dept-71 {
+  background-image: url('../images/saone_et_loire.svg');
+}
+
+.icon-national {
+  background-image: url('../images/france.svg');
+}
