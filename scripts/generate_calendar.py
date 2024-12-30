@@ -88,7 +88,7 @@ def generate_html_table(df_calendar):
                 "</td>"
             )
             html_table += (
-                f"<td>{row['Clubs'].title() if pd.notna(row['Clubs']) else ''}</td>"
+                f"<td>{row['Clubs'] if pd.notna(row['Clubs']) else ''}</td>"
             )
             html_table += "</tr>"
     html_table += "</tbody></table>"
