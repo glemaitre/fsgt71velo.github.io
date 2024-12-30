@@ -1,5 +1,5 @@
 ---
-title: Commission Cycliste FSGT 71
+title: Règlement Cyclisme FSGT 71
 url: reglement/fsgt71/cyclisme/index.html
 save_as: reglement/fsgt71/cyclisme/index.html
 template: page
@@ -13,4 +13,4 @@ template: page
     </a>
 </div>
 
-<iframe src="https://drive.google.com/file/d/1X3lXRROGOyZUoJSDKi9Wx-EVWdNgW-KX/preview" width="100%" height="1000px" frameborder="1"></iframe>
+<iframe src="https://drive.google.com/file/d/1X3lXRROGOyZUoJSDKi9Wx-EVWdNgW-KX/preview" width="100%" height="1300px" frameborder="1"></iframe>
