@@ -1,6 +1,7 @@
 # %%
 import json
 import os
+import warnings
 import pandas as pd
 from google.oauth2 import service_account
 from googleapiclient.discovery import build
@@ -106,7 +107,7 @@ def format_date_from_filename(filename):
 
 
 # %%
-def generate_markdown_webpage(filename):
+def generate_markdown_webpage(filename, service_account_info):
     with open(filename, "w") as f:
         metadata = """---
 title: Rapport des commissions cyclistes FSGT 71
@@ -121,18 +122,13 @@ template: page
             '## <i class="fas fa-file-alt"></i> Rapport des commissions '
             'cyclistes FSGT 71\n\n'
         )
-
-        service_account_json = os.environ.get("GOOGLE_SERVICE_ACCOUNT")
-        if not service_account_json:
-            raise ValueError("GOOGLE_SERVICE_ACCOUNT environment variable not found")
-        service_account_info = json.loads(service_account_json)
         df = list_pdf_files(service_account_info)
 
         report_listing = ""
-        for year, df_year in df.groupby("year"):
+        for year, df_year in sorted(df.groupby("year"), reverse=True):
             report_listing += (
                 f'<div class="alert alert-default border">\n'
-                f'<strong>Année {year}</strong>\n'
+                f'<h4 class="text-center">Année {year}</h4>\n'
                 f'<ul class="list-unstyled mb-0">\n'
             )
             for _, row in df_year.iterrows():
@@ -146,6 +142,18 @@ template: page
         f.write(metadata + title + report_listing)
 
 
+class MissingServiceAccount(Warning):
+    pass
+
+
 # %%
 if __name__ == "__main__":
-    generate_markdown_webpage("content/pages/rapport.md")
+    service_account_json = os.environ.get("GOOGLE_SERVICE_ACCOUNT")
+    if not service_account_json:
+        warnings.warn(
+            "GOOGLE_SERVICE_ACCOUNT environment variable not found.",
+            MissingServiceAccount,
+        )
+    else:
+        service_account_info = json.loads(service_account_json)
+        generate_markdown_webpage("content/pages/rapport.md", service_account_info)
