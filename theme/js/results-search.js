@@ -1,6 +1,10 @@
 document.addEventListener('DOMContentLoaded', function() {
     const searchInput = document.getElementById('resultsSearch');
     const resultsTable = document.getElementById('calendarTable');
+
+    // Return early if elements don't exist
+    if (!searchInput || !resultsTable) return;
+
     const tableRows = resultsTable.getElementsByTagName('tbody')[0].getElementsByTagName('tr');
 
     // Add CSS for hiding rows

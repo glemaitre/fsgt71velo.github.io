@@ -1,6 +1,10 @@
 document.addEventListener('DOMContentLoaded', function() {
     const searchInput = document.getElementById('clubSearch');
     const clubTable = document.getElementById('clubTable');
+
+    // Return early if elements don't exist
+    if (!searchInput || !clubTable) return;
+
     const tableRows = clubTable.getElementsByTagName('tbody')[0].getElementsByTagName('tr');
 
     // Add a CSS class that only affects main table rows
