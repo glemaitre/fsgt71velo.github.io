@@ -18,22 +18,6 @@ MONTH_TRANSLATION = {
     "November": "Novembre",
     "December": "Décembre",
 }
-COLOR_TYPE_OF_RACE = {
-    "Route": "race-type-route",
-    "Championnat": "race-type-championship",
-    "Contre-la-montre": "race-type-contre-la-montre",
-    "Brevet et randonnée": "race-type-brevet-et-randonnee",
-    "Cyclo-cross": "race-type-cyclo-cross",
-    "Autres": "race-type-other",
-}
-COLOR_CIRCUIT_LENGTH = {
-    "Circuit < 5km": "race-type-circuit-lt-5km",
-    "Circuit >= 5 km": "race-type-circuit-gte-5km",
-}
-COLOR_DURATION_RACE = {
-    "Demi-journée": "race-type-demi-journee",
-    "Journée complète": "race-type-journee-complete",
-}
 
 SHEET_ID = "1SO2i9TXqQL9wSFTjE-GLRONtXmXfvcQ5kYckTm6fY4M"
 SHEET_CALENDAR = "calendar"
