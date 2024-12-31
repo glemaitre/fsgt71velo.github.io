@@ -7,10 +7,14 @@ platforms = ["osx-arm64", "osx-64", "linux-64", "win-64"]
 version = "0.1.0"
 
 [tasks]
+# generate some of the markdown files
 generate_club_listing = { cmd = "python scripts/generate_club_listing.py" }
 generate_calendar = { cmd = "python scripts/generate_calendar.py" }
 generate_report = { cmd = "python scripts/generate_report.py" }
 generate_results = { cmd = "python scripts/generate_results.py" }
+
+# run some test for the python code
+tests = { cmd = "pytest -vsl . -n auto", cwd = "scripts/tests" }
 
 # build the static website
 clean = { cmd = "rm -rf output" }
@@ -23,3 +27,5 @@ markdown = ">=3.6,<4"
 pandas = ">=2.2.3,<3"
 ipykernel = ">=6.29.5,<7"
 google-api-python-client = ">=2.156.0,<3"
+pytest = ">=8.3.4,<9"
+pytest-xdist = ">=3.6.1,<4"
