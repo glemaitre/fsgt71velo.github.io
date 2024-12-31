@@ -83,10 +83,18 @@ def generate_html_table(df_calendar):
                 # Results column
                 results = []
                 if pd.notna(row['Résultats TC']):
-                    results.append(f'<a href="{row["Résultats TC"]}" target="_blank">Toutes catégories</a>')
+                    results.append(
+                        f'<a href="{row["Résultats TC"]}" target="_blank" '
+                        f'class="btn btn-sm btn-outline-primary mb-1 mb-md-0 me-md-2">'
+                        f'<i class="fas fa-file-alt me-1"></i>Toutes catégories</a>'
+                    )
                 if pd.notna(row['Résultats école']):
-                    results.append(f'<a href="{row["Résultats école"]}" target="_blank">Écoles de vélo</a>')
-                html_table += f"<td>{' | '.join(results)}</td>"
+                    results.append(
+                        f'<a href="{row["Résultats école"]}" target="_blank" '
+                        f'class="btn btn-sm btn-outline-primary">'
+                        f'<i class="fas fa-child me-1"></i>Écoles de vélo</a>'
+                    )
+                html_table += f'<td><div class="d-flex flex-column flex-md-row">{" ".join(results)}</div></td>'
 
                 html_table += "</tr>"
     html_table += "</tbody></table>"
