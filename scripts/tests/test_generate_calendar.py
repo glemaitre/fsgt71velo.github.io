@@ -1,3 +1,5 @@
+import pandas as pd
+
 from ..generate_calendar import (
     df_calendar,
     generate_html_table,
@@ -37,3 +39,16 @@ def test_calendar_dataframe():
         assert (
             col in df_calendar.columns
         ), f"Column {col} is missing in the calendar dataframe"
+
+    assert pd.api.types.is_datetime64_any_dtype(
+        df_calendar["Date"]
+    ), "The 'Date' column should be a datetime object"
+    assert df_calendar["Date"].dt.year.unique() == [2025], "The year should be 2025"
+
+    expected_duration = ("Demi-journée", "Journée complète")
+    for duration in df_calendar["Durée organisation"].unique():
+        if pd.isna(duration):
+            continue
+        assert (
+            duration in expected_duration
+        ), f"Unexpected duration: {duration}. Should be one of {expected_duration}"
