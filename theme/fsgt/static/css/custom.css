@@ -155,7 +155,7 @@ body {
 /* Tables */
 .bd-content table {
   width: 100%;
-  margin-bottom: 1rem;
+  margin-bottom: 3rem;
   border-collapse: collapse;
 }
 
@@ -188,6 +188,10 @@ body {
 
 .bd-content h3 {
   margin-bottom: 2rem !important;
+}
+
+.bd-content h4 {
+  margin-bottom: 1.5rem !important;
 }
 
 /* Contact info table */
@@ -428,4 +432,11 @@ body {
 
 .icon-national {
   background-image: url('../images/france.svg');
+}
+
+/* iframes */
+.bd-content iframe {
+  border: 2px solid #dee2e6;
+  border-radius: 4px;
+  margin-bottom: 1.5rem;
 }
