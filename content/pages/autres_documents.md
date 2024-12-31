@@ -63,7 +63,7 @@ template: page
         </tr>
         <tr>
             <td><a href="#questionnaire-sante">6. Questionnaire de santé</a></td>
-            <td>Questionnaire de santé pour savoir si vous devez fournir un certificat médical</td>
+            <td>Questionnaire de santé pour le renouvellement du certificat médical</td>
             <td>
                 <a href="https://drive.google.com/file/d/1PGpVr8pUpYFPlXwmdASIBkyJ4gZW1L-N/view?usp=sharing" class="btn btn-primary btn-sm" download>
                     <i class="fas fa-download"></i> Télécharger
