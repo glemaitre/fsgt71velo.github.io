@@ -440,3 +440,9 @@ body {
   border-radius: 4px;
   margin-bottom: 1.5rem;
 }
+
+#organisation-table td:first-child {
+  white-space: nowrap;
+  width: 1%;
+  min-width: 200px;
+}
