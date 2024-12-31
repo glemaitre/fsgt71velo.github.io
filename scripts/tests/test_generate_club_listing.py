@@ -7,6 +7,8 @@ from ..generate_club_listing import (
     SHEET_LISTING,
     URL_DIRECTORY,
     URL_LISTING,
+    generate_club_listing,
+    generate_person_dropdown,
 )
 
 
@@ -65,3 +67,81 @@ def test_df_directory():
         assert (
             column in df_directory.columns
         ), f"Column {column} not found in df_directory"
+
+
+def test_integrity_listing_directory():
+    """Check that the different first name and last name from the listing are present
+    in the directory.
+    """
+    df_listing = pd.read_csv(URL_LISTING)
+    df_directory = pd.read_csv(URL_DIRECTORY)
+
+    for position in [
+        "Président",
+        "Responsable cyclisme",
+        "Responsable cyclotouriste",
+        "Correspondant VTT",
+        "Correspondant vélos enfants",
+    ]:
+        for first_name, last_name in zip(
+            df_listing[f"{position} Prénom"], df_listing[f"{position} Nom"]
+        ):
+            if pd.isna(first_name) or pd.isna(last_name):
+                continue
+
+            matching_entries = df_directory.query(
+                f"Prénom == '{first_name}' & Nom == '{last_name}'"
+            )
+            assert (
+                len(matching_entries) > 0
+            ), f"{position} {first_name} {last_name} not found in directory"
+
+
+def test_generate_person_dropdown():
+    """Check that we properly generate the person dropdown table."""
+    df_directory = pd.read_csv(URL_DIRECTORY)
+    html_table = generate_person_dropdown(
+        df_directory,
+        first_name="Cédric",
+        last_name="LEMAITRE",
+        counter_unique_dropdown=0,
+    )
+
+    table_html_cedric_lemaitre = (
+        '<div class="dropdown">'
+        '<button class="btn btn-link dropdown-toggle" type="button" '
+        'id="contactDropdown0" data-bs-toggle="dropdown" aria-expanded="false">'
+        "Cédric LEMAITRE"
+        "</button>"
+        '<div class="dropdown-menu p-3" aria-labelledby="contactDropdown0">'
+        '<table class="contact-info-table">'
+        '<tr><td><i class="fas fa-map-marker-alt"></i></td>'
+        "<td>40 avenue de la libération<br>71210 MONTCHANIN</td></tr>"
+        '<tr><td><i class="fas fa-mobile-alt"></i></td>'
+        "<td>06.72.71.55.84</td></tr>"
+        '<tr><td><i class="fas fa-envelope"></i></td>'
+        '<td><a href="mailto:c.lemaitre58@gmail.com">c.lemaitre58@gmail.com</a></td>'
+        "</tr>"
+        "</table>"
+        "</div>"
+        "</div>"
+    )
+    assert html_table == table_html_cedric_lemaitre
+
+
+def test_generate_club_listing():
+    """Check that we properly generate the club listing table."""
+    df_listing = pd.read_csv(URL_LISTING)
+    df_directory = pd.read_csv(URL_DIRECTORY)
+    html_table = generate_club_listing(df_listing, df_directory)
+
+    # check the header
+    header = (
+        '<table class="table" id="clubTable"><thead><tr>'
+        "<th>Club</th>"
+        "<th>Contacts</th>"
+        "</tr></thead>"
+    )
+    assert html_table.startswith(header)
+    end_table = "</tbody></table>"
+    assert html_table.endswith(end_table)

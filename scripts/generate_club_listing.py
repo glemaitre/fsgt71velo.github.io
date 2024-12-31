@@ -13,8 +13,9 @@ URL_DIRECTORY = (
 )
 
 
-def generate_html_table(df, *, first_name, last_name, counter_unique_dropdown):
-    """Create an HTML table by fetching data based on first and last name.
+def generate_person_dropdown(df, *, first_name, last_name, counter_unique_dropdown):
+    """Create an HTML table of a person contact by fetching data based on first and
+    last name.
 
     Parameters
     ----------
@@ -39,11 +40,13 @@ def generate_html_table(df, *, first_name, last_name, counter_unique_dropdown):
     template = '<div class="dropdown">'
     template += (
         '<button class="btn btn-link dropdown-toggle" type="button" '
-        f'id="contactDropdown{counter_unique_dropdown}" data-bs-toggle="dropdown" aria-expanded="false">'
+        f'id="contactDropdown{counter_unique_dropdown}" data-bs-toggle="dropdown" '
+        f'aria-expanded="false">'
         f'{row["Prénom"]} {row["Nom"]}</button>'
     )
     template += (
-        f'<div class="dropdown-menu p-3" aria-labelledby="contactDropdown{counter_unique_dropdown}">'
+        f'<div class="dropdown-menu p-3" '
+        f'aria-labelledby="contactDropdown{counter_unique_dropdown}">'
         '<table class="contact-info-table">'
     )
     if not pd.isna(row["Adresse"]):
@@ -106,7 +109,7 @@ def generate_club_listing(df_listing, df_directory):
             html_table += f'<tr><td>{row["Nom du club"]}</td>'
             html_table += f"<td>"
             if (
-                president := generate_html_table(
+                president := generate_person_dropdown(
                     df_directory,
                     first_name=row["Président Prénom"],
                     last_name=row["Président Nom"],
@@ -116,7 +119,7 @@ def generate_club_listing(df_listing, df_directory):
                 html_table += f"<strong>Président</strong> : {president}<br>"
                 counter_unique_dropdown += 1
             if (
-                responsable_cyclisme := generate_html_table(
+                responsable_cyclisme := generate_person_dropdown(
                     df_directory,
                     first_name=row["Responsable cyclisme Prénom"],
                     last_name=row["Responsable cyclisme Nom"],
@@ -129,7 +132,7 @@ def generate_club_listing(df_listing, df_directory):
                 )
                 counter_unique_dropdown += 1
             if (
-                cyclotouriste := generate_html_table(
+                cyclotouriste := generate_person_dropdown(
                     df_directory,
                     first_name=row["Responsable cyclotouriste Prénom"],
                     last_name=row["Responsable cyclotouriste Nom"],
@@ -141,7 +144,7 @@ def generate_club_listing(df_listing, df_directory):
                 )
                 counter_unique_dropdown += 1
             if (
-                correspondant_vtt := generate_html_table(
+                correspondant_vtt := generate_person_dropdown(
                     df_directory,
                     first_name=row["Correspondant VTT Prénom"],
                     last_name=row["Correspondant VTT Nom"],
@@ -153,7 +156,7 @@ def generate_club_listing(df_listing, df_directory):
                 )
                 counter_unique_dropdown += 1
             if (
-                correspondant_velos_enfants := generate_html_table(
+                correspondant_velos_enfants := generate_person_dropdown(
                     df_directory,
                     first_name=row["Correspondant vélos enfants Prénom"],
                     last_name=row["Correspondant vélos enfants Nom"],
