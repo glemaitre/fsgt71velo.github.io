@@ -1,26 +1,38 @@
 # %%
 import pandas as pd
 
-sheet_id = "1ocHqS1lCjGVwKTd_ES_L06eOFDN90Jd_Kap3OtZhgVM"
-sheet_listing, sheet_directory = "Listing", "Annuaire"
-url_listing = (
-    f"https://docs.google.com/spreadsheets/d/{sheet_id}/gviz/"
-    f"tq?tqx=out:csv&sheet={sheet_listing}"
+SHEET_ID = "1ocHqS1lCjGVwKTd_ES_L06eOFDN90Jd_Kap3OtZhgVM"
+SHEET_LISTING = "Listing"
+SHEET_DIRECTORY = "Annuaire"
+URL_LISTING = (
+    f"https://docs.google.com/spreadsheets/d/{SHEET_ID}/gviz/"
+    f"tq?tqx=out:csv&sheet={SHEET_LISTING}"
 )
-url_directory = (
-    f"https://docs.google.com/spreadsheets/d/{sheet_id}/gviz"
-    f"/tq?tqx=out:csv&sheet={sheet_directory}"
+URL_DIRECTORY = (
+    f"https://docs.google.com/spreadsheets/d/{SHEET_ID}/gviz"
+    f"/tq?tqx=out:csv&sheet={SHEET_DIRECTORY}"
 )
-
-df_listing = pd.read_csv(url_listing)
-df_listing
-
-df_directory = pd.read_csv(url_directory)
-df_directory
 
 
 def generate_html_table(df, *, first_name, last_name, counter_unique_dropdown):
-    """Create an HTML table by fetching data based on first and last name."""
+    """Create an HTML table by fetching data based on first and last name.
+
+    Parameters
+    ----------
+    df : pd.DataFrame
+        The dataframe containing the directory data.
+    first_name : str
+        The first name to search for.
+    last_name : str
+        The last name to search for.
+    counter_unique_dropdown : int
+        The counter for the unique dropdown.
+
+    Returns
+    -------
+    str
+        The HTML table for the directory.
+    """
     if pd.isna(first_name) or pd.isna(last_name):
         return ""
 
@@ -150,7 +162,14 @@ def generate_club_listing(df_listing, df_directory):
     return html_table
 
 
-def generate_markdown_webpage(filename, *, df_listing, df_directory):
+def generate_markdown_webpage(filename):
+    """Generate the markdown webpage for the clubs listing.
+
+    Parameters
+    ----------
+    filename: str
+        The filename to write the markdown webpage to.
+    """
     with open(filename, "w") as f:
         metadata = """---
 title: Liste des clubs FSGT 71
@@ -176,6 +195,7 @@ template: page
     afficher ses coordonnées détaillées (adresse, téléphone, email).
 </div>
 """
+        df_listing, df_directory = pd.read_csv(URL_LISTING), pd.read_csv(URL_DIRECTORY)
         listing_clubs_roads += generate_club_listing(df_listing, df_directory)
         listing_clubs_roads += "\n\n"
 
@@ -184,6 +204,5 @@ template: page
 
 # %%
 if __name__ == "__main__":
-    generate_markdown_webpage(
-        "content/pages/clubs.md", df_listing=df_listing, df_directory=df_directory
-    )
+    """Entry point for the pixi task."""
+    generate_markdown_webpage("content/pages/clubs.md")

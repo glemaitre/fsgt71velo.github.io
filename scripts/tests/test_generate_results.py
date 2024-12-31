@@ -1,4 +1,4 @@
-from ..generate_calendar import (
+from ..generate_results import (
     SHEET_CALENDAR,
     SHEET_ID,
     URL_CALENDAR,
