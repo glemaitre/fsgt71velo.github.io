@@ -18,3 +18,5 @@ jobs:
           frozen: true
       - name: run tests
         run: pixi run tests
+      - name: trigger a build
+        run: pixi run build
