@@ -74,3 +74,24 @@ def test_calendar_dataframe():
             f"Unexpected circuit length: {circuit_length}. Should be one of "
             f"{expected_circuit_length}"
         )
+
+
+def test_generate_html_table():
+    """Check that we generate a sensible HTML table."""
+    df_calendar = pd.read_csv(URL_CALENDAR, dayfirst=True, parse_dates=["Date"])
+    html_table = generate_html_table(df_calendar)
+
+    # check the header
+    header = (
+        '<table class="table" id="calendarTable">'
+        "<thead><tr>"
+        "<th>Dates</th>"
+        "<th>Courses</th>"
+        "<th>Catégories</th>"
+        "<th>Club</th>"
+        "</tr></thead>"
+        "<tbody>"
+    )
+    assert html_table.startswith(header)
+    end_table = "</tbody></table>"
+    assert html_table.endswith(end_table)
