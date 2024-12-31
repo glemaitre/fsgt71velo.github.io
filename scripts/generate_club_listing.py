@@ -1,4 +1,3 @@
-# %%
 import pandas as pd
 
 SHEET_ID = "1ocHqS1lCjGVwKTd_ES_L06eOFDN90Jd_Kap3OtZhgVM"
@@ -82,7 +81,17 @@ def generate_html_table(df, *, first_name, last_name, counter_unique_dropdown):
 def generate_club_listing(df_listing, df_directory):
     """Create the first table of the clubs page.
 
-    It contains only the road race information.
+    Parameters
+    ----------
+    df_listing : pd.DataFrame
+        The dataframe containing the listing data.
+    df_directory : pd.DataFrame
+        The dataframe containing the directory data.
+
+    Returns
+    -------
+    str
+        The HTML table for the clubs listing.
     """
     counter_unique_dropdown = 0
     html_table = (
@@ -202,7 +211,6 @@ template: page
         f.write(metadata + title + listing_clubs_roads)
 
 
-# %%
 if __name__ == "__main__":
     """Entry point for the pixi task."""
     generate_markdown_webpage("content/pages/clubs.md")

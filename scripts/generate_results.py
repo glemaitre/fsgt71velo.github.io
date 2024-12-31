@@ -62,10 +62,13 @@ def generate_html_table(df_calendar):
 
     # Only process months that have races with results
     for month, df_month in df_calendar.groupby("Month", sort=False):
-        if (
-            len(df_month) > 0
-        ):  # This check is technically redundant now but kept for clarity
-            html_table += f"<tr><td colspan='4' class='text-center'><strong>{month.upper()}</strong></td></tr>"
+        if len(df_month) > 0:
+            # This check is technically redundant now but kept for clarity
+            html_table += (
+                f"<tr><td colspan='4' class='text-center'>"
+                f"<strong>{month.upper()}</strong>"
+                "</td></tr>"
+            )
             for _, row in df_month.iterrows():
                 html_table += "<tr>"
                 html_table += f"<td>{row['Date'].strftime('%a %d %b').title()}</td>"
@@ -85,7 +88,10 @@ def generate_html_table(df_calendar):
                         f'class="btn btn-sm btn-outline-primary">'
                         f'<i class="fas fa-child me-1"></i>Écoles de vélo</a>'
                     )
-                html_table += f'<td><div class="d-flex flex-column flex-md-row">{" ".join(results)}</div></td>'
+                html_table += (
+                    f'<td><div class="d-flex flex-column flex-md-row">'
+                    f'{" ".join(results)}</div></td>'
+                )
 
                 html_table += "</tr>"
     html_table += "</tbody></table>"
