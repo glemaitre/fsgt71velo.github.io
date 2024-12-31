@@ -1,4 +1,3 @@
-# %%
 import locale
 
 import pandas as pd
@@ -45,6 +44,18 @@ URL_CALENDAR = (
 
 
 def generate_html_table(df_calendar):
+    """Generate the HTML table for the calendar.
+
+    Parameters
+    ----------
+    df_calendar : pd.DataFrame
+        The dataframe containing the calendar data.
+
+    Returns
+    -------
+    str
+        The HTML table for the calendar.
+    """
     # The `locale` in `month_name` cannot be set when using the GitHub Actions runner
     # So we manually translate the month names
     df_calendar["Month"] = df_calendar["Date"].dt.month_name().map(MONTH_TRANSLATION)
@@ -93,10 +104,14 @@ def generate_html_table(df_calendar):
     return html_table
 
 
-# %%
-
-
 def generate_markdown_webpage(filename):
+    """Generate the markdown webpage for the calendar.
+
+    Parameters
+    ----------
+    filename: str
+        The filename to write the markdown webpage to.
+    """
     with open(filename, "w") as f:
         metadata = """---
 title: Calendrier des événements FSGT 71
@@ -168,8 +183,6 @@ template: page
         f.write(metadata + title + calendar_table)
 
 
-# %%
 if __name__ == "__main__":
+    """Entry point for the pixi task."""
     generate_markdown_webpage("content/pages/calendar.md")
-
-# %%
