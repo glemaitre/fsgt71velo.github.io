@@ -3,6 +3,8 @@ import locale
 
 import pandas as pd
 
+locale.setlocale(locale.LC_TIME, "fr_FR.UTF-8")
+
 MONTH_TRANSLATION = {
     "January": "Janvier",
     "February": "Février",
@@ -34,15 +36,12 @@ COLOR_DURATION_RACE = {
     "Journée complète": "race-type-journee-complete",
 }
 
-locale.setlocale(locale.LC_TIME, "fr_FR.UTF-8")
-sheet_id = "1SO2i9TXqQL9wSFTjE-GLRONtXmXfvcQ5kYckTm6fY4M"
-sheet_calendar = "calendar"
-url_calendar = (
-    f"https://docs.google.com/spreadsheets/d/{sheet_id}/gviz/"
-    f"tq?tqx=out:csv&sheet={sheet_calendar}"
+SHEET_ID = "1SO2i9TXqQL9wSFTjE-GLRONtXmXfvcQ5kYckTm6fY4M"
+SHEET_CALENDAR = "calendar"
+URL_CALENDAR = (
+    f"https://docs.google.com/spreadsheets/d/{SHEET_ID}/gviz/"
+    f"tq?tqx=out:csv&sheet={SHEET_CALENDAR}"
 )
-df_calendar = pd.read_csv(url_calendar, dayfirst=True, parse_dates=["Date"])
-df_calendar
 
 
 def generate_html_table(df_calendar):
@@ -163,6 +162,7 @@ template: page
     </div>
 </div>
 """
+        df_calendar = pd.read_csv(URL_CALENDAR, dayfirst=True, parse_dates=["Date"])
         calendar_table += generate_html_table(df_calendar)
 
         f.write(metadata + title + calendar_table)
