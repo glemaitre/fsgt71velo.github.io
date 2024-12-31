@@ -1,7 +1,8 @@
-# %%
 import locale
 
 import pandas as pd
+
+locale.setlocale(locale.LC_TIME, "fr_FR.UTF-8")
 
 MONTH_TRANSLATION = {
     "January": "Janvier",
@@ -34,18 +35,27 @@ COLOR_DURATION_RACE = {
     "Journée complète": "race-type-journee-complete",
 }
 
-locale.setlocale(locale.LC_TIME, "fr_FR.UTF-8")
-sheet_id = "1SO2i9TXqQL9wSFTjE-GLRONtXmXfvcQ5kYckTm6fY4M"
-sheet_calendar = "calendar"
-url_calendar = (
-    f"https://docs.google.com/spreadsheets/d/{sheet_id}/gviz/"
-    f"tq?tqx=out:csv&sheet={sheet_calendar}"
+SHEET_ID = "1SO2i9TXqQL9wSFTjE-GLRONtXmXfvcQ5kYckTm6fY4M"
+SHEET_CALENDAR = "calendar"
+URL_CALENDAR = (
+    f"https://docs.google.com/spreadsheets/d/{SHEET_ID}/gviz/"
+    f"tq?tqx=out:csv&sheet={SHEET_CALENDAR}"
 )
-df_calendar = pd.read_csv(url_calendar, dayfirst=True, parse_dates=["Date"])
-df_calendar
 
 
 def generate_html_table(df_calendar):
+    """Generate the HTML table for the calendar.
+
+    Parameters
+    ----------
+    df_calendar : pd.DataFrame
+        The dataframe containing the calendar data.
+
+    Returns
+    -------
+    str
+        The HTML table for the calendar.
+    """
     # The `locale` in `month_name` cannot be set when using the GitHub Actions runner
     # So we manually translate the month names
     df_calendar["Month"] = df_calendar["Date"].dt.month_name().map(MONTH_TRANSLATION)
@@ -94,10 +104,14 @@ def generate_html_table(df_calendar):
     return html_table
 
 
-# %%
-
-
 def generate_markdown_webpage(filename):
+    """Generate the markdown webpage for the calendar.
+
+    Parameters
+    ----------
+    filename: str
+        The filename to write the markdown webpage to.
+    """
     with open(filename, "w") as f:
         metadata = """---
 title: Calendrier des événements FSGT 71
@@ -163,13 +177,12 @@ template: page
     </div>
 </div>
 """
+        df_calendar = pd.read_csv(URL_CALENDAR, dayfirst=True, parse_dates=["Date"])
         calendar_table += generate_html_table(df_calendar)
 
         f.write(metadata + title + calendar_table)
 
 
-# %%
 if __name__ == "__main__":
+    """Entry point for the pixi task."""
     generate_markdown_webpage("content/pages/calendar.md")
-
-# %%

@@ -4,6 +4,8 @@ from ..generate_calendar import (
     COLOR_CIRCUIT_LENGTH,
     COLOR_DURATION_RACE,
     COLOR_TYPE_OF_RACE,
+)
+from ..generate_results import (
     SHEET_CALENDAR,
     SHEET_ID,
     URL_CALENDAR,
@@ -76,8 +78,7 @@ def test_calendar_dataframe():
         )
 
 
-def test_generate_html_table():
-    """Check that we generate a sensible HTML table."""
+def test_generate_results():
     df_calendar = pd.read_csv(URL_CALENDAR, dayfirst=True, parse_dates=["Date"])
     html_table = generate_html_table(df_calendar)
 
@@ -87,10 +88,9 @@ def test_generate_html_table():
         "<thead><tr>"
         "<th>Dates</th>"
         "<th>Courses</th>"
-        "<th>Catégories</th>"
         "<th>Club</th>"
+        "<th>Résultats</th>"
         "</tr></thead>"
-        "<tbody>"
     )
     assert html_table.startswith(header)
     end_table = "</tbody></table>"

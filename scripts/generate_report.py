@@ -9,6 +9,22 @@ from googleapiclient.discovery import build
 
 
 def get_folder_id(service, folder_name, parent_id=None):
+    """Get the folder id from the folder name.
+
+    Parameters
+    ----------
+    service : googleapiclient.discovery.Resource
+        The service to use to get the folder id.
+    folder_name : str
+        The name of the folder to get the id from.
+    parent_id : str, optional
+        The id of the parent folder, by default None.
+
+    Returns
+    -------
+    str
+        The id of the folder.
+    """
     query = f"name='{folder_name}' and mimeType='application/vnd.google-apps.folder'"
     if parent_id:
         query += f" and '{parent_id}' in parents"
@@ -22,7 +38,18 @@ def get_folder_id(service, folder_name, parent_id=None):
 
 
 def list_pdf_files(service_account_info):
-    """List all reports stored as PDF files on the google drive."""
+    """List all reports stored as PDF files on the google drive.
+
+    Parameters
+    ----------
+    service_account_info: dict
+        The service account information.
+
+    Returns
+    -------
+    pd.DataFrame
+        The dataframe containing the reports.
+    """
     filenames = []
     file_ids = []
     years = []
@@ -89,12 +116,22 @@ def list_pdf_files(service_account_info):
 
 
 def format_date_from_filename(filename):
-    # Remove .pdf extension and split by underscores
+    """Format the date from the filename.
+
+    Parameters
+    ----------
+    filename : str
+        The filename to format the date from.
+
+    Returns
+    -------
+    str
+        The formatted date.
+    """
     date_str = filename.replace(".pdf", "").split("_")
     if len(date_str) != 3:
-        return filename  # Return original if not in expected format
+        return filename
 
-    # French month names
     months = {
         "01": "Janvier",
         "02": "Février",
@@ -114,8 +151,16 @@ def format_date_from_filename(filename):
     return f"{int(day)} {months.get(month, month)} {year}"
 
 
-# %%
 def generate_markdown_webpage(filename, service_account_info):
+    """Generate the markdown webpage for the report.
+
+    Parameters
+    ----------
+    filename: str
+        The filename to write the markdown webpage to.
+    service_account_info: dict
+        The service account information.
+    """
     with open(filename, "w") as f:
         metadata = """---
 title: Rapport des commissions cyclistes FSGT 71
@@ -163,10 +208,12 @@ class MissingServiceAccount(Warning):
     pass
 
 
-# %%
 if __name__ == "__main__":
+    """Entry point for the pixi task."""
     service_account_json = os.environ.get("GOOGLE_SERVICE_ACCOUNT")
     if not service_account_json:
+        # raise a warning to avoid a failure when building locally the website and not
+        # having the credentials.
         warnings.warn(
             "GOOGLE_SERVICE_ACCOUNT environment variable not found.",
             MissingServiceAccount,
