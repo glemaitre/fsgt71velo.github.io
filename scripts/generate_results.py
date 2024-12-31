@@ -1,6 +1,7 @@
 # %%
-import pandas as pd
 import locale
+
+import pandas as pd
 
 MONTH_TRANSLATION = {
     "January": "Janvier",
@@ -46,29 +47,31 @@ df_calendar
 
 def generate_html_table(df_calendar):
     # Filter rows that have at least one result
-    mask = df_calendar['Résultats TC'].notna() | df_calendar['Résultats école'].notna()
+    mask = df_calendar["Résultats TC"].notna() | df_calendar["Résultats école"].notna()
     df_calendar = df_calendar[mask].copy()
 
     # If no results at all, return empty table structure
     if len(df_calendar) == 0:
-        return ('<table class="table" id="calendarTable"><thead><tr>'
-                "<th>Dates</th><th>Courses</th><th>Clubs</th><th>Résultats</th>"
-                "</tr></thead><tbody></tbody></table>")
+        return (
+            '<table class="table" id="calendarTable"><thead><tr>'
+            "<th>Dates</th><th>Courses</th><th>Club</th><th>Résultats</th>"
+            "</tr></thead><tbody></tbody></table>"
+        )
 
     df_calendar["Month"] = df_calendar["Date"].dt.month_name().map(MONTH_TRANSLATION)
 
     html_table = (
         '<table class="table" id="calendarTable"><thead><tr>'
-        "<th>Dates</th><th>Courses</th><th>Clubs</th><th>Résultats</th>"
+        "<th>Dates</th><th>Courses</th><th>Club</th><th>Résultats</th>"
         "</tr></thead><tbody>"
     )
 
     # Only process months that have races with results
     for month, df_month in df_calendar.groupby("Month", sort=False):
-        if len(df_month) > 0:  # This check is technically redundant now but kept for clarity
-            html_table += (
-                f"<tr><td colspan='4' class='text-center'><strong>{month.upper()}</strong></td></tr>"
-            )
+        if (
+            len(df_month) > 0
+        ):  # This check is technically redundant now but kept for clarity
+            html_table += f"<tr><td colspan='4' class='text-center'><strong>{month.upper()}</strong></td></tr>"
             for _, row in df_month.iterrows():
                 html_table += "<tr>"
                 # Date column
@@ -78,17 +81,17 @@ def generate_html_table(df_calendar):
                 html_table += f"<td>{row['Course']}</td>"
 
                 # Club column
-                html_table += f"<td>{row['Clubs'] if pd.notna(row['Clubs']) else ''}</td>"
+                html_table += f"<td>{row['Club'] if pd.notna(row['Club']) else ''}</td>"
 
                 # Results column
                 results = []
-                if pd.notna(row['Résultats TC']):
+                if pd.notna(row["Résultats TC"]):
                     results.append(
                         f'<a href="{row["Résultats TC"]}" target="_blank" '
                         f'class="btn btn-sm btn-outline-primary mb-1 mb-md-0 me-md-2">'
                         f'<i class="fas fa-file-alt me-1"></i>Toutes catégories</a>'
                     )
-                if pd.notna(row['Résultats école']):
+                if pd.notna(row["Résultats école"]):
                     results.append(
                         f'<a href="{row["Résultats école"]}" target="_blank" '
                         f'class="btn btn-sm btn-outline-primary">'

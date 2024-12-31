@@ -1,6 +1,7 @@
 # %%
-import pandas as pd
 import locale
+
+import pandas as pd
 
 MONTH_TRANSLATION = {
     "January": "Janvier",
@@ -53,7 +54,7 @@ def generate_html_table(df_calendar):
         "<th>Dates</th>"
         "<th>Courses</th>"
         "<th>Catégories</th>"
-        "<th>Clubs</th>"
+        "<th>Club</th>"
         "</tr></thead>"
         "<tbody>"
     )
@@ -73,12 +74,12 @@ def generate_html_table(df_calendar):
                 "</td>"
             )
             class_td_type_of_race = COLOR_TYPE_OF_RACE.get(row["Type de course"])
-            course_content = row['Course']
-            if pd.notna(row['Affiche']):
-                course_content = f'<a href="{row["Affiche"]}" target="_blank">{course_content}</a>'
-            html_table += (
-                f"<td class='{class_td_type_of_race}'>{course_content}</td>"
-            )
+            course_content = row["Course"]
+            if pd.notna(row["Affiche"]):
+                course_content = (
+                    f'<a href="{row["Affiche"]}" target="_blank">{course_content}</a>'
+                )
+            html_table += f"<td class='{class_td_type_of_race}'>{course_content}</td>"
             class_td_circuit_length = COLOR_CIRCUIT_LENGTH.get(
                 row["Longeur circuit"],
             )
@@ -87,9 +88,7 @@ def generate_html_table(df_calendar):
                 f"{row['Catégories'] if pd.notna(row['Catégories']) else ''}"
                 "</td>"
             )
-            html_table += (
-                f"<td>{row['Clubs'] if pd.notna(row['Clubs']) else ''}</td>"
-            )
+            html_table += f"<td>{row['Club'] if pd.notna(row['Club']) else ''}</td>"
             html_table += "</tr>"
     html_table += "</tbody></table>"
     return html_table
@@ -108,7 +107,9 @@ template: page
 ---
 
 """
-        title = '## <i class="fas fa-calendar-alt"></i> Calendrier des événements 2025\n\n'
+        title = (
+            '## <i class="fas fa-calendar-alt"></i> Calendrier des événements 2025\n\n'
+        )
 
         # Search bar
         calendar_table = """<div class="mb-3">

@@ -81,7 +81,6 @@ def generate_club_listing(df_listing, df_directory):
         "<tbody>"
     )
     for _, sub_df in df_listing.groupby("Ville", sort=True):
-
         for row_id, row in sub_df.iterrows():
             html_table += f'<tr><td>{row["Nom du club"]}</td>'
             html_table += f"<td>"

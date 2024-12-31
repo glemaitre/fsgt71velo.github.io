@@ -21,6 +21,9 @@ clean = { cmd = "rm -rf output" }
 build = { cmd = "pelican content -t theme/fsgt --verbose", depends-on = ["clean", "generate_club_listing", "generate_calendar", "generate_report", "generate_results"] }
 preview = { cmd = "pelican --listen", depends-on = ["build"]}
 
+# lint the code
+lint = { cmd = "pre-commit install && pre-commit run --all-files" }
+
 [dependencies]
 pelican = ">=4.10.2,<5"
 markdown = ">=3.6,<4"
@@ -29,3 +32,4 @@ ipykernel = ">=6.29.5,<7"
 google-api-python-client = ">=2.156.0,<3"
 pytest = ">=8.3.4,<9"
 pytest-xdist = ">=3.6.1,<4"
+pre-commit = ">=4.0.1,<5"
