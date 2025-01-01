@@ -11,24 +11,20 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-
       - name: Install SendGrid dependency
         run: npm install @sendgrid/mail
-
-      - name: Install Pixi
-        uses: prefix-dev/setup-pixi@v0.4.1
+      - uses: prefix-dev/setup-pixi@v0.8.1
         with:
           pixi-version: v0.39.4
-
+          frozen: true
       - name: Generate listing and send email
         run: pixi run send_email_update_double_licences
         env:
-          GOOGLE_SERVICE_ACCOUNT_INFO: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_INFO }}
+          GOOGLE_SERVICE_ACCOUNT_INFO: ${{ secrets.GOOGLE_SERVICE_ACCOUNT }}
           SENDGRID_API_KEY: ${{ secrets.SENDGRID_API_KEY }}
           RECIPIENTS_EMAIL: ${{ secrets.RECIPIENTS_EMAIL }}
           SENDER_EMAIL: ${{ secrets.SENDER_EMAIL }}
