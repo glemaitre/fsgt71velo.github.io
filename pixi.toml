@@ -15,7 +15,7 @@ generate_results = { cmd = "python scripts/generate_results.py" }
 generate_listing_update_double_licence = { cmd = "python scripts/generate_listing_update_double_licence.py" }
 
 # send emails
-send_email_update_double_licences = { cmd = "node scripts/send_email_update_double_licences.js" }
+send_email_update_double_licences = { cmd = "node scripts/send_email_update_double_licences.js", depends-on = ["generate_listing_update_double_licence"] }
 
 # build the static website
 clean = { cmd = "rm -rf output" }

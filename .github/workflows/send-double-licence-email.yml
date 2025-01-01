@@ -25,14 +25,10 @@ jobs:
         with:
           pixi-version: v0.39.4
 
-      - name: Generate listing
-        run: pixi run generate_listing_update_double_licence
-        env:
-          GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
-
-      - name: Send email
+      - name: Generate listing and send email
         run: pixi run send_email_update_double_licences
         env:
+          GOOGLE_SERVICE_ACCOUNT_INFO: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_INFO }}
           SENDGRID_API_KEY: ${{ secrets.SENDGRID_API_KEY }}
           RECIPIENTS_EMAIL: ${{ secrets.RECIPIENTS_EMAIL }}
           SENDER_EMAIL: ${{ secrets.SENDER_EMAIL }}
