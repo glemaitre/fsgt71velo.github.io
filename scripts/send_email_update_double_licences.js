@@ -25,7 +25,7 @@ if (!process.env.RECIPIENTS_EMAIL || !process.env.SENDER_EMAIL) {
 }
 
 const msg = {
-    to: ['lguigui58@gmail.com', 'g.lemaitre58@gmail.com'],
+    to: process.env.RECIPIENTS_EMAIL.split(',').map(email => email.trim()),
     from: process.env.SENDER_EMAIL.trim(),
     subject: 'Liste des déclarations de double licences',
     text: 'Bonjour,\n\nVoici la liste des déclarations de double licence de la dernière semaine.\n\nCordialement,\n\nGuillaume Lemaître',
