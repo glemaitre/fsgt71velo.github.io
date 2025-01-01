@@ -24,12 +24,8 @@ if (!process.env.RECIPIENTS_EMAIL || !process.env.SENDER_EMAIL) {
     process.exit(1);
 }
 
-// Add debug logging
-console.log('RECIPIENTS_EMAIL:', process.env.RECIPIENTS_EMAIL);
-console.log('SENDER_EMAIL:', process.env.SENDER_EMAIL);
-
 const msg = {
-    to: process.env.RECIPIENTS_EMAIL.trim(),
+    to: ['lguigui58@gmail.com', 'g.lemaitre58@gmail.com'],
     from: process.env.SENDER_EMAIL.trim(),
     subject: 'Liste des déclarations de double licences',
     text: 'Bonjour,\n\nVoici la liste des déclarations de double licence de la dernière semaine.\n\nCordialement,\n\nGuillaume Lemaître',
