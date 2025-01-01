@@ -16,6 +16,8 @@ jobs:
         with:
           node-version: '20'
           cache: 'npm'
+      - name: Install dependencies
+        run: npm install
       - uses: prefix-dev/setup-pixi@v0.8.1
         with:
           pixi-version: v0.39.4
