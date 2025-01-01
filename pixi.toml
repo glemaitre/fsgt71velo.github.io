@@ -12,9 +12,10 @@ generate_club_listing = { cmd = "python scripts/generate_club_listing.py" }
 generate_calendar = { cmd = "python scripts/generate_calendar.py" }
 generate_report = { cmd = "python scripts/generate_report.py" }
 generate_results = { cmd = "python scripts/generate_results.py" }
+generate_listing_update_double_licence = { cmd = "python scripts/generate_listing_update_double_licence.py" }
 
-# run some test for the python code
-tests = { cmd = "pytest -vsl . -n auto", cwd = "scripts/tests" }
+# send emails
+send_email_update_double_licences = { cmd = "node scripts/send_email_update_double_licences.js" }
 
 # build the static website
 clean = { cmd = "rm -rf output" }
@@ -23,6 +24,9 @@ preview = { cmd = "pelican --listen", depends-on = ["build"]}
 
 # lint the code
 lint = { cmd = "pre-commit install && pre-commit run --all-files" }
+
+# run some test for the python code
+tests = { cmd = "pytest -vsl . -n auto", cwd = "scripts/tests" }
 
 [dependencies]
 pelican = ">=4.10.2,<5"
