@@ -1,4 +1,4 @@
-name: Send Double Licence Email Update
+name: Send update related to the listing of double licenses declarations
 
 on:
   schedule:
