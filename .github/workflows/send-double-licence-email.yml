@@ -1,4 +1,4 @@
-name: Send update related to the listing of double licenses declarations
+name: Send update double licenses
 
 on:
   schedule:
