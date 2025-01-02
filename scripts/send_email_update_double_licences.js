@@ -19,25 +19,40 @@ if (data.length === 0) {
 }
 
 // Add validation for required environment variables
-if (!process.env.RECIPIENTS_EMAIL || !process.env.SENDER_EMAIL) {
-    console.error('Missing required environment variables: RECIPIENTS_EMAIL and/or SENDER_EMAIL');
+const { RECIPIENTS_EMAIL, SENDER_EMAIL } = process.env;
+if (!RECIPIENTS_EMAIL || !SENDER_EMAIL) {
+    console.error('Missing env variables: RECIPIENTS_EMAIL and/or SENDER_EMAIL');
     process.exit(1);
 }
 
+const emailText = 'Bonjour,\n\n' +
+    'Voici la liste des déclarations de double licence de la dernière semaine.\n\n' +
+    'Cordialement,\n\n' +
+    'Guillaume Lemaître';
+
+const emailHtml = `
+    <div style="font-family: Arial, sans-serif; line-height: 1.6;">
+        <p>Bonjour,</p>
+        <p>Voici la liste des déclarations de double licence de la dernière semaine.</p>
+        <p>
+            Cordialement,<br>
+            Guillaume Lemaître
+        </p>
+    </div>
+`;
+
 const msg = {
-    to: process.env.RECIPIENTS_EMAIL.split(',').map(email => email.trim()),
-    from: process.env.SENDER_EMAIL.trim(),
+    to: RECIPIENTS_EMAIL.split(',').map(email => email.trim()),
+    from: SENDER_EMAIL.trim(),
     subject: 'Liste des déclarations de double licences',
-    text: 'Bonjour,\n\nVoici la liste des déclarations de double licence de la dernière semaine.\n\nCordialement,\n\nGuillaume Lemaître',
-    html: '<p>Bonjour,<br><br>Voici la liste des déclarations de double licence de la dernière semaine.<br><br>Cordialement,<br><br>Guillaume Lemaître</p>',
-    attachments: [
-        {
-            content: data.toString('base64'),
-            filename: filename,
-            type: fileType,
-            disposition: 'attachment',
-        },
-    ],
+    text: emailText,
+    html: emailHtml,
+    attachments: [{
+        content: data.toString('base64'),
+        filename: filename,
+        type: fileType,
+        disposition: 'attachment'
+    }]
 };
 
 sgMail
