@@ -12,6 +12,28 @@ SPREADSHEET_ID = "1lZwxoMeF2gBuFLgjoaBREPl8YFESYwJLV5o1JEjKHKI"
 RANGE_NAME = "Form Responses 1!A:M"
 
 
+def _get_values(service):
+    """Get the values from the Google Sheet.
+
+    Parameters
+    ----------
+    service : googleapiclient.discovery.Resource
+        Google Sheets API service.
+
+    Returns
+    -------
+    list[list[str]]
+        The values from the Google Sheet.
+    """
+    result = (
+        service.spreadsheets()
+        .values()
+        .get(spreadsheetId=SPREADSHEET_ID, range=RANGE_NAME)
+        .execute()
+    )
+    return result.get("values", [])
+
+
 def generate_listing(filename, service_account_info):
     """Generate a CSV listing of double license declarations from the last week.
 
@@ -33,13 +55,9 @@ def generate_listing(filename, service_account_info):
     )
     service = build("sheets", "v4", credentials=credentials)
 
-    result = (
-        service.spreadsheets()
-        .values()
-        .get(spreadsheetId=SPREADSHEET_ID, range=RANGE_NAME)
-        .execute()
-    )
-    values = result.get("values", [])
+    values = _get_values(service)
+    if not values:
+        return
 
     headers = values[0]
     data = values[1:]
