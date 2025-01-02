@@ -60,7 +60,7 @@ Le site web est automatiquement construit sur GitHub Actions lorsqu'un push est 
 sur la branche `main`.
 
 Alternativement, vous pouvez déclencher une construction manuellement en allant sur le
-[workflow de déploiement](https://github.com/glemaitre/fsgt71velo.github.io/actions/workflows/deploy.yml)
+[workflow de déploiement](https://github.com/glemaitre/fsgt71velo.github.io/actions/workflows/ci-cd.yml)
 et en cliquant sur le bouton "Run workflow" comme montré ci-dessous :
 
 ![Exécuter le workflow](.github/workflows/run_workflow.png)
