@@ -69,11 +69,11 @@ def generate_listing(filename, service_account_info):
     for col in ("Date de naissance", "Timestamp"):
         df[col] = pd.to_datetime(df[col])
 
-    one_week_ago = pd.Timestamp.now() - pd.Timedelta(days=7)
-    df_last_week = df[df["Timestamp"] >= one_week_ago]
-    if not df_last_week.empty:
+    one_day_ago = pd.Timestamp.now() - pd.Timedelta(days=1)
+    df_last_day = df[df["Timestamp"] >= one_day_ago]
+    if not df_last_day.empty:
         os.makedirs(os.path.dirname(filename), exist_ok=True)
-        df_last_week.to_csv(filename, index=False)
+        df_last_day.to_csv(filename, index=False)
 
 
 class MissingServiceAccount(Warning):

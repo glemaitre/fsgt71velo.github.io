@@ -89,7 +89,7 @@ def mock_values_old_data():
 
 @pytest.fixture
 def mock_values_mixed_data():
-    recent_date = (datetime.now() - timedelta(days=1)).strftime("%Y-%m-%d %H:%M:%S")
+    recent_date = (datetime.now() - timedelta(days=0.5)).strftime("%Y-%m-%d %H:%M:%S")
     old_date = (datetime.now() - timedelta(days=10)).strftime("%Y-%m-%d %H:%M:%S")
     return {
         "values": [
@@ -196,5 +196,5 @@ def test_generate_listing_scenarios(
             if mock_data == mock_values_mixed_data:
                 assert all(
                     pd.to_datetime(df["Timestamp"])
-                    >= (datetime.now() - timedelta(days=7))
+                    >= (datetime.now() - timedelta(days=1))
                 )
