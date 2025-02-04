@@ -9,7 +9,7 @@ from googleapiclient.discovery import build
 
 SCOPES = ["https://www.googleapis.com/auth/spreadsheets.readonly"]
 SPREADSHEET_ID = "1lZwxoMeF2gBuFLgjoaBREPl8YFESYwJLV5o1JEjKHKI"
-RANGE_NAME = "Form Responses 1!A:M"
+RANGE_NAME = "Form Responses 1!A:N"
 
 
 def _get_values(service):

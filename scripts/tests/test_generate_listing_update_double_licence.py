@@ -43,6 +43,7 @@ def mock_values_header_only():
                 "Catégorie FFC",
                 "Club FFC",
                 "Message",
+                "Téléversez la licence",
             ]
         ]
     }
@@ -67,6 +68,7 @@ def mock_values_old_data():
                 "Catégorie FFC",
                 "Club FFC",
                 "Message",
+                "Téléversez la licence",
             ],
             [
                 old_date,
@@ -82,6 +84,7 @@ def mock_values_old_data():
                 "1",
                 "xxx",
                 "Message",
+                "Téléversez la licence",
             ],
         ]
     }
@@ -107,6 +110,7 @@ def mock_values_mixed_data():
                 "Catégorie FFC",
                 "Club FFC",
                 "Message",
+                "Téléversez la licence",
             ],
             [
                 recent_date,
@@ -122,6 +126,7 @@ def mock_values_mixed_data():
                 "1",
                 "xxx",
                 "Message",
+                "Téléversez la licence",
             ],
             [
                 recent_date,
@@ -137,6 +142,7 @@ def mock_values_mixed_data():
                 "1",
                 "xxx",
                 "Message",
+                "Téléversez la licence",
             ],
             [
                 old_date,
@@ -152,6 +158,7 @@ def mock_values_mixed_data():
                 "1",
                 "xxx",
                 "Message",
+                "Téléversez la licence",
             ],
         ]
     }
