@@ -61,10 +61,10 @@ def generate_html_table(df_calendar):
     df_calendar["Month"] = df_calendar["Date"].dt.month_name().map(MONTH_TRANSLATION)
     html_table = (
         '<table class="table" id="calendarTable"><thead><tr>'
-        "<th>Dates</th>"
-        "<th>Courses</th>"
-        "<th>Catégories</th>"
-        "<th>Club</th>"
+        '<th class="text-center">Dates</th>'
+        '<th class="text-center">Courses</th>'
+        '<th class="text-center">Catégories</th>'
+        '<th class="text-center">Club</th>'
         "</tr></thead>"
         "<tbody>"
     )
@@ -79,7 +79,7 @@ def generate_html_table(df_calendar):
             class_td_duration = COLOR_DURATION_RACE.get(row["Durée organisation"], "")
             class_attr = f" class='{class_td_duration}'" if class_td_duration else ""
             html_table += (
-                f"<td{class_attr}>"
+                f"<td{class_attr} class='text-center{' ' + class_td_duration if class_td_duration else ''}'>"
                 f"{row['Date'].strftime('%a %d %b').title()}"
                 "</td>"
             )
@@ -89,16 +89,18 @@ def generate_html_table(df_calendar):
                 course_content = (
                     f'<a href="{row["Affiche"]}" target="_blank">{course_content}</a>'
                 )
-            html_table += f"<td class='{class_td_type_of_race}'>{course_content}</td>"
+            html_table += (
+                f"<td class='text-center {class_td_type_of_race}'>{course_content}</td>"
+            )
             class_td_circuit_length = COLOR_CIRCUIT_LENGTH.get(
                 row["Longeur circuit"],
             )
             html_table += (
-                f"<td class='{class_td_circuit_length}'>"
+                f"<td class='text-center{' ' + class_td_circuit_length if class_td_circuit_length else ''}'>"
                 f"{row['Catégories'] if pd.notna(row['Catégories']) else ''}"
                 "</td>"
             )
-            html_table += f"<td>{row['Club'] if pd.notna(row['Club']) else ''}</td>"
+            html_table += f"<td class='text-center'>{row['Club'] if pd.notna(row['Club']) else ''}</td>"
             html_table += "</tr>"
     html_table += "</tbody></table>"
     return html_table

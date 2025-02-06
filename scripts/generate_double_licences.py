@@ -30,45 +30,55 @@ def generate_html_table(df_licences):
         The HTML table for the double licences.
     """
     html_table = (
-        '<table class="table" id="doubleLicencesTable"><thead><tr>'
-        "<th>Nom</th>"
-        "<th>Prénom</th>"
-        "<th>Club FSGT</th>"
-        "<th>Club FFC</th>"
-        "<th>Numéro FSGT</th>"
-        "<th>Numéro FFC</th>"
-        "<th>Catégorie FSGT</th>"
-        "<th>Catégorie d'âge FSGT</th>"
-        "<th>Catégorie FFC</th>"
-        "</tr></thead>"
-        "<tbody>"
+        '<table class="table" id="doubleLicencesTable"><thead>'
+        "<tr>"
+        '<th rowspan="2" class="align-middle text-center">Nom</th>'
+        '<th rowspan="2" class="align-middle text-center">Prénom</th>'
+        '<th colspan="2" class="text-center border-bottom-group">Club</th>'
+        '<th colspan="2" class="text-center border-bottom-group">Numéro</th>'
+        '<th colspan="3" class="text-center border-bottom-group">Catégorie</th>'
+        "</tr>"
+        "<tr>"
+        '<th class="text-center">FSGT</th>'
+        '<th class="text-center">FFC</th>'
+        '<th class="text-center">FSGT</th>'
+        '<th class="text-center">FFC</th>'
+        '<th class="text-center">FSGT (valeur)</th>'
+        '<th class="text-center">FSGT (âge)</th>'
+        '<th class="text-center">FFC</th>'
+        "</tr>"
+        "</thead><tbody>"
     )
     for _, row in df_licences.iterrows():
         html_table += "<tr>"
-        html_table += f"<td>{row['Nom'].upper()}</td>"
-        html_table += f"<td>{row['Prénom'].capitalize()}</td>"
-        html_table += f"<td>{row['Club FSGT']}</td>"
-        html_table += f"<td>{row['Club FFC']}</td>"
+        html_table += f"<td class='text-center'>{row['Nom'].upper()}</td>"
+        html_table += f"<td class='text-center'>{row['Prénom'].capitalize()}</td>"
+        html_table += f"<td class='text-center'>{row['Club FSGT']}</td>"
+        html_table += f"<td class='text-center'>{row['Club FFC']}</td>"
         if pd.notna(row["Numéro de licence FSGT"]):
-            html_table += f"<td>{int(row['Numéro de licence FSGT'])}</td>"
+            html_table += (
+                f"<td class='text-center'>{int(row['Numéro de licence FSGT'])}</td>"
+            )
         else:
-            html_table += f"<td></td>"
+            html_table += f"<td class='text-center'></td>"
         if pd.notna(row["Numéro de licence FFC"]):
-            html_table += f"<td>{int(row['Numéro de licence FFC'])}</td>"
+            html_table += (
+                f"<td class='text-center'>{int(row['Numéro de licence FFC'])}</td>"
+            )
         else:
-            html_table += f"<td></td>"
+            html_table += f"<td class='text-center'></td>"
         if pd.notna(row["Catégorie FSGT"]):
-            html_table += f"<td>{row['Catégorie FSGT']}</td>"
+            html_table += f"<td class='text-center'>{row['Catégorie FSGT']}</td>"
         else:
-            html_table += f"<td></td>"
+            html_table += f"<td class='text-center'></td>"
         if pd.notna(row["Catégorie d'âge FSGT"]):
-            html_table += f"<td>{row["Catégorie d'âge FSGT"]}</td>"
+            html_table += f"<td class='text-center'>{row["Catégorie d'âge FSGT"]}</td>"
         else:
-            html_table += f"<td></td>"
+            html_table += f"<td class='text-center'></td>"
         if pd.notna(row["Catégorie FFC"]):
-            html_table += f"<td>{row['Catégorie FFC']}</td>"
+            html_table += f"<td class='text-center'>{row['Catégorie FFC']}</td>"
         else:
-            html_table += f"<td></td>"
+            html_table += f"<td class='text-center'></td>"
         html_table += "</tr>"
     html_table += "</tbody></table>"
     return html_table

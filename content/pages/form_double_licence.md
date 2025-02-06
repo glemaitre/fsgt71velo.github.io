@@ -1,7 +1,7 @@
 ---
 title: Déclaration de double licence FSGT - FFC
-url: double_licence/index.html
-save_as: double_licence/index.html
+url: form_double_licence/index.html
+save_as: form_double_licence/index.html
 template: page
 ---
 
