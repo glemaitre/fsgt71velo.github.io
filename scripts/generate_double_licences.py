@@ -12,43 +12,34 @@ SCOPES = [
     "https://www.googleapis.com/auth/drive.readonly",
     "https://www.googleapis.com/auth/spreadsheets.readonly",
 ]
-SHEET_ID = "1PEstKqoGVa7FgkAcg090mhRVr3Hs2s9G"
-SHEET_NAME = "Licenciés FSGT"
-
-
-def _filter_licences(df_licences):
-    """Filter only the interested columns and rows."""
-    # drop empty rows available due to row validation in Google Sheets
-    # ensure a copy is made to avoid modifying the original dataframe
-    df_licences = df_licences.copy().dropna(subset=["Nom"])
-    # filter licences validated and with an affected category
-    mask_date_licence = df_licences["Date"].notna()
-    mask_category_2025 = df_licences[2025].notna()
-    df_licences = df_licences[mask_date_licence & mask_category_2025]
-    return df_licences
+SHEET_ID = "19C5tMDiFtOLSEmzPYmt6v91yJC4NejoE"
+SHEET_NAME = "Feuil1"
 
 
 def generate_html_table(df_licences):
-    """Generate the HTML table for the licences.
+    """Generate the HTML table for the double licences.
 
     Parameters
     ----------
     df_licences : pd.DataFrame
-        The dataframe containing the licences data.
+        The dataframe containing the double licences data.
 
     Returns
     -------
     str
-        The HTML table for the licences.
+        The HTML table for the double licences.
     """
-    df_licences = _filter_licences(df_licences)
-
     html_table = (
-        '<table class="table" id="licencesTable"><thead><tr>'
+        '<table class="table" id="doubleLicencesTable"><thead><tr>'
         "<th>Nom</th>"
         "<th>Prénom</th>"
-        "<th>Club</th>"
-        "<th>Catégories</th>"
+        "<th>Club FSGT</th>"
+        "<th>Club FFC</th>"
+        "<th>Numéro FSGT</th>"
+        "<th>Numéro FFC</th>"
+        "<th>Catégorie FSGT</th>"
+        "<th>Catégorie d'âge FSGT</th>"
+        "<th>Catégorie FFC</th>"
         "</tr></thead>"
         "<tbody>"
     )
@@ -56,8 +47,28 @@ def generate_html_table(df_licences):
         html_table += "<tr>"
         html_table += f"<td>{row['Nom'].upper()}</td>"
         html_table += f"<td>{row['Prénom'].capitalize()}</td>"
-        html_table += f"<td>{row['Club']}</td>"
-        html_table += f"<td>{row[2025]}</td>"
+        html_table += f"<td>{row['Club FSGT']}</td>"
+        html_table += f"<td>{row['Club FFC']}</td>"
+        if pd.notna(row["Numéro de licence FSGT"]):
+            html_table += f"<td>{int(row['Numéro de licence FSGT'])}</td>"
+        else:
+            html_table += f"<td></td>"
+        if pd.notna(row["Numéro de licence FFC"]):
+            html_table += f"<td>{int(row['Numéro de licence FFC'])}</td>"
+        else:
+            html_table += f"<td></td>"
+        if pd.notna(row["Catégorie FSGT"]):
+            html_table += f"<td>{row['Catégorie FSGT']}</td>"
+        else:
+            html_table += f"<td></td>"
+        if pd.notna(row["Catégorie d'âge FSGT"]):
+            html_table += f"<td>{row["Catégorie d'âge FSGT"]}</td>"
+        else:
+            html_table += f"<td></td>"
+        if pd.notna(row["Catégorie FFC"]):
+            html_table += f"<td>{row['Catégorie FFC']}</td>"
+        else:
+            html_table += f"<td></td>"
         html_table += "</tr>"
     html_table += "</tbody></table>"
     return html_table
@@ -88,26 +99,26 @@ def generate_markdown_webpage(filename, service_account_info):
 
     file_handle.seek(0)
 
-    df_licences = pd.read_excel(
-        file_handle, sheet_name=SHEET_NAME, skiprows=2, usecols="B:S"
-    )
-
+    df_licences = pd.read_excel(file_handle, sheet_name=SHEET_NAME, usecols="A:I")
     with open(filename, "w") as f:
         metadata = """---
 title: Listing coureurs FSGT 2025
-url: licences_fsgt/index.html
-save_as: licences_fsgt/index.html
+url: double_licences/index.html
+save_as: double_licences/index.html
 template: page
 ---
 """
 
-        title = '## <i class="fas fa-id-card"></i> Listing des licenciés FSGT 2025\n\n'
+        title = (
+            '## <i class="fas fa-id-card"></i> Listing des coureurs double '
+            "licenciés 2025\n\n"
+        )
 
         # Search bar
         licences_table = """<div class="mb-3">
     <input type="text"
         class="form-control"
-        id="licencesSearch"
+        id="doubleLicencesSearch"
         placeholder="Rechercher un coureur..."
         aria-label="Rechercher un coureur">
 </div>
@@ -134,5 +145,5 @@ if __name__ == "__main__":
     else:
         service_account_info = json.loads(service_account_json)
         generate_markdown_webpage(
-            "content/pages/licences_fsgt.md", service_account_info
+            "content/pages/double_licences.md", service_account_info
         )
