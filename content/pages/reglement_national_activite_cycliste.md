@@ -13,4 +13,4 @@ template: page
     </a>
 </div>
 
-<iframe src="https://drive.google.com/file/d/1zCUqHiGLtjf4qPea4zv38mOASATKNyKu/view?usp=sharing" width="100%" height="1300px" frameborder="1"></iframe>
+<iframe src="https://drive.google.com/file/d/1zCUqHiGLtjf4qPea4zv38mOASATKNyKu/preview" width="100%" height="1300px" frameborder="1"></iframe>
