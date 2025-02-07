@@ -35,12 +35,12 @@ def _get_values(service):
 
 
 def generate_listing(filename, service_account_info):
-    """Generate a CSV listing of double license declarations from the last week.
+    """Generate a XLSX listing of double license declarations from the last week.
 
     Parameters
     ----------
     filename : str
-        Path where the CSV file will be saved.
+        Path where the XLSX file will be saved.
     service_account_info : dict
         Google service account credentials information.
 
@@ -48,7 +48,7 @@ def generate_listing(filename, service_account_info):
     -----
     This function connects to a Google Sheet containing double license declarations,
     downloads all entries, and filters for only those submitted in the last 7 days.
-    The filtered data is saved to a CSV file and also returned as a DataFrame.
+    The filtered data is saved to a XLSX file and also returned as a DataFrame.
     """
     credentials = Credentials.from_service_account_info(
         service_account_info, scopes=SCOPES
@@ -72,7 +72,7 @@ def generate_listing(filename, service_account_info):
     df_last_day = df[df["Timestamp"] >= one_day_ago]
     if not df_last_day.empty:
         os.makedirs(os.path.dirname(filename), exist_ok=True)
-        df_last_day.to_csv(filename, index=False)
+        df_last_day.to_excel(filename, index=False)
 
 
 class MissingServiceAccount(Warning):
@@ -92,5 +92,5 @@ if __name__ == "__main__":
     else:
         service_account_info = json.loads(service_account_json)
         generate_listing(
-            "scratch/update_external_riders_declaration.csv", service_account_info
+            "scratch/update_external_riders_declaration.xlsx", service_account_info
         )

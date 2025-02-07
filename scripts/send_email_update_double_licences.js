@@ -4,8 +4,8 @@ const sgMail = require('@sendgrid/mail');
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 const fs = require('fs'),
-    filename = 'scratch/update_double_licences_declaration.csv',
-    fileType = 'text/csv';
+    filename = 'scratch/update_double_licences_declaration.xlsx',
+    fileType = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet';
 
 if (!fs.existsSync(filename)) {
     console.log('No CSV file found - nothing to process');
