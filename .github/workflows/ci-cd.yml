@@ -41,7 +41,7 @@ jobs:
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/main'
     env:
-      GHA_SITE_URL: "https://fsgt71velo.fr"
+      GHA_SITE_URL: "https://glemaitre.github.io/fsgt71velo.github.io"
     steps:
       - uses: actions/checkout@v4
       - name: Install French locale
