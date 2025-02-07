@@ -1,4 +1,4 @@
-name: Send update double licenses
+name: Send update external riders
 
 on:
   schedule:
