@@ -83,12 +83,11 @@ def test_generate_html_table():
 
     # check the header
     header = (
-        '<table class="table" id="calendarTable">'
-        "<thead><tr>"
-        "<th>Dates</th>"
-        "<th>Courses</th>"
-        "<th>Catégories</th>"
-        "<th>Club</th>"
+        '<table class="table" id="calendarTable"><thead><tr>'
+        '<th class="text-center">Dates</th>'
+        '<th class="text-center">Courses</th>'
+        '<th class="text-center">Catégories</th>'
+        '<th class="text-center">Club</th>'
         "</tr></thead>"
         "<tbody>"
     )
