@@ -26,14 +26,14 @@ if (!RECIPIENTS_EMAIL || !SENDER_EMAIL) {
 }
 
 const emailText = 'Bonjour,\n\n' +
-    'Voici la liste des déclarations de double licence de la dernière semaine.\n\n' +
+    'Voici la liste des déclarations de double licence de la journée.\n\n' +
     'Cordialement,\n\n' +
     'Guillaume Lemaître';
 
 const emailHtml = `
     <div style="font-family: Arial, sans-serif; line-height: 1.6;">
         <p>Bonjour,</p>
-        <p>Voici la liste des déclarations de double licence de la dernière semaine.</p>
+        <p>Voici la liste des déclarations de double licence de la journée.</p>
         <p>
             Cordialement,<br>
             Guillaume Lemaître
@@ -44,7 +44,7 @@ const emailHtml = `
 const msg = {
     to: RECIPIENTS_EMAIL.split(',').map(email => email.trim()),
     from: SENDER_EMAIL.trim(),
-    subject: 'Liste des déclarations de double licences',
+    subject: 'Liste des déclarations de double licence',
     text: emailText,
     html: emailHtml,
     attachments: [{

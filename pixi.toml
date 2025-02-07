@@ -13,13 +13,14 @@ generate_calendar = { cmd = "python scripts/generate_calendar.py" }
 generate_report = { cmd = "python scripts/generate_report.py" }
 generate_results = { cmd = "python scripts/generate_results.py" }
 generate_listing_update_double_licence = { cmd = "python scripts/generate_listing_update_double_licence.py" }
+generate_listing_update_external_riders = { cmd = "python scripts/generate_listing_update_external_riders.py" }
 generate_licences = { cmd = "python scripts/generate_licences.py" }
 generate_double_licences = { cmd = "python scripts/generate_double_licences.py" }
 generate_external_riders = { cmd = "python scripts/generate_external_riders.py" }
 
 # send emails
 send_email_update_double_licences = { cmd = "node scripts/send_email_update_double_licences.js", depends-on = ["generate_listing_update_double_licence"] }
-
+send_email_update_external_riders = { cmd = "node scripts/send_email_update_external_riders.js", depends-on = ["generate_listing_update_external_riders"] }
 # build the static website
 clean = { cmd = "rm -rf output" }
 build = { cmd = "pelican content -t theme/fsgt --verbose", depends-on = ["clean", "generate_club_listing", "generate_calendar", "generate_report", "generate_results", "generate_licences", "generate_double_licences", "generate_external_riders"] }
