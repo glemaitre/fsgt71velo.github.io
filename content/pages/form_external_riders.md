@@ -7,4 +7,4 @@ template: page
 
 ## <i class="fa-solid fa-file-lines"></i> Enregistrement des coureurs extérieurs
 
-<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfxO_x9vOI41kodNig2Sfjee8RABTSoOQoy2hiSRUlOQmEIig/viewform?embedded=true" width="640" height="2400" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfxO_x9vOI41kodNig2Sfjee8RABTSoOQoy2hiSRUlOQmEIig/viewform?embedded=true" width="640" height="600" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
