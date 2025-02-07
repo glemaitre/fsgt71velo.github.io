@@ -6,6 +6,8 @@ on:
       - main
   pull_request:
   workflow_dispatch:
+  schedule:
+    - cron: '0 21 * * *'  # Runs at 21:00 UTC (9 PM) every day
 
 jobs:
   test:
