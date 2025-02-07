@@ -452,3 +452,9 @@ body {
   width: 1%;
   min-width: 200px;
 }
+
+.border-bottom-group {
+  border-bottom: 2px solid #dee2e6;
+  border-bottom-style: double;
+  padding: 0 8px;
+}
