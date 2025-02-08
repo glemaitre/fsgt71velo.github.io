@@ -2,8 +2,8 @@ name: Send update external riders
 
 on:
   schedule:
-    # Run every day at 8:00 AM UTC
-    - cron: '0 8 * * *'
+    # Run every day at 2:00 AM UTC
+    - cron: '0 2 * * *'
   workflow_dispatch:
 
 jobs:
