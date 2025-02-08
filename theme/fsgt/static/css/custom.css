@@ -453,3 +453,25 @@ body {
   background-color: rgba(168, 218, 220, 0.8) !important;
   border-color: rgba(168, 218, 220, 0.8) !important;
 }
+
+/* Quick Access Card specific styles */
+.quick-access-card .collapsed-header {
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.quick-access-card .collapsed-header:hover {
+    background-color: var(--color-off-white);
+}
+
+.quick-access-card .collapse-icon {
+    transition: transform 0.2s ease-in-out;
+}
+
+.quick-access-card .collapsed-header[aria-expanded="false"] .collapse-icon {
+    transform: rotate(-180deg);
+}
+
+.quick-access-card .card-header {
+    padding: 1rem 1.25rem;
+}
