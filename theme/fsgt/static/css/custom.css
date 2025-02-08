@@ -1,3 +1,12 @@
+:root {
+  --color-red: #E63946;
+  --color-off-white: #F1FAEE;
+  --color-light-blue: #A8DADC;
+  --color-blue: #457B9D;
+  --color-dark-blue: #1D3557;
+  --bs-card-border-color: var(--color-off-white);
+}
+
 /* Base styles */
 body {
   min-height: 75rem;
@@ -182,15 +191,22 @@ body {
 }
 
 /* Typography */
+.bd-content h1 {
+  color: var(--color-dark-blue);
+}
+
 .bd-content h2 {
+  color: var(--color-dark-blue);
   margin-bottom: 3rem !important;
 }
 
 .bd-content h3 {
+  color: var(--color-dark-blue);
   margin-bottom: 2rem !important;
 }
 
 .bd-content h4 {
+  color: var(--color-dark-blue);
   margin-bottom: 1.5rem !important;
 }
 
@@ -457,4 +473,27 @@ body {
   border-bottom: 2px solid #dee2e6;
   border-bottom-style: double;
   padding: 0 8px;
+}
+
+/* Card styles */
+.card-title {
+  color: var(--color-dark-blue);
+}
+
+.card-header {
+  background-color: var(--color-off-white);
+}
+
+.card-header .text-muted {
+  color: var(--color-blue) !important;
+}
+
+.btn-primary {
+  background-color: var(--color-blue);
+  border-color: var(--color-blue);
+}
+
+.btn-primary:hover {
+  background-color: var(--color-dark-blue);
+  border-color: var(--color-dark-blue);
 }
