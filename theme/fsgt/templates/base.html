@@ -27,28 +27,21 @@
 
     <!--***** Main Start *****-->
     <div class="container-fluid">
-        {% include 'sidebar.html' %}
-
         <!-- Main Content -->
-        <div class="bd-main">
-            <div class="bd-content">
-                {% block content %}{% endblock %}
-            </div>
+        <div class="content">
+            {% block content %}{% endblock %}
         </div>
     </div>
     <!--***** Main End *****-->
 
     {% block footer %}{% endblock %}
     {% block extra_scripts %}
-    <script src="{{ SITEURL }}/theme/js/sidebar-responsive.js"></script>
     <script src="{{ SITEURL }}/theme/js/club-search.js"></script>
     <script src="{{ SITEURL }}/theme/js/calendar-search.js"></script>
     <script src="{{ SITEURL }}/theme/js/results-search.js"></script>
     <script src="{{ SITEURL }}/theme/js/licences-search.js"></script>
     <script src="{{ SITEURL }}/theme/js/double-licences-search.js"></script>
     <script src="{{ SITEURL }}/theme/js/external-riders-search.js"></script>
-    <script src="{{ SITEURL }}/theme/js/dropdown-sidebar-state.js"></script>
-    <script src="{{ SITEURL }}/theme/js/sidebar-collapse.js"></script>
     {% endblock %}
 </body>
 
