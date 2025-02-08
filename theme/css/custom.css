@@ -4,6 +4,7 @@
   --color-light-blue: #A8DADC;
   --color-blue: #457B9D;
   --color-dark-blue: #1D3557;
+  --color-light-grey: #f8f9fa;
   --bs-card-border-color: var(--color-off-white);
 }
 
@@ -179,7 +180,7 @@ body {
   padding: 1rem;
   vertical-align: bottom;
   border-bottom: 2px solid #dee2e6;
-  background-color: #f8f9fa;
+  background-color: var(--color-light-grey);
 }
 
 .bd-content table td i.fas {
@@ -482,7 +483,7 @@ body {
 }
 
 .card-header {
-  background-color: var(--color-off-white);
+  background-color: var(--color-light-grey);
 }
 
 .card-header .text-muted {
