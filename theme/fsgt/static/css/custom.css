@@ -161,6 +161,15 @@ body {
   border-image: linear-gradient(to right, var(--color-dark-blue), var(--color-red), var(--color-dark-blue)) 1;
 }
 
+.nav-link {
+  color: var(--color-dark-blue);
+}
+
+.nav-link:hover,
+.nav-link:active {
+  color: var(--color-blue);
+}
+
 .dropdown-menu.show {
   display: block;
 }
