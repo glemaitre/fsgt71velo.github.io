@@ -332,6 +332,11 @@ body {
   border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
+.dropdown-item:focus {
+  background-color: var(--color-blue);
+  color: white;
+}
+
 .content table .btn-link {
   padding: 0;
   text-align: left;
