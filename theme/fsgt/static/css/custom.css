@@ -154,7 +154,8 @@ body {
 /* Navigation */
 .navbar.bg-white {
   background-color: #ffffff !important;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  border-bottom: 4px solid;
+  border-image: linear-gradient(to right, var(--color-dark-blue), var(--color-red), var(--color-dark-blue)) 1;
 }
 
 .dropdown-menu.show {
