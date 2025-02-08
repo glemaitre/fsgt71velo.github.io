@@ -139,7 +139,7 @@ body {
 }
 
 .content iframe {
-  border: 2px solid #dee2e6;
+  border: 2px solid var(--border-color);
   border-radius: 4px;
   margin-bottom: 1.5rem;
 }
@@ -282,15 +282,15 @@ body {
   right: 10px;
   top: 10px;
   z-index: 1;
-  color: #666;
+  color: var(--text-secondary);
 }
 
 .sidebar-toggle-mobile {
   left: 5px;
   top: 90px;
   z-index: 1030;
-  color: #666;
-  background: white;
+  color: var(--text-secondary);
+  background: var(--bg-primary);
   padding: 8px 12px;
   border-radius: 4px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -300,8 +300,8 @@ body {
 }
 
 .sidebar-toggle-mobile:hover {
-  color: #333;
-  background: white;
+  color: var(--text-primary);
+  background: var(--bg-primary);
 }
 
 .sidebar-toggle-persistent {
@@ -309,8 +309,8 @@ body {
   right: 10px;
   top: 10px;
   z-index: 1040;
-  color: #666;
-  background: white;
+  color: var(--text-secondary);
+  background: var(--bg-primary);
   padding: 8px 12px;
   border-radius: 4px;
   box-shadow: 2px 0 4px rgba(0, 0, 0, 0.1);
@@ -332,9 +332,9 @@ body {
     top: 100%;
     left: 0;
     right: 0;
-    background: white;
+    background: var(--bg-primary);
     padding: 1rem;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid var(--border-color);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   }
 
@@ -373,8 +373,8 @@ body {
 }
 
 .dropdown-item {
+  background-color: var(--bg-secondary);
   color: var(--text-primary);
-  background-color: var(--bg-primary);
 }
 
 .dropdown-item:hover {
@@ -464,7 +464,7 @@ body {
 }
 
 .border-bottom-group {
-  border-bottom: 2px solid #dee2e6;
+  border-bottom: 2px solid var(--border-color);
   border-bottom-style: double;
   padding: 0 8px;
 }
@@ -537,6 +537,7 @@ body {
 }
 
 [data-theme="dark"] .dropdown-item {
+  background-color: var(--bg-secondary);
   color: var(--text-primary);
 }
 
