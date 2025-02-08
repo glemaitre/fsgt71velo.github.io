@@ -6,7 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="/docs/4.0/assets/img/favicons/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://glemaitre.github.io/fsgt71velo.github.io/theme/images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://glemaitre.github.io/fsgt71velo.github.io/theme/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://glemaitre.github.io/fsgt71velo.github.io/theme/images/favicon-16x16.png">
+    <link rel="manifest" href="https://glemaitre.github.io/fsgt71velo.github.io/theme/images/site.webmanifest">
 
     <title>FSGT 71</title>
 
@@ -35,28 +38,73 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav me-auto mb-2 mb-md-0">
+                <!-- Home -->
                 <li class="nav-item">
                     <a class="nav-link" href="https://glemaitre.github.io/fsgt71velo.github.io/"><i class="fas fa-home me-1"></i>Accueil</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="https://glemaitre.github.io/fsgt71velo.github.io/calendrier"><i
-                            class="far fa-calendar-alt me-1"></i>Calendrier</a>
-                </li>
+
+                <!-- Competition Section -->
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="commissionDropdown" role="button"
-                        data-bs-toggle="dropdown" aria-expanded="false">
-                        <i class="fas fa-users me-1"></i>Commission FSGT 71
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fas fa-bicycle me-1"></i>Organisation
                     </a>
-                    <ul class="dropdown-menu" aria-labelledby="commissionDropdown">
-                        <li><a class="dropdown-item" href="https://glemaitre.github.io/fsgt71velo.github.io/rapport">
-                                <i class="fas fa-file-alt me-1"></i>Rapport de la commission</a></li>
-                        <li><a class="dropdown-item" href="https://glemaitre.github.io/fsgt71velo.github.io/bureau">
-                                <i class="fas fa-users me-1"></i>Constitution du bureau</a></li>
+                    <ul class="dropdown-menu">
+                        <li><h6 class="dropdown-header">Épreuves</h6></li>
+                        <li><a class="dropdown-item" href="https://glemaitre.github.io/fsgt71velo.github.io/calendrier">
+                            <i class="far fa-calendar-alt me-1"></i>Calendrier</a></li>
+                        <li><a class="dropdown-item" href="https://glemaitre.github.io/fsgt71velo.github.io/resultats/index.html">
+                            <i class="fas fa-trophy me-1"></i>Résultats</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><h6 class="dropdown-header">Gestion des licences</h6></li>
+                        <li><a class="dropdown-item" href="https://glemaitre.github.io/fsgt71velo.github.io/licences_fsgt/index.html"><i class="fas fa-list me-1"></i>Licenciés FSGT71</a></li>
+                        <li><a class="dropdown-item" href="https://glemaitre.github.io/fsgt71velo.github.io/external_riders/index.html"><i class="fas fa-list me-1"></i>Licenciés extérieurs</a></li>
+                        <li><a class="dropdown-item" href="https://glemaitre.github.io/fsgt71velo.github.io/double_licences/index.html"><i class="fas fa-list me-1"></i>Doubles licences</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><h6 class="dropdown-header">Formulaires</h6></li>
+                        <li><a class="dropdown-item" href="https://forms.gle/KExLor2UcJEHfrLv8" target="_blank"><i class="fas fa-file-alt me-1"></i>Déclaration double licence</a></li>
+                        <li><a class="dropdown-item" href="https://forms.gle/n3Au41KcNnUgqrhS6" target="_blank"><i class="fas fa-file-alt me-1"></i>Enregistrement coureurs extérieurs</a></li>
                     </ul>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="https://glemaitre.github.io/fsgt71velo.github.io/clubs"><i class="fas fa-bicycle me-1"></i>Liste des clubs</a>
+
+                <!-- Organization -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fas fa-users me-1"></i>Collectif
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><h6 class="dropdown-header">Clubs affiliés</h6></li>
+                        <li><a class="dropdown-item" href="https://glemaitre.github.io/fsgt71velo.github.io/clubs">
+                            <i class="fas fa-bicycle me-1"></i>Liste des clubs</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><h6 class="dropdown-header">Commission FSGT 71</h6></li>
+                        <li><a class="dropdown-item" href="https://glemaitre.github.io/fsgt71velo.github.io/rapport">
+                            <i class="fas fa-file-alt me-1"></i>Rapport de la commission</a></li>
+                        <li><a class="dropdown-item" href="https://glemaitre.github.io/fsgt71velo.github.io/bureau">
+                            <i class="fas fa-users me-1"></i>Constitution du bureau</a></li>
+                    </ul>
                 </li>
+
+                <!-- Documentation -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fas fa-book me-1"></i>Documentation
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><h6 class="dropdown-header">Règlements</h6></li>
+                        <li><a class="dropdown-item" href="https://glemaitre.github.io/fsgt71velo.github.io/reglement/fsgt71/cyclisme/index.html">
+                            <span class="icon-dept-71"></span> FSGT 71 - Activités cyclistes</a></li>
+                        <li><a class="dropdown-item" href="https://glemaitre.github.io/fsgt71velo.github.io/reglement/national/cyclisme/index.html">
+                            <span class="icon-national"></span> National - Activités cyclistes</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><h6 class="dropdown-header">Documents administratifs</h6></li>
+                        <li><a class="dropdown-item" href="https://glemaitre.github.io/fsgt71velo.github.io/organisation/index.html">
+                            <i class="fas fa-file-alt me-1"></i>Organisation d'épreuves</a></li>
+                        <li><a class="dropdown-item" href="https://glemaitre.github.io/fsgt71velo.github.io/autres_documents/index.html">
+                            <i class="fas fa-folder me-1"></i>Autres documents</a></li>
+                    </ul>
+                </li>
+
+                <!-- Contact -->
                 <li class="nav-item">
                     <a class="nav-link" href="https://glemaitre.github.io/fsgt71velo.github.io/contact"><i class="fas fa-envelope me-1"></i>Nous contacter</a>
                 </li>
@@ -67,139 +115,8 @@
 <!--***** Header End *****-->
     <!--***** Main Start *****-->
     <div class="container-fluid">
-<!--***** Sidebar Start *****-->
-<div class="bd-sidebar" id="sidebar">
-    <!-- Add persistent toggle button -->
-    <button class="btn btn-link sidebar-toggle-persistent" id="sidebarTogglePersistent">
-        <i class="fa-solid fa-chevron-left"></i>
-    </button>
-
-    <!-- Existing mobile toggle -->
-    <button class="btn btn-link sidebar-toggle d-1000-none" id="sidebarToggleMobile">
-        <i class="fa-solid fa-xmark"></i>
-    </button>
-    <nav class="bd-links w-100" id="bd-docs-nav" aria-label="Docs navigation">
-        <ul class="bd-links-nav list-unstyled mb-0 pb-3 pb-md-2 pe-lg-2">
-            <li class="bd-links-group py-2">
-                <strong class="bd-links-heading d-flex w-100 align-items-center fw-semibold">
-                        <i class="fa-solid fa-trophy"></i>
-                        <a href="https://glemaitre.github.io/fsgt71velo.github.io/resultats/index.html" class="nav-link">Résultats</a>
-                </strong>
-            </li>
-
-            <li class="bd-links-group py-2">
-                <strong class="bd-links-heading d-flex w-100 align-items-center fw-semibold">
-                    <i class="fa-solid fa-book"></i>
-                    Règlements
-                    <button class="btn d-inline-flex align-items-center collapsed border-0" data-bs-toggle="collapse"
-                        data-bs-target="#reglements-collapse" aria-expanded="false">
-                        <i class="fa-solid fa-chevron-down"></i>
-                    </button>
-                </strong>
-                <ul class="list-unstyled fw-normal pb-2 small collapse" id="reglements-collapse">
-                    <li class="ms-3">
-                        <strong class="bd-links-heading d-flex w-100 align-items-center">
-                            <span class="icon-dept-71"></span>
-                            FSGT 71
-                            <button class="btn d-inline-flex align-items-center collapsed border-0"
-                                data-bs-toggle="collapse" data-bs-target="#reglements-71-collapse"
-                                aria-expanded="false">
-                                <i class="fa-solid fa-chevron-down"></i>
-                            </button>
-                        </strong>
-                        <ul class="list-unstyled fw-normal pb-2 small collapse" id="reglements-71-collapse">
-                            <li><a href="https://glemaitre.github.io/fsgt71velo.github.io/reglement/fsgt71/cyclisme/index.html" class="bd-links-link d-inline-block rounded">Activités cyclistes</a>
-                            </li>
-                            <li><a href="#" class="bd-links-link d-inline-block rounded">École de vélo</a></li>
-                        </ul>
-                    </li>
-                    <li class="ms-3">
-                        <strong class="bd-links-heading d-flex w-100 align-items-center">
-                            <span class="icon-national"></span>
-                            National
-                            <button class="btn d-inline-flex align-items-center collapsed border-0"
-                                data-bs-toggle="collapse" data-bs-target="#reglements-national-collapse"
-                                aria-expanded="false">
-                                <i class="fa-solid fa-chevron-down"></i>
-                            </button>
-                        </strong>
-                        <ul class="list-unstyled fw-normal pb-2 small collapse" id="reglements-national-collapse">
-                            <li><a href="https://glemaitre.github.io/fsgt71velo.github.io/reglement/national/cyclisme/index.html" class="bd-links-link d-inline-block rounded">Activités cyclistes</a></li>
-                            <li><a href="https://glemaitre.github.io/fsgt71velo.github.io/reglement/national/ecole_velo/index.html" class="bd-links-link d-inline-block rounded">École de vélo</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </li>
-
-            <li class="bd-links-group py-2">
-                <strong class="bd-links-heading d-flex w-100 align-items-center fw-semibold">
-                    <i class="fa-solid fa-folder"></i>
-                    Documents <br> Administratifs
-                    <button class="btn d-inline-flex align-items-center collapsed border-0" data-bs-toggle="collapse"
-                        data-bs-target="#docs-collapse" aria-expanded="false">
-                        <i class="fa-solid fa-chevron-down"></i>
-                    </button>
-                </strong>
-                <ul class="list-unstyled fw-normal pb-2 small collapse" id="docs-collapse">
-                    <li><a href="https://glemaitre.github.io/fsgt71velo.github.io/organisation/index.html" class="bd-links-link d-inline-block rounded">Organisation d'épreuves</a></li>
-                    <li><a href="https://glemaitre.github.io/fsgt71velo.github.io/autres_documents/index.html" class="bd-links-link d-inline-block rounded">Autres documents</a></li>
-                </ul>
-            </li>
-
-            <li class="bd-links-group py-2">
-                <strong class="bd-links-heading d-flex w-100 align-items-center fw-semibold">
-                    <i class="fa-solid fa-box-archive"></i>
-                    Archives
-                </strong>
-            </li>
-
-            <li class="bd-links-group py-2">
-                <strong class="bd-links-heading d-flex w-100 align-items-center fw-semibold">
-                    <i class="fa-solid fa-file-lines"></i>
-                    Formulaires
-                    <button class="btn d-inline-flex align-items-center collapsed border-0" data-bs-toggle="collapse"
-                        data-bs-target="#forms-collapse" aria-expanded="false">
-                        <i class="fa-solid fa-chevron-down"></i>
-                    </button>
-                </strong>
-                <ul class="list-unstyled fw-normal pb-2 small collapse" id="forms-collapse">
-                    <li><a href="https://forms.gle/KExLor2UcJEHfrLv8" target="_blank" class="bd-links-link d-inline-block rounded">Déclaration double licence</a>
-                    </li>
-                    <li><a href="https://forms.gle/n3Au41KcNnUgqrhS6" target="_blank" class="bd-links-link d-inline-block rounded">Enregistrement des coureurs
-                            extérieurs</a></li>
-                </ul>
-            </li>
-
-            <li class="bd-links-group py-2">
-                <strong class="bd-links-heading d-flex w-100 align-items-center fw-semibold">
-                    <i class="fa-solid fa-list"></i>
-                    Listing
-                    <button class="btn d-inline-flex align-items-center collapsed border-0" data-bs-toggle="collapse"
-                        data-bs-target="#listing-collapse" aria-expanded="false">
-                        <i class="fa-solid fa-chevron-down"></i>
-                    </button>
-                </strong>
-                <ul class="list-unstyled fw-normal pb-2 small collapse" id="listing-collapse">
-                    <li><a href="https://glemaitre.github.io/fsgt71velo.github.io/licences_fsgt/index.html" class="bd-links-link d-inline-block rounded">Licenciés FSGT71 au sein du
-                            fichier courses</a></li>
-                    <li><a href="https://glemaitre.github.io/fsgt71velo.github.io/external_riders/index.html" class="bd-links-link d-inline-block rounded">Licenciés extérieurs FSGT71 au
-                            sein du fichier coureur</a></li>
-                    <li><a href="https://glemaitre.github.io/fsgt71velo.github.io/double_licences/index.html" class="bd-links-link d-inline-block rounded">Liste des déclarations double
-                            licence (FSGT71)</a></li>
-                </ul>
-            </li>
-        </ul>
-    </nav>
-</div>
-
-<!-- Add toggle button for mobile -->
-<button class="btn position-fixed sidebar-toggle-mobile d-1000-none" id="sidebarShowMobile">
-    <i class="fa-solid fa-chevron-right"></i>
-</button>
-<!--***** Sidebar End *****-->
         <!-- Main Content -->
-        <div class="bd-main">
-            <div class="bd-content">
+        <div class="content">
 
 
 <div class="container mt-4">
@@ -213,7 +130,10 @@
                     <div class="row">
                         <div class="col-md-12">
                             <p>
-                                Pour les coureurs extérieurs aux départements ou ayant plusieurs licences, la participation est conditionnée à une déclaration préalable pour pouvoir affecter la catégorie de valeur adéquate. Pour ce faire, trouvez ci-joints les liens des formulaires à remplir :
+                                Pour les coureurs extérieurs aux départements ou ayant plusieurs licences, la participation est conditionnée à une déclaration préalable pour pouvoir affecter la catégorie de valeur adéquate.
+                            </p>
+                            <p>
+                                Pour ce faire, vous trouverez ci-joints les liens des <strong>formulaires</strong> à remplir :
                             </p>
                             <div class="row mb-3">
                                 <div class="col-md-6">
@@ -223,22 +143,37 @@
                                 </div>
                                 <div class="col-md-6">
                                     <a href="https://forms.gle/n3Au41KcNnUgqrhS6" target="_blank" class="btn btn-primary w-100">
-                                        <i class="fas fa-file-alt"></i> Enregistrement de coureurs extérieurs
+                                        <i class="fas fa-file-alt"></i> Déclaration coureurs extérieurs
                                     </a>
                                 </div>
                             </div>
                             <p>
-                                Les demandes traitées sont consolidées dans les listings suivants :
+                                Les demandes traitées sont consolidées dans les <strong>listings</strong> suivants :
                             </p>
                             <div class="row">
                                 <div class="col-md-6 mb-2">
-                                    <a href="https://glemaitre.github.io/fsgt71velo.github.io/external_riders/index.html" class="btn btn-primary w-100">
-                                        <i class="fas fa-list"></i> Licenciés extérieurs FSGT71
+                                    <a href="https://glemaitre.github.io/fsgt71velo.github.io/licences_fsgt/index.html" class="btn btn-primary w-100">
+                                        <i class="fas fa-list"></i> Licenciés FSGT71 validés
                                     </a>
                                 </div>
                                 <div class="col-md-6 mb-2">
-                                    <a href="https://glemaitre.github.io/fsgt71velo.github.io/double_licences/index.html" class="btn btn-primary w-100">
-                                        <i class="fas fa-list"></i> Déclarations double licence
+                                    <a href="https://glemaitre.github.io/fsgt71velo.github.io/external_riders/index.html" class="btn btn-primary w-100">
+                                        <i class="fas fa-list"></i> Licenciés extérieurs FSGT71 validés
+                                    </a>
+                                </div>
+                            </div>
+                            <p class="mt-4">
+                                Retrouvez également le <strong>calendrier</strong> des courses et les <strong>résultats</strong> :
+                            </p>
+                            <div class="row">
+                                <div class="col-md-6 mb-2">
+                                    <a href="https://glemaitre.github.io/fsgt71velo.github.io/calendar/index.html" class="btn btn-primary w-100">
+                                        <i class="fas fa-calendar-alt"></i> Calendrier des courses
+                                    </a>
+                                </div>
+                                <div class="col-md-6 mb-2">
+                                    <a href="https://glemaitre.github.io/fsgt71velo.github.io/results/index.html" class="btn btn-primary w-100">
+                                        <i class="fas fa-trophy"></i> Résultats
                                     </a>
                                 </div>
                             </div>
@@ -301,7 +236,6 @@ merci de contacter Eric Rabut : <a href="mailto:eric.rabut@orange.fr">eric.rabut
                 </div>
     </div>
 </div>
-            </div>
         </div>
     </div>
     <!--***** Main End *****-->
@@ -319,20 +253,17 @@ merci de contacter Eric Rabut : <a href="mailto:eric.rabut@orange.fr">eric.rabut
         </div>
         <div class="footer-row">
             <div class="footer-updated">
-                Dernière mise à jour : 08/02/2025 à 17:14
+                Dernière mise à jour : 08/02/2025 à 19:52
             </div>
         </div>
     </div>
 </footer>
-<!--***** Footer End *****-->    <script src="https://glemaitre.github.io/fsgt71velo.github.io/theme/js/sidebar-responsive.js"></script>
-    <script src="https://glemaitre.github.io/fsgt71velo.github.io/theme/js/club-search.js"></script>
+<!--***** Footer End *****-->    <script src="https://glemaitre.github.io/fsgt71velo.github.io/theme/js/club-search.js"></script>
     <script src="https://glemaitre.github.io/fsgt71velo.github.io/theme/js/calendar-search.js"></script>
     <script src="https://glemaitre.github.io/fsgt71velo.github.io/theme/js/results-search.js"></script>
     <script src="https://glemaitre.github.io/fsgt71velo.github.io/theme/js/licences-search.js"></script>
     <script src="https://glemaitre.github.io/fsgt71velo.github.io/theme/js/double-licences-search.js"></script>
     <script src="https://glemaitre.github.io/fsgt71velo.github.io/theme/js/external-riders-search.js"></script>
-    <script src="https://glemaitre.github.io/fsgt71velo.github.io/theme/js/dropdown-sidebar-state.js"></script>
-    <script src="https://glemaitre.github.io/fsgt71velo.github.io/theme/js/sidebar-collapse.js"></script>
 </body>
 
 </html>

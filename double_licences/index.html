@@ -6,7 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="/docs/4.0/assets/img/favicons/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://glemaitre.github.io/fsgt71velo.github.io/theme/images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://glemaitre.github.io/fsgt71velo.github.io/theme/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://glemaitre.github.io/fsgt71velo.github.io/theme/images/favicon-16x16.png">
+    <link rel="manifest" href="https://glemaitre.github.io/fsgt71velo.github.io/theme/images/site.webmanifest">
 
     <title>FSGT 71</title>
 
@@ -35,28 +38,73 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav me-auto mb-2 mb-md-0">
+                <!-- Home -->
                 <li class="nav-item">
                     <a class="nav-link" href="https://glemaitre.github.io/fsgt71velo.github.io/"><i class="fas fa-home me-1"></i>Accueil</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="https://glemaitre.github.io/fsgt71velo.github.io/calendrier"><i
-                            class="far fa-calendar-alt me-1"></i>Calendrier</a>
-                </li>
+
+                <!-- Competition Section -->
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="commissionDropdown" role="button"
-                        data-bs-toggle="dropdown" aria-expanded="false">
-                        <i class="fas fa-users me-1"></i>Commission FSGT 71
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fas fa-bicycle me-1"></i>Organisation
                     </a>
-                    <ul class="dropdown-menu" aria-labelledby="commissionDropdown">
-                        <li><a class="dropdown-item" href="https://glemaitre.github.io/fsgt71velo.github.io/rapport">
-                                <i class="fas fa-file-alt me-1"></i>Rapport de la commission</a></li>
-                        <li><a class="dropdown-item" href="https://glemaitre.github.io/fsgt71velo.github.io/bureau">
-                                <i class="fas fa-users me-1"></i>Constitution du bureau</a></li>
+                    <ul class="dropdown-menu">
+                        <li><h6 class="dropdown-header">Épreuves</h6></li>
+                        <li><a class="dropdown-item" href="https://glemaitre.github.io/fsgt71velo.github.io/calendrier">
+                            <i class="far fa-calendar-alt me-1"></i>Calendrier</a></li>
+                        <li><a class="dropdown-item" href="https://glemaitre.github.io/fsgt71velo.github.io/resultats/index.html">
+                            <i class="fas fa-trophy me-1"></i>Résultats</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><h6 class="dropdown-header">Gestion des licences</h6></li>
+                        <li><a class="dropdown-item" href="https://glemaitre.github.io/fsgt71velo.github.io/licences_fsgt/index.html"><i class="fas fa-list me-1"></i>Licenciés FSGT71</a></li>
+                        <li><a class="dropdown-item" href="https://glemaitre.github.io/fsgt71velo.github.io/external_riders/index.html"><i class="fas fa-list me-1"></i>Licenciés extérieurs</a></li>
+                        <li><a class="dropdown-item" href="https://glemaitre.github.io/fsgt71velo.github.io/double_licences/index.html"><i class="fas fa-list me-1"></i>Doubles licences</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><h6 class="dropdown-header">Formulaires</h6></li>
+                        <li><a class="dropdown-item" href="https://forms.gle/KExLor2UcJEHfrLv8" target="_blank"><i class="fas fa-file-alt me-1"></i>Déclaration double licence</a></li>
+                        <li><a class="dropdown-item" href="https://forms.gle/n3Au41KcNnUgqrhS6" target="_blank"><i class="fas fa-file-alt me-1"></i>Enregistrement coureurs extérieurs</a></li>
                     </ul>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="https://glemaitre.github.io/fsgt71velo.github.io/clubs"><i class="fas fa-bicycle me-1"></i>Liste des clubs</a>
+
+                <!-- Organization -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fas fa-users me-1"></i>Collectif
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><h6 class="dropdown-header">Clubs affiliés</h6></li>
+                        <li><a class="dropdown-item" href="https://glemaitre.github.io/fsgt71velo.github.io/clubs">
+                            <i class="fas fa-bicycle me-1"></i>Liste des clubs</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><h6 class="dropdown-header">Commission FSGT 71</h6></li>
+                        <li><a class="dropdown-item" href="https://glemaitre.github.io/fsgt71velo.github.io/rapport">
+                            <i class="fas fa-file-alt me-1"></i>Rapport de la commission</a></li>
+                        <li><a class="dropdown-item" href="https://glemaitre.github.io/fsgt71velo.github.io/bureau">
+                            <i class="fas fa-users me-1"></i>Constitution du bureau</a></li>
+                    </ul>
                 </li>
+
+                <!-- Documentation -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fas fa-book me-1"></i>Documentation
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><h6 class="dropdown-header">Règlements</h6></li>
+                        <li><a class="dropdown-item" href="https://glemaitre.github.io/fsgt71velo.github.io/reglement/fsgt71/cyclisme/index.html">
+                            <span class="icon-dept-71"></span> FSGT 71 - Activités cyclistes</a></li>
+                        <li><a class="dropdown-item" href="https://glemaitre.github.io/fsgt71velo.github.io/reglement/national/cyclisme/index.html">
+                            <span class="icon-national"></span> National - Activités cyclistes</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><h6 class="dropdown-header">Documents administratifs</h6></li>
+                        <li><a class="dropdown-item" href="https://glemaitre.github.io/fsgt71velo.github.io/organisation/index.html">
+                            <i class="fas fa-file-alt me-1"></i>Organisation d'épreuves</a></li>
+                        <li><a class="dropdown-item" href="https://glemaitre.github.io/fsgt71velo.github.io/autres_documents/index.html">
+                            <i class="fas fa-folder me-1"></i>Autres documents</a></li>
+                    </ul>
+                </li>
+
+                <!-- Contact -->
                 <li class="nav-item">
                     <a class="nav-link" href="https://glemaitre.github.io/fsgt71velo.github.io/contact"><i class="fas fa-envelope me-1"></i>Nous contacter</a>
                 </li>
@@ -67,139 +115,8 @@
 <!--***** Header End *****-->
     <!--***** Main Start *****-->
     <div class="container-fluid">
-<!--***** Sidebar Start *****-->
-<div class="bd-sidebar" id="sidebar">
-    <!-- Add persistent toggle button -->
-    <button class="btn btn-link sidebar-toggle-persistent" id="sidebarTogglePersistent">
-        <i class="fa-solid fa-chevron-left"></i>
-    </button>
-
-    <!-- Existing mobile toggle -->
-    <button class="btn btn-link sidebar-toggle d-1000-none" id="sidebarToggleMobile">
-        <i class="fa-solid fa-xmark"></i>
-    </button>
-    <nav class="bd-links w-100" id="bd-docs-nav" aria-label="Docs navigation">
-        <ul class="bd-links-nav list-unstyled mb-0 pb-3 pb-md-2 pe-lg-2">
-            <li class="bd-links-group py-2">
-                <strong class="bd-links-heading d-flex w-100 align-items-center fw-semibold">
-                        <i class="fa-solid fa-trophy"></i>
-                        <a href="https://glemaitre.github.io/fsgt71velo.github.io/resultats/index.html" class="nav-link">Résultats</a>
-                </strong>
-            </li>
-
-            <li class="bd-links-group py-2">
-                <strong class="bd-links-heading d-flex w-100 align-items-center fw-semibold">
-                    <i class="fa-solid fa-book"></i>
-                    Règlements
-                    <button class="btn d-inline-flex align-items-center collapsed border-0" data-bs-toggle="collapse"
-                        data-bs-target="#reglements-collapse" aria-expanded="false">
-                        <i class="fa-solid fa-chevron-down"></i>
-                    </button>
-                </strong>
-                <ul class="list-unstyled fw-normal pb-2 small collapse" id="reglements-collapse">
-                    <li class="ms-3">
-                        <strong class="bd-links-heading d-flex w-100 align-items-center">
-                            <span class="icon-dept-71"></span>
-                            FSGT 71
-                            <button class="btn d-inline-flex align-items-center collapsed border-0"
-                                data-bs-toggle="collapse" data-bs-target="#reglements-71-collapse"
-                                aria-expanded="false">
-                                <i class="fa-solid fa-chevron-down"></i>
-                            </button>
-                        </strong>
-                        <ul class="list-unstyled fw-normal pb-2 small collapse" id="reglements-71-collapse">
-                            <li><a href="https://glemaitre.github.io/fsgt71velo.github.io/reglement/fsgt71/cyclisme/index.html" class="bd-links-link d-inline-block rounded">Activités cyclistes</a>
-                            </li>
-                            <li><a href="#" class="bd-links-link d-inline-block rounded">École de vélo</a></li>
-                        </ul>
-                    </li>
-                    <li class="ms-3">
-                        <strong class="bd-links-heading d-flex w-100 align-items-center">
-                            <span class="icon-national"></span>
-                            National
-                            <button class="btn d-inline-flex align-items-center collapsed border-0"
-                                data-bs-toggle="collapse" data-bs-target="#reglements-national-collapse"
-                                aria-expanded="false">
-                                <i class="fa-solid fa-chevron-down"></i>
-                            </button>
-                        </strong>
-                        <ul class="list-unstyled fw-normal pb-2 small collapse" id="reglements-national-collapse">
-                            <li><a href="https://glemaitre.github.io/fsgt71velo.github.io/reglement/national/cyclisme/index.html" class="bd-links-link d-inline-block rounded">Activités cyclistes</a></li>
-                            <li><a href="https://glemaitre.github.io/fsgt71velo.github.io/reglement/national/ecole_velo/index.html" class="bd-links-link d-inline-block rounded">École de vélo</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </li>
-
-            <li class="bd-links-group py-2">
-                <strong class="bd-links-heading d-flex w-100 align-items-center fw-semibold">
-                    <i class="fa-solid fa-folder"></i>
-                    Documents <br> Administratifs
-                    <button class="btn d-inline-flex align-items-center collapsed border-0" data-bs-toggle="collapse"
-                        data-bs-target="#docs-collapse" aria-expanded="false">
-                        <i class="fa-solid fa-chevron-down"></i>
-                    </button>
-                </strong>
-                <ul class="list-unstyled fw-normal pb-2 small collapse" id="docs-collapse">
-                    <li><a href="https://glemaitre.github.io/fsgt71velo.github.io/organisation/index.html" class="bd-links-link d-inline-block rounded">Organisation d'épreuves</a></li>
-                    <li><a href="https://glemaitre.github.io/fsgt71velo.github.io/autres_documents/index.html" class="bd-links-link d-inline-block rounded">Autres documents</a></li>
-                </ul>
-            </li>
-
-            <li class="bd-links-group py-2">
-                <strong class="bd-links-heading d-flex w-100 align-items-center fw-semibold">
-                    <i class="fa-solid fa-box-archive"></i>
-                    Archives
-                </strong>
-            </li>
-
-            <li class="bd-links-group py-2">
-                <strong class="bd-links-heading d-flex w-100 align-items-center fw-semibold">
-                    <i class="fa-solid fa-file-lines"></i>
-                    Formulaires
-                    <button class="btn d-inline-flex align-items-center collapsed border-0" data-bs-toggle="collapse"
-                        data-bs-target="#forms-collapse" aria-expanded="false">
-                        <i class="fa-solid fa-chevron-down"></i>
-                    </button>
-                </strong>
-                <ul class="list-unstyled fw-normal pb-2 small collapse" id="forms-collapse">
-                    <li><a href="https://forms.gle/KExLor2UcJEHfrLv8" target="_blank" class="bd-links-link d-inline-block rounded">Déclaration double licence</a>
-                    </li>
-                    <li><a href="https://forms.gle/n3Au41KcNnUgqrhS6" target="_blank" class="bd-links-link d-inline-block rounded">Enregistrement des coureurs
-                            extérieurs</a></li>
-                </ul>
-            </li>
-
-            <li class="bd-links-group py-2">
-                <strong class="bd-links-heading d-flex w-100 align-items-center fw-semibold">
-                    <i class="fa-solid fa-list"></i>
-                    Listing
-                    <button class="btn d-inline-flex align-items-center collapsed border-0" data-bs-toggle="collapse"
-                        data-bs-target="#listing-collapse" aria-expanded="false">
-                        <i class="fa-solid fa-chevron-down"></i>
-                    </button>
-                </strong>
-                <ul class="list-unstyled fw-normal pb-2 small collapse" id="listing-collapse">
-                    <li><a href="https://glemaitre.github.io/fsgt71velo.github.io/licences_fsgt/index.html" class="bd-links-link d-inline-block rounded">Licenciés FSGT71 au sein du
-                            fichier courses</a></li>
-                    <li><a href="https://glemaitre.github.io/fsgt71velo.github.io/external_riders/index.html" class="bd-links-link d-inline-block rounded">Licenciés extérieurs FSGT71 au
-                            sein du fichier coureur</a></li>
-                    <li><a href="https://glemaitre.github.io/fsgt71velo.github.io/double_licences/index.html" class="bd-links-link d-inline-block rounded">Liste des déclarations double
-                            licence (FSGT71)</a></li>
-                </ul>
-            </li>
-        </ul>
-    </nav>
-</div>
-
-<!-- Add toggle button for mobile -->
-<button class="btn position-fixed sidebar-toggle-mobile d-1000-none" id="sidebarShowMobile">
-    <i class="fa-solid fa-chevron-right"></i>
-</button>
-<!--***** Sidebar End *****-->
         <!-- Main Content -->
-        <div class="bd-main">
-            <div class="bd-content">
+        <div class="content">
 
 <h2><i class="fas fa-id-card"></i> Listing des coureurs double licenciés 2025</h2>
 <div class="mb-3">
@@ -210,7 +127,6 @@
         aria-label="Rechercher un coureur">
 </div>
 <table class="table" id="doubleLicencesTable"><thead><tr><th rowspan="2" class="align-middle text-center">Nom</th><th rowspan="2" class="align-middle text-center">Prénom</th><th colspan="2" class="text-center border-bottom-group">Club</th><th colspan="2" class="text-center border-bottom-group">Numéro</th><th colspan="3" class="text-center border-bottom-group">Catégorie</th></tr><tr><th class="text-center">FSGT</th><th class="text-center">FFC</th><th class="text-center">FSGT</th><th class="text-center">FFC</th><th class="text-center">FSGT (valeur)</th><th class="text-center">FSGT (âge)</th><th class="text-center">FFC</th></tr></thead><tbody><tr><td class='text-center'>DUCOTE</td><td class='text-center'>Laurine</td><td class='text-center'>Montceau</td><td class='text-center'>Montceau</td><td class='text-center'>172334</td><td class='text-center'></td><td class='text-center'>Minime F</td><td class='text-center'>MF</td><td class='text-center'>U 15</td></tr><tr><td class='text-center'>DUCOTE</td><td class='text-center'>Juline</td><td class='text-center'>Montceau</td><td class='text-center'>Montceau</td><td class='text-center'>172335</td><td class='text-center'></td><td class='text-center'>5</td><td class='text-center'>JF</td><td class='text-center'>ACCESS 1</td></tr><tr><td class='text-center'>RODET</td><td class='text-center'>Thibaut</td><td class='text-center'>Montceau</td><td class='text-center'>Montceau</td><td class='text-center'>172330</td><td class='text-center'></td><td class='text-center'>2</td><td class='text-center'>S</td><td class='text-center'>OPEN 2</td></tr><tr><td class='text-center'>BAILLY CORNOT</td><td class='text-center'>Marine</td><td class='text-center'>Montceau</td><td class='text-center'>Montceau</td><td class='text-center'>421899</td><td class='text-center'></td><td class='text-center'>F</td><td class='text-center'>S</td><td class='text-center'>DIRIGEANT</td></tr><tr><td class='text-center'>DUCOTE</td><td class='text-center'>Sophie</td><td class='text-center'>Montceau</td><td class='text-center'>Montceau</td><td class='text-center'>172332</td><td class='text-center'></td><td class='text-center'>F</td><td class='text-center'>SVF</td><td class='text-center'>DIRIGEANT</td></tr><tr><td class='text-center'>DUCOTE</td><td class='text-center'>Jean-michel</td><td class='text-center'>Montceau</td><td class='text-center'>Montceau</td><td class='text-center'>172333</td><td class='text-center'></td><td class='text-center'>4</td><td class='text-center'>V</td><td class='text-center'>ACCESS 3</td></tr><tr><td class='text-center'>PEGAZ</td><td class='text-center'>Mickaël</td><td class='text-center'>Montceau</td><td class='text-center'>Montceau</td><td class='text-center'>172339</td><td class='text-center'></td><td class='text-center'>4</td><td class='text-center'>S</td><td class='text-center'>ACCESS 1</td></tr><tr><td class='text-center'>DREZET</td><td class='text-center'>Quentin</td><td class='text-center'>Montceau</td><td class='text-center'>Montceau</td><td class='text-center'></td><td class='text-center'>42710130219</td><td class='text-center'>2</td><td class='text-center'></td><td class='text-center'></td></tr><tr><td class='text-center'>MARGUIN</td><td class='text-center'>Laurent</td><td class='text-center'>St-Martin en Br</td><td class='text-center'>St-Martin en Br</td><td class='text-center'></td><td class='text-center'></td><td class='text-center'>5</td><td class='text-center'>V</td><td class='text-center'>ACCES 3</td></tr><tr><td class='text-center'>MARGUIN</td><td class='text-center'>Damien</td><td class='text-center'>St-Martin en Br</td><td class='text-center'>St-Martin en Br</td><td class='text-center'></td><td class='text-center'></td><td class='text-center'>2</td><td class='text-center'>J </td><td class='text-center'>OPEN 3</td></tr><tr><td class='text-center'>MARGUIN</td><td class='text-center'>Baptiste</td><td class='text-center'>St-Martin en Br</td><td class='text-center'>St-Martin en Br</td><td class='text-center'></td><td class='text-center'></td><td class='text-center'>2</td><td class='text-center'>J</td><td class='text-center'>OPEN 3</td></tr><tr><td class='text-center'>REBILLARD</td><td class='text-center'>Enzo</td><td class='text-center'>St-Martin en Br</td><td class='text-center'>St-Martin en Br</td><td class='text-center'></td><td class='text-center'></td><td class='text-center'>2</td><td class='text-center'>E</td><td class='text-center'>OPEN 3</td></tr><tr><td class='text-center'>BIGARNET</td><td class='text-center'>Mathieu</td><td class='text-center'>Louhans</td><td class='text-center'>Louhans</td><td class='text-center'></td><td class='text-center'></td><td class='text-center'>2</td><td class='text-center'>S</td><td class='text-center'>ACCES1</td></tr><tr><td class='text-center'>DELERUE</td><td class='text-center'>Franck</td><td class='text-center'>Louhans</td><td class='text-center'>Louhans</td><td class='text-center'></td><td class='text-center'></td><td class='text-center'>3</td><td class='text-center'>SV</td><td class='text-center'>ACCES 3</td></tr><tr><td class='text-center'>ROY</td><td class='text-center'>Gerald</td><td class='text-center'>Louhans</td><td class='text-center'>Louhans</td><td class='text-center'></td><td class='text-center'></td><td class='text-center'>4</td><td class='text-center'></td><td class='text-center'>ACCES 4</td></tr><tr><td class='text-center'>TINGA</td><td class='text-center'>Lucas</td><td class='text-center'>Louhans</td><td class='text-center'>Louhans</td><td class='text-center'></td><td class='text-center'></td><td class='text-center'>2</td><td class='text-center'></td><td class='text-center'>ACCES 1</td></tr><tr><td class='text-center'>MASA</td><td class='text-center'>Sylvain</td><td class='text-center'>Louhans</td><td class='text-center'>Louhans</td><td class='text-center'></td><td class='text-center'></td><td class='text-center'>3</td><td class='text-center'>SV</td><td class='text-center'>ACCES 4</td></tr><tr><td class='text-center'>BADEZ</td><td class='text-center'>Alain</td><td class='text-center'>Louhans</td><td class='text-center'>Louhans</td><td class='text-center'></td><td class='text-center'></td><td class='text-center'>6</td><td class='text-center'>A</td><td class='text-center'>ACCES 4</td></tr><tr><td class='text-center'>MAILLOT</td><td class='text-center'>Pierre</td><td class='text-center'>Team Reflex Racing</td><td class='text-center'>Team Reflex Racing</td><td class='text-center'></td><td class='text-center'></td><td class='text-center'>2</td><td class='text-center'>A</td><td class='text-center'>ACCES 4</td></tr><tr><td class='text-center'>GIROUD</td><td class='text-center'>Thierry</td><td class='text-center'>Team Reflex Racing</td><td class='text-center'>Team Reflex Racing</td><td class='text-center'></td><td class='text-center'></td><td class='text-center'>3</td><td class='text-center'>SV</td><td class='text-center'>ACCES 1</td></tr><tr><td class='text-center'>MANGINI</td><td class='text-center'>Mattéo</td><td class='text-center'>Team Reflex Racing</td><td class='text-center'>Team Reflex Racing</td><td class='text-center'></td><td class='text-center'></td><td class='text-center'>3</td><td class='text-center'>S </td><td class='text-center'>ACCES 1</td></tr><tr><td class='text-center'>MANGINI </td><td class='text-center'>Luca </td><td class='text-center'>Team Reflex Racing</td><td class='text-center'>Team Reflex Racing</td><td class='text-center'></td><td class='text-center'></td><td class='text-center'>4</td><td class='text-center'>S </td><td class='text-center'>ACCES 1</td></tr><tr><td class='text-center'>VERRIEN </td><td class='text-center'>David</td><td class='text-center'>Team Reflex Racing</td><td class='text-center'>Team Reflex Racing</td><td class='text-center'></td><td class='text-center'></td><td class='text-center'>2</td><td class='text-center'>V</td><td class='text-center'>ACCES 1</td></tr><tr><td class='text-center'>VERRIEN </td><td class='text-center'>Noé </td><td class='text-center'>Team Reflex Racing</td><td class='text-center'>Team Reflex Racing</td><td class='text-center'></td><td class='text-center'></td><td class='text-center'>2</td><td class='text-center'>E</td><td class='text-center'>ACCES 1</td></tr><tr><td class='text-center'>FEVRAT</td><td class='text-center'>Guillaume</td><td class='text-center'>Team Reflex Racing</td><td class='text-center'>Team Reflex Racing</td><td class='text-center'></td><td class='text-center'></td><td class='text-center'>2</td><td class='text-center'>V</td><td class='text-center'>ACCES 1</td></tr><tr><td class='text-center'>BERNOLLIN</td><td class='text-center'>Jérémy</td><td class='text-center'>Team Reflex Racing</td><td class='text-center'>Team Reflex Racing</td><td class='text-center'></td><td class='text-center'></td><td class='text-center'>2</td><td class='text-center'>V</td><td class='text-center'>ACCES 1</td></tr><tr><td class='text-center'>DEMOURY</td><td class='text-center'>David</td><td class='text-center'>Team Reflex Racing</td><td class='text-center'>Team Reflex Racing</td><td class='text-center'></td><td class='text-center'></td><td class='text-center'>2</td><td class='text-center'>V</td><td class='text-center'>ACCES 1</td></tr><tr><td class='text-center'>RICHARD</td><td class='text-center'>Aurelien</td><td class='text-center'>Team Reflex Racing</td><td class='text-center'>Team Reflex Racing</td><td class='text-center'></td><td class='text-center'></td><td class='text-center'>2</td><td class='text-center'>V</td><td class='text-center'>ACCES 1</td></tr><tr><td class='text-center'>CHAVET-BELLOT</td><td class='text-center'>Patrick</td><td class='text-center'>Team Reflex Racing</td><td class='text-center'>Team Reflex Racing</td><td class='text-center'></td><td class='text-center'></td><td class='text-center'>2</td><td class='text-center'>A</td><td class='text-center'>ACCES 1</td></tr><tr><td class='text-center'>FEVRAT </td><td class='text-center'>Paul</td><td class='text-center'>Team Reflex Racing</td><td class='text-center'>Team Reflex Racing</td><td class='text-center'></td><td class='text-center'></td><td class='text-center'>M</td><td class='text-center'>M</td><td class='text-center'>U15</td></tr></tbody></table>
-            </div>
         </div>
     </div>
     <!--***** Main End *****-->
@@ -228,20 +144,17 @@
         </div>
         <div class="footer-row">
             <div class="footer-updated">
-                Dernière mise à jour : 08/02/2025 à 17:14
+                Dernière mise à jour : 08/02/2025 à 19:52
             </div>
         </div>
     </div>
 </footer>
-<!--***** Footer End *****-->    <script src="https://glemaitre.github.io/fsgt71velo.github.io/theme/js/sidebar-responsive.js"></script>
-    <script src="https://glemaitre.github.io/fsgt71velo.github.io/theme/js/club-search.js"></script>
+<!--***** Footer End *****-->    <script src="https://glemaitre.github.io/fsgt71velo.github.io/theme/js/club-search.js"></script>
     <script src="https://glemaitre.github.io/fsgt71velo.github.io/theme/js/calendar-search.js"></script>
     <script src="https://glemaitre.github.io/fsgt71velo.github.io/theme/js/results-search.js"></script>
     <script src="https://glemaitre.github.io/fsgt71velo.github.io/theme/js/licences-search.js"></script>
     <script src="https://glemaitre.github.io/fsgt71velo.github.io/theme/js/double-licences-search.js"></script>
     <script src="https://glemaitre.github.io/fsgt71velo.github.io/theme/js/external-riders-search.js"></script>
-    <script src="https://glemaitre.github.io/fsgt71velo.github.io/theme/js/dropdown-sidebar-state.js"></script>
-    <script src="https://glemaitre.github.io/fsgt71velo.github.io/theme/js/sidebar-collapse.js"></script>
 </body>
 
 </html>
