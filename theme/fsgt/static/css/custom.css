@@ -30,7 +30,7 @@ body {
   }
 
   .content {
-    max-width: 1400px; /* Add a max-width for better readability */
+    max-width: 1200px; /* Add a max-width for better readability */
     margin: 0 auto;
     padding: 1rem;
   }
