@@ -186,7 +186,7 @@ def test_generate_listing_scenarios(
     expected_rows,
     service_account_info,
 ):
-    output_file = tmp_path / "test_output.csv"
+    output_file = tmp_path / "test_output.xlsx"
     mock_data = request.getfixturevalue(mock_data)
 
     with patch(
@@ -198,7 +198,7 @@ def test_generate_listing_scenarios(
 
         assert output_file.exists() == expected_file_exists
         if expected_file_exists:
-            df = pd.read_csv(output_file)
+            df = pd.read_excel(output_file)
             assert len(df) == expected_rows
             if mock_data == mock_values_mixed_data:
                 assert all(
