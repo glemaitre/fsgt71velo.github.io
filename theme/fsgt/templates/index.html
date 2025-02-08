@@ -8,6 +8,54 @@
 {{ super() }}
 
 <div class="container mt-4">
+    <div class="row">
+        <div class="col-12 mb-4">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="card-title mb-0"><i class="fas fa-compass"></i> Accès rapide</h5>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <p>
+                                Pour les coureurs extérieurs aux départements ou ayant plusieurs licences, la participation est conditionnée à une déclaration préalable pour pouvoir affecter la catégorie de valeur adéquate. Pour ce faire, trouvez ci-joints les liens des formulaires à remplir :
+                            </p>
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <a href="https://forms.gle/KExLor2UcJEHfrLv8" target="_blank" class="btn btn-primary w-100">
+                                        <i class="fas fa-file-alt"></i> Déclaration de double licence
+                                    </a>
+                                </div>
+                                <div class="col-md-6">
+                                    <a href="https://forms.gle/n3Au41KcNnUgqrhS6" target="_blank" class="btn btn-primary w-100">
+                                        <i class="fas fa-file-alt"></i> Enregistrement de coureurs extérieurs
+                                    </a>
+                                </div>
+                            </div>
+                            <p>
+                                Les demandes traitées sont consolidées dans les listings suivants :
+                            </p>
+                            <div class="row">
+                                <div class="col-md-6 mb-2">
+                                    <a href="{{ SITEURL }}/external_riders/index.html" class="btn btn-secondary w-100">
+                                        <i class="fas fa-list"></i> Licenciés extérieurs FSGT71
+                                    </a>
+                                </div>
+                                <div class="col-md-6 mb-2">
+                                    <a href="{{ SITEURL }}/double_licences/index.html" class="btn btn-secondary w-100">
+                                        <i class="fas fa-list"></i> Déclarations double licence
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container mt-4">
     <h2 class="mb-5"><i class="fas fa-newspaper"></i> Actualités</h2>
     <div class="row">
         {% for article in articles %}
