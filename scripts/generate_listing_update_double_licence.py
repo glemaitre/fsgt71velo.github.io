@@ -63,7 +63,7 @@ def generate_listing(filename, service_account_info):
     data = values[1:]
     for row in data:
         if len(row) < len(headers):
-            row.append("")
+            row += [""] * (len(headers) - len(row))
 
     df = pd.DataFrame(data, columns=headers)
     for col in ("Date de naissance", "Timestamp"):
