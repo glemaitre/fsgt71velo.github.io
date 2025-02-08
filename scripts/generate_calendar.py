@@ -137,44 +137,63 @@ template: page
 </div>
 """
         # Add legend section
-        calendar_table += """<div class="row mb-3">
-    <div class="col-md-4">
-        <div class="alert alert-default border small">
-            <strong>Durée de l'épreuve :</strong>
-            <ul class="list-unstyled mb-0">
+        calendar_table += """<div class="mb-3">
+    <button class="btn btn-info w-100" type="button" data-bs-toggle="collapse" data-bs-target="#legendCollapse" aria-expanded="false" aria-controls="legendCollapse">
+        <i class="fas fa-info-circle"></i> Guide des codes couleurs des épreuves <i class="fas fa-chevron-down"></i>
+    </button>
+    <div class="collapse" id="legendCollapse">
+        <div class="row mt-3">
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-header text-center">
+                        <strong>Durée de l'épreuve</strong>
+                    </div>
+                    <div class="card-body">
+                        <ul class="list-unstyled mb-0">
 """
         for duration, color in COLOR_DURATION_RACE.items():
             calendar_table += f"""
-                <li><span class="badge {color}">&nbsp;</span> {duration}</li>
+                            <li><span class="badge {color}">&nbsp;</span> {duration}</li>
 """
         calendar_table += """
-            </ul>
-        </div>
-    </div>
-    <div class="col-md-4">
-        <div class="alert alert-default border small">
-            <strong>Type de course :</strong>
-            <ul class="list-unstyled mb-0">
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-header text-center">
+                        <strong>Type de course</strong>
+                    </div>
+                    <div class="card-body">
+                        <ul class="list-unstyled mb-0">
 """
         for race_type, color in COLOR_TYPE_OF_RACE.items():
             calendar_table += f"""
-                <li><span class="badge {color}">&nbsp;</span> {race_type}</li>
+                            <li><span class="badge {color}">&nbsp;</span> {race_type}</li>
 """
         calendar_table += """
-            </ul>
-        </div>
-    </div>
-    <div class="col-md-4">
-        <div class="alert alert-default border small">
-            <strong>Longueur du circuit :</strong>
-            <ul class="list-unstyled mb-0">
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-header text-center">
+                        <strong>Longueur du circuit</strong>
+                    </div>
+                    <div class="card-body">
+                        <ul class="list-unstyled mb-0">
 """
         for circuit_length, color in COLOR_CIRCUIT_LENGTH.items():
             calendar_table += f"""
-                <li><span class="badge {color}">&nbsp;</span> {circuit_length}</li>
+                            <li><span class="badge {color}">&nbsp;</span> {circuit_length}</li>
 """
         calendar_table += """
-            </ul>
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>

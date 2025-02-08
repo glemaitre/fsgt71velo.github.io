@@ -176,12 +176,16 @@ template: page
         )
         df = list_pdf_files(service_account_info)
 
-        report_listing = ""
+        report_listing = '<div class="row">\n'
         for year, df_year in sorted(df.groupby("year"), reverse=True):
             report_listing += (
-                f'<div class="alert alert-default border">\n'
-                f'<h4 class="text-center">Année {year}</h4>\n'
-                f'<ul class="list-unstyled mb-0">\n'
+                '<div class="col-md-6 col-lg-4 mb-4">\n'  # Column definition for responsive grid
+                '<div class="card h-100">\n'  # h-100 ensures equal height cards
+                '<div class="card-header">\n'
+                f'<h4 class="card-title mb-0 text-center">Année {year}</h4>\n'
+                "</div>\n"
+                '<div class="card-body">\n'
+                '<ul class="list-unstyled mb-0">\n'
             )
 
             df_year = df_year.copy()  # Create copy to avoid SettingWithCopyWarning
@@ -199,8 +203,9 @@ template: page
                     f'Compte rendu du {format_date_from_filename(row["filename"])}'
                     "</a></li>\n"
                 )
-            report_listing += "</ul>\n</div>\n"
+            report_listing += "</ul>\n</div>\n</div>\n</div>\n"  # Close column div
 
+        report_listing += "</div>\n"  # Close row div
         f.write(metadata + title + report_listing)
 
 
