@@ -1,15 +1,48 @@
 :root {
-  --color-red: #E63946;
-  --color-off-white: #F1FAEE;
-  --color-light-blue: #A8DADC;
-  --color-blue: #457B9D;
-  --color-dark-blue: #1D3557;
-  --color-light-grey: #f8f9fa;
-  --bs-card-border-color: var(--color-off-white);
+  /* Brand colors - these don't change with theme */
+  --brand-red: #E63946;
+  --brand-cream: #F1FAEE;
+  --brand-light-blue: #A8DADC;
+  --brand-blue: #457B9D;
+  --brand-dark-blue: #1D3557;
+
+  /* Semantic colors for light theme */
+  --primary-accent: var(--brand-dark-blue);
+  --secondary-accent: var(--brand-blue);
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8f9fa;
+  --text-primary: #333333;
+  --text-secondary: #666666;
+  --border-color: #dee2e6;
+  --hover-bg: rgba(0, 0, 0, 0.02);
+  --card-border: var(--brand-cream);
+  --bs-card-border-color: var(--border-color);
+
+  /* Base colors */
+  --navbar-bg: #ffffff;
+  --footer-bg: #ffffff;
+  --footer-text: #666;
 }
 
-/* Base styles */
+/* Dark mode colors */
+[data-theme="dark"] {
+  --primary-accent: var(--brand-light-blue);
+  --secondary-accent: var(--brand-blue);
+  --bg-primary: #1a1a1a;
+  --bg-secondary: #2d2d2d;
+  --text-primary: #ffffff;
+  --text-secondary: #cccccc;
+  --border-color: #404040;
+  --hover-bg: rgba(255, 255, 255, 0.05);
+  --card-border: #404040;
+  --bs-card-border-color: var(--border-color);
+  --footer-bg: #1a1a1a;
+}
+
+/* Apply theme colors */
 body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
   min-height: 75rem;
   padding-top: 80px;
 }
@@ -53,22 +86,23 @@ body {
   padding: 1.5rem;
 }
 
-.content h1 {
-  color: var(--color-dark-blue);
+.content h1,
+.content h2,
+.content h3,
+.content h4,
+.card-title {
+  color: var(--primary-accent);
 }
 
 .content h2 {
-  color: var(--color-dark-blue);
   margin-bottom: 3rem !important;
 }
 
 .content h3 {
-  color: var(--color-dark-blue);
   margin-bottom: 2rem !important;
 }
 
 .content h4 {
-  color: var(--color-dark-blue);
   margin-bottom: 1.5rem !important;
 }
 
@@ -76,19 +110,23 @@ body {
   width: 100%;
   margin-bottom: 3rem;
   border-collapse: collapse;
+  background-color: var(--bg-primary);
 }
 
 .content table td {
   padding: 1rem;
   vertical-align: top;
-  border-top: 1px solid #dee2e6;
+  border-top: 1px solid var(--border-color);
+  color: var(--text-primary);
+  background-color: var(--bg-primary);
 }
 
 .content table th {
   padding: 1rem;
   vertical-align: bottom;
-  border-bottom: 2px solid #dee2e6;
-  background-color: var(--color-light-grey);
+  border-bottom: 2px solid var(--border-color);
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
 }
 
 .content table td i.fas {
@@ -97,7 +135,7 @@ body {
 }
 
 .content table tr:hover {
-  background-color: rgba(0, 0, 0, 0.02);
+  background-color: var(--hover-bg);
 }
 
 .content iframe {
@@ -114,8 +152,8 @@ body {
 /* Footer */
 .footer {
   padding: 2rem 0;
-  background-color: #ffffff;
-  border-top: 1px solid #eee;
+  background-color: var(--footer-bg);
+  border-top: 1px solid var(--border-color);
 }
 
 .footer-content {
@@ -134,7 +172,7 @@ body {
 
 .footer-copyright,
 .footer-updated {
-  color: #666;
+  color: var(--footer-text);
   font-size: 0.9rem;
 }
 
@@ -144,30 +182,35 @@ body {
 }
 
 .footer-links a {
-  color: #666;
+  color: var(--footer-text);
   text-decoration: none;
   font-size: 0.9rem;
   transition: color 0.2s;
 }
 
 .footer-links a:hover {
-  color: #333;
+  color: var(--text-primary);
 }
 
 /* Navigation */
 .navbar.bg-white {
-  background-color: #ffffff !important;
+  background-color: var(--bg-primary) !important;
   border-bottom: 4px solid;
-  border-image: linear-gradient(to right, var(--color-dark-blue), var(--color-red), var(--color-dark-blue)) 1;
+  border-image: linear-gradient(to right, var(--primary-accent), var(--brand-red), var(--primary-accent)) 1;
 }
 
-.nav-link {
-  color: var(--color-dark-blue);
+.navbar-nav .nav-link.show {
+  color: var(--secondary-accent);
+}
+
+.nav-link,
+.nav-link:focus {
+  color: var(--primary-accent);
 }
 
 .nav-link:hover,
 .nav-link:active {
-  color: var(--color-blue);
+  color: var(--secondary-accent);
 }
 
 .dropdown-menu.show {
@@ -179,19 +222,23 @@ body {
   width: 100%;
   margin-bottom: 3rem;
   border-collapse: collapse;
+  background-color: var(--bg-primary);
 }
 
 .content table td {
   padding: 1rem;
   vertical-align: top;
-  border-top: 1px solid #dee2e6;
+  border-top: 1px solid var(--border-color);
+  color: var(--text-primary);
+  background-color: var(--bg-primary);
 }
 
 .content table th {
   padding: 1rem;
   vertical-align: bottom;
-  border-bottom: 2px solid #dee2e6;
-  background-color: var(--color-light-grey);
+  border-bottom: 2px solid var(--border-color);
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
 }
 
 .content table td i.fas {
@@ -200,26 +247,19 @@ body {
 }
 
 .content table tr:hover {
-  background-color: rgba(0, 0, 0, 0.02);
+  background-color: var(--hover-bg);
 }
 
 /* Typography */
-.content h1 {
-  color: var(--color-dark-blue);
-}
-
 .content h2 {
-  color: var(--color-dark-blue);
   margin-bottom: 3rem !important;
 }
 
 .content h3 {
-  color: var(--color-dark-blue);
   margin-bottom: 2rem !important;
 }
 
 .content h4 {
-  color: var(--color-dark-blue);
   margin-bottom: 1.5rem !important;
 }
 
@@ -327,13 +367,23 @@ body {
 .content table .dropdown-menu {
   position: absolute;
   min-width: 300px;
-  background: white;
+  background-color: var(--bg-primary);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  border: 1px solid rgba(0, 0, 0, 0.1);
+  border: 1px solid var(--border-color);
+}
+
+.dropdown-item {
+  color: var(--text-primary);
+  background-color: var(--bg-primary);
+}
+
+.dropdown-item:hover {
+  background-color: var(--hover-bg);
+  color: var(--text-primary);
 }
 
 .dropdown-item:focus {
-  background-color: var(--color-blue);
+  background-color: var(--secondary-accent);
   color: white;
 }
 
@@ -365,16 +415,16 @@ body {
 }
 
 /* Calendar styles */
-.race-type-championship { background-color: #fed9b8 !important; }
-.race-type-route { background-color: #a3cfbb !important; }
-.race-type-contre-la-montre { background-color: #e2d9f3 !important; }
-.race-type-brevet-et-randonnee { background-color: #9ec5fe !important; }
-.race-type-cyclo-cross { background-color: #a4e4fd !important; }
-.race-type-other { background-color: #f1aeb5 !important; }
-.race-type-circuit-lt-5km { background-color: #e9ecef !important; }
-.race-type-circuit-gte-5km { background-color: #ffeeba !important; }
-.race-type-demi-journee { background-color: #f5b9d0 !important; }
-.race-type-journee-complete { background-color: #99e9e3 !important; }
+.race-type-championship { background-color: rgba(254, 217, 184, 0.6) !important; color: var(--text-primary) !important; }
+.race-type-route { background-color: rgba(163, 207, 187, 0.6) !important; color: var(--text-primary) !important; }
+.race-type-contre-la-montre { background-color: rgba(226, 217, 243, 0.6) !important; color: var(--text-primary) !important; }
+.race-type-brevet-et-randonnee { background-color: rgba(158, 197, 254, 0.6) !important; color: var(--text-primary) !important; }
+.race-type-cyclo-cross { background-color: rgba(164, 228, 253, 0.6) !important; color: var(--text-primary) !important; }
+.race-type-other { background-color: rgba(241, 174, 181, 0.6) !important; color: var(--text-primary) !important; }
+.race-type-circuit-lt-5km { background-color: rgba(233, 236, 239, 0.6) !important; color: var(--text-primary) !important; }
+.race-type-circuit-gte-5km { background-color: rgba(255, 238, 186, 0.6) !important; color: var(--text-primary) !important; }
+.race-type-demi-journee { background-color: rgba(245, 185, 208, 0.6) !important; color: var(--text-primary) !important; }
+.race-type-journee-complete { background-color: rgba(153, 233, 227, 0.6) !important; color: var(--text-primary) !important; }
 
 #calendarTable td:first-child {
   white-space: nowrap;
@@ -420,32 +470,32 @@ body {
 }
 
 /* Card styles */
-.card-title {
-  color: var(--color-dark-blue);
-}
-
 .card-header {
-  background-color: var(--color-light-grey);
+  background-color: var(--bg-secondary);
 }
 
 .card-header .text-muted {
-  color: var(--color-blue) !important;
+  color: var(--secondary-accent) !important;
+}
+
+.card-body {
+  color: var(--text-primary);
 }
 
 .btn-primary {
-  background-color: var(--color-blue);
-  border-color: var(--color-blue);
+  background-color: var(--secondary-accent);
+  border-color: var(--secondary-accent);
 }
 
 .btn-primary:hover,
 .btn-primary:active {
-  background-color: var(--color-dark-blue) !important;
-  border-color: var(--color-dark-blue) !important;
+  background-color: var(--primary-accent) !important;
+  border-color: var(--primary-accent) !important;
 }
 
 .btn-info {
-  background-color: var(--color-light-blue);
-  border-color: var(--color-light-blue);
+  background-color: var(--brand-light-blue);
+  border-color: var(--brand-light-blue);
 }
 
 .btn-info:hover,
@@ -461,7 +511,7 @@ body {
 }
 
 .quick-access-card .collapsed-header:hover {
-    background-color: var(--color-off-white);
+    background-color: var(--bg-secondary);
 }
 
 .quick-access-card .collapse-icon {
@@ -474,4 +524,70 @@ body {
 
 .quick-access-card .card-header {
     padding: 1rem 1.25rem;
+}
+
+/* Dark mode specific adjustments */
+[data-theme="dark"] .card {
+  background-color: #2d2d2d;
+}
+
+[data-theme="dark"] .dropdown-menu {
+  background-color: #2d2d2d;
+  border-color: #404040;
+}
+
+[data-theme="dark"] .dropdown-item {
+  color: var(--text-primary);
+}
+
+[data-theme="dark"] .dropdown-item:hover {
+  background-color: #404040;
+}
+
+/* Theme toggle button */
+.theme-toggle {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1050;
+  background: var(--secondary-accent);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease;
+}
+
+.theme-toggle:hover {
+  transform: scale(1.1);
+}
+
+/* Form controls */
+.form-control {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  border-color: var(--border-color);
+}
+
+.form-control:focus {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  border-color: var(--secondary-accent);
+  box-shadow: 0 0 0 0.2rem rgba(69, 123, 157, 0.25);
+}
+
+.form-control::placeholder {
+  color: var(--text-secondary);
+}
+
+.form-control:disabled,
+.form-control[readonly] {
+  background-color: var(--bg-secondary);
+  color: var(--text-secondary);
 }
