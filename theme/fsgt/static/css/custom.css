@@ -30,7 +30,7 @@ body {
   }
 
   .content {
-    max-width: 1200px; /* Add a max-width for better readability */
+    max-width: 1400px; /* Add a max-width for better readability */
     margin: 0 auto;
     padding: 1rem;
   }
@@ -423,7 +423,19 @@ body {
   border-color: var(--color-blue);
 }
 
-.btn-primary:hover {
-  background-color: var(--color-dark-blue);
-  border-color: var(--color-dark-blue);
+.btn-primary:hover,
+.btn-primary:active {
+  background-color: var(--color-dark-blue) !important;
+  border-color: var(--color-dark-blue) !important;
+}
+
+.btn-info {
+  background-color: var(--color-light-blue);
+  border-color: var(--color-light-blue);
+}
+
+.btn-info:hover,
+.btn-info:active {
+  background-color: rgba(168, 218, 220, 0.8) !important;
+  border-color: rgba(168, 218, 220, 0.8) !important;
 }
