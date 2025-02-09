@@ -1,5 +1,6 @@
 from datetime import datetime
 import os
+from zoneinfo import ZoneInfo
 
 AUTHOR = "Guillaume Lemaitre"
 SITENAME = "FSGT 71"
@@ -54,4 +55,4 @@ MARKDOWN = {
     }
 }
 
-BUILD_TIME = datetime.now()
+BUILD_TIME = datetime.now(tz=ZoneInfo('Europe/Paris'))
