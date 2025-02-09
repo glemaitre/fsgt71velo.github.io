@@ -68,11 +68,15 @@ def generate_html_table(df_licences):
             html_table += f"<td class='text-center'>{row['Catégorie UFOLEP']}</td>"
         else:
             html_table += f"<td class='text-center'></td>"
-        html_table += f"<td class='text-center'>{row["Catégorie FSGT département d'origine"]}</td>"
+        category = row["Catégorie FSGT département d'origine"]
+        html_table += f"<td class='text-center'>{category}</td>"
         html_table += (
             f"<td class='text-center'>{row['Catégorie autorisée FSGT 71']}</td>"
         )
-        html_table += f"<td class='text-center'>{row['Date d\'inscription'].strftime('%d/%m/%Y')}</td>"
+        date_inscription = row["Date d'inscription"]
+        html_table += (
+            f"<td class='text-center'>{date_inscription.strftime('%d/%m/%Y')}</td>"
+        )
         html_table += "</tr>"
     html_table += "</tbody></table>"
     return html_table
