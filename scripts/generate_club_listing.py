@@ -39,10 +39,9 @@ def generate_person_dropdown(df, *, first_name, last_name, counter_unique_dropdo
     row = df.query(f"Prénom == '{first_name}' and Nom == '{last_name}'").iloc[0]
     template = '<div class="dropdown">'
     template += (
-        '<button class="btn btn-link dropdown-toggle" type="button" '
+        f'<button class="btn btn-link dropdown-toggle" type="button" '
         f'id="contactDropdown{counter_unique_dropdown}" data-bs-toggle="dropdown" '
-        f'aria-expanded="false">'
-        f'{row["Prénom"]} {row["Nom"]}</button>'
+        f'aria-expanded="false">{row["Prénom"]} {row["Nom"]}</button>'
     )
     template += (
         f'<div class="dropdown-menu p-3" '
