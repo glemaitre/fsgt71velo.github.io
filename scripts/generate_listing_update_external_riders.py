@@ -235,6 +235,15 @@ def format_rider_information(df, format_type="txt"):
     )
 
     for idx, row in df.iterrows():
+        # Convert date format if it exists and is not empty
+        if pd.notna(row["Date de naissance"]):
+            try:
+                date = pd.to_datetime(row["Date de naissance"])
+                row = row.copy()  # Create a copy to avoid modifying the original
+                row["Date de naissance"] = date.strftime("%d/%m/%Y")
+            except (ValueError, TypeError):
+                pass  # Keep original value if conversion fails
+
         rider_info = template.format(**row)
         history_table = pivot_tables[idx]
         history_text = format_history_table(history_table, format_type)
