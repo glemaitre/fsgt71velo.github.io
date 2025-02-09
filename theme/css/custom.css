@@ -471,6 +471,7 @@ body {
 /* Card styles */
 .card-header {
   background-color: var(--bg-secondary);
+  color: var(--text-primary);
 }
 
 .card-header .text-muted {
@@ -478,6 +479,7 @@ body {
 }
 
 .card-body {
+  background-color: var(--bg-primary);
   color: var(--text-primary);
 }
 
