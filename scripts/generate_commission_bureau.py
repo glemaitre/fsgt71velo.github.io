@@ -26,10 +26,11 @@ def generate_contact_info(row):
     template = '<table class="contact-info-table" border="0">'
 
     if not pd.isna(row["Addresse"]):
+        address = row["Addresse"].replace("\n", "<br>")
         template += (
             "<tr>"
             '<td><i class="fas fa-map-marker-alt"></i></td>'
-            f'<td>{row["Addresse"].replace("\n", "<br>")}</td>'
+            f"<td>{address}</td>"
             "</tr>"
         )
     if not pd.isna(row["Téléphone"]):
