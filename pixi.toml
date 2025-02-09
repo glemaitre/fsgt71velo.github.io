@@ -21,6 +21,7 @@ generate_external_riders = { cmd = "python scripts/generate_external_riders.py" 
 # send emails
 send_email_update_double_licences = { cmd = "node scripts/send_email_update_double_licences.js", depends-on = ["generate_listing_update_double_licence"] }
 send_email_update_external_riders = { cmd = "node scripts/send_email_update_external_riders.js", depends-on = ["generate_listing_update_external_riders"] }
+
 # build the static website
 clean = { cmd = "rm -rf output" }
 build = { cmd = "pelican content -t theme/fsgt --verbose", depends-on = ["clean", "generate_club_listing", "generate_calendar", "generate_report", "generate_results", "generate_licences", "generate_double_licences", "generate_external_riders"] }
