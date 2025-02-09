@@ -20,7 +20,7 @@ jobs:
         run: npm install
       - uses: prefix-dev/setup-pixi@v0.8.1
         with:
-          pixi-version: v0.39.4
+          pixi-version: v0.41.1
           frozen: true
       - name: Generate listing and send email
         run: pixi run send_email_update_external_riders
