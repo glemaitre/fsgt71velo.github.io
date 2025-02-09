@@ -179,8 +179,8 @@ template: page
         report_listing = '<div class="row">\n'
         for year, df_year in sorted(df.groupby("year"), reverse=True):
             report_listing += (
-                '<div class="col-md-6 col-lg-4 mb-4">\n'  # Column definition for responsive grid
-                '<div class="card h-100">\n'  # h-100 ensures equal height cards
+                '<div class="col-md-6 col-lg-4 mb-4">\n'
+                '<div class="card h-100">\n'
                 '<div class="card-header">\n'
                 f'<h4 class="card-title mb-0 text-center">Année {year}</h4>\n'
                 "</div>\n"

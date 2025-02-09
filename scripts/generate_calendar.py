@@ -78,8 +78,9 @@ def generate_html_table(df_calendar):
             html_table += "<tr>"
             class_td_duration = COLOR_DURATION_RACE.get(row["Durée organisation"], "")
             class_attr = f" class='{class_td_duration}'" if class_td_duration else ""
+            class_to_duration = " " + class_td_duration if class_td_duration else ""
             html_table += (
-                f"<td{class_attr} class='text-center{' ' + class_td_duration if class_td_duration else ''}'>"
+                f"<td{class_attr} class='text-center{class_to_duration}'>"
                 f"{row['Date'].strftime('%a %d %b').title()}"
                 "</td>"
             )
@@ -95,12 +96,16 @@ def generate_html_table(df_calendar):
             class_td_circuit_length = COLOR_CIRCUIT_LENGTH.get(
                 row["Longeur circuit"],
             )
+            class_to_circuit_length = (
+                " " + class_td_circuit_length if class_td_circuit_length else ""
+            )
             html_table += (
-                f"<td class='text-center{' ' + class_td_circuit_length if class_td_circuit_length else ''}'>"
+                f"<td class='text-center{class_to_circuit_length}'>"
                 f"{row['Catégories'] if pd.notna(row['Catégories']) else ''}"
                 "</td>"
             )
-            html_table += f"<td class='text-center'>{row['Club'] if pd.notna(row['Club']) else ''}</td>"
+            club = row["Club"] if pd.notna(row["Club"]) else ""
+            html_table += f"<td class='text-center'>{club}</td>"
             html_table += "</tr>"
     html_table += "</tbody></table>"
     return html_table
@@ -138,8 +143,11 @@ template: page
 """
         # Add legend section
         calendar_table += """<div class="mb-3">
-    <button class="btn btn-info w-100" type="button" data-bs-toggle="collapse" data-bs-target="#legendCollapse" aria-expanded="false" aria-controls="legendCollapse">
-        <i class="fas fa-info-circle"></i> Guide des codes couleurs des épreuves <i class="fas fa-chevron-down"></i>
+    <button class="btn btn-info w-100" type="button" data-bs-toggle="collapse"
+    data-bs-target="#legendCollapse" aria-expanded="false"
+    aria-controls="legendCollapse">
+        <i class="fas fa-info-circle"></i> Guide des codes couleurs des épreuves
+        <i class="fas fa-chevron-down"></i>
     </button>
     <div class="collapse" id="legendCollapse">
         <div class="row mt-3">
@@ -153,7 +161,8 @@ template: page
 """
         for duration, color in COLOR_DURATION_RACE.items():
             calendar_table += f"""
-                            <li><span class="badge {color}">&nbsp;</span> {duration}</li>
+                            <li><span class="badge {color}">&nbsp;</span> {duration}
+                            </li>
 """
         calendar_table += """
                         </ul>
@@ -170,7 +179,8 @@ template: page
 """
         for race_type, color in COLOR_TYPE_OF_RACE.items():
             calendar_table += f"""
-                            <li><span class="badge {color}">&nbsp;</span> {race_type}</li>
+                            <li><span class="badge {color}">&nbsp;</span> {race_type}
+                            </li>
 """
         calendar_table += """
                         </ul>
@@ -187,7 +197,8 @@ template: page
 """
         for circuit_length, color in COLOR_CIRCUIT_LENGTH.items():
             calendar_table += f"""
-                            <li><span class="badge {color}">&nbsp;</span> {circuit_length}</li>
+                            <li><span class="badge {color}">&nbsp;</span>
+                            {circuit_length}</li>
 """
         calendar_table += """
                         </ul>

@@ -441,10 +441,11 @@ def generate_printable_person_info_html(df, *, first_name, last_name):
     )
 
     if not pd.isna(row["Adresse"]):
+        address = row["Adresse"].replace(chr(10), "<br>")
         info += (
             f'<div class="contact-info">'
             f'<span class="icon"><i class="fas fa-map-marker-alt"></i></span>'
-            f'<span class="contact-text">{row["Adresse"].replace(chr(10), "<br>")}</span></div>'
+            f'<span class="contact-text">{address}</span></div>'
         )
     if not pd.isna(row["Téléphone"]):
         info += (
