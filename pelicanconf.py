@@ -55,4 +55,4 @@ MARKDOWN = {
     }
 }
 
-BUILD_TIME = datetime.now(tz=ZoneInfo('Europe/Paris'))
+BUILD_TIME = datetime.now(tz=ZoneInfo(TIMEZONE))
