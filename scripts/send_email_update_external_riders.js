@@ -5,9 +5,9 @@ const path = require('path');
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 // Add validation for required environment variables
-const { RECIPIENTS_EMAIL, SENDER_EMAIL } = process.env;
-if (!RECIPIENTS_EMAIL || !SENDER_EMAIL) {
-    console.error('Missing env variables: RECIPIENTS_EMAIL and/or SENDER_EMAIL');
+const { RECIPIENTS_EXTERNAL_EMAIL, SENDER_EMAIL } = process.env;
+if (!RECIPIENTS_EXTERNAL_EMAIL || !SENDER_EMAIL) {
+    console.error('Missing env variables: RECIPIENTS_EXTERNAL_EMAIL and/or SENDER_EMAIL');
     process.exit(1);
 }
 
@@ -45,7 +45,7 @@ if (fs.existsSync(ridersFolder)) {
             const emailSubject = fs.readFileSync(path.join(ridersFolder, subject), 'utf8').trim();
 
             const msg = {
-                to: RECIPIENTS_EMAIL.split(',').map(email => email.trim()),
+                to: RECIPIENTS_EXTERNAL_EMAIL.split(',').map(email => email.trim()),
                 from: SENDER_EMAIL.trim(),
                 subject: emailSubject,
                 text: emailText,
