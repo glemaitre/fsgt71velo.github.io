@@ -72,7 +72,7 @@ def generate_html_table(df_licences):
         else:
             html_table += f"<td class='text-center'></td>"
         if pd.notna(row["Catégorie d'âge FSGT"]):
-            html_table += f"<td class='text-center'>{row["Catégorie d'âge FSGT"]}</td>"
+            html_table += f"<td class='text-center'>{row['Catégorie d\'âge FSGT']}</td>"
         else:
             html_table += f"<td class='text-center'></td>"
         if pd.notna(row["Catégorie FFC"]):
