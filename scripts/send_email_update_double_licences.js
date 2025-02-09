@@ -4,22 +4,6 @@ const sgMail = require('@sendgrid/mail');
 const path = require('path');
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
-const fs = require('fs'),
-    filename = 'scratch/update_double_licences_declaration.xlsx',
-    fileType = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet';
-
-if (!fs.existsSync(filename)) {
-    console.log('No CSV file found - nothing to process');
-    process.exit(0);
-}
-
-const data = fs.readFileSync(filename);
-if (data.length === 0) {
-    console.log('CSV file is empty - nothing to process');
-    process.exit(0);
-}
-
-// Add validation for required environment variables
 const { RECIPIENTS_EMAIL, SENDER_EMAIL } = process.env;
 if (!RECIPIENTS_EMAIL || !SENDER_EMAIL) {
     console.error('Missing env variables: RECIPIENTS_EMAIL and/or SENDER_EMAIL');
@@ -64,13 +48,7 @@ if (fs.existsSync(ridersFolder)) {
                 from: SENDER_EMAIL.trim(),
                 subject: emailSubject,
                 text: emailText,
-                html: emailHtml,
-                attachments: [{
-                    content: data.toString('base64'),
-                    filename: filename,
-                    type: fileType,
-                    disposition: 'attachment'
-                }]
+                html: emailHtml
             };
 
             sgMail
