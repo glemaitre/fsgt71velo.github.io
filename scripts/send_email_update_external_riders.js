@@ -2,6 +2,7 @@
 
 const sgMail = require('@sendgrid/mail');
 const path = require('path');
+const fs = require('fs');
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 // Add validation for required environment variables
