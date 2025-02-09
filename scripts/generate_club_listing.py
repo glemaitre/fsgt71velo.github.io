@@ -49,10 +49,11 @@ def generate_person_dropdown(df, *, first_name, last_name, counter_unique_dropdo
         '<table class="contact-info-table">'
     )
     if not pd.isna(row["Adresse"]):
+        address = row["Adresse"].replace("\n", "<br>")
         template += (
             "<tr>"
             '<td><i class="fas fa-map-marker-alt"></i></td>'
-            f'<td>{row["Adresse"].replace("\n", "<br>")}</td>'
+            f"<td>{address}</td>"
             "</tr>"
         )
     if not pd.isna(row["Téléphone"]):
