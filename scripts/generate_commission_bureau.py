@@ -1,3 +1,5 @@
+import os
+
 import pandas as pd
 
 SHEET_ID = "1AnPafo45pd15SD7v3szeC4wgSXRBKJ1DYzVk3UfTgFI"
@@ -280,5 +282,6 @@ if __name__ == "__main__":
 
     # Generate and write the printable HTML version
     html_content = generate_printable_bureau_html(df)
+    os.makedirs("scratch", exist_ok=True)
     with open("scratch/bureau_printable.html", "w", encoding="utf-8") as f:
         f.write(html_content)

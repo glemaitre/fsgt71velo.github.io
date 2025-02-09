@@ -1,3 +1,5 @@
+import os
+
 import pandas as pd
 
 SHEET_ID = "1ocHqS1lCjGVwKTd_ES_L06eOFDN90Jd_Kap3OtZhgVM"
@@ -512,5 +514,6 @@ if __name__ == "__main__":
 
     df_listing, df_directory = pd.read_csv(URL_LISTING), pd.read_csv(URL_DIRECTORY)
     html_content = generate_printable_club_listing_html(df_listing, df_directory)
+    os.makedirs("scratch", exist_ok=True)
     with open("scratch/clubs_printable.html", "w", encoding="utf-8") as f:
         f.write(html_content)
