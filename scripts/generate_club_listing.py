@@ -4,12 +4,12 @@ SHEET_ID = "1ocHqS1lCjGVwKTd_ES_L06eOFDN90Jd_Kap3OtZhgVM"
 SHEET_LISTING = "Listing"
 SHEET_DIRECTORY = "Annuaire"
 URL_LISTING = (
-    f"https://docs.google.com/spreadsheets/d/{SHEET_ID}/gviz/"
-    f"tq?tqx=out:csv&sheet={SHEET_LISTING}"
+    "https://docs.google.com/spreadsheets/d/"
+    f"{SHEET_ID}/gviz/tq?tqx=out:csv&sheet={SHEET_LISTING}"
 )
 URL_DIRECTORY = (
-    f"https://docs.google.com/spreadsheets/d/{SHEET_ID}/gviz"
-    f"/tq?tqx=out:csv&sheet={SHEET_DIRECTORY}"
+    "https://docs.google.com/spreadsheets/d/"
+    f"{SHEET_ID}/gviz/tq?tqx=out:csv&sheet={SHEET_DIRECTORY}"
 )
 
 
