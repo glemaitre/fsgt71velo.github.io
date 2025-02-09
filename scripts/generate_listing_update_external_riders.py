@@ -315,15 +315,8 @@ def generate_listing(path_name, service_account_info):
     df = pd.DataFrame(data, columns=headers)
     df["Timestamp"] = pd.to_datetime(df["Timestamp"])
 
-    # one_day_ago = pd.Timestamp.now() - pd.Timedelta(days=1)
-    # df_last_day = df[df["Timestamp"] >= one_day_ago]
-    # if df_last_day.empty:
-    #     return
-
-    # Temporary specific time range filter
-    start_time = pd.Timestamp("2025-02-08 15:00:00")
-    end_time = pd.Timestamp("2025-02-08 23:59:59")
-    df_last_day = df[(df["Timestamp"] >= start_time) & (df["Timestamp"] <= end_time)]
+    one_day_ago = pd.Timestamp.now() - pd.Timedelta(days=1)
+    df_last_day = df[df["Timestamp"] >= one_day_ago]
     if df_last_day.empty:
         return
 
