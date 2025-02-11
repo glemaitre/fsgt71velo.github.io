@@ -100,7 +100,7 @@ def update_external_riders_spreadsheet(service_account_info):
     model = joblib.load("model/department_clearner.joblib")
     # clean the department column
     df_new_riders["Département"] = model.predict(
-        df_new_riders["Département"].astype(object)
+        df_new_riders["Département"].astype(str)
     )
 
     map_form_responses_to_licence = {
