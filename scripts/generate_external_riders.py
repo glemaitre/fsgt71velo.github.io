@@ -115,6 +115,7 @@ def generate_markdown_webpage(filename, service_account_info):
     df_licences["Date d'inscription"] = pd.to_datetime(
         df_licences["Date d'inscription"]
     )
+    df_licences = df_licences.dropna(subset=["Date d'inscription"])
 
     with open(filename, "w") as f:
         metadata = """---
