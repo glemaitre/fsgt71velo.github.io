@@ -2,6 +2,7 @@ import json
 import os
 import warnings
 
+import joblib
 import pandas as pd
 from google.oauth2.service_account import Credentials
 from googleapiclient.discovery import build
@@ -95,6 +96,12 @@ def update_external_riders_spreadsheet(service_account_info):
     if df_new_riders.empty:
         print("No new riders to add")
         return
+
+    model = joblib.load("model/department_clearner.joblib")
+    # clean the department column
+    df_new_riders["Département"] = model.predict(
+        df_new_riders["Département"].astype(object)
+    )
 
     map_form_responses_to_licence = {
         "Nom": "Nom",

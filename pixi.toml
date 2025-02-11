@@ -21,7 +21,7 @@ generate_commission_bureau = { cmd = "python scripts/generate_commission_bureau.
 
 # ease some mechanical tasks
 update_external_riders_spreadsheet = { cmd = "python scripts/update_external_riders_spreadsheet.py" }
-
+train_department_cleaner = { cmd = "python scripts/train_department_cleaner.py" }
 # send emails
 send_email_update_double_licences = { cmd = "node scripts/send_email_update_double_licences.js", depends-on = ["generate_listing_update_double_licence"] }
 send_email_update_external_riders = { cmd = "node scripts/send_email_update_external_riders.js", depends-on = ["generate_listing_update_external_riders"] }
@@ -47,3 +47,7 @@ pytest = ">=8.3.4,<9"
 pytest-xdist = ">=3.6.1,<4"
 pre-commit = ">=4.0.1,<5"
 openpyxl = ">=3.1.5,<4"
+sentence-transformers = ">=3.4.1,<4"
+scikit-learn = ">=1.6.1,<2"
+unidecode = ">=1.3.8,<2"
+skrub = ">=0.5.1,<0.6"
