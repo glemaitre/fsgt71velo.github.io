@@ -112,10 +112,12 @@ DEPARTMENT_MAPPING = {
 }
 
 
-def train_department_cleaner():
+def generate_french_postal_mapping():
+    # First part: Generate department references
     reference_texts = []
     codes = []
 
+    # Generate reference variations
     for name, code in DEPARTMENT_MAPPING.items():
         variations = [
             name,
@@ -126,17 +128,25 @@ def train_department_cleaner():
             f"{name} ({code})",
             f"{code}",
             f"département {code}",
-            # Remove diacritics version
             unidecode(name),
-            # Common abbreviations
             f"dept. {code}",
             f"dép. {name}",
         ]
         reference_texts.extend(variations)
         codes.extend([code] * len(variations))
 
-    reference_texts = pd.Series(reference_texts)
-    codes = pd.Series(codes)
+    department_codes = [f"{i:02d}" for i in range(1, 96)] + ["97", "98"]
+    for dept in department_codes:
+        for suffix in range(1000):
+            postal_code = f"{dept}{suffix:03d}"
+            reference_texts.append(postal_code)
+            codes.append(dept)
+
+    return pd.Series(reference_texts).astype(str), pd.Series(codes).astype(str)
+
+
+def train_department_cleaner():
+    reference_texts, codes = generate_french_postal_mapping()
 
     model = make_pipeline(
         TextEncoder(model_name="all-MiniLM-L6-v2", device="cpu"),
