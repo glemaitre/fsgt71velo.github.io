@@ -98,15 +98,20 @@ def generate_markdown_webpage(filename, service_account_info):
     )
     sheets_service = build("sheets", "v4", credentials=credentials)
 
-    result = (
+    values = (
         sheets_service.spreadsheets()
         .values()
         .get(spreadsheetId=SHEET_ID, range=SHEET_NAME)
         .execute()
-    )
+    ).get("values", [])
 
-    values = result.get("values", [])
-    df_licences = pd.DataFrame(values[1:], columns=values[0])
+    headers = values[0]
+    data = values[1:]
+    for row in data:
+        if len(row) < len(headers):
+            row += [""] * (len(headers) - len(row))
+
+    df_licences = pd.DataFrame(data, columns=headers)
     df_licences["Date d'inscription"] = pd.to_datetime(
         df_licences["Date d'inscription"]
     )
