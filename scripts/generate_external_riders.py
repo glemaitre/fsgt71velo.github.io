@@ -39,7 +39,7 @@ def generate_html_table(df_licences):
         "<th rowspan='2' class='align-middle text-center'>Club</th>"
         "<th rowspan='2' class='align-middle text-center'>Département</th>"
         "<th rowspan='2' class='align-middle text-center'>Licence</th>"
-        "<th colspan='4' class='text-center'>Catégories</th>"
+        "<th colspan='5' class='text-center'>Catégories</th>"
         "<th rowspan='2' class='align-middle text-center'>Date d'inscription</th>"
         "</tr>"
         "<tr>"
