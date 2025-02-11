@@ -19,6 +19,9 @@ generate_double_licences = { cmd = "python scripts/generate_double_licences.py" 
 generate_external_riders = { cmd = "python scripts/generate_external_riders.py" }
 generate_commission_bureau = { cmd = "python scripts/generate_commission_bureau.py" }
 
+# ease some mechanical tasks
+update_external_riders_spreadsheet = { cmd = "python scripts/update_external_riders_spreadsheet.py" }
+
 # send emails
 send_email_update_double_licences = { cmd = "node scripts/send_email_update_double_licences.js", depends-on = ["generate_listing_update_double_licence"] }
 send_email_update_external_riders = { cmd = "node scripts/send_email_update_external_riders.js", depends-on = ["generate_listing_update_external_riders"] }
