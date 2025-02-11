@@ -1,4 +1,3 @@
-import io
 import json
 import os
 import warnings
@@ -6,7 +5,6 @@ import warnings
 import pandas as pd
 from google.oauth2.service_account import Credentials
 from googleapiclient.discovery import build
-from googleapiclient.http import MediaIoBaseDownload
 
 SHEET_ID = "1_eD1mIZovYdXcHHxpTpGu7VoZ4bON0EtPdX8RdvsuTo"
 SHEET_NAME = "Feuille 1"
