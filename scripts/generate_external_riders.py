@@ -113,7 +113,10 @@ def generate_markdown_webpage(filename, service_account_info):
 
     df_licences = pd.DataFrame(data, columns=headers)
     df_licences["Date d'inscription"] = pd.to_datetime(
-        df_licences["Date d'inscription"]
+        df_licences["Date d'inscription"], dayfirst=True
+    )
+    df_licences["Date de naissance"] = pd.to_datetime(
+        df_licences["Date de naissance"], dayfirst=True
     )
     df_licences = df_licences.dropna(subset=["Date d'inscription"])
 
