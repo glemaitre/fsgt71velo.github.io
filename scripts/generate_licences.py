@@ -2,6 +2,7 @@ import io
 import json
 import os
 import warnings
+from numbers import Real
 
 import pandas as pd
 from google.oauth2.service_account import Credentials
@@ -57,7 +58,11 @@ def generate_html_table(df_licences):
         html_table += f"<td>{row['Nom'].upper()}</td>"
         html_table += f"<td>{row['Prénom'].capitalize()}</td>"
         html_table += f"<td>{row['Club']}</td>"
-        html_table += f"<td>{row[2025]}</td>"
+        if pd.notna(row["M/D"]):
+            cat = int(row["M/D"]) if isinstance(row["M/D"], Real) else row["M/D"]
+            html_table += f"<td>{cat}</td>"
+        else:
+            html_table += f"<td>{row[2025]}</td>"
         html_table += "</tr>"
     html_table += "</tbody></table>"
     return html_table
