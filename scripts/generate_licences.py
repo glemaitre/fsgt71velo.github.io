@@ -108,6 +108,13 @@ template: page
 
         title = '## <i class="fas fa-id-card"></i> Listing des licenciés FSGT 2025\n\n'
 
+        info = """<div class="alert alert-info small" role="alert">
+<i class="fas fa-info-circle"></i> Cette liste est mise à jour en permanence. En cas de
+problème (licencié non présent), merci de contacter Eric Rabut :
+[eric.rabut@orange.fr](mailto:eric.rabut@orange.fr), **uniquement pour les coureurs
+FSGT71**.
+</div> """
+
         # Search bar
         licences_table = """<div class="mb-3">
     <input type="text"
@@ -119,7 +126,7 @@ template: page
 """
         licences_table += generate_html_table(df_licences)
 
-        f.write(metadata + title + licences_table)
+        f.write(metadata + title + info + licences_table)
 
 
 class MissingServiceAccount(Warning):

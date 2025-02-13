@@ -131,6 +131,13 @@ template: page
 
         title = '## <i class="fas fa-id-card"></i> Listing des coureurs extérieurs\n\n'
 
+        info = """<div class="alert alert-info small" role="alert">
+<i class="fas fa-info-circle"></i> Cette liste est mise à jour en permanence. En cas de
+problème, merci de contacter les reponsables de la saisie des coureurs extérieurs :
+[coureursexterieur@fsgt71velo.fr](mailto:coureursexterieur@fsgt71velo.fr). **Uniquement
+pour les coureurs extérieurs à la FSGT71**.
+</div> """
+
         # Search bar
         licences_table = """<div class="mb-3">
     <input type="text"
@@ -142,7 +149,7 @@ template: page
 """
         licences_table += generate_html_table(df_licences)
 
-        f.write(metadata + title + licences_table)
+        f.write(metadata + title + info + licences_table)
 
 
 class MissingServiceAccount(Warning):
