@@ -132,7 +132,7 @@ template: page
         title = '## <i class="fas fa-id-card"></i> Listing des coureurs extérieurs\n\n'
 
         info = """<div class="alert alert-info small" role="alert">
-<i class="fas fa-info-circle"></i> Cette liste est mise à jour en permanence. En cas de
+<i class="fas fa-info-circle"></i>En cas de
 problème, merci de contacter les reponsables de la saisie des coureurs extérieurs :
 <a href="mailto:coureursexterieur@fsgt71velo.fr">coureursexterieur@fsgt71velo.fr</a>.
 <strong>Uniquement pour les coureurs extérieurs à la FSGT71</strong>.

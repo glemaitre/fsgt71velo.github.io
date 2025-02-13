@@ -109,8 +109,8 @@ template: page
         title = '## <i class="fas fa-id-card"></i> Listing des licenciés FSGT 2025\n\n'
 
         info = """<div class="alert alert-info small" role="alert">
-<i class="fas fa-info-circle"></i> Cette liste est mise à jour en permanence. En cas de
-problème (licencié non présent), merci de contacter Eric Rabut :
+<i class="fas fa-info-circle"></i>En cas de
+problème, merci de contacter Eric Rabut :
 <a href="mailto:eric.rabut@orange.fr">eric.rabut@orange.fr</a>.
 <strong>Uniquement pour les coureurs FSGT71</strong>.
 </div> """
