@@ -111,7 +111,7 @@ template: page
         info = """<div class="alert alert-info small" role="alert">
 <i class="fas fa-info-circle"></i> Cette liste est mise à jour en permanence. En cas de
 problème (licencié non présent), merci de contacter Eric Rabut :
-[eric.rabut@orange.fr](mailto:eric.rabut@orange.fr).
+<a href="mailto:eric.rabut@orange.fr">eric.rabut@orange.fr</a>.
 <strong>Uniquement pour les coureurs FSGT71</strong>.
 </div> """
 

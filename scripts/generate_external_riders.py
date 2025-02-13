@@ -134,7 +134,7 @@ template: page
         info = """<div class="alert alert-info small" role="alert">
 <i class="fas fa-info-circle"></i> Cette liste est mise à jour en permanence. En cas de
 problème, merci de contacter les reponsables de la saisie des coureurs extérieurs :
-[coureursexterieur@fsgt71velo.fr](mailto:coureursexterieur@fsgt71velo.fr).
+<a href="mailto:coureursexterieur@fsgt71velo.fr">coureursexterieur@fsgt71velo.fr</a>.
 <strong>Uniquement pour les coureurs extérieurs à la FSGT71</strong>.
 </div> """
 
