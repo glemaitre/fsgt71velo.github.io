@@ -31,7 +31,7 @@ def _filter_licences(df_licences):
     return df_licences
 
 
-def generate_html_table(df_licences, table_type):
+def generate_html_table(df_licences):
     """Generate the HTML table for the licences.
 
     Parameters
@@ -39,41 +39,95 @@ def generate_html_table(df_licences, table_type):
     df_licences : pd.DataFrame
         The dataframe containing the licences data.
 
-    table_type : {"up", "down"}
-        The type of table to generate.
-
     Returns
     -------
     str
         The HTML table for the licences.
     """
-    table_id = "upDownCategoryTable" if table_type == "up" else "downCategoryTable"
-    html_table = (
-        f'<table class="table" id="{table_id}"><thead><tr>'
+
+    # Add search control
+    html_table = """<div class="mb-3">
+        <div class="row">
+            <div class="col-md-8">
+                <input type="text"
+                    class="form-control"
+                    id="categorySearch"
+                    placeholder="Rechercher un coureur..."
+                    aria-label="Rechercher un coureur">
+            </div>
+        </div>
+    </div>"""
+
+    # Modified legend section with filter controls
+    html_table += """<div class="mb-3">
+    <button class="btn btn-info w-100" type="button" data-bs-toggle="collapse"
+    data-bs-target="#legendCollapse" aria-expanded="false"
+    aria-controls="legendCollapse">
+        <i class="fas fa-filter"></i> Filtrer les changements de catégorie
+        <i class="fas fa-chevron-down"></i>
+    </button>
+    <div class="collapse" id="legendCollapse">
+        <div class="row mt-3">
+            <div class="col-md-6 mx-auto">
+                <div class="card">
+                    <div class="card-header text-center">
+                        <strong>Type de changement de catégorie</strong>
+                    </div>
+                    <div class="card-body">
+                        <div class="d-flex justify-content-around">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="showUpgrades" checked>
+                                <label class="form-check-label" for="showUpgrades">
+                                    <span class="badge category-up">&nbsp;</span> Montées
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="showDowngrades" checked>
+                                <label class="form-check-label" for="showDowngrades">
+                                    <span class="badge category-down">&nbsp;</span> Descentes
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>"""
+
+    # Main table
+    html_table += (
+        '<table class="table" id="categoryTable"><thead><tr>'
         "<th>Nom</th>"
         "<th>Prénom</th>"
         "<th>Club</th>"
         "<th>Numéro Licence</th>"
         "<th>Catégorie originale</th>"
         "<th>Nouvelle catégorie</th>"
+        "<th>Changement</th>"
         "</tr></thead>"
         "<tbody>"
     )
-    for _, row in df_licences.iterrows():
-        # filter based on the up and down type
-        if table_type == "up" and int(row[2025]) < int(row["M/D"]):
-            continue
-        if table_type == "down" and int(row[2025]) > int(row["M/D"]):
-            continue
 
-        html_table += "<tr>"
+    for _, row in df_licences.iterrows():
+        is_up = int(row[2025]) < int(row["M/D"])
+        row_class = "category-up" if is_up else "category-down"
+        arrow = (
+            '<i class="fas fa-arrow-up"></i>'
+            if is_up
+            else '<i class="fas fa-arrow-down"></i>'
+        )
+
+        html_table += f'<tr class="{row_class}">'
         html_table += f"<td>{row['Nom'].upper()}</td>"
         html_table += f"<td>{row['Prénom'].capitalize()}</td>"
         html_table += f"<td>{row['Club']}</td>"
         html_table += f"<td>{row['Numéro']}</td>"
         html_table += f"<td>{int(row[2025])}</td>"
         html_table += f"<td>{int(row['M/D'])}</td>"
+        html_table += f"<td class='text-center'>{arrow}</td>"
         html_table += "</tr>"
+
     html_table += "</tbody></table>"
     return html_table
 
@@ -130,49 +184,15 @@ save_as: up_down_category/index.html
 template: page
 ---
 """
-
         title = (
-            '## <i class="fas fa-id-card"></i> Listing des montées et descentes de '
+            '## <i class="fas fa-id-card"></i> Listing des changements de '
             "catégorie 2025\n\n"
         )
 
-        # Search bar
-        search_bar_up = """<div class="mb-3">
-    <input type="text"
-        class="form-control"
-        id="upSearch"
-        placeholder="Rechercher un coureur..."
-        aria-label="Rechercher un coureur">
-</div>
-"""
-        search_bar_down = """<div class="mb-3">
-    <input type="text"
-        class="form-control"
-        id="downSearch"
-        placeholder="Rechercher un coureur..."
-        aria-label="Rechercher un coureur">
-</div>
-"""
-        # tables
-        up_table = generate_html_table(df_licences, "up")
-        down_table = generate_html_table(df_licences, "down")
+        # Generate single table
+        category_table = generate_html_table(df_licences)
 
-        # sub-title
-        sub_title_up = "### <i class='fas fa-arrow-up'></i> Montées de catégorie\n\n"
-        sub_title_down = (
-            "### <i class='fas fa-arrow-down'></i> Descentes de catégorie\n\n"
-        )
-
-        f.write(
-            metadata
-            + title
-            + sub_title_up
-            + search_bar_up
-            + up_table
-            + sub_title_down
-            + search_bar_down
-            + down_table
-        )
+        f.write(metadata + title + category_table)
 
 
 class MissingServiceAccount(Warning):
