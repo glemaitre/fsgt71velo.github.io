@@ -122,15 +122,25 @@
         <!-- Main Content -->
         <div class="content">
 
-<h2><i class="fas fa-trophy"></i> Résultats des courses 2025</h2>
+<h2><i class="fas fa-id-card"></i> Listing des montées et descentes de catégorie 2025</h2>
+<h3><i class='fas fa-arrow-up'></i> Montées de catégorie</h3>
 <div class="mb-3">
     <input type="text"
-           class="form-control"
-           id="resultsSearch"
-           placeholder="Rechercher un résultat..."
-           aria-label="Rechercher un résultat">
+        class="form-control"
+        id="upSearch"
+        placeholder="Rechercher un coureur..."
+        aria-label="Rechercher un coureur">
 </div>
-<table class="table" id="calendarTable"><thead><tr><th>Dates</th><th>Courses</th><th>Club</th><th>Résultats</th></tr></thead><tbody><tr><td colspan='4' class='text-center'><strong>JANVIER</strong></td></tr><tr><td>Sam. 18 Janv.</td><td>National Cyclo-cross - Perreux (42)</td><td></td><td><div class="d-flex flex-column flex-md-row"><a href="https://www.cnav-club.com/media/uploaded/sites/20390/document/678fd6b30dbec_ClassementduNationaldecyclocross2025sitecnav.pdf" target="_blank" class="btn btn-sm btn-outline-primary mb-1 mb-md-0 me-md-2"><i class="fas fa-file-alt me-1"></i>Toutes catégories</a></div></td></tr><tr><td>Dim. 19 Janv.</td><td>National Cyclo-cross - Perreux (42)</td><td></td><td><div class="d-flex flex-column flex-md-row"><a href="https://www.cnav-club.com/media/uploaded/sites/20390/document/678fd6b30dbec_ClassementduNationaldecyclocross2025sitecnav.pdf" target="_blank" class="btn btn-sm btn-outline-primary mb-1 mb-md-0 me-md-2"><i class="fas fa-file-alt me-1"></i>Toutes catégories</a></div></td></tr></tbody></table>
+<table class="table" id="upDownCategoryTable"><thead><tr><th>Nom</th><th>Prénom</th><th>Club</th><th>Numéro Licence</th><th>Catégorie originale</th><th>Nouvelle catégorie</th></tr></thead><tbody><tr><td>AUBLANC</td><td>Gabin</td><td>Paray Cyclisme</td><td>0467481</td><td>4</td><td>3</td></tr><tr><td>GIBLOT</td><td>Hector(cadet)</td><td>St-Martin en Br</td><td>0171744</td><td>4</td><td>3</td></tr></tbody></table>
+<h3><i class='fas fa-arrow-down'></i> Descentes de catégorie</h3>
+<div class="mb-3">
+    <input type="text"
+        class="form-control"
+        id="downSearch"
+        placeholder="Rechercher un coureur..."
+        aria-label="Rechercher un coureur">
+</div>
+<table class="table" id="downCategoryTable"><thead><tr><th>Nom</th><th>Prénom</th><th>Club</th><th>Numéro Licence</th><th>Catégorie originale</th><th>Nouvelle catégorie</th></tr></thead><tbody></tbody></table>
         </div>
     </div>
     <!--***** Main End *****-->
