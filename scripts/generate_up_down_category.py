@@ -110,7 +110,7 @@ def generate_html_table(df_licences):
     )
 
     for _, row in df_licences.iterrows():
-        is_up = int(row[2025]) < int(row["M/D"])
+        is_up = int(row[2025]) > int(row["M/D"])
         row_class = "category-up" if is_up else "category-down"
         arrow = (
             '<i class="fas fa-arrow-up"></i>'
