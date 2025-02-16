@@ -1,7 +1,8 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Setup search functionality for both tables
-    setupSearch('upSearch', 'upDownCategoryTable');
-    setupSearch('downSearch', 'downCategoryTable');
+    // Setup search functionality for the single table
+    setupSearch('categorySearch', 'categoryTable');
+    // Setup category filters
+    setupCategoryFilters();
 });
 
 function setupSearch(searchInputId, tableId) {
@@ -26,19 +27,44 @@ function setupSearch(searchInputId, tableId) {
     }
 
     searchInput.addEventListener('input', function() {
-        const searchTerm = this.value.toLowerCase();
+        filterTable();
+    });
+}
 
-        Array.from(tableRows).forEach(row => {
-            // Check all cells in the row
-            const cells = Array.from(row.children);
-            const rowText = cells.map(cell => cell.textContent.toLowerCase());
+function setupCategoryFilters() {
+    const showUpgrades = document.getElementById('showUpgrades');
+    const showDowngrades = document.getElementById('showDowngrades');
 
-            // Show row if search term matches any cell content
-            if (rowText.some(text => text.includes(searchTerm))) {
-                row.classList.remove('row-hidden');
-            } else {
-                row.classList.add('row-hidden');
-            }
-        });
+    if (!showUpgrades || !showDowngrades) return;
+
+    showUpgrades.addEventListener('change', filterTable);
+    showDowngrades.addEventListener('change', filterTable);
+}
+
+function filterTable() {
+    const table = document.getElementById('categoryTable');
+    const searchInput = document.getElementById('categorySearch');
+    const showUpgrades = document.getElementById('showUpgrades');
+    const showDowngrades = document.getElementById('showDowngrades');
+
+    if (!table || !searchInput || !showUpgrades || !showDowngrades) return;
+
+    const searchTerm = searchInput.value.toLowerCase();
+    const tableRows = table.getElementsByTagName('tbody')[0].getElementsByTagName('tr');
+
+    Array.from(tableRows).forEach(row => {
+        const cells = Array.from(row.children);
+        const rowText = cells.map(cell => cell.textContent.toLowerCase());
+        const matchesSearch = rowText.some(text => text.includes(searchTerm));
+
+        const isUpgrade = row.classList.contains('category-up');
+        const matchesFilter = (isUpgrade && showUpgrades.checked) ||
+                            (!isUpgrade && showDowngrades.checked);
+
+        if (matchesSearch && matchesFilter) {
+            row.classList.remove('row-hidden');
+        } else {
+            row.classList.add('row-hidden');
+        }
     });
 }

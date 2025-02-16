@@ -593,3 +593,37 @@ body {
   background-color: var(--bg-secondary);
   color: var(--text-secondary);
 }
+
+/* Category styles - Light theme */
+.bg-category-up, .badge.category-up {
+    background-color: rgba(158, 197, 254, 0.6) !important;
+    color: var(--text-primary) !important;
+}
+
+.bg-category-down, .badge.category-down {
+    background-color: rgba(254, 217, 184, 0.6) !important;
+    color: var(--text-primary) !important;
+}
+
+#categoryTable tr.category-up td {
+    background-color: rgba(158, 197, 254, 0.6) !important;
+    color: var(--text-primary) !important;
+}
+
+#categoryTable tr.category-down td {
+    background-color: rgba(254, 217, 184, 0.6) !important;
+    color: var(--text-primary) !important;
+}
+
+/* Dark theme adjustments */
+[data-theme="dark"] #categoryTable tr.category-up td,
+[data-theme="dark"] .badge.category-up {
+    background-color: rgba(158, 197, 254, 0.3) !important;
+    color: var(--text-primary) !important;
+}
+
+[data-theme="dark"] #categoryTable tr.category-down td,
+[data-theme="dark"] .badge.category-down {
+    background-color: rgba(254, 217, 184, 0.3) !important;
+    color: var(--text-primary) !important;
+}
