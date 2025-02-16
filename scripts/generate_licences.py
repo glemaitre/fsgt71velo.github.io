@@ -42,8 +42,6 @@ def generate_html_table(df_licences):
     str
         The HTML table for the licences.
     """
-    df_licences = _filter_licences(df_licences)
-
     html_table = (
         '<table class="table" id="licencesTable"><thead><tr>'
         "<th>Nom</th>"
@@ -96,6 +94,21 @@ def generate_markdown_webpage(filename, service_account_info):
     df_licences = pd.read_excel(
         file_handle, sheet_name=SHEET_NAME, skiprows=2, usecols="B:S"
     )
+    df_licences["Date"] = pd.to_datetime(df_licences["Date"], dayfirst=True)
+    df_licences = _filter_licences(df_licences)
+
+    today = pd.Timestamp.today()
+    if today.month in range(2, 8) and (today.month > 2 or today.day >= 25):
+        # During the race period (from 25/02 to 31/07), we should drop riders whose
+        # registration was performed after a Tuesday.
+        if today.weekday() != 1:  # not a Tuesday
+            # Find last Tuesday by calculating days since last Tuesday
+            days_since_tuesday = (today.weekday() - 1) % 7
+            last_tuesday = today - pd.Timedelta(days=days_since_tuesday)
+            last_tuesday = last_tuesday.replace(
+                hour=0, minute=0, second=0, microsecond=0
+            )
+            df_licences = df_licences[df_licences["Date"] <= last_tuesday]
 
     with open(filename, "w") as f:
         metadata = """---
@@ -109,11 +122,17 @@ template: page
         title = '## <i class="fas fa-id-card"></i> Listing des licenciés FSGT 2025\n\n'
 
         info = """<div class="alert alert-info small" role="alert">
-<i class="fas fa-info-circle"></i>En cas de
+<i class="fas fa-info-circle"></i> En cas de
 problème, merci de contacter Eric Rabut :
 <a href="mailto:eric.rabut@orange.fr">eric.rabut@orange.fr</a>.
 <strong>Uniquement pour les coureurs FSGT71</strong>.
-</div> """
+</div>
+<div class="alert alert-warning small" role="alert">
+<i class="fas fa-exclamation-triangle"></i> Durant la saison cycliste, ce tableau est
+mis à jour tous les <strong>mardis</strong>. Seuls les coureurs apparaissant dans ce
+tableau pourront participer aux courses du week-end.
+</div>
+"""
 
         # Search bar
         licences_table = """<div class="mb-3">
