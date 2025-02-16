@@ -90,6 +90,8 @@ def generate_html_table(df_calendar):
                 course_content = (
                     f'<a href="{row["Affiche"]}" target="_blank">{course_content}</a>'
                 )
+            if pd.notna(row["Annulé"]):
+                course_content = f"<strong>ANNULÉ : </strong><s>{course_content}</s>"
             html_table += (
                 f"<td class='text-center {class_td_type_of_race}'>{course_content}</td>"
             )
