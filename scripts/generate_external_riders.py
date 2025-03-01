@@ -121,6 +121,7 @@ def generate_markdown_webpage(filename, service_account_info):
     df_licences = df_licences.dropna(subset=["Date d'inscription"])
 
     today = pd.Timestamp.today()
+    last_tuesday = None
     if today.month in range(2, 8) and (today.month > 2 or today.day >= 25):
         # During the race period (from 25/02 to 31/07), we should drop riders whose
         # registration was performed after a Tuesday.
@@ -133,6 +134,9 @@ def generate_markdown_webpage(filename, service_account_info):
             )
             df_licences = df_licences[df_licences["Date d'inscription"] <= last_tuesday]
 
+    table_update_date = last_tuesday if last_tuesday else today
+    n_riders = len(df_licences)
+
     with open(filename, "w") as f:
         metadata = """---
 title: Listing coureurs extérieurs
@@ -144,7 +148,7 @@ template: page
 
         title = '## <i class="fas fa-id-card"></i> Listing des coureurs extérieurs\n\n'
 
-        info = """<div class="alert alert-info small" role="alert">
+        info = f"""<div class="alert alert-info small" role="alert">
 <i class="fas fa-info-circle"></i> En cas de
 problème, merci de contacter les reponsables de la saisie des coureurs extérieurs :
 <a href="mailto:coureursexterieur@fsgt71velo.fr">coureursexterieur@fsgt71velo.fr</a>.
@@ -154,6 +158,11 @@ problème, merci de contacter les reponsables de la saisie des coureurs extérie
 <i class="fas fa-exclamation-triangle"></i> Durant la saison cycliste, ce tableau est
 mis à jour tous les <strong>mardis</strong>. Seuls les coureurs apparaissant dans ce
 tableau pourront participer aux courses du week-end.
+</div>
+<div class="alert alert-success small" role="alert">
+<i class="fas fa-calendar-check"></i> Dernière mise à jour le
+<strong>{table_update_date.strftime("%d/%m/%Y")}</strong>. Il y a actuellement
+<strong>{n_riders} coureurs</strong> enregistrés.
 </div>
 """
 
