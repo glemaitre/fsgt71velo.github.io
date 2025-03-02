@@ -135,6 +135,7 @@ def generate_markdown_webpage(filename, service_account_info):
             df_licences = df_licences[df_licences["Date d'inscription"] <= last_tuesday]
 
     table_update_date = last_tuesday if last_tuesday else today
+    table_next_update_date = table_update_date + pd.Timedelta(days=7)
     n_riders = len(df_licences)
 
     with open(filename, "w") as f:
@@ -161,7 +162,10 @@ tableau pourront participer aux courses du week-end.
 </div>
 <div class="alert alert-success small" role="alert">
 <i class="fas fa-calendar-check"></i> Dernière mise à jour le
-<strong>{table_update_date.strftime("%d/%m/%Y")}</strong>. Il y a actuellement
+<strong>{table_update_date.strftime("%d/%m/%Y")}</strong>.
+Prochaine mise à jour le
+<strong>{table_next_update_date.strftime("%d/%m/%Y")}</strong>.
+Il y a actuellement
 <strong>{n_riders} coureurs</strong> enregistrés.
 </div>
 """
