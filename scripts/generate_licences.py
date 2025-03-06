@@ -99,7 +99,7 @@ def generate_markdown_webpage(filename, service_account_info):
 
     today = pd.Timestamp.today()
     last_tuesday = None
-    if today.month in range(2, 8) and (today.month > 2 or today.day >= 25):
+    if today.month in range(3, 8) and (today.month > 3 or today.day >= 7):
         # During the race period (from 25/02 to 31/07), we should drop riders whose
         # registration was performed after a Tuesday.
         if today.weekday() != 1:  # not a Tuesday
