@@ -16,6 +16,16 @@ SCOPES = [
 SHEET_ID = "1PEstKqoGVa7FgkAcg090mhRVr3Hs2s9G"
 SHEET_NAME = "Licenciés FSGT"
 
+category_mapping = {
+    "1": 1,
+    "2": 2,
+    "3": 3,
+    "4": 4,
+    "5": 5,
+    "6": 6,
+    "F": 7,
+}
+
 
 def _filter_licences(df_licences):
     """Filter only the interested columns and rows."""
@@ -110,7 +120,17 @@ def generate_html_table(df_licences):
     )
 
     for _, row in df_licences.iterrows():
-        is_up = int(row[2025]) > int(row["M/D"])
+        try:
+            category_original = str(int(row[2025]))
+        except ValueError:
+            category_original = str(row[2025])
+
+        try:
+            category_new = str(int(row["M/D"]))
+        except ValueError:
+            category_new = str(row["M/D"])
+
+        is_up = category_mapping[category_original] > category_mapping[category_new]
         row_class = "category-up" if is_up else "category-down"
         arrow = (
             '<i class="fas fa-arrow-up"></i>'
@@ -123,8 +143,8 @@ def generate_html_table(df_licences):
         html_table += f"<td>{row['Prénom'].capitalize()}</td>"
         html_table += f"<td>{row['Club']}</td>"
         html_table += f"<td>{row['Numéro']}</td>"
-        html_table += f"<td>{int(row[2025])}</td>"
-        html_table += f"<td>{int(row['M/D'])}</td>"
+        html_table += f"<td>{category_original}</td>"
+        html_table += f"<td>{category_new}</td>"
         html_table += f"<td class='text-center'>{arrow}</td>"
         html_table += "</tr>"
 
