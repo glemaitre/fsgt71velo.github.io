@@ -124,14 +124,14 @@ def generate_markdown_webpage(filename, service_account_info):
     last_tuesday = None
     if today.month in range(3, 8):
         # Special handling for the first week of March
-        if today.month == 3 and today.day >= 6 and today.day < 12:
+        if today.month == 3 and today.day >= 6 and today.day < 11:
             # Between March 6-11, use March 6th as the cutoff date
             last_tuesday = pd.Timestamp(today.year, 3, 6)
             last_tuesday = last_tuesday.replace(
                 hour=0, minute=0, second=0, microsecond=0
             )
         # Normal Tuesday schedule for rest of the season
-        elif today.month > 3 or today.day >= 12:
+        elif today.month > 3 or today.day >= 11:
             if today.weekday() != 1:  # not a Tuesday
                 # Find last Tuesday by calculating days since last Tuesday
                 days_since_tuesday = (today.weekday() - 1) % 7
