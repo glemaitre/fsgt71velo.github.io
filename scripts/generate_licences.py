@@ -116,6 +116,8 @@ def generate_markdown_webpage(filename, service_account_info):
                 last_tuesday = last_tuesday.replace(
                     hour=0, minute=0, second=0, microsecond=0
                 )
+            else:
+                last_tuesday = today
             df_licences = df_licences[df_licences["Date"] <= last_tuesday]
 
     table_update_date = last_tuesday if last_tuesday else today
