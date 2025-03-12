@@ -144,8 +144,11 @@ def generate_markdown_webpage(filename, service_account_info):
             df_licences = df_licences[df_licences["Date d'inscription"] <= last_tuesday]
 
     table_update_date = last_tuesday if last_tuesday else today
-    # Calculate next Tuesday
-    days_until_next_tuesday = (1 - table_update_date.weekday() + 7) % 7
+    # Calculate next Tuesday - always add 7 days if we're on a Tuesday
+    if table_update_date.weekday() == 1:
+        days_until_next_tuesday = 7
+    else:
+        days_until_next_tuesday = (1 - table_update_date.weekday() + 7) % 7
     table_next_update_date = table_update_date + pd.Timedelta(
         days=days_until_next_tuesday
     )
