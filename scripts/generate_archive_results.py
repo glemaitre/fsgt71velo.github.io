@@ -19,11 +19,17 @@ MONTH_TRANSLATION = {
     "December": "Décembre",
 }
 
-SHEET_ID = "11UB3aazn4lnCTXpeVnchWmhf0Go5x9yl8dmcbOn_ysg"
-SHEET_CALENDAR = "calendar"
+# Calendar from 2024 to 2020
+SHEETS_ID = {
+    "2024": "14m1CGSv-_TaQXwQWf-8foIShbc5NdhMppZ8pOD513qY",
+    "2023": "1pY9Xb3aYTNTPrzxhAsI43nQceGJYNYdCpqr1oINb2-g",
+    "2022": "11UB3aazn4lnCTXpeVnchWmhf0Go5x9yl8dmcbOn_ysg",
+    "2021": "10DasdhRIGPElirsxeJmtVo41nO71mAKJ_8P0AqxE0ko",
+    "2020": "1hcuMCqaD-Qu6jEAbMgDYx-YOfOtrrA5QSbZij_CQCFY",
+}
 URL_CALENDAR = (
-    f"https://docs.google.com/spreadsheets/d/{SHEET_ID}/gviz/"
-    f"tq?tqx=out:csv&sheet={SHEET_CALENDAR}"
+    "https://docs.google.com/spreadsheets/d/{SHEET_ID}/gviz/"
+    "tq?tqx=out:csv&sheet=calendar"
 )
 
 
@@ -104,7 +110,7 @@ def generate_html_table(df_calendar):
     return html_table
 
 
-def generate_markdown_webpage(filename):
+def generate_markdown_webpage(filename, year, sheet_id):
     """Generate the markdown webpage for the results.
 
     Parameters
@@ -113,15 +119,15 @@ def generate_markdown_webpage(filename):
         The filename to write the markdown webpage to.
     """
     with open(filename, "w") as f:
-        metadata = """---
-title: Résultats des courses FSGT 71 - 2024
-url: resultats/2024.html
-save_as: resultats/2024.html
+        metadata = f"""---
+title: Résultats des courses FSGT 71 - {year}
+url: resultats/{year}.html
+save_as: resultats/{year}.html
 template: page
 ---
 
 """
-        title = '## <i class="fas fa-trophy"></i> Résultats des courses 2024\n\n'
+        title = f'## <i class="fas fa-trophy"></i> Résultats des courses {year}\n\n'
 
         # Search bar
         results_table = """<div class="mb-3">
@@ -132,7 +138,9 @@ template: page
            aria-label="Rechercher un résultat">
 </div>
 """
-        df_calendar = pd.read_csv(URL_CALENDAR, dayfirst=True, parse_dates=["Date"])
+        url_calendar = URL_CALENDAR.format(SHEET_ID=sheet_id)
+        print(url_calendar)
+        df_calendar = pd.read_csv(url_calendar, dayfirst=True, parse_dates=["Date"])
         results_table += generate_html_table(df_calendar)
 
         f.write(metadata + title + results_table)
@@ -140,4 +148,5 @@ template: page
 
 if __name__ == "__main__":
     """Entry point for the pixi task."""
-    generate_markdown_webpage("content/pages/results2024.md")
+    for year, sheet_id in SHEETS_ID.items():
+        generate_markdown_webpage(f"content/pages/results{year}.md", year, sheet_id)

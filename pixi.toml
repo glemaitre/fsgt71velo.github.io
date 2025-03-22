@@ -19,7 +19,7 @@ generate_double_licences = { cmd = "python scripts/generate_double_licences.py" 
 generate_external_riders = { cmd = "python scripts/generate_external_riders.py" }
 generate_commission_bureau = { cmd = "python scripts/generate_commission_bureau.py" }
 generate_up_down_category = { cmd = "python scripts/generate_up_down_category.py" }
-generate_archive_2024 = { cmd = "python scripts/generate_archive_2024.py" }
+generate_archive_results = { cmd = "python scripts/generate_archive_results.py" }
 
 # ease some mechanical tasks
 update_external_riders_spreadsheet = { cmd = "python scripts/update_external_riders_spreadsheet.py" }
@@ -30,7 +30,7 @@ send_email_update_external_riders = { cmd = "node scripts/send_email_update_exte
 
 # build the static website
 clean = { cmd = "rm -rf output" }
-build = { cmd = "pelican content -t theme/fsgt --verbose", depends-on = ["clean", "generate_club_listing", "generate_calendar", "generate_report", "generate_results", "generate_licences", "generate_double_licences", "generate_external_riders", "generate_commission_bureau", "generate_up_down_category", "generate_archive_2024"] }
+build = { cmd = "pelican content -t theme/fsgt --verbose", depends-on = ["clean", "generate_club_listing", "generate_calendar", "generate_report", "generate_results", "generate_licences", "generate_double_licences", "generate_external_riders", "generate_commission_bureau", "generate_up_down_category", "generate_archive_results"] }
 preview = { cmd = "pelican --listen", depends-on = ["build"]}
 
 # lint the code
