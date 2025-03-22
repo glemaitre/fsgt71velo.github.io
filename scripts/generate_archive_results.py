@@ -139,7 +139,6 @@ template: page
 </div>
 """
         url_calendar = URL_CALENDAR.format(SHEET_ID=sheet_id)
-        print(url_calendar)
         df_calendar = pd.read_csv(url_calendar, dayfirst=True, parse_dates=["Date"])
         results_table += generate_html_table(df_calendar)
 

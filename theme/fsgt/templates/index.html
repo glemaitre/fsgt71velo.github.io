@@ -7,6 +7,7 @@
 {% block content %}
 {{ super() }}
 
+{% if output_file == 'index.html' %}
 <div class="container mt-4">
     <div class="row">
         <div class="col-12 mb-4">
@@ -75,11 +76,13 @@
         </div>
     </div>
 </div>
+{% endif %}
 
 <div class="container mt-4">
     <h2 class="mb-5"><i class="fas fa-newspaper"></i> Actualités</h2>
+
     <div class="row">
-        {% for article in articles %}
+        {% for article in articles_page.object_list %}
             {% if article.category and article.category.name == 'news' %}
                 <div class="col-12 mb-4">
                     <div class="card">
@@ -95,6 +98,54 @@
             {% endif %}
         {% endfor %}
     </div>
+
+    {% if articles_page.has_other_pages() %}
+    <div class="row">
+        <div class="col-12">
+            <nav aria-label="Pagination des actualités">
+                <ul class="pagination justify-content-center">
+                    {% if articles_page.has_previous() %}
+                    <li class="page-item">
+                        <a class="page-link" href="{{ SITEURL }}/{{ articles_previous_page.url }}" aria-label="Précédent">
+                            <span aria-hidden="true">&laquo;</span>
+                            <span class="sr-only">Précédent</span>
+                        </a>
+                    </li>
+                    {% else %}
+                    <li class="page-item disabled">
+                        <span class="page-link" aria-hidden="true">&laquo;</span>
+                    </li>
+                    {% endif %}
+
+                    {% for page_num in range(1, articles_paginator.num_pages + 1) %}
+                        {% if page_num == articles_page.number %}
+                        <li class="page-item active">
+                            <span class="page-link">{{ page_num }}</span>
+                        </li>
+                        {% else %}
+                        <li class="page-item">
+                            <a class="page-link" href="{{ SITEURL }}/{{ articles_paginator.page(page_num).url }}">{{ page_num }}</a>
+                        </li>
+                        {% endif %}
+                    {% endfor %}
+
+                    {% if articles_page.has_next() %}
+                    <li class="page-item">
+                        <a class="page-link" href="{{ SITEURL }}/{{ articles_next_page.url }}" aria-label="Suivant">
+                            <span aria-hidden="true">&raquo;</span>
+                            <span class="sr-only">Suivant</span>
+                        </a>
+                    </li>
+                    {% else %}
+                    <li class="page-item disabled">
+                        <span class="page-link" aria-hidden="true">&raquo;</span>
+                    </li>
+                    {% endif %}
+                </ul>
+            </nav>
+        </div>
+    </div>
+    {% endif %}
 </div>
 {% endblock %}
 
