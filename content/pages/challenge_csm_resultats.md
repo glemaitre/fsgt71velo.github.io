@@ -29,7 +29,7 @@ template: page
       <td>6 avril 2025</td>
       <td>Prix des Artisans et Commerçants de Saint-Martin-en-Bresse</td>
       <td>Course en ligne</td>
-      <td><span class="badge bg-secondary">À venir</span></td>
+      <td><a href="https://drive.google.com/file/d/1V8OYrxuXogiVi1m6_MbH6hClS12snUZu/view" class="btn btn-primary btn-sm" target="_blank">Résultats</a></td>
     </tr>
     <tr>
       <td>2</td>
@@ -57,6 +57,6 @@ template: page
 
 ### Classement général
 
-<div class="alert alert-warning" role="alert">
-  <i class="fas fa-exclamation-triangle me-2"></i> Le classement général sera disponible après la première épreuve.
+<div class="embed-responsive embed-responsive-16by9 mb-4">
+  <iframe class="embed-responsive-item" src="https://drive.google.com/file/d/1z2R_XjTzHxLr8ESQ1YeUPX8f1NoMmduB/preview" width="100%" height="600" frameborder="0" allowfullscreen></iframe>
 </div>
