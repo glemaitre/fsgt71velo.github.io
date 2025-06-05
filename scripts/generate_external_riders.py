@@ -35,7 +35,7 @@ def generate_html_table(df_licences):
         "<tr>"
         "<th rowspan='2' class='align-middle text-center'>Nom</th>"
         "<th rowspan='2' class='align-middle text-center'>Prénom</th>"
-        "<th rowspan='2' class='align-middle text-center'>Date de naissance</th>"
+        # "<th rowspan='2' class='align-middle text-center'>Date de naissance</th>"
         "<th rowspan='2' class='align-middle text-center'>Club</th>"
         "<th rowspan='2' class='align-middle text-center'>Département</th>"
         "<th rowspan='2' class='align-middle text-center'>Licence</th>"
@@ -55,8 +55,8 @@ def generate_html_table(df_licences):
         html_table += "<tr>"
         html_table += f"<td class='text-center'>{row['Nom'].upper()}</td>"
         html_table += f"<td class='text-center'>{row['Prénom'].capitalize()}</td>"
-        birth_date = row["Date de naissance"].strftime("%d/%m/%Y")
-        html_table += f"<td class='text-center'>{birth_date}</td>"
+        # birth_date = row["Date de naissance"].strftime("%d/%m/%Y")
+        # html_table += f"<td class='text-center'>{birth_date}</td>"
         html_table += f"<td class='text-center'>{row['Club']}</td>"
         html_table += f"<td class='text-center'>{row['Département']}</td>"
         html_table += f"<td class='text-center'>{row['Numéro de licence FSGT']}</td>"
