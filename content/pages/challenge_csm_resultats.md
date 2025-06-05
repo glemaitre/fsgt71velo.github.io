@@ -36,7 +36,7 @@ template: page
       <td>29 mai 2025</td>
       <td>Prix du Breuil</td>
       <td>Course en ligne</td>
-      <td><span class="badge bg-secondary">À venir</span></td>
+      <td><a href="https://drive.google.com/file/d/1YC-V83-qJEBEbxihXElxC91t5T0rqggw/view" class="btn btn-primary btn-sm" target="_blank">Résultats</a></td>
     </tr>
     <tr>
       <td>3</td>
