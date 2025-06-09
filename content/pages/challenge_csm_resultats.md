@@ -40,17 +40,10 @@ template: page
     </tr>
     <tr>
       <td>3</td>
-      <td>7 juin 2025 (matin)</td>
-      <td>Contre-la-montre de Toutenant</td>
-      <td>Contre-la-montre individuel</td>
-      <td><span class="badge bg-secondary">À venir</span></td>
-    </tr>
-    <tr>
-      <td>4</td>
-      <td>7 juin 2025 (après-midi)</td>
-      <td>Course en ligne de Toutenant</td>
-      <td>Course en ligne</td>
-      <td><span class="badge bg-secondary">À venir</span></td>
+      <td>7 juin 2025</td>
+      <td>Prix de Toutenant</td>
+      <td>Contre-la-montre individuel et course en ligne</td>
+      <td><a href="https://drive.google.com/file/d/1x5cBS3iNPp6MUM7Y_QZtWv4wGhoLEYfm/view" class="btn btn-primary btn-sm" target="_blank">Résultats</a></td>
     </tr>
   </tbody>
 </table>
@@ -58,5 +51,5 @@ template: page
 ### Classement général
 
 <div class="embed-responsive embed-responsive-16by9 mb-4">
-  <iframe class="embed-responsive-item" src="https://drive.google.com/file/d/1oelaNelSRAqnxcbp4ps-oXEZ7JVRMO9j/preview" width="100%" height="600" frameborder="0" allowfullscreen></iframe>
+  <iframe class="embed-responsive-item" src="https://drive.google.com/file/d/1qWXvEY6IRbhefJMmDIvDnxuriDLGzkyt/preview" width="100%" height="600" frameborder="0" allowfullscreen></iframe>
 </div>
