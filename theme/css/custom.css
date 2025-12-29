@@ -503,6 +503,9 @@ body {
 .card-header {
   background-color: var(--bg-secondary);
   color: var(--text-primary);
+}
+
+.card-title {
   font-size: 2rem;
 }
 
