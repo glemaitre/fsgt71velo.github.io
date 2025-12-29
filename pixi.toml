@@ -1,4 +1,4 @@
-[project]
+[workspace]
 authors = ["Guillaume Lemaitre <guillaume@probabl.ai>", "Cedric Lemaitre <c.lemaitre58@gmail.com>"]
 channels = ["conda-forge"]
 description = "Official website of the the FSGT 71 - Activités Cyclistes"

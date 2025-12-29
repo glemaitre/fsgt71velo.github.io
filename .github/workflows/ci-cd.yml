@@ -13,16 +13,16 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - name: Install French locale
         run: |
           sudo apt-get update
           sudo apt-get install -qq language-pack-fr
           sudo locale-gen fr_FR.UTF-8
           sudo dpkg-reconfigure locales
-      - uses: prefix-dev/setup-pixi@v0.8.8
+      - uses: prefix-dev/setup-pixi@v0.9.3
         with:
-          pixi-version: v0.48.0
+          pixi-version: v0.59.0
           frozen: true
       - name: run tests
         run: pixi run tests
@@ -45,16 +45,16 @@ jobs:
     env:
       GHA_SITE_URL: "https://glemaitre.github.io/fsgt71velo.github.io"
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - name: Install French locale
         run: |
           sudo apt-get update
           sudo apt-get install -qq language-pack-fr
           sudo locale-gen fr_FR.UTF-8
           sudo dpkg-reconfigure locales
-      - uses: prefix-dev/setup-pixi@v0.8.8
+      - uses: prefix-dev/setup-pixi@v0.9.3
         with:
-          pixi-version: v0.48.0
+          pixi-version: v0.59.0
           frozen: true
       - name: build website
         run: pixi run build

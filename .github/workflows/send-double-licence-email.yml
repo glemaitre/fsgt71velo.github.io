@@ -9,7 +9,7 @@ jobs:
   send-email:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
@@ -17,9 +17,9 @@ jobs:
           cache: 'npm'
       - name: Install dependencies
         run: npm install
-      - uses: prefix-dev/setup-pixi@v0.8.8
+      - uses: prefix-dev/setup-pixi@v0.9.3
         with:
-          pixi-version: v0.48.0
+          pixi-version: v0.59.0
           frozen: true
       - name: Generate listing and send email
         run: pixi run send_email_update_double_licences
