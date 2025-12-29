@@ -19,7 +19,7 @@ MONTH_TRANSLATION = {
     "December": "Décembre",
 }
 
-SHEET_ID = "1SO2i9TXqQL9wSFTjE-GLRONtXmXfvcQ5kYckTm6fY4M"
+SHEET_ID = "1Nrau-4Qwbp91pQ8fSi7HCf-OsL67-b2JcKIvnimh2F8"
 SHEET_CALENDAR = "calendar"
 URL_CALENDAR = (
     f"https://docs.google.com/spreadsheets/d/{SHEET_ID}/gviz/"
@@ -115,7 +115,10 @@ template: page
 ---
 
 """
-        title = '## <i class="fas fa-trophy"></i> Résultats des courses 2025\n\n'
+        title = (
+            f'## <i class="fas fa-trophy"></i> Résultats des courses '
+            f"{pd.Timestamp.today().year}\n\n"
+        )
 
         # Search bar
         results_table = """<div class="mb-3">
