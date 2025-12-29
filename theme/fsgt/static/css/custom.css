@@ -688,3 +688,50 @@ body {
     background-color: rgba(254, 217, 184, 0.3) !important;
     color: var(--text-primary) !important;
 }
+
+/* Pagination styles */
+.pagination {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.page-link {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    border-color: var(--border-color);
+    padding: 0.5rem 0.75rem;
+}
+
+.page-link:hover {
+    background-color: var(--hover-bg);
+    color: var(--text-primary);
+    border-color: var(--border-color);
+}
+
+.page-link:focus {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    border-color: var(--secondary-accent);
+    box-shadow: 0 0 0 0.2rem rgba(69, 123, 157, 0.25);
+}
+
+.page-item.active .page-link {
+    background-color: var(--secondary-accent);
+    border-color: var(--secondary-accent);
+    color: white;
+}
+
+.page-item.active .page-link:hover,
+.page-item.active .page-link:focus {
+    background-color: var(--primary-accent);
+    border-color: var(--primary-accent);
+    color: white;
+}
+
+.page-item.disabled .page-link {
+    background-color: var(--bg-secondary);
+    color: var(--text-secondary);
+    border-color: var(--border-color);
+    cursor: not-allowed;
+    opacity: 0.6;
+}
