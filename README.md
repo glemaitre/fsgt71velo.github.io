@@ -96,3 +96,12 @@ effectuées pour maintenir le site web à jour :
 - **Mise à jour des tests** : Il faut également mettre à jour le fichier de test
   `scripts/tests/test_generate_calendar.py` pour refléter le nouvel identifiant du
   calendrier dans l'assertion de la fonction `test_calendar_google_sheet()`.
+
+- **Mise à jour du script de génération des résultats** : Il faut éditer le script
+  `scripts/generate_results.py` pour mettre à jour la variable `SHEET_ID` avec le
+  nouvel identifiant du calendrier Google Sheet de la nouvelle saison. Cela permettra de
+  générer la page des résultats avec les données de la nouvelle année.
+
+- **Mise à jour des tests des résultats** : Il faut également mettre à jour le fichier
+  de test `scripts/tests/test_generate_results.py` pour refléter le nouvel identifiant
+  du calendrier dans l'assertion de la fonction `test_calendar_google_sheet()`.
