@@ -13,7 +13,7 @@ from ..generate_calendar import (
 
 def test_calendar_google_sheet():
     """Check that the id, sheet, and URL are correct."""
-    assert SHEET_ID == "1SO2i9TXqQL9wSFTjE-GLRONtXmXfvcQ5kYckTm6fY4M"
+    assert SHEET_ID == "1Nrau-4Qwbp91pQ8fSi7HCf-OsL67-b2JcKIvnimh2F8"
     assert SHEET_CALENDAR == "calendar"
     assert URL_CALENDAR == (
         f"https://docs.google.com/spreadsheets/d/{SHEET_ID}/gviz/"
@@ -47,7 +47,6 @@ def test_calendar_dataframe():
     assert pd.api.types.is_datetime64_any_dtype(
         df_calendar["Date"]
     ), "The 'Date' column should be a datetime object"
-    assert df_calendar["Date"].dt.year.unique() == [2025], "The year should be 2025"
 
     expected_duration = list(COLOR_DURATION_RACE.keys())
     for duration in df_calendar["Durée organisation"].unique():

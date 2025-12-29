@@ -70,3 +70,29 @@ et en cliquant sur le bouton "Run workflow" comme montré ci-dessous :
 - Logo de Saone-et-Loire - Attributions: created by Ary Prasetyo from Noun Project -
   [Source](https://thenounproject.com/icon/saone-et-loire-department-map-5144602/)
 - Logo France - [Source](https://www.svgrepo.com/svg/480941/france-vector)
+
+## Mise à jour du site web pour une nouvelle saison
+
+Lors de la transition vers une nouvelle saison, certaines modifications doivent être
+effectuées pour maintenir le site web à jour :
+
+### Archivage des résultats et mise à du calendrier
+
+- **Mise à jour des résultats archivés** : Le script
+  `scripts/generate_archive_results.py` a été modifié pour ajouter l'identifiant du
+  calendrier de l'année précédente dans le dictionnaire `SHEETS_ID`. Cela permet de
+  générer automatiquement les pages de résultats pour les années précédentes.
+
+- **Création du nouveau calendrier** : Il est nécessaire de créer un nouveau dossier
+  "20xx" dans le dossier "Calendriers" sur Google Drive et d'y copier le calendrier de
+  l'année précédente pour démarrer la nouvelle saison. Il faut que le calendrier soit
+  partagé à tout le monde en "Viewer".
+
+- **Mise à jour du script de génération du calendrier** : Il faut éditer le script
+  `scripts/generate_calendar.py` pour mettre à jour la variable `SHEET_ID` avec le
+  nouvel identifiant du calendrier Google Sheet de la nouvelle saison. Cela permettra de
+  générer la page du calendrier avec les données de la nouvelle année.
+
+- **Mise à jour des tests** : Il faut également mettre à jour le fichier de test
+  `scripts/tests/test_generate_calendar.py` pour refléter le nouvel identifiant du
+  calendrier dans l'assertion de la fonction `test_calendar_google_sheet()`.

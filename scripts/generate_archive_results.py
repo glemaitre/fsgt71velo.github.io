@@ -21,6 +21,7 @@ MONTH_TRANSLATION = {
 
 # Calendar from 2024 to 2020
 SHEETS_ID = {
+    "2025": "1SO2i9TXqQL9wSFTjE-GLRONtXmXfvcQ5kYckTm6fY4M",
     "2024": "14m1CGSv-_TaQXwQWf-8foIShbc5NdhMppZ8pOD513qY",
     "2023": "1pY9Xb3aYTNTPrzxhAsI43nQceGJYNYdCpqr1oINb2-g",
     "2022": "11UB3aazn4lnCTXpeVnchWmhf0Go5x9yl8dmcbOn_ysg",
