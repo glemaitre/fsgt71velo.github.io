@@ -90,20 +90,87 @@ body {
 .content h2,
 .content h3,
 .content h4,
+.content h5,
+.content h6,
 .card-title {
   color: var(--primary-accent);
 }
 
+.content h1 {
+  margin-top: 2rem;
+  margin-bottom: 1.5rem !important;
+}
+
 .content h2 {
-  margin-bottom: 3rem !important;
+  margin-top: 2.5rem;
+  margin-bottom: 1.5rem !important;
 }
 
 .content h3 {
-  margin-bottom: 2rem !important;
+  margin-top: 2rem;
+  margin-bottom: 1.25rem !important;
 }
 
 .content h4 {
-  margin-bottom: 1.5rem !important;
+  margin-top: 1.5rem;
+  margin-bottom: 1rem !important;
+}
+
+.content h5 {
+  margin-top: 1.25rem;
+  margin-bottom: 0.75rem !important;
+}
+
+.content h6 {
+  margin-top: 1rem;
+  margin-bottom: 0.5rem !important;
+}
+
+/* Paragraph spacing */
+.content p {
+  margin-bottom: 1rem;
+  line-height: 1.6;
+}
+
+/* List spacing */
+.content ul,
+.content ol {
+  margin-top: 0.75rem;
+  margin-bottom: 1rem;
+  padding-left: 2rem;
+}
+
+.content li {
+  margin-bottom: 0.5rem;
+  line-height: 1.6;
+}
+
+/* Spacing between paragraphs and lists */
+.content p + ul,
+.content p + ol {
+  margin-top: 0.5rem;
+}
+
+/* Spacing between lists and paragraphs */
+.content ul + p,
+.content ol + p {
+  margin-top: 1rem;
+}
+
+/* Spacing between headings and paragraphs */
+.content h1 + p,
+.content h2 + p,
+.content h3 + p,
+.content h4 + p {
+  margin-top: 0.5rem;
+}
+
+/* Horizontal rule spacing */
+.content hr {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  border: none;
+  border-top: 1px solid var(--border-color);
 }
 
 .content table {
@@ -250,18 +317,7 @@ body {
   background-color: var(--hover-bg);
 }
 
-/* Typography */
-.content h2 {
-  margin-bottom: 3rem !important;
-}
-
-.content h3 {
-  margin-bottom: 2rem !important;
-}
-
-.content h4 {
-  margin-bottom: 1.5rem !important;
-}
+/* Typography - heading styles are defined above */
 
 /* Contact info table */
 .contact-info-table {
