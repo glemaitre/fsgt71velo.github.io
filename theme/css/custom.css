@@ -135,7 +135,8 @@ body {
   margin-top: 0.5rem;
 }
 
-.content fas-title {
+.content h2 .fas-title,
+.content h2 i.fas-title {
   margin-right: 0.2em;
 }
 
