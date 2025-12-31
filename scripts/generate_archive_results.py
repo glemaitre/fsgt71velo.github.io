@@ -19,7 +19,7 @@ MONTH_TRANSLATION = {
     "December": "Décembre",
 }
 
-# Calendar from 2024 to 2020
+# Calendar from 2025 to 2020
 SHEETS_ID = {
     "2025": "1SO2i9TXqQL9wSFTjE-GLRONtXmXfvcQ5kYckTm6fY4M",
     "2024": "14m1CGSv-_TaQXwQWf-8foIShbc5NdhMppZ8pOD513qY",

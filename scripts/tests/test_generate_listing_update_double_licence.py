@@ -166,7 +166,7 @@ def mock_values_mixed_data():
 
 def test_spreadsheet_id():
     """Check that we have the expected spreadsheet id."""
-    assert SPREADSHEET_ID == "1lZwxoMeF2gBuFLgjoaBREPl8YFESYwJLV5o1JEjKHKI"
+    assert SPREADSHEET_ID == "1FlomK7GWZKoaBRg4CgVOHFJM0wqORzN6_e6k5x4LZh8"
 
 
 @pytest.mark.parametrize(

@@ -8,7 +8,7 @@ from google.oauth2.service_account import Credentials
 from googleapiclient.discovery import build
 
 SCOPES = ["https://www.googleapis.com/auth/spreadsheets.readonly"]
-SPREADSHEET_ID = "1lZwxoMeF2gBuFLgjoaBREPl8YFESYwJLV5o1JEjKHKI"
+SPREADSHEET_ID = "1FlomK7GWZKoaBRg4CgVOHFJM0wqORzN6_e6k5x4LZh8"
 RANGE_NAME = "Form Responses 1!A:N"
 
 

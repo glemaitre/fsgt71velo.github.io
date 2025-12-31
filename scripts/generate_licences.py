@@ -13,7 +13,7 @@ SCOPES = [
     "https://www.googleapis.com/auth/drive.readonly",
     "https://www.googleapis.com/auth/spreadsheets.readonly",
 ]
-SHEET_ID = "1PEstKqoGVa7FgkAcg090mhRVr3Hs2s9G"
+SHEET_ID = "166fwY5sN_MFPDloIjEKg1aR7ZW72kKc9"
 SHEET_NAME = "Licenciés FSGT"
 
 
@@ -24,8 +24,8 @@ def _filter_licences(df_licences):
     df_licences = df_licences.copy().dropna(subset=["Nom"])
     # filter licences validated and with an affected category
     mask_date_licence = df_licences["Date"].notna()
-    mask_category_2025 = df_licences[2025].notna()
-    df_licences = df_licences[mask_date_licence & mask_category_2025]
+    mask_category_2026 = df_licences[2026].notna()
+    df_licences = df_licences[mask_date_licence & mask_category_2026]
     return df_licences
 
 
@@ -60,7 +60,7 @@ def generate_html_table(df_licences):
             cat = int(row["M/D"]) if isinstance(row["M/D"], Real) else row["M/D"]
             html_table += f"<td>{cat}</td>"
         else:
-            html_table += f"<td>{row[2025]}</td>"
+            html_table += f"<td>{row[2026]}</td>"
         html_table += "</tr>"
     html_table += "</tbody></table>"
     return html_table
@@ -132,15 +132,15 @@ def generate_markdown_webpage(filename, service_account_info):
     n_riders = len(df_licences)
 
     with open(filename, "w") as f:
-        metadata = """---
-title: Listing coureurs FSGT 2025
+        metadata = f"""---
+title: Listing coureurs FSGT {pd.Timestamp.today().year}
 url: licences_fsgt/index.html
 save_as: licences_fsgt/index.html
 template: page
 ---
 """
 
-        title = '## <i class="fas fa-id-card fas-title"></i> Listing des licenciés FSGT 2025\n\n<div class="h2-spacer"></div>\n\n'
+        title = f'## <i class="fas fa-id-card fas-title"></i> Listing des licenciés FSGT {pd.Timestamp.today().year}\n\n<div class="h2-spacer"></div>\n\n'
 
         info = f"""<div class="alert alert-info small" role="alert">
 <i class="fas fa-info-circle"></i> En cas de

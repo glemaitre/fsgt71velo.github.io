@@ -13,7 +13,7 @@ SCOPES = [
     "https://www.googleapis.com/auth/drive.readonly",
     "https://www.googleapis.com/auth/spreadsheets.readonly",
 ]
-SHEET_ID = "1PEstKqoGVa7FgkAcg090mhRVr3Hs2s9G"
+SHEET_ID = "166fwY5sN_MFPDloIjEKg1aR7ZW72kKc9"
 SHEET_NAME = "Licenciés FSGT"
 
 category_mapping = {
@@ -34,8 +34,8 @@ def _filter_licences(df_licences):
     df_licences = df_licences.copy().dropna(subset=["Nom"])
     # filter licences validated and with an affected category
     mask_date_licence = df_licences["Date"].notna()
-    mask_category_2025 = df_licences[2025].notna()
-    df_licences = df_licences[mask_date_licence & mask_category_2025]
+    mask_category_2026 = df_licences[2026].notna()
+    df_licences = df_licences[mask_date_licence & mask_category_2026]
     mask_up_down_category = df_licences["M/D"].notna()
     df_licences = df_licences[mask_up_down_category]
     return df_licences
@@ -121,9 +121,9 @@ def generate_html_table(df_licences):
 
     for _, row in df_licences.iterrows():
         try:
-            category_original = str(int(row[2025]))
+            category_original = str(int(row[2026]))
         except ValueError:
-            category_original = str(row[2025])
+            category_original = str(row[2026])
 
         try:
             category_new = str(int(row["M/D"]))
@@ -197,8 +197,8 @@ def generate_markdown_webpage(filename, service_account_info):
             df_licences = df_licences[df_licences["Date"] <= last_tuesday]
 
     with open(filename, "w") as f:
-        metadata = """---
-title: Listing des montées et descentes de catégorie 2025
+        metadata = f"""---
+title: Listing des montées et descentes de catégorie {pd.Timestamp.today().year}
 url: up_down_category/index.html
 save_as: up_down_category/index.html
 template: page
@@ -206,7 +206,7 @@ template: page
 """
         title = (
             '## <i class="fas fa-id-card fas-title"></i> Listing des changements de '
-            'catégorie 2025\n\n<div class="h2-spacer"></div>\n\n'
+            f'catégorie {pd.Timestamp.today().year}\n\n<div class="h2-spacer"></div>\n\n'
         )
 
         # Generate single table
