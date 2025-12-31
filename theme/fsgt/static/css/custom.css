@@ -672,6 +672,37 @@ body {
   border-color: var(--primary-accent) !important;
 }
 
+/* Disabled button styles */
+.btn-disabled,
+.btn-primary.btn-disabled {
+  background-color: var(--bg-secondary) !important;
+  border-color: var(--border-color) !important;
+  color: var(--text-secondary) !important;
+  opacity: 0.6;
+  cursor: not-allowed;
+  pointer-events: none;
+  text-decoration: none;
+}
+
+.btn-disabled:hover,
+.btn-disabled:active,
+.btn-disabled:focus,
+.btn-primary.btn-disabled:hover,
+.btn-primary.btn-disabled:active,
+.btn-primary.btn-disabled:focus {
+  background-color: var(--bg-secondary) !important;
+  border-color: var(--border-color) !important;
+  color: var(--text-secondary) !important;
+  opacity: 0.6;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.btn-disabled i,
+.btn-primary.btn-disabled i {
+  opacity: 0.5;
+}
+
 .btn-info {
   background-color: var(--brand-light-blue);
   border-color: var(--brand-light-blue);
