@@ -163,7 +163,7 @@ template: page
 ---
 """
 
-        title = '## <i class="fas fa-id-card fas-title"></i> Listing des coureurs extérieurs\n\n'
+        title = '## <i class="fas fa-id-card fas-title"></i> Listing des coureurs extérieurs\n\n<div class="h2-spacer"></div>\n\n'
 
         info = f"""<div class="alert alert-info small" role="alert">
 <i class="fas fa-info-circle"></i> En cas de

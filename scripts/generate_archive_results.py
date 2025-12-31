@@ -128,7 +128,7 @@ template: page
 ---
 
 """
-        title = f'## <i class="fas fa-trophy fas-title"></i> Résultats des courses {year}\n\n'
+        title = f'## <i class="fas fa-trophy fas-title"></i> Résultats des courses {year}\n\n<div class="h2-spacer"></div>\n\n'
 
         # Search bar
         results_table = """<div class="mb-3">

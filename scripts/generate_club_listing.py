@@ -486,7 +486,7 @@ template: page
 ---
 
 """
-        title = '## <i class="fas fa-bicycle fas-title"></i> Liste des clubs\n\n'
+        title = '## <i class="fas fa-bicycle fas-title"></i> Liste des clubs\n\n<div class="h2-spacer"></div>\n\n'
 
         listing_clubs_roads = "### Correspondants\n\n"
         # add a search bar

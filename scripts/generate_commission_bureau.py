@@ -270,6 +270,8 @@ template: page
 
 ## <i class="fas fa-users fas-title"></i> Commission Cycliste FSGT 71 2024-2025
 
+<div class="h2-spacer"></div>
+
 """
     table = generate_bureau_listing(df)
     return metadata + table, df

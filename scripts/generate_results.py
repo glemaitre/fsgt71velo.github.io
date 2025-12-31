@@ -117,7 +117,7 @@ template: page
 """
         title = (
             f'## <i class="fas fa-trophy fas-title"></i> Résultats des courses '
-            f"{pd.Timestamp.today().year}\n\n"
+            f'{pd.Timestamp.today().year}\n\n<div class="h2-spacer"></div>\n\n'
         )
 
         # Search bar

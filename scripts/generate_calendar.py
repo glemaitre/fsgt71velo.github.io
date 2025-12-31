@@ -132,7 +132,7 @@ template: page
 """
         title = (
             f'## <i class="fas fa-calendar-alt fas-title"></i> Calendrier des événements '
-            f"{pd.Timestamp.today().year}\n\n"
+            f'{pd.Timestamp.today().year}\n\n<div class="h2-spacer"></div>\n\n'
         )
 
         # Search bar

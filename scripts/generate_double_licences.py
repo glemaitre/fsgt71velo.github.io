@@ -122,7 +122,7 @@ template: page
 
         title = (
             '## <i class="fas fa-id-card fas-title"></i> Listing des coureurs double '
-            "licenciés 2025\n\n"
+            'licenciés 2025\n\n<div class="h2-spacer"></div>\n\n'
         )
 
         # Search bar

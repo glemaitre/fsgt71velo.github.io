@@ -206,7 +206,7 @@ template: page
 """
         title = (
             '## <i class="fas fa-id-card fas-title"></i> Listing des changements de '
-            "catégorie 2025\n\n"
+            'catégorie 2025\n\n<div class="h2-spacer"></div>\n\n'
         )
 
         # Generate single table
