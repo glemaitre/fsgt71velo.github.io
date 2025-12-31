@@ -140,7 +140,7 @@ template: page
 ---
 """
 
-        title = '## <i class="fas fa-id-card"></i> Listing des licenciés FSGT 2025\n\n'
+        title = '## <i class="fas fa-id-card fas-title"></i> Listing des licenciés FSGT 2025\n\n'
 
         info = f"""<div class="alert alert-info small" role="alert">
 <i class="fas fa-info-circle"></i> En cas de

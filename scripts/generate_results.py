@@ -116,7 +116,7 @@ template: page
 
 """
         title = (
-            f'## <i class="fas fa-trophy"></i> Résultats des courses '
+            f'## <i class="fas fa-trophy fas-title"></i> Résultats des courses '
             f"{pd.Timestamp.today().year}\n\n"
         )
 

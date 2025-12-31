@@ -171,7 +171,7 @@ template: page
 
 """
         title = (
-            '## <i class="fas fa-file-alt"></i> Rapport des commissions '
+            '## <i class="fas fa-file-alt fas-title"></i> Rapport des commissions '
             "cyclistes FSGT 71\n\n"
         )
         df = list_pdf_files(service_account_info)

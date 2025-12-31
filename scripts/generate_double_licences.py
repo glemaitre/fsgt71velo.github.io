@@ -121,7 +121,7 @@ template: page
 """
 
         title = (
-            '## <i class="fas fa-id-card"></i> Listing des coureurs double '
+            '## <i class="fas fa-id-card fas-title"></i> Listing des coureurs double '
             "licenciés 2025\n\n"
         )
 

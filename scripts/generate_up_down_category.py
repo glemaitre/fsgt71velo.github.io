@@ -205,7 +205,7 @@ template: page
 ---
 """
         title = (
-            '## <i class="fas fa-id-card"></i> Listing des changements de '
+            '## <i class="fas fa-id-card fas-title"></i> Listing des changements de '
             "catégorie 2025\n\n"
         )
 

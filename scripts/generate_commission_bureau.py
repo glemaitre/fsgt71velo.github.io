@@ -268,7 +268,7 @@ save_as: bureau/index.html
 template: page
 ---
 
-## <i class="fas fa-users"></i> Commission Cycliste FSGT 71 2024-2025
+## <i class="fas fa-users fas-title"></i> Commission Cycliste FSGT 71 2024-2025
 
 """
     table = generate_bureau_listing(df)

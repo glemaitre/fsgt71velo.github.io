@@ -131,7 +131,7 @@ template: page
 
 """
         title = (
-            f'## <i class="fas fa-calendar-alt"></i> Calendrier des événements '
+            f'## <i class="fas fa-calendar-alt fas-title"></i> Calendrier des événements '
             f"{pd.Timestamp.today().year}\n\n"
         )
 
