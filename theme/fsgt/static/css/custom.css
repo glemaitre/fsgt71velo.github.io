@@ -535,6 +535,28 @@ body {
   color: white;
 }
 
+/* Disabled dropdown item styles */
+.dropdown-item-disabled {
+  color: var(--text-secondary) !important;
+  opacity: 0.6;
+  cursor: not-allowed;
+  pointer-events: none;
+  text-decoration: none;
+}
+
+.dropdown-item-disabled:hover,
+.dropdown-item-disabled:focus,
+.dropdown-item-disabled:active {
+  background-color: transparent !important;
+  color: var(--text-secondary) !important;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.dropdown-item-disabled i {
+  opacity: 0.5;
+}
+
 .dropdown-header {
   color: var(--text-secondary);
   font-weight: 600;
