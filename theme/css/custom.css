@@ -135,6 +135,10 @@ body {
   margin-top: 0.5rem;
 }
 
+.content fas-title {
+  margin-right: 0.2em;
+}
+
 /* Horizontal rule spacing */
 .content hr {
   margin-top: 2rem;
