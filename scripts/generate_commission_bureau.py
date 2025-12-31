@@ -2,7 +2,7 @@ import os
 
 import pandas as pd
 
-SHEET_ID = "1AnPafo45pd15SD7v3szeC4wgSXRBKJ1DYzVk3UfTgFI"
+SHEET_ID = "11zy08a30aMAZPkxHSWJ0TxMI6Su9LFzi1RdNCceeXuQ"
 SHEET_NAME = "Commission"
 URL_SHEET = (
     f"https://docs.google.com/spreadsheets/d/{SHEET_ID}/gviz/"
@@ -261,14 +261,14 @@ def generate_markdown_webpage(filename):
     """
     df = pd.read_csv(URL_SHEET)
 
-    metadata = """---
+    metadata = f"""---
 title: Commission Cycliste FSGT 71
 url: bureau/index.html
 save_as: bureau/index.html
 template: page
 ---
 
-## <i class="fas fa-users fas-title"></i> Commission Cycliste FSGT 71 2024-2025
+## <i class="fas fa-users fas-title"></i> Commission Cycliste FSGT 71 {pd.Timestamp.today().year}
 
 <div class="h2-spacer"></div>
 
