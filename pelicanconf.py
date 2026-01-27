@@ -43,7 +43,7 @@ PAGINATION_PATTERNS = (
 # RELATIVE_URLS = True
 
 # The articles are related to the news feed.
-ARTICLE_PATHS = ["news"]
+ARTICLE_PATHS = ["news", "cyclotourism"]
 # to avoid conflict with the pages, we use the date in the URL.
 ARTICLE_URL = "{date:%Y}/{date:%m}/{date:%d}/{slug}.html"
 ARTICLE_SAVE_AS = "{date:%Y}/{date:%m}/{date:%d}/{slug}.html"
