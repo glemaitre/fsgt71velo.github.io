@@ -137,3 +137,41 @@ def test_generate_html_table_includes_year_in_headers_and_dates():
     # Date cells must include year (e.g. "Mar 15 Mar 2026")
     assert "2026" in html_table
     assert "2027" in html_table
+
+    # Section headers must appear in chronological order (month order: Jan, Feb, ... Dec)
+    # Use data in "wrong" order: Jan 2027 then Dec 2026; output must be Dec 2026 then Jan 2027
+    df_reversed = pd.DataFrame(
+        [
+            {
+                "Date": pd.Timestamp("2027-01-10"),
+                "Durée organisation": "Demi-journée",
+                "Course": "Course 2027",
+                "Type de course": "Route",
+                "Longeur circuit": "Circuit >= 5 km",
+                "Catégories": "Tous",
+                "Club": "Club B",
+                "Affiche": pd.NA,
+                "Résultats TC": pd.NA,
+                "Résultats école": pd.NA,
+                "Annulé": pd.NA,
+            },
+            {
+                "Date": pd.Timestamp("2026-12-05"),
+                "Durée organisation": "Journée complète",
+                "Course": "Course 2026",
+                "Type de course": "Contre-la-montre",
+                "Longeur circuit": "Circuit < 5km",
+                "Catégories": "Masters",
+                "Club": "Club A",
+                "Affiche": pd.NA,
+                "Résultats TC": pd.NA,
+                "Résultats école": pd.NA,
+                "Annulé": pd.NA,
+            },
+        ]
+    )
+    html_reversed = generate_html_table(df_reversed)
+    # DECEMBRE 2026 must appear before JANVIER 2027
+    pos_dec_2026 = html_reversed.find("DÉCEMBRE 2026")
+    pos_jan_2027 = html_reversed.find("JANVIER 2027")
+    assert pos_dec_2026 != -1 and pos_jan_2027 != -1 and pos_dec_2026 < pos_jan_2027

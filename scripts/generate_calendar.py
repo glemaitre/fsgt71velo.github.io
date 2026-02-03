@@ -59,8 +59,12 @@ def generate_html_table(df_calendar):
     # The `locale` in `month_name` cannot be set when using the GitHub Actions runner
     # So we manually translate the month names. Group by year and month for dates
     # that can span into the next year (e.g. 2026 calendar with a few 2027 dates).
+    # Sort by Date so that groupby(..., sort=False) iterates in chronological order
+    # (January, February, ... December, then next year); sort=True would order
+    # by month name alphabetically (e.g. Août before Janvier).
     df_calendar["Year"] = df_calendar["Date"].dt.year
     df_calendar["Month"] = df_calendar["Date"].dt.month_name().map(MONTH_TRANSLATION)
+    df_calendar = df_calendar.sort_values("Date")
     html_table = (
         '<table class="table" id="calendarTable"><thead><tr>'
         '<th class="text-center">Dates</th>'
@@ -70,7 +74,7 @@ def generate_html_table(df_calendar):
         "</tr></thead>"
         "<tbody>"
     )
-    for (year, month), df_month in df_calendar.groupby(["Year", "Month"], sort=True):
+    for (year, month), df_month in df_calendar.groupby(["Year", "Month"], sort=False):
         html_table += (
             f"<tr>"
             f'<td colspan="4" class="text-center"><strong>{month.upper()} {year}</strong></td>'

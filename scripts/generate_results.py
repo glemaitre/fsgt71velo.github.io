@@ -54,8 +54,11 @@ def generate_html_table(df_calendar):
 
     # Group by year and month so results spanning two years (e.g. 2026 + early 2027)
     # are shown in chronological order with correct section headers.
+    # Sort by Date so that groupby(..., sort=False) iterates in chronological order
+    # (January, February, ... December); sort=True would order by month name alphabetically.
     df_calendar["Year"] = df_calendar["Date"].dt.year
     df_calendar["Month"] = df_calendar["Date"].dt.month_name().map(MONTH_TRANSLATION)
+    df_calendar = df_calendar.sort_values("Date")
 
     html_table = (
         '<table class="table" id="calendarTable"><thead><tr>'
@@ -64,7 +67,7 @@ def generate_html_table(df_calendar):
     )
 
     # Only process months that have races with results
-    for (year, month), df_month in df_calendar.groupby(["Year", "Month"], sort=True):
+    for (year, month), df_month in df_calendar.groupby(["Year", "Month"], sort=False):
         if len(df_month) > 0:
             html_table += (
                 f"<tr><td colspan='4' class='text-center'>"

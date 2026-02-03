@@ -126,3 +126,28 @@ def test_generate_results_includes_year_in_headers_and_dates():
     # Date cells must include year
     assert "2026" in html_table
     assert "2027" in html_table
+
+    # Section headers must appear in chronological order (month order)
+    # Data in "wrong" order: Feb 2027 then Jan 2027; output must be Jan 2027 then Feb 2027
+    df_reversed = pd.DataFrame(
+        [
+            {
+                "Date": pd.Timestamp("2027-02-01"),
+                "Course": "Course Feb",
+                "Club": "Club B",
+                "Résultats TC": "https://example.com/feb",
+                "Résultats école": pd.NA,
+            },
+            {
+                "Date": pd.Timestamp("2027-01-15"),
+                "Course": "Course Jan",
+                "Club": "Club A",
+                "Résultats TC": "https://example.com/jan",
+                "Résultats école": pd.NA,
+            },
+        ]
+    )
+    html_reversed = generate_html_table(df_reversed)
+    pos_jan = html_reversed.find("JANVIER 2027")
+    pos_feb = html_reversed.find("FÉVRIER 2027")
+    assert pos_jan != -1 and pos_feb != -1 and pos_jan < pos_feb
