@@ -141,7 +141,7 @@ template: page
             f'{pd.Timestamp.today().year}\n\n<div class="h2-spacer"></div>\n\n'
         )
 
-        # Search bar and PDF export on same row (direct PDF download via html2pdf.js)
+        # Search bar and PDF/print button on same row; print = only table, A4 landscape, light mode, preserve spaces
         calendar_table = """<div class="mb-3 d-print-none row g-2 align-items-center">
     <div class="col">
         <input type="text"
@@ -156,65 +156,27 @@ template: page
         </button>
     </div>
 </div>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" crossorigin="anonymous"></script>
+<style media="print">
+    @page { size: A4 landscape; margin: 12mm; }
+    body * { visibility: hidden; }
+    .calendar-pdf-wrapper, .calendar-pdf-wrapper * { visibility: visible; }
+    .calendar-pdf-wrapper {
+        position: absolute; left: 0; top: 0; width: 100%; padding: 0;
+        background: #fff !important; color: #1a1a1a !important;
+    }
+    .calendar-pdf-wrapper table { background: #fff !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .calendar-pdf-wrapper th, .calendar-pdf-wrapper td {
+        color: #1a1a1a !important;
+        white-space: normal; word-spacing: normal;
+    }
+    .calendar-pdf-wrapper a { color: #1a1a1a !important; }
+    .calendar-pdf-wrapper #calendarTable { font-size: 9px; width: 100%; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .calendar-pdf-wrapper #calendarTable th, .calendar-pdf-wrapper #calendarTable td { padding: 3px 6px; }
+</style>
 <script>
 document.addEventListener("DOMContentLoaded", function() {
     var btn = document.getElementById("calendarPdfButton");
-    var wrapper = document.querySelector(".calendar-pdf-wrapper");
-    if (!btn || !wrapper) return;
-
-    // A4 landscape content area in px (96 dpi), 12mm margin each side
-    var pageW = (297 - 24) / 25.4 * 96;
-    var pageH = (210 - 24) / 25.4 * 96;
-
-    btn.addEventListener("click", function() {
-        btn.disabled = true;
-        var clone = wrapper.cloneNode(true);
-        clone.classList.add("calendar-pdf-export");
-        clone.style.background = "#fff";
-        clone.style.color = "#1a1a1a";
-        var style = document.createElement("style");
-        style.textContent = ".calendar-pdf-export, .calendar-pdf-export table { background: #fff !important; } " +
-            ".calendar-pdf-export th, .calendar-pdf-export td { color: #1a1a1a !important; word-spacing: normal; letter-spacing: normal; } " +
-            ".calendar-pdf-export table, .calendar-pdf-export tr { page-break-inside: avoid !important; } " +
-            ".calendar-pdf-export a { color: #1a1a1a !important; } " +
-            ".calendar-pdf-export table { width: 100% !important; } ";
-        clone.insertBefore(style, clone.firstChild);
-
-        var container = document.createElement("div");
-        container.style.cssText = "position:fixed;top:0;left:0;width:2500px;height:3000px;overflow:hidden;background:#fff;visibility:hidden;z-index:-1;";
-        container.appendChild(clone);
-        document.body.appendChild(container);
-        clone.style.width = wrapper.offsetWidth + "px";
-
-        var w = clone.scrollWidth || wrapper.offsetWidth;
-        var h = clone.scrollHeight || wrapper.offsetHeight;
-        if (w === 0) w = pageW;
-        if (h === 0) h = pageH;
-        var scale = Math.min(pageW / w, pageH / h, 1);
-        if (!isFinite(scale) || scale <= 0) scale = 1;
-        var outW = Math.round(w * scale);
-        var outH = Math.round(h * scale);
-
-        container.style.width = outW + "px";
-        container.style.height = outH + "px";
-        clone.style.width = w + "px";
-        clone.style.height = h + "px";
-        clone.style.transform = "scale(" + scale + ")";
-        clone.style.transformOrigin = "0 0";
-
-        var opt = {
-            margin: 12,
-            filename: "calendrier-fsgt71.pdf",
-            image: { type: "jpeg", quality: 0.98 },
-            html2canvas: { scale: 2, useCORS: true, letterRendering: true },
-            jsPDF: { unit: "mm", format: "a4", orientation: "landscape" },
-            pagebreak: { mode: ["avoid-all", "css", "legacy"] }
-        };
-        html2pdf().set(opt).from(container).save()
-            .then(function() { document.body.removeChild(container); btn.disabled = false; })
-            .catch(function() { document.body.removeChild(container); btn.disabled = false; });
-    });
+    if (btn) btn.addEventListener("click", function() { window.print(); });
 });
 </script>
 """
