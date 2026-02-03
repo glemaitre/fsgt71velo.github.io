@@ -177,19 +177,24 @@ document.addEventListener("DOMContentLoaded", function() {
         style.textContent = ".calendar-pdf-export, .calendar-pdf-export table { background: #fff !important; } " +
             ".calendar-pdf-export th, .calendar-pdf-export td { color: #1a1a1a !important; word-spacing: normal; letter-spacing: normal; } " +
             ".calendar-pdf-export table, .calendar-pdf-export tr { page-break-inside: avoid !important; } " +
-            ".calendar-pdf-export a { color: #1a1a1a !important; } ";
+            ".calendar-pdf-export a { color: #1a1a1a !important; } " +
+            ".calendar-pdf-export table { width: 100% !important; } ";
         clone.insertBefore(style, clone.firstChild);
 
         var container = document.createElement("div");
-        container.style.cssText = "position:fixed;left:-99999px;top:0;background:#fff;overflow:hidden;";
+        container.style.cssText = "position:fixed;top:0;left:0;width:2500px;height:3000px;overflow:hidden;background:#fff;visibility:hidden;z-index:-1;";
         container.appendChild(clone);
         document.body.appendChild(container);
+        clone.style.width = wrapper.offsetWidth + "px";
 
-        var w = clone.scrollWidth;
-        var h = clone.scrollHeight;
-        var scale = Math.min(pageW / w, pageH / h);
-        var outW = w * scale;
-        var outH = h * scale;
+        var w = clone.scrollWidth || wrapper.offsetWidth;
+        var h = clone.scrollHeight || wrapper.offsetHeight;
+        if (w === 0) w = pageW;
+        if (h === 0) h = pageH;
+        var scale = Math.min(pageW / w, pageH / h, 1);
+        if (!isFinite(scale) || scale <= 0) scale = 1;
+        var outW = Math.round(w * scale);
+        var outH = Math.round(h * scale);
 
         container.style.width = outW + "px";
         container.style.height = outH + "px";
