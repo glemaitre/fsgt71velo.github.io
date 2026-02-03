@@ -171,8 +171,27 @@ document.addEventListener("DOMContentLoaded", function() {
     if (downloadBtn && wrapper) {
         downloadBtn.addEventListener("click", function() {
             downloadBtn.disabled = true;
-            wrapper.classList.add("calendar-pdf-export-light");
-            /* A4 landscape = 297 mm × 210 mm (explicit size for jsPDF) */
+            /* Clone and scale to fit one page so the table is never cut in the middle of a cell */
+            var clone = wrapper.cloneNode(true);
+            clone.classList.add("calendar-pdf-export-light");
+            var container = document.createElement("div");
+            container.style.cssText = "position:fixed;left:0;top:0;width:1200px;height:2000px;visibility:hidden;z-index:-1;overflow:hidden;background:#fff;";
+            container.appendChild(clone);
+            document.body.appendChild(container);
+            var contentW = (297 - 24) / 25.4 * 96;
+            var contentH = (210 - 24) / 25.4 * 96;
+            clone.style.width = contentW + "px";
+            var w = clone.scrollWidth;
+            var h = clone.scrollHeight;
+            var scale = Math.min(contentW / w, contentH / h, 1);
+            var outW = w * scale;
+            var outH = h * scale;
+            container.style.width = outW + "px";
+            container.style.height = outH + "px";
+            clone.style.width = w + "px";
+            clone.style.height = h + "px";
+            clone.style.transform = "scale(" + scale + ")";
+            clone.style.transformOrigin = "0 0";
             var opt = {
                 margin: 12,
                 filename: "calendrier-fsgt71.pdf",
@@ -180,9 +199,9 @@ document.addEventListener("DOMContentLoaded", function() {
                 html2canvas: { scale: 3, useCORS: true, letterRendering: true },
                 jsPDF: { unit: "mm", format: [297, 210], orientation: "l" }
             };
-            html2pdf().set(opt).from(wrapper).save()
-                .then(function() { wrapper.classList.remove("calendar-pdf-export-light"); downloadBtn.disabled = false; })
-                .catch(function() { wrapper.classList.remove("calendar-pdf-export-light"); downloadBtn.disabled = false; });
+            html2pdf().set(opt).from(container).save()
+                .then(function() { document.body.removeChild(container); downloadBtn.disabled = false; })
+                .catch(function() { document.body.removeChild(container); downloadBtn.disabled = false; });
         });
     }
 });
