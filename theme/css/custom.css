@@ -669,7 +669,7 @@ body {
     color: var(--text-primary) !important;
   }
   .calendar-pdf-wrapper table {
-    background: var(--bg-primary) !important;
+    background: #ffffff !important;
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
   }
@@ -679,26 +679,29 @@ body {
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
   }
+  /* Simplified table: black text, white cell backgrounds */
   .calendar-pdf-wrapper #calendarTable th,
   .calendar-pdf-wrapper #calendarTable td {
     padding: 3px 6px;
-    color: var(--text-primary) !important;
+    background: #ffffff !important;
+    color: #000000 !important;
   }
   .calendar-pdf-wrapper th,
   .calendar-pdf-wrapper td {
-    color: var(--text-primary) !important;
+    background: #ffffff !important;
+    color: #000000 !important;
   }
   .calendar-pdf-wrapper a {
-    color: var(--text-primary) !important;
+    color: #000000 !important;
   }
 }
 
-/* Calendar PDF export (html2pdf): same light theme variables for in-page capture */
+/* Calendar PDF export (html2pdf): light theme + simplified table (black text, white cells) */
 .calendar-pdf-export-light {
   --bg-primary: #ffffff;
   --bg-secondary: #f8f9fa;
-  --text-primary: #333333;
-  --text-secondary: #666666;
+  --text-primary: #000000;
+  --text-secondary: #000000;
   --border-color: #dee2e6;
   --hover-bg: rgba(0, 0, 0, 0.02);
   --card-border: #F1FAEE;
@@ -708,6 +711,19 @@ body {
   --navbar-bg: #ffffff;
   --footer-bg: #ffffff;
   --footer-text: #666666;
+  background: #ffffff !important;
+  color: #000000 !important;
+}
+.calendar-pdf-export-light table {
+  background: #ffffff !important;
+}
+.calendar-pdf-export-light #calendarTable th,
+.calendar-pdf-export-light #calendarTable td {
+  background: #ffffff !important;
+  color: #000000 !important;
+}
+.calendar-pdf-export-light a {
+  color: #000000 !important;
 }
 
 /* Icons */
