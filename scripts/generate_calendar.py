@@ -172,12 +172,13 @@ document.addEventListener("DOMContentLoaded", function() {
         downloadBtn.addEventListener("click", function() {
             downloadBtn.disabled = true;
             wrapper.classList.add("calendar-pdf-export-light");
+            /* A4 landscape = 297 mm × 210 mm (explicit size for jsPDF) */
             var opt = {
                 margin: 12,
                 filename: "calendrier-fsgt71.pdf",
                 image: { type: "jpeg", quality: 0.98 },
                 html2canvas: { scale: 3, useCORS: true, letterRendering: true },
-                jsPDF: { unit: "mm", format: "a4", orientation: "landscape" }
+                jsPDF: { unit: "mm", format: [297, 210], orientation: "l" }
             };
             html2pdf().set(opt).from(wrapper).save()
                 .then(function() { wrapper.classList.remove("calendar-pdf-export-light"); downloadBtn.disabled = false; })

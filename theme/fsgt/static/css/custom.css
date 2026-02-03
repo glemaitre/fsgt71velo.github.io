@@ -696,7 +696,7 @@ body {
   }
 }
 
-/* Calendar PDF export (html2pdf): light theme + simplified table (black text, white cells) */
+/* Calendar PDF export (html2pdf): same scaling as print (9px font, 3px 6px padding) */
 /* Spacing: compensate for html2canvas known issue that removes spaces between words */
 .calendar-pdf-export-light {
   --bg-primary: #ffffff;
@@ -724,8 +724,13 @@ body {
   word-spacing: 0.2em;
   font-family: Arial, Helvetica, sans-serif;
 }
+.calendar-pdf-export-light #calendarTable {
+  font-size: 9px;
+  width: 100%;
+}
 .calendar-pdf-export-light #calendarTable th,
 .calendar-pdf-export-light #calendarTable td {
+  padding: 3px 6px;
   background: #ffffff !important;
   color: #000000 !important;
   letter-spacing: 0.03em;
