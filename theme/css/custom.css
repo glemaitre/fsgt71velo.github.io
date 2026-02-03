@@ -632,11 +632,50 @@ body {
   vertical-align: middle;
 }
 
-/* Calendar PDF print: table only, A4 landscape */
+/* Calendar print: table only, A4 landscape, always light theme (values match :root) */
 @media print {
-  .calendar-pdf-wrapper #calendarTable {
+  @page {
+    size: A4 landscape;
+    margin: 12mm;
+  }
+  body * {
+    visibility: hidden;
+  }
+  .calendar-pdf-wrapper,
+  .calendar-pdf-wrapper * {
+    visibility: visible;
+  }
+  .calendar-pdf-wrapper {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    padding: 0;
+    background: #ffffff !important;
+    color: #333333 !important;
+  }
+  .calendar-pdf-wrapper table {
+    background: #ffffff !important;
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
+  }
+  .calendar-pdf-wrapper #calendarTable {
+    font-size: 9px;
+    width: 100%;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  .calendar-pdf-wrapper #calendarTable th,
+  .calendar-pdf-wrapper #calendarTable td {
+    padding: 3px 6px;
+    color: #333333 !important;
+  }
+  .calendar-pdf-wrapper th,
+  .calendar-pdf-wrapper td {
+    color: #333333 !important;
+  }
+  .calendar-pdf-wrapper a {
+    color: #333333 !important;
   }
 }
 
