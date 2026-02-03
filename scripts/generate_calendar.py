@@ -141,7 +141,7 @@ template: page
             f'{pd.Timestamp.today().year}\n\n<div class="h2-spacer"></div>\n\n'
         )
 
-        # Search bar and print button on same row; print = only table, A4 landscape
+        # Search bar, print and download buttons on same row
         calendar_table = """<div class="mb-3 d-print-none row g-2 align-items-center">
     <div class="col">
         <input type="text"
@@ -154,12 +154,35 @@ template: page
         <button type="button" class="btn btn-primary btn-sm" id="calendarPrintButton" title="Imprimer le calendrier" aria-label="Imprimer le calendrier">
             <i class="fas fa-print"></i> Imprimer
         </button>
+        <button type="button" class="btn btn-primary btn-sm" id="calendarDownloadButton" title="Télécharger le calendrier en PDF" aria-label="Télécharger le calendrier en PDF">
+            <i class="fas fa-file-pdf"></i> Télécharger
+        </button>
     </div>
 </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" crossorigin="anonymous"></script>
 <script>
 document.addEventListener("DOMContentLoaded", function() {
-    var btn = document.getElementById("calendarPrintButton");
-    if (btn) btn.addEventListener("click", function() { window.print(); });
+    var printBtn = document.getElementById("calendarPrintButton");
+    if (printBtn) printBtn.addEventListener("click", function() { window.print(); });
+
+    var downloadBtn = document.getElementById("calendarDownloadButton");
+    var wrapper = document.querySelector(".calendar-pdf-wrapper");
+    if (downloadBtn && wrapper) {
+        downloadBtn.addEventListener("click", function() {
+            downloadBtn.disabled = true;
+            wrapper.classList.add("calendar-pdf-export-light");
+            var opt = {
+                margin: 12,
+                filename: "calendrier-fsgt71.pdf",
+                image: { type: "jpeg", quality: 0.98 },
+                html2canvas: { scale: 2, useCORS: true },
+                jsPDF: { unit: "mm", format: "a4", orientation: "landscape" }
+            };
+            html2pdf().set(opt).from(wrapper).save()
+                .then(function() { wrapper.classList.remove("calendar-pdf-export-light"); downloadBtn.disabled = false; })
+                .catch(function() { wrapper.classList.remove("calendar-pdf-export-light"); downloadBtn.disabled = false; });
+        });
+    }
 });
 </script>
 """
