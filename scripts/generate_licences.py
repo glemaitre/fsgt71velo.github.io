@@ -98,36 +98,36 @@ def generate_markdown_webpage(filename, service_account_info):
     df_licences = _filter_licences(df_licences)
 
     today = pd.Timestamp.today()
-    last_tuesday = None
+    last_wednesday = None
     if today.month in range(3, 8):
         # Special handling for the first week of March
-        if today.month == 3 and today.day >= 6 and today.day < 11:
+        if today.month == 3 and today.day >= 6 and today.day < 12:
             # Between March 6-11, use March 6th as the cutoff date
-            last_tuesday = pd.Timestamp(today.year, 3, 6)
-            last_tuesday = last_tuesday.replace(
+            last_wednesday = pd.Timestamp(today.year, 3, 6)
+            last_wednesday = last_wednesday.replace(
                 hour=0, minute=0, second=0, microsecond=0
             )
-        # Normal Tuesday schedule for rest of the season
-        elif today.month > 3 or today.day >= 11:
-            if today.weekday() != 1:  # not a Tuesday
-                # Find last Tuesday by calculating days since last Tuesday
-                days_since_tuesday = (today.weekday() - 1) % 7
-                last_tuesday = today - pd.Timedelta(days=days_since_tuesday)
-                last_tuesday = last_tuesday.replace(
+        # Normal Wednesday schedule for rest of the season
+        elif today.month > 3 or today.day >= 12:
+            if today.weekday() != 2:  # not a Wednesday
+                # Find last Wednesday by calculating days since last Wednesday
+                days_since_wednesday = (today.weekday() - 2) % 7
+                last_wednesday = today - pd.Timedelta(days=days_since_wednesday)
+                last_wednesday = last_wednesday.replace(
                     hour=0, minute=0, second=0, microsecond=0
                 )
             else:
-                last_tuesday = today
-            df_licences = df_licences[df_licences["Date"] <= last_tuesday]
+                last_wednesday = today
+            df_licences = df_licences[df_licences["Date"] <= last_wednesday]
 
-    table_update_date = last_tuesday if last_tuesday else today
-    # Calculate next Tuesday - always add 7 days if we're on a Tuesday
-    if table_update_date.weekday() == 1:
-        days_until_next_tuesday = 7
+    table_update_date = last_wednesday if last_wednesday else today
+    # Calculate next Wednesday - always add 7 days if we're on a Wednesday
+    if table_update_date.weekday() == 2:
+        days_until_next_wednesday = 7
     else:
-        days_until_next_tuesday = (1 - table_update_date.weekday() + 7) % 7
+        days_until_next_wednesday = (2 - table_update_date.weekday() + 7) % 7
     table_next_update_date = table_update_date + pd.Timedelta(
-        days=days_until_next_tuesday
+        days=days_until_next_wednesday
     )
     n_riders = len(df_licences)
 
@@ -150,7 +150,7 @@ problème, merci de contacter Eric Rabut :
 </div>
 <div class="alert alert-warning small" role="alert">
 <i class="fas fa-exclamation-triangle"></i> Durant la saison cycliste, ce tableau est
-mis à jour tous les <strong>mardis</strong>. Seuls les coureurs apparaissant dans ce
+mis à jour tous les <strong>mercredis</strong>. Seuls les coureurs apparaissant dans ce
 tableau pourront participer aux courses du week-end.
 </div>
 <div class="alert alert-success small" role="alert">
