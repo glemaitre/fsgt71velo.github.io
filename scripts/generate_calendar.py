@@ -141,7 +141,7 @@ template: page
             f'{pd.Timestamp.today().year}\n\n<div class="h2-spacer"></div>\n\n'
         )
 
-        # Search bar and PDF/print button on same row; print = only table, A4 landscape, light mode, preserve spaces
+        # Search bar and print button on same row; print = only table, A4 landscape
         calendar_table = """<div class="mb-3 d-print-none row g-2 align-items-center">
     <div class="col">
         <input type="text"
@@ -151,8 +151,8 @@ template: page
                aria-label="Rechercher un événement">
     </div>
     <div class="col-auto">
-        <button type="button" class="btn btn-primary btn-sm" id="calendarPdfButton" title="Télécharger le calendrier en PDF" aria-label="Télécharger le calendrier en PDF">
-            <i class="fas fa-file-pdf"></i> Télécharger
+        <button type="button" class="btn btn-primary btn-sm" id="calendarPrintButton" title="Imprimer le calendrier" aria-label="Imprimer le calendrier">
+            <i class="fas fa-print"></i> Imprimer
         </button>
     </div>
 </div>
@@ -160,22 +160,13 @@ template: page
     @page { size: A4 landscape; margin: 12mm; }
     body * { visibility: hidden; }
     .calendar-pdf-wrapper, .calendar-pdf-wrapper * { visibility: visible; }
-    .calendar-pdf-wrapper {
-        position: absolute; left: 0; top: 0; width: 100%; padding: 0;
-        background: #fff !important; color: #1a1a1a !important;
-    }
-    .calendar-pdf-wrapper table { background: #fff !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-    .calendar-pdf-wrapper th, .calendar-pdf-wrapper td {
-        color: #1a1a1a !important;
-        white-space: normal; word-spacing: normal;
-    }
-    .calendar-pdf-wrapper a { color: #1a1a1a !important; }
-    .calendar-pdf-wrapper #calendarTable { font-size: 9px; width: 100%; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .calendar-pdf-wrapper { position: absolute; left: 0; top: 0; width: 100%; padding: 0; }
+    .calendar-pdf-wrapper #calendarTable { font-size: 9px; width: 100%; }
     .calendar-pdf-wrapper #calendarTable th, .calendar-pdf-wrapper #calendarTable td { padding: 3px 6px; }
 </style>
 <script>
 document.addEventListener("DOMContentLoaded", function() {
-    var btn = document.getElementById("calendarPdfButton");
+    var btn = document.getElementById("calendarPrintButton");
     if (btn) btn.addEventListener("click", function() { window.print(); });
 });
 </script>
