@@ -141,33 +141,40 @@ template: page
             f'{pd.Timestamp.today().year}\n\n<div class="h2-spacer"></div>\n\n'
         )
 
-        # PDF export button and print-only styles (table only, A4 landscape)
-        calendar_table = """<div class="mb-3 d-print-none">
-    <button type="button" class="btn btn-primary" id="calendarPdfButton" aria-label="Télécharger le calendrier en PDF">
-        <i class="fas fa-file-pdf"></i> Télécharger le calendrier en PDF
-    </button>
+        # Search bar and PDF export on same row (direct PDF download via html2pdf.js)
+        calendar_table = """<div class="mb-3 d-print-none row g-2 align-items-center">
+    <div class="col">
+        <input type="text"
+               class="form-control"
+               id="calendarSearch"
+               placeholder="Rechercher un événement..."
+               aria-label="Rechercher un événement">
+    </div>
+    <div class="col-auto">
+        <button type="button" class="btn btn-primary btn-sm" id="calendarPdfButton" title="Télécharger le calendrier en PDF" aria-label="Télécharger le calendrier en PDF">
+            <i class="fas fa-file-pdf"></i> Télécharger
+        </button>
+    </div>
 </div>
-<style media="print">
-    @page { size: A4 landscape; margin: 12mm; }
-    body * { visibility: hidden; }
-    .calendar-pdf-wrapper, .calendar-pdf-wrapper * { visibility: visible; }
-    .calendar-pdf-wrapper { position: absolute; left: 0; top: 0; width: 100%; padding: 0; }
-    .calendar-pdf-wrapper #calendarTable { font-size: 9px; width: 100%; }
-    .calendar-pdf-wrapper #calendarTable th, .calendar-pdf-wrapper #calendarTable td { padding: 3px 6px; }
-</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" crossorigin="anonymous"></script>
 <script>
 document.addEventListener("DOMContentLoaded", function() {
     var btn = document.getElementById("calendarPdfButton");
-    if (btn) btn.addEventListener("click", function() { window.print(); });
+    var wrapper = document.querySelector(".calendar-pdf-wrapper");
+    if (!btn || !wrapper) return;
+    btn.addEventListener("click", function() {
+        btn.disabled = true;
+        var opt = {
+            margin: 12,
+            filename: "calendrier-fsgt71.pdf",
+            image: { type: "jpeg", quality: 0.98 },
+            html2canvas: { scale: 2, useCORS: true },
+            jsPDF: { unit: "mm", format: "a4", orientation: "landscape" }
+        };
+        html2pdf().set(opt).from(wrapper).save().then(function() { btn.disabled = false; }).catch(function() { btn.disabled = false; });
+    });
 });
 </script>
-<div class="mb-3 d-print-none">
-    <input type="text"
-           class="form-control"
-           id="calendarSearch"
-           placeholder="Rechercher un événement..."
-           aria-label="Rechercher un événement">
-</div>
 """
         # Add legend section
         calendar_table += """<div class="mb-3 d-print-none">
