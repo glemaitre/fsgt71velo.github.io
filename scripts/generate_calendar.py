@@ -189,7 +189,22 @@ document.addEventListener("DOMContentLoaded", function() {
                     styles: { fontSize: 7, cellPadding: 2, textColor: [0, 0, 0] },
                     headStyles: { fillColor: [248, 249, 250], textColor: [0, 0, 0] },
                     bodyStyles: { fillColor: [255, 255, 255] },
-                    alternateRowStyles: { fillColor: [255, 255, 255] }
+                    alternateRowStyles: { fillColor: [255, 255, 255] },
+                    didParseCell: function(data) {
+                        var raw = data.cell.raw;
+                        if (raw && raw.getAttribute) {
+                            var colSpan = raw.getAttribute("colspan");
+                            if (colSpan && parseInt(colSpan, 10) === 4) {
+                                data.cell.colSpan = 4;
+                                data.cell.styles.halign = "center";
+                                return;
+                            }
+                        }
+                        if (data.section === "body" && data.column.index === 0 && data.cell.text && /^[A-ZÉÈÊËÀÂÄÔÛÙÎÏÜÇ]+\s+\d{4}$/.test(data.cell.text.trim())) {
+                            data.cell.colSpan = 4;
+                            data.cell.styles.halign = "center";
+                        }
+                    }
                 });
                 doc.save("calendrier-fsgt71.pdf");
             } finally {
