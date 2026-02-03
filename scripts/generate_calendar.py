@@ -141,7 +141,8 @@ template: page
             f'{pd.Timestamp.today().year}\n\n<div class="h2-spacer"></div>\n\n'
         )
 
-        # Search bar, print and download buttons on same row
+        # Search bar, print and download buttons on same row.
+        # Print and PDF export use simplified table (black text, white cells) via theme CSS.
         calendar_table = """<div class="mb-3 d-print-none row g-2 align-items-center">
     <div class="col">
         <input type="text"
