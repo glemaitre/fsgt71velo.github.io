@@ -156,14 +156,6 @@ template: page
         </button>
     </div>
 </div>
-<style media="print">
-    @page { size: A4 landscape; margin: 12mm; }
-    body * { visibility: hidden; }
-    .calendar-pdf-wrapper, .calendar-pdf-wrapper * { visibility: visible; }
-    .calendar-pdf-wrapper { position: absolute; left: 0; top: 0; width: 100%; padding: 0; }
-    .calendar-pdf-wrapper #calendarTable { font-size: 9px; width: 100%; }
-    .calendar-pdf-wrapper #calendarTable th, .calendar-pdf-wrapper #calendarTable td { padding: 3px 6px; }
-</style>
 <script>
 document.addEventListener("DOMContentLoaded", function() {
     var btn = document.getElementById("calendarPrintButton");
