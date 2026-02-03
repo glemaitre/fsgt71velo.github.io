@@ -632,7 +632,7 @@ body {
   vertical-align: middle;
 }
 
-/* Calendar print: table only, A4 landscape, always light theme (values match :root) */
+/* Calendar print: table only, A4 landscape, force light theme via :root variables */
 @media print {
   @page {
     size: A4 landscape;
@@ -651,11 +651,25 @@ body {
     top: 0;
     width: 100%;
     padding: 0;
-    background: #ffffff !important;
-    color: #333333 !important;
+    /* Light theme variables (same as :root) so all var() resolve correctly */
+    --bg-primary: #ffffff;
+    --bg-secondary: #f8f9fa;
+    --text-primary: #333333;
+    --text-secondary: #666666;
+    --border-color: #dee2e6;
+    --hover-bg: rgba(0, 0, 0, 0.02);
+    --card-border: #F1FAEE;
+    --bs-card-border-color: #dee2e6;
+    --primary-accent: #1D3557;
+    --secondary-accent: #457B9D;
+    --navbar-bg: #ffffff;
+    --footer-bg: #ffffff;
+    --footer-text: #666666;
+    background: var(--bg-primary) !important;
+    color: var(--text-primary) !important;
   }
   .calendar-pdf-wrapper table {
-    background: #ffffff !important;
+    background: var(--bg-primary) !important;
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
   }
@@ -668,15 +682,32 @@ body {
   .calendar-pdf-wrapper #calendarTable th,
   .calendar-pdf-wrapper #calendarTable td {
     padding: 3px 6px;
-    color: #333333 !important;
+    color: var(--text-primary) !important;
   }
   .calendar-pdf-wrapper th,
   .calendar-pdf-wrapper td {
-    color: #333333 !important;
+    color: var(--text-primary) !important;
   }
   .calendar-pdf-wrapper a {
-    color: #333333 !important;
+    color: var(--text-primary) !important;
   }
+}
+
+/* Calendar PDF export (html2pdf): same light theme variables for in-page capture */
+.calendar-pdf-export-light {
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8f9fa;
+  --text-primary: #333333;
+  --text-secondary: #666666;
+  --border-color: #dee2e6;
+  --hover-bg: rgba(0, 0, 0, 0.02);
+  --card-border: #F1FAEE;
+  --bs-card-border-color: #dee2e6;
+  --primary-accent: #1D3557;
+  --secondary-accent: #457B9D;
+  --navbar-bg: #ffffff;
+  --footer-bg: #ffffff;
+  --footer-text: #666666;
 }
 
 /* Icons */
