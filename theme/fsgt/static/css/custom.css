@@ -519,6 +519,15 @@ body {
   text-align: center;
 }
 
+/* Calendar PDF dropdown: compact trigger, space between icon and label in items */
+.calendar-pdf-dropdown .dropdown-toggle {
+  padding-left: 0.4rem;
+  padding-right: 0.4rem;
+}
+.calendar-pdf-dropdown .dropdown-item i {
+  margin-right: 0.5rem;
+}
+
 .dropdown-item:hover {
   background-color: var(--hover-bg);
   color: var(--text-primary);

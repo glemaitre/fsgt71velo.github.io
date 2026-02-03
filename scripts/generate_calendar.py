@@ -152,7 +152,7 @@ template: page
                aria-label="Rechercher un événement">
     </div>
     <div class="col-auto">
-        <div class="dropdown">
+        <div class="dropdown calendar-pdf-dropdown">
             <button type="button" class="btn btn-primary btn-sm dropdown-toggle" id="calendarPdfMenuButton" data-bs-toggle="dropdown" aria-expanded="false" title="Imprimer ou télécharger le calendrier" aria-label="Menu PDF">
                 <i class="fas fa-ellipsis-v d-inline d-sm-none" aria-hidden="true"></i>
                 <i class="fas fa-file-pdf d-none d-sm-inline-block" aria-hidden="true"></i>
@@ -206,7 +206,8 @@ document.addEventListener("DOMContentLoaded", function() {
                                 return;
                             }
                         }
-                        if (data.section === "body" && data.column.index === 0 && data.cell.text && /^[A-ZÉÈÊËÀÂÄÔÛÙÎÏÜÇ]+\s+\d{4}$/.test(data.cell.text.trim())) {
+                        var cellText = typeof data.cell.text === "string" ? data.cell.text : (Array.isArray(data.cell.text) ? (data.cell.text[0] || "") : "");
+                        if (data.section === "body" && data.column.index === 0 && cellText && /^[A-ZÉÈÊËÀÂÄÔÛÙÎÏÜÇ]+\s+\d{4}$/.test(String(cellText).trim())) {
                             data.cell.colSpan = 4;
                             data.cell.styles.halign = "center";
                         }
