@@ -162,16 +162,53 @@ document.addEventListener("DOMContentLoaded", function() {
     var btn = document.getElementById("calendarPdfButton");
     var wrapper = document.querySelector(".calendar-pdf-wrapper");
     if (!btn || !wrapper) return;
+
+    // A4 landscape content area in px (96 dpi), 12mm margin each side
+    var pageW = (297 - 24) / 25.4 * 96;
+    var pageH = (210 - 24) / 25.4 * 96;
+
     btn.addEventListener("click", function() {
         btn.disabled = true;
+        var clone = wrapper.cloneNode(true);
+        clone.classList.add("calendar-pdf-export");
+        clone.style.background = "#fff";
+        clone.style.color = "#1a1a1a";
+        var style = document.createElement("style");
+        style.textContent = ".calendar-pdf-export, .calendar-pdf-export table { background: #fff !important; } " +
+            ".calendar-pdf-export th, .calendar-pdf-export td { color: #1a1a1a !important; word-spacing: normal; letter-spacing: normal; } " +
+            ".calendar-pdf-export table, .calendar-pdf-export tr { page-break-inside: avoid !important; } " +
+            ".calendar-pdf-export a { color: #1a1a1a !important; } ";
+        clone.insertBefore(style, clone.firstChild);
+
+        var container = document.createElement("div");
+        container.style.cssText = "position:fixed;left:-99999px;top:0;background:#fff;overflow:hidden;";
+        container.appendChild(clone);
+        document.body.appendChild(container);
+
+        var w = clone.scrollWidth;
+        var h = clone.scrollHeight;
+        var scale = Math.min(pageW / w, pageH / h);
+        var outW = w * scale;
+        var outH = h * scale;
+
+        container.style.width = outW + "px";
+        container.style.height = outH + "px";
+        clone.style.width = w + "px";
+        clone.style.height = h + "px";
+        clone.style.transform = "scale(" + scale + ")";
+        clone.style.transformOrigin = "0 0";
+
         var opt = {
             margin: 12,
             filename: "calendrier-fsgt71.pdf",
             image: { type: "jpeg", quality: 0.98 },
-            html2canvas: { scale: 2, useCORS: true },
-            jsPDF: { unit: "mm", format: "a4", orientation: "landscape" }
+            html2canvas: { scale: 2, useCORS: true, letterRendering: true },
+            jsPDF: { unit: "mm", format: "a4", orientation: "landscape" },
+            pagebreak: { mode: ["avoid-all", "css", "legacy"] }
         };
-        html2pdf().set(opt).from(wrapper).save().then(function() { btn.disabled = false; }).catch(function() { btn.disabled = false; });
+        html2pdf().set(opt).from(container).save()
+            .then(function() { document.body.removeChild(container); btn.disabled = false; })
+            .catch(function() { document.body.removeChild(container); btn.disabled = false; });
     });
 });
 </script>
