@@ -141,8 +141,27 @@ template: page
             f'{pd.Timestamp.today().year}\n\n<div class="h2-spacer"></div>\n\n'
         )
 
-        # Search bar
-        calendar_table = """<div class="mb-3">
+        # PDF export button and print-only styles (table only, A4 landscape)
+        calendar_table = """<div class="mb-3 d-print-none">
+    <button type="button" class="btn btn-primary" id="calendarPdfButton" aria-label="Télécharger le calendrier en PDF">
+        <i class="fas fa-file-pdf"></i> Télécharger le calendrier en PDF
+    </button>
+</div>
+<style media="print">
+    @page { size: A4 landscape; margin: 12mm; }
+    body * { visibility: hidden; }
+    .calendar-pdf-wrapper, .calendar-pdf-wrapper * { visibility: visible; }
+    .calendar-pdf-wrapper { position: absolute; left: 0; top: 0; width: 100%; padding: 0; }
+    .calendar-pdf-wrapper #calendarTable { font-size: 9px; width: 100%; }
+    .calendar-pdf-wrapper #calendarTable th, .calendar-pdf-wrapper #calendarTable td { padding: 3px 6px; }
+</style>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    var btn = document.getElementById("calendarPdfButton");
+    if (btn) btn.addEventListener("click", function() { window.print(); });
+});
+</script>
+<div class="mb-3 d-print-none">
     <input type="text"
            class="form-control"
            id="calendarSearch"
@@ -151,7 +170,7 @@ template: page
 </div>
 """
         # Add legend section
-        calendar_table += """<div class="mb-3">
+        calendar_table += """<div class="mb-3 d-print-none">
     <button class="btn btn-info w-100" type="button" data-bs-toggle="collapse"
     data-bs-target="#legendCollapse" aria-expanded="false"
     aria-controls="legendCollapse">
@@ -219,7 +238,9 @@ template: page
 </div>
 """
         df_calendar = pd.read_csv(URL_CALENDAR, dayfirst=True, parse_dates=["Date"])
+        calendar_table += '<div class="calendar-pdf-wrapper">'
         calendar_table += generate_html_table(df_calendar)
+        calendar_table += "</div>"
 
         f.write(metadata + title + calendar_table)
 
