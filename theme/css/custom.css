@@ -632,6 +632,14 @@ body {
   vertical-align: middle;
 }
 
+/* Calendar PDF print: table only, A4 landscape */
+@media print {
+  .calendar-pdf-wrapper #calendarTable {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+}
+
 /* Icons */
 .icon-dept-71,
 .icon-national {

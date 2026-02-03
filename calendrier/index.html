@@ -158,14 +158,33 @@
 <h2><i class="fas fa-calendar-alt fas-title"></i> Calendrier des événements 2026</h2>
 <div class="h2-spacer"></div>
 
-<div class="mb-3">
+<div class="mb-3 d-print-none">
+    <button type="button" class="btn btn-primary" id="calendarPdfButton" aria-label="Télécharger le calendrier en PDF">
+        <i class="fas fa-file-pdf"></i> Télécharger le calendrier en PDF
+    </button>
+</div>
+<style media="print">
+    @page { size: A4 landscape; margin: 12mm; }
+    body * { visibility: hidden; }
+    .calendar-pdf-wrapper, .calendar-pdf-wrapper * { visibility: visible; }
+    .calendar-pdf-wrapper { position: absolute; left: 0; top: 0; width: 100%; padding: 0; }
+    .calendar-pdf-wrapper #calendarTable { font-size: 9px; width: 100%; }
+    .calendar-pdf-wrapper #calendarTable th, .calendar-pdf-wrapper #calendarTable td { padding: 3px 6px; }
+</style>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    var btn = document.getElementById("calendarPdfButton");
+    if (btn) btn.addEventListener("click", function() { window.print(); });
+});
+</script>
+<div class="mb-3 d-print-none">
     <input type="text"
            class="form-control"
            id="calendarSearch"
            placeholder="Rechercher un événement..."
            aria-label="Rechercher un événement">
 </div>
-<div class="mb-3">
+<div class="mb-3 d-print-none">
     <button class="btn btn-info w-100" type="button" data-bs-toggle="collapse"
     data-bs-target="#legendCollapse" aria-expanded="false"
     aria-controls="legendCollapse">
@@ -243,7 +262,7 @@
         </div>
     </div>
 </div>
-<table class="table" id="calendarTable"><thead><tr><th class="text-center">Dates</th><th class="text-center">Courses</th><th class="text-center">Catégories</th><th class="text-center">Club</th></tr></thead><tbody><tr><td colspan="4" class="text-center"><strong>JANVIER 2026</strong></td></tr><tr><td class='text-center'>Sam. 17 Janv. 2026</td><td class='text-center race-type-championship'><a href="https://www.fsgt.org/wp-content/uploads/2025/12/Livret-du-championnat-National-FSGT-de-Cyclo-Cross.-17-et-18-janvier-2026.pdf" target="_blank">National Cyclo-cross - Champigny-sur-Marne (94)</a></td><td class='text-center'></td><td class='text-center'></td></tr><tr><td class='text-center'>Dim. 18 Janv. 2026</td><td class='text-center race-type-championship'><a href="https://www.fsgt.org/wp-content/uploads/2025/12/Livret-du-championnat-National-FSGT-de-Cyclo-Cross.-17-et-18-janvier-2026.pdf" target="_blank">National Cyclo-cross - Champigny-sur-Marne (94)</a></td><td class='text-center'></td><td class='text-center'></td></tr><tr><td class='text-center'>Ven. 23 Janv. 2026</td><td class='text-center race-type-other'>Réunion commission Cycliste 
+<div class="calendar-pdf-wrapper"><table class="table" id="calendarTable"><thead><tr><th class="text-center">Dates</th><th class="text-center">Courses</th><th class="text-center">Catégories</th><th class="text-center">Club</th></tr></thead><tbody><tr><td colspan="4" class="text-center"><strong>JANVIER 2026</strong></td></tr><tr><td class='text-center'>Sam. 17 Janv. 2026</td><td class='text-center race-type-championship'><a href="https://www.fsgt.org/wp-content/uploads/2025/12/Livret-du-championnat-National-FSGT-de-Cyclo-Cross.-17-et-18-janvier-2026.pdf" target="_blank">National Cyclo-cross - Champigny-sur-Marne (94)</a></td><td class='text-center'></td><td class='text-center'></td></tr><tr><td class='text-center'>Dim. 18 Janv. 2026</td><td class='text-center race-type-championship'><a href="https://www.fsgt.org/wp-content/uploads/2025/12/Livret-du-championnat-National-FSGT-de-Cyclo-Cross.-17-et-18-janvier-2026.pdf" target="_blank">National Cyclo-cross - Champigny-sur-Marne (94)</a></td><td class='text-center'></td><td class='text-center'></td></tr><tr><td class='text-center'>Ven. 23 Janv. 2026</td><td class='text-center race-type-other'>Réunion commission Cycliste 
 20h00 - CDOS - Montceau</td><td class='text-center'></td><td class='text-center'></td></tr><tr><td colspan="4" class="text-center"><strong>FÉVRIER 2026</strong></td></tr><tr><td class='text-center'>Sam. 07 Févr. 2026</td><td class='text-center race-type-brevet-et-randonnee'><a href="https://drive.google.com/file/d/1m006PiU8tWafQoqMFRKmMVIPDAE-Kf4X/view?usp=drive_link" target="_blank">Brevet de Granges (50-80 Km)</a></td><td class='text-center'></td><td class='text-center'>Granges Grupetto</td></tr><tr><td class='text-center'>Sam. 21 Févr. 2026</td><td class='text-center race-type-brevet-et-randonnee'><a href="https://drive.google.com/file/d/14_JG7Fb19BbZZyxH1PNJYo46w2ZDMEJX/view?usp=drive_link" target="_blank">Brevet de St Marcel (Départ Sennecy-le-Grand)
 Souvenir "Christian JEANNIN et Régis BERNARD"
 (80 km)</a></td><td class='text-center'></td><td class='text-center'>VC Saint Marcel</td></tr><tr><td class='race-type-demi-journee' class='text-center race-type-demi-journee'>Sam. 28 Févr. 2026</td><td class='text-center race-type-route'><a href="https://drive.google.com/file/d/1YouDELDuoQw9UHmVtiZmOI4_dWylvgGm/view?usp=drive_link" target="_blank">Prix d'Ecuelles</a></td><td class='text-center race-type-circuit-gte-5km'>EV (Sprint et Course) - MG/F/MF-  6/5 - 3/4 -2</td><td class='text-center'>AC Verdunoise</td></tr><tr><td colspan="4" class="text-center"><strong>MARS 2026</strong></td></tr><tr><td class='race-type-demi-journee' class='text-center race-type-demi-journee'>Sam. 07 Mars 2026</td><td class='text-center race-type-route'>Prix de Verzé</td><td class='text-center race-type-circuit-gte-5km'>6/MG/F & MF - 4/5 -2/3</td><td class='text-center'>EC Flacéenne</td></tr><tr><td class='race-type-demi-journee' class='text-center race-type-demi-journee'>Dim. 08 Mars 2026</td><td class='text-center race-type-route'>Prix de Vivans (42)</td><td class='text-center race-type-circuit-gte-5km'>4/5/6 + F + MF - 1+2/3/MG</td><td class='text-center'>EC Marcigny</td></tr><tr><td class='race-type-demi-journee' class='text-center race-type-demi-journee'>Sam. 14 Mars 2026</td><td class='text-center race-type-route'>Prix de Jully-les-Buxy</td><td class='text-center race-type-circuit-gte-5km'>MG/6/F+MF - 4/5 - 2/3</td><td class='text-center'>AC Buxy</td></tr><tr><td class='race-type-demi-journee' class='text-center race-type-demi-journee'>Sam. 21 Mars 2026</td><td class='text-center race-type-route'>Prix de St-Martin-en-Gatinois</td><td class='text-center race-type-circuit-gte-5km'>5/MG/6/F + MF - 2/3/4</td><td class='text-center'>VS Chalonnais</td></tr><tr><td class='text-center'>Ven. 27 Mars 2026</td><td class='text-center race-type-other'>Réunion commission Cycliste 
@@ -270,7 +289,7 @@ Championnat Départemental Cyclo-cross FSGT</td><td class='text-center'></td><td
 marche et VTT</td><td class='text-center'></td><td class='text-center'>Cyclo San Martinois</td></tr><tr><td class='text-center'>Dim. 25 Oct. 2026</td><td class='text-center race-type-cyclo-cross'>1er Cyclo-cross du Parc de la Verrerie</td><td class='text-center'></td><td class='text-center'>Creusot VS</td></tr><tr><td class='text-center'>Ven. 30 Oct. 2026</td><td class='text-center race-type-other'>Réunion commission Cycliste 
 20h30 </td><td class='text-center'></td><td class='text-center'></td></tr><tr><td colspan="4" class="text-center"><strong>NOVEMBRE 2026</strong></td></tr><tr><td class='text-center'>Sam. 07 Nov. 2026</td><td class='text-center race-type-other'>Trail des cuisses</td><td class='text-center'></td><td class='text-center'>Ecuisses VSP</td></tr><tr><td class='text-center'>Dim. 08 Nov. 2026</td><td class='text-center race-type-brevet-et-randonnee'>Randonnées L'écuissoises
 Marche et VTT</td><td class='text-center'></td><td class='text-center'>Ecuisses VSP</td></tr><tr><td class='race-type-journee-complete' class='text-center race-type-journee-complete'>Dim. 15 Nov. 2026</td><td class='text-center race-type-cyclo-cross'>14ème Cyclo-cross de Montceau-les-Mines
-CRAPA Montceau-les-mines</td><td class='text-center'></td><td class='text-center'>VC Montcellien</td></tr><tr><td class='text-center'>Sam. 21 Nov. 2026</td><td class='text-center race-type-other'>AG Comité FSGT 71 & commission Cycliste  </td><td class='text-center'></td><td class='text-center'></td></tr><tr><td colspan="4" class="text-center"><strong>JANVIER 2027</strong></td></tr><tr><td class='text-center'>Sam. 16 Janv. 2027</td><td class='text-center race-type-championship'>National Cyclo-cross - Montceau-les-Mines (71)</td><td class='text-center'></td><td class='text-center'></td></tr><tr><td class='text-center'>Dim. 17 Janv. 2027</td><td class='text-center race-type-championship'>National Cyclo-cross - Montceau-les-Mines (71)</td><td class='text-center'></td><td class='text-center'></td></tr></tbody></table>
+CRAPA Montceau-les-mines</td><td class='text-center'></td><td class='text-center'>VC Montcellien</td></tr><tr><td class='text-center'>Sam. 21 Nov. 2026</td><td class='text-center race-type-other'>AG Comité FSGT 71 & commission Cycliste  </td><td class='text-center'></td><td class='text-center'></td></tr><tr><td colspan="4" class="text-center"><strong>JANVIER 2027</strong></td></tr><tr><td class='text-center'>Sam. 16 Janv. 2027</td><td class='text-center race-type-championship'>National Cyclo-cross - Montceau-les-Mines (71)</td><td class='text-center'></td><td class='text-center'></td></tr><tr><td class='text-center'>Dim. 17 Janv. 2027</td><td class='text-center race-type-championship'>National Cyclo-cross - Montceau-les-Mines (71)</td><td class='text-center'></td><td class='text-center'></td></tr></tbody></table></div>
         </div>
     </div>
     <!--***** Main End *****-->
@@ -288,7 +307,7 @@ CRAPA Montceau-les-mines</td><td class='text-center'></td><td class='text-center
         </div>
         <div class="footer-row">
             <div class="footer-updated">
-                Dernière mise à jour : 03/02/2026 à 22:11
+                Dernière mise à jour : 03/02/2026 à 22:18
             </div>
         </div>
     </div>
