@@ -160,8 +160,8 @@ template: page
         </button>
     </div>
 </div>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.2/jspdf.umd.min.js" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.2/jspdf.plugin.autotable.min.js" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.2/dist/jspdf.umd.min.js" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/jspdf-autotable@3.8.2/dist/jspdf.plugin.autotable.min.js" crossorigin="anonymous"></script>
 <script>
 document.addEventListener("DOMContentLoaded", function() {
     var printBtn = document.getElementById("calendarPrintButton");
@@ -173,8 +173,16 @@ document.addEventListener("DOMContentLoaded", function() {
         downloadBtn.addEventListener("click", function() {
             downloadBtn.disabled = true;
             try {
-                var jsPDF = window.jspdf.jsPDF;
-                var doc = new jsPDF({ orientation: "l", unit: "mm", format: [297, 210] });
+                var JsPDFConstructor = (window.jspdf && window.jspdf.jsPDF) || window.jsPDF;
+                if (!JsPDFConstructor) {
+                    console.error("jsPDF non chargé. Vérifiez que les scripts CDN sont autorisés.");
+                    return;
+                }
+                var doc = new JsPDFConstructor({ orientation: "l", unit: "mm", format: [297, 210] });
+                if (typeof doc.autoTable !== "function") {
+                    console.error("jsPDF-AutoTable non chargé.");
+                    return;
+                }
                 doc.autoTable({
                     html: "#calendarTable",
                     margin: 12,
