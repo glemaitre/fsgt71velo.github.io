@@ -93,3 +93,47 @@ def test_generate_html_table():
     assert html_table.startswith(header)
     end_table = "</tbody></table>"
     assert html_table.endswith(end_table)
+
+
+def test_generate_html_table_includes_year_in_headers_and_dates():
+    """Check that section headers and date cells include the year (for calendars
+    spanning two years)."""
+    df = pd.DataFrame(
+        [
+            {
+                "Date": pd.Timestamp("2026-03-15"),
+                "Durée organisation": "Demi-journée",
+                "Course": "Course test 2026",
+                "Type de course": "Route",
+                "Longeur circuit": "Circuit >= 5 km",
+                "Catégories": "Masters",
+                "Club": "Club A",
+                "Affiche": pd.NA,
+                "Résultats TC": pd.NA,
+                "Résultats école": pd.NA,
+                "Annulé": pd.NA,
+            },
+            {
+                "Date": pd.Timestamp("2027-01-10"),
+                "Durée organisation": "Journée complète",
+                "Course": "Course test 2027",
+                "Type de course": "Contre-la-montre",
+                "Longeur circuit": "Circuit < 5km",
+                "Catégories": "Tous",
+                "Club": "Club B",
+                "Affiche": pd.NA,
+                "Résultats TC": pd.NA,
+                "Résultats école": pd.NA,
+                "Annulé": pd.NA,
+            },
+        ]
+    )
+    html_table = generate_html_table(df)
+
+    # Section headers must include year (e.g. "MARS 2026", "JANVIER 2027")
+    assert "MARS 2026" in html_table
+    assert "JANVIER 2027" in html_table
+
+    # Date cells must include year (e.g. "Mar 15 Mar 2026")
+    assert "2026" in html_table
+    assert "2027" in html_table

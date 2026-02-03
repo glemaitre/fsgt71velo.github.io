@@ -52,6 +52,9 @@ def generate_html_table(df_calendar):
             "</tr></thead><tbody></tbody></table>"
         )
 
+    # Group by year and month so results spanning two years (e.g. 2026 + early 2027)
+    # are shown in chronological order with correct section headers.
+    df_calendar["Year"] = df_calendar["Date"].dt.year
     df_calendar["Month"] = df_calendar["Date"].dt.month_name().map(MONTH_TRANSLATION)
 
     html_table = (
@@ -61,17 +64,16 @@ def generate_html_table(df_calendar):
     )
 
     # Only process months that have races with results
-    for month, df_month in df_calendar.groupby("Month", sort=False):
+    for (year, month), df_month in df_calendar.groupby(["Year", "Month"], sort=True):
         if len(df_month) > 0:
-            # This check is technically redundant now but kept for clarity
             html_table += (
                 f"<tr><td colspan='4' class='text-center'>"
-                f"<strong>{month.upper()}</strong>"
+                f"<strong>{month.upper()} {year}</strong>"
                 "</td></tr>"
             )
             for _, row in df_month.iterrows():
                 html_table += "<tr>"
-                html_table += f"<td>{row['Date'].strftime('%a %d %b').title()}</td>"
+                html_table += f"<td>{row['Date'].strftime('%a %d %b %Y').title()}</td>"
                 html_table += f"<td>{row['Course']}</td>"
                 html_table += f"<td>{row['Club'] if pd.notna(row['Club']) else ''}</td>"
 

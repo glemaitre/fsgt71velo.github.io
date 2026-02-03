@@ -94,3 +94,35 @@ def test_generate_results():
     assert html_table.startswith(header)
     end_table = "</tbody></table>"
     assert html_table.endswith(end_table)
+
+
+def test_generate_results_includes_year_in_headers_and_dates():
+    """Check that section headers and date cells include the year when table has
+    results."""
+    df = pd.DataFrame(
+        [
+            {
+                "Date": pd.Timestamp("2026-06-01"),
+                "Course": "Course 2026",
+                "Club": "Club A",
+                "Résultats TC": "https://example.com/tc",
+                "Résultats école": pd.NA,
+            },
+            {
+                "Date": pd.Timestamp("2027-01-15"),
+                "Course": "Course 2027",
+                "Club": "Club B",
+                "Résultats TC": pd.NA,
+                "Résultats école": "https://example.com/ecole",
+            },
+        ]
+    )
+    html_table = generate_html_table(df)
+
+    # Section headers must include year
+    assert "JUIN 2026" in html_table
+    assert "JANVIER 2027" in html_table
+
+    # Date cells must include year
+    assert "2026" in html_table
+    assert "2027" in html_table
