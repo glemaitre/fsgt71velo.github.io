@@ -152,26 +152,32 @@ template: page
                aria-label="Rechercher un événement">
     </div>
     <div class="col-auto">
-        <button type="button" class="btn btn-primary btn-sm" id="calendarPrintButton" title="Imprimer le calendrier" aria-label="Imprimer le calendrier">
-            <i class="fas fa-print"></i> Imprimer
-        </button>
-        <button type="button" class="btn btn-primary btn-sm" id="calendarDownloadButton" title="Télécharger le calendrier en PDF" aria-label="Télécharger le calendrier en PDF">
-            <i class="fas fa-file-pdf"></i> Télécharger
-        </button>
+        <div class="dropdown">
+            <button type="button" class="btn btn-primary btn-sm dropdown-toggle" id="calendarPdfMenuButton" data-bs-toggle="dropdown" aria-expanded="false" title="Imprimer ou télécharger le calendrier" aria-label="Menu PDF">
+                <i class="fas fa-ellipsis-v d-inline d-sm-none" aria-hidden="true"></i>
+                <i class="fas fa-file-pdf d-none d-sm-inline-block" aria-hidden="true"></i>
+                <span class="d-none d-sm-inline"> PDF</span>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="calendarPdfMenuButton">
+                <li><a class="dropdown-item" href="#" id="calendarPrintAction"><i class="fas fa-print"></i> Imprimer</a></li>
+                <li><a class="dropdown-item" href="#" id="calendarDownloadAction"><i class="fas fa-download"></i> Télécharger</a></li>
+            </ul>
+        </div>
     </div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.2/dist/jspdf.umd.min.js" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/jspdf-autotable@3.8.2/dist/jspdf.plugin.autotable.min.js" crossorigin="anonymous"></script>
 <script>
 document.addEventListener("DOMContentLoaded", function() {
-    var printBtn = document.getElementById("calendarPrintButton");
-    if (printBtn) printBtn.addEventListener("click", function() { window.print(); });
+    var printAction = document.getElementById("calendarPrintAction");
+    if (printAction) printAction.addEventListener("click", function(e) { e.preventDefault(); window.print(); });
 
-    var downloadBtn = document.getElementById("calendarDownloadButton");
+    var downloadAction = document.getElementById("calendarDownloadAction");
     var tableEl = document.getElementById("calendarTable");
-    if (downloadBtn && tableEl) {
-        downloadBtn.addEventListener("click", function() {
-            downloadBtn.disabled = true;
+    if (downloadAction && tableEl) {
+        downloadAction.addEventListener("click", function(e) {
+            e.preventDefault();
+            downloadAction.classList.add("disabled");
             try {
                 var JsPDFConstructor = (window.jspdf && window.jspdf.jsPDF) || window.jsPDF;
                 if (!JsPDFConstructor) {
@@ -208,7 +214,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 });
                 doc.save("calendrier-fsgt71.pdf");
             } finally {
-                downloadBtn.disabled = false;
+                downloadAction.classList.remove("disabled");
             }
         });
     }
