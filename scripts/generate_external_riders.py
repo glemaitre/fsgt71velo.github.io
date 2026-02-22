@@ -197,6 +197,7 @@ Il y a actuellement
         aria-label="Rechercher un coureur">
 </div>
 """
+        df_licences = df_licences.sort_values("Nom", ascending=True)
         licences_table += generate_html_table(df_licences)
 
         f.write(metadata + title + info + licences_table)
