@@ -40,9 +40,9 @@ def generate_person_dropdown(df, *, first_name, last_name, counter_unique_dropdo
 
     try:
         row = df.query(f"Prénom == '{first_name}' and Nom == '{last_name}'").iloc[0]
-    except IndexError:
+    except IndexError as e:
         print(f"Person {first_name} {last_name} not found in directory")
-        raise
+        raise e
 
     template = '<div class="dropdown">'
     template += (
