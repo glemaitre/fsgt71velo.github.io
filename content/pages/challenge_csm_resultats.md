@@ -26,30 +26,33 @@ template: page
   <tbody>
     <tr>
       <td>1</td>
-      <td>6 avril 2025</td>
+      <td>5 avril 2026</td>
       <td>Prix des Artisans et Commerçants de Saint-Martin-en-Bresse</td>
       <td>Course en ligne</td>
-      <td><a href="https://drive.google.com/file/d/1V8OYrxuXogiVi1m6_MbH6hClS12snUZu/view" class="btn btn-primary btn-sm" target="_blank">Résultats</a></td>
+      <!-- <td><a href="https://drive.google.com/file/d/1V8OYrxuXogiVi1m6_MbH6hClS12snUZu/view" class="btn btn-primary btn-sm" target="_blank">Résultats</a></td> -->
+      <td><a class="btn btn-primary btn-sm disabled" aria-disabled="true" tabindex="-1">Résultats</a></td>
     </tr>
     <tr>
       <td>2</td>
-      <td>29 mai 2025</td>
+      <td>14 mai 2026</td>
       <td>Prix du Breuil</td>
       <td>Course en ligne</td>
-      <td><a href="https://drive.google.com/file/d/1YC-V83-qJEBEbxihXElxC91t5T0rqggw/view" class="btn btn-primary btn-sm" target="_blank">Résultats</a></td>
+      <!-- <td><a href="https://drive.google.com/file/d/1YC-V83-qJEBEbxihXElxC91t5T0rqggw/view" class="btn btn-primary btn-sm" target="_blank">Résultats</a></td> -->
+      <!-- <td><a class="btn btn-primary btn-sm disabled" aria-disabled="true" tabindex="-1">Résultats</a></td> -->
     </tr>
     <tr>
       <td>3</td>
-      <td>7 juin 2025</td>
+      <td>13 juin 2026</td>
       <td>Prix de Toutenant</td>
       <td>Contre-la-montre individuel et course en ligne</td>
-      <td><a href="https://drive.google.com/file/d/1x5cBS3iNPp6MUM7Y_QZtWv4wGhoLEYfm/view" class="btn btn-primary btn-sm" target="_blank">Résultats</a></td>
+      <!-- <td><a href="https://drive.google.com/file/d/1x5cBS3iNPp6MUM7Y_QZtWv4wGhoLEYfm/view" class="btn btn-primary btn-sm" target="_blank">Résultats</a></td> -->
+      <td><a class="btn btn-primary btn-sm disabled" aria-disabled="true" tabindex="-1">Résultats</a></td>
     </tr>
   </tbody>
 </table>
 
-### Classement général
+<!-- ### Classement général
 
 <div class="embed-responsive embed-responsive-16by9 mb-4">
   <iframe class="embed-responsive-item" src="https://drive.google.com/file/d/1qWXvEY6IRbhefJMmDIvDnxuriDLGzkyt/preview" width="100%" height="600" frameborder="0" allowfullscreen></iframe>
-</div>
+</div> -->
