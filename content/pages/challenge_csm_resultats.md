@@ -37,8 +37,8 @@ template: page
       <td>14 mai 2026</td>
       <td>Prix du Breuil</td>
       <td>Course en ligne</td>
-      <!-- <td><a href="https://drive.google.com/file/d/1YC-V83-qJEBEbxihXElxC91t5T0rqggw/view" class="btn btn-primary btn-sm" target="_blank">Résultats</a></td> -->
-      <!-- <td><a class="btn btn-primary btn-sm disabled" aria-disabled="true" tabindex="-1">Résultats</a></td> -->
+      <!-- <td><a href="https://drive.google.com/file/d/1x5cBS3iNPp6MUM7Y_QZtWv4wGhoLEYfm/view" class="btn btn-primary btn-sm" target="_blank">Résultats</a></td> -->
+      <td><a class="btn btn-primary btn-sm disabled" aria-disabled="true" tabindex="-1">Résultats</a></td>
     </tr>
     <tr>
       <td>3</td>
