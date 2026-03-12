@@ -73,7 +73,6 @@ def generate_person_dropdown(df, *, first_name, last_name, counter_unique_dropdo
             "</tr>"
         )
     if not pd.isna(row["Email"]):
-        print(f"\"{row['Prénom']} {row['Nom']}\" <{row['Email']}>,")
         template += (
             "<tr>"
             '<td><i class="fas fa-envelope"></i></td>'
