@@ -38,12 +38,7 @@ def generate_person_dropdown(df, *, first_name, last_name, counter_unique_dropdo
     if pd.isna(first_name) or pd.isna(last_name):
         return ""
 
-    try:
-        row = df.query(f"Prénom == '{first_name}' and Nom == '{last_name}'").iloc[0]
-    except IndexError as e:
-        print(f"Person {first_name} {last_name} not found in directory")
-        raise e
-
+    row = df.query(f"Prénom == '{first_name}' and Nom == '{last_name}'").iloc[0]
     template = '<div class="dropdown">'
     template += (
         f'<button class="btn btn-link dropdown-toggle" type="button" '
@@ -78,6 +73,7 @@ def generate_person_dropdown(df, *, first_name, last_name, counter_unique_dropdo
             "</tr>"
         )
     if not pd.isna(row["Email"]):
+        print(f"{row['Prénom']} {row['Nom']} <{row['Email']}>,")
         template += (
             "<tr>"
             '<td><i class="fas fa-envelope"></i></td>'
