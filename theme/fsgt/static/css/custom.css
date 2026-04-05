@@ -11,6 +11,10 @@
   --brand-blue: #457B9D;
   --brand-dark-blue: #1D3557;
 
+  /* Accent: energetic orange for CTAs (Strava-inspired) */
+  --accent-energy: #FC5200;
+  --accent-energy-hover: #e04800;
+
   /* Semantic colors - light theme */
   --primary-accent: var(--brand-dark-blue);
   --secondary-accent: var(--brand-blue);
@@ -26,8 +30,8 @@
 
   /* Base layout colors */
   --navbar-bg: #ffffff;
-  --footer-bg: var(--brand-dark-blue);
-  --footer-text: rgba(255, 255, 255, 0.7);
+  --footer-bg: #111827;
+  --footer-text: rgba(255, 255, 255, 0.65);
 
   /* Shadows */
   --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.04);
@@ -72,6 +76,8 @@
   --hover-bg: rgba(168, 218, 220, 0.06);
   --card-border: #334155;
   --bs-card-border-color: var(--border-color);
+  --accent-energy: #FF6B2B;
+  --accent-energy-hover: #FF8548;
   --footer-bg: #020617;
   --footer-text: rgba(255, 255, 255, 0.6);
 
@@ -94,14 +100,14 @@ html {
 body {
   font-family: var(--font-sans);
   font-size: var(--font-size-base);
-  background-color: var(--bg-secondary);
+  background: var(--bg-secondary);
   color: var(--text-primary);
   min-height: 100vh;
   padding-top: 76px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
-  line-height: 1.6;
+  line-height: 1.65;
   transition: background-color var(--transition-slow), color var(--transition-slow);
 }
 
@@ -191,9 +197,9 @@ body {
   bottom: -2px;
   left: 0;
   width: 48px;
-  height: 2px;
-  background: var(--brand-red);
-  border-radius: 1px;
+  height: 3px;
+  background: var(--accent-energy);
+  border-radius: 2px;
 }
 
 .content p {
@@ -312,7 +318,7 @@ body {
 }
 
 .navbar-nav .nav-link.show {
-  color: var(--brand-red);
+  color: var(--accent-energy);
 }
 
 .nav-link,
@@ -329,7 +335,7 @@ body {
 
 .nav-link:hover,
 .nav-link:active {
-  color: var(--brand-red);
+  color: var(--accent-energy);
   background-color: var(--hover-bg);
 }
 
@@ -675,6 +681,7 @@ body {
   background-color: var(--footer-bg);
   margin-top: 3rem;
   color: var(--footer-text);
+  border-top: 3px solid var(--accent-energy);
 }
 
 .footer-content {
@@ -691,10 +698,21 @@ body {
   gap: 0.75rem;
 }
 
+.footer-brand {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: var(--font-size-base);
+}
+
+.footer-brand strong {
+  color: #ffffff;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
 .footer-copyright,
 .footer-updated {
   color: var(--footer-text);
-  font-size: var(--font-size-sm);
+  font-size: var(--font-size-xs);
 }
 
 .footer-links {
@@ -723,19 +741,26 @@ body {
   border-radius: var(--radius-lg);
   border: 1px solid var(--border-color);
   box-shadow: var(--shadow-sm);
-  transition: box-shadow var(--transition-base), transform var(--transition-base);
+  transition: box-shadow var(--transition-base), transform var(--transition-base), border-color var(--transition-base);
   overflow: hidden;
   background-color: var(--bg-primary);
 }
 
 .card:hover {
-  box-shadow: var(--shadow-md);
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-2px);
+  border-color: rgba(69, 123, 157, 0.15);
+}
+
+[data-theme="dark"] .card:hover {
+  border-color: rgba(168, 218, 220, 0.15);
 }
 
 .card-header {
   background-color: var(--bg-secondary);
   color: var(--text-primary);
   border-bottom: 1px solid var(--border-color);
+  padding: 1rem 1.25rem;
 }
 
 .card-title {
@@ -745,12 +770,18 @@ body {
 
 .card-header .text-muted {
   color: var(--text-secondary) !important;
-  font-size: var(--font-size-sm);
+  font-size: var(--font-size-xs);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-top: 0.25rem;
+  display: inline-block;
 }
 
 .card-body {
   background-color: var(--bg-primary);
   color: var(--text-primary);
+  padding: 1.25rem;
 }
 
 
@@ -759,35 +790,37 @@ body {
    ======================================================================== */
 
 .btn-primary {
-  background-color: var(--brand-dark-blue);
-  border-color: var(--brand-dark-blue);
+  background-color: var(--accent-energy);
+  border-color: var(--accent-energy);
+  color: #ffffff;
   border-radius: var(--radius-sm);
   font-size: var(--font-size-sm);
   font-weight: 600;
-  padding: 0.55rem 1.25rem;
+  padding: 0.6rem 1.25rem;
   transition: all var(--transition-base);
   letter-spacing: 0.01em;
 }
 
 .btn-primary:hover,
 .btn-primary:active {
-  background-color: var(--brand-blue) !important;
-  border-color: var(--brand-blue) !important;
+  background-color: var(--accent-energy-hover) !important;
+  border-color: var(--accent-energy-hover) !important;
+  color: #ffffff !important;
   transform: translateY(-1px);
-  box-shadow: var(--shadow-md);
+  box-shadow: 0 4px 12px rgba(252, 82, 0, 0.3);
 }
 
 [data-theme="dark"] .btn-primary {
-  background-color: var(--secondary-accent);
-  border-color: var(--secondary-accent);
-  color: #0f172a;
+  background-color: var(--accent-energy);
+  border-color: var(--accent-energy);
+  color: #ffffff;
 }
 
 [data-theme="dark"] .btn-primary:hover,
 [data-theme="dark"] .btn-primary:active {
-  background-color: var(--brand-light-blue) !important;
-  border-color: var(--brand-light-blue) !important;
-  color: #0f172a !important;
+  background-color: var(--accent-energy-hover) !important;
+  border-color: var(--accent-energy-hover) !important;
+  color: #ffffff !important;
 }
 
 /* Disabled button */
@@ -822,7 +855,7 @@ body {
 
 .btn-info {
   background-color: var(--bg-secondary);
-  border-color: var(--border-color);
+  border: 1px solid var(--border-color);
   color: var(--text-primary);
   border-radius: var(--radius-sm);
   font-size: var(--font-size-sm);
@@ -837,10 +870,23 @@ body {
   color: var(--text-primary) !important;
 }
 
+/* News article cards get a left accent border */
+.content > .container .card:not(.quick-access-card) {
+  border-left: 3px solid var(--brand-blue);
+}
+
+[data-theme="dark"] .content > .container .card:not(.quick-access-card) {
+  border-left-color: var(--secondary-accent);
+}
+
 
 /* ========================================================================
    Quick Access Card
    ======================================================================== */
+
+.quick-access-card {
+  border-left: 4px solid var(--accent-energy);
+}
 
 .quick-access-card .collapsed-header {
   cursor: pointer;
@@ -862,6 +908,10 @@ body {
 
 .quick-access-card .card-header {
   padding: 1rem 1.25rem;
+}
+
+.quick-access-card .card-title {
+  color: var(--accent-energy);
 }
 
 
@@ -912,7 +962,7 @@ body {
   bottom: 1.25rem;
   right: 1.25rem;
   z-index: 1050;
-  background: var(--brand-dark-blue);
+  background: var(--primary-accent);
   color: white;
   border: none;
   border-radius: var(--radius-full);
@@ -928,8 +978,8 @@ body {
 }
 
 [data-theme="dark"] .theme-toggle {
-  background: var(--secondary-accent);
-  color: #0f172a;
+  background: var(--bg-tertiary);
+  color: var(--primary-accent);
 }
 
 .theme-toggle:hover {
@@ -959,8 +1009,8 @@ body {
 .form-control:focus {
   background-color: var(--bg-primary);
   color: var(--text-primary);
-  border-color: var(--secondary-accent);
-  box-shadow: 0 0 0 0.2rem rgba(69, 123, 157, 0.2);
+  border-color: var(--accent-energy);
+  box-shadow: 0 0 0 3px rgba(252, 82, 0, 0.1);
 }
 
 .form-control::placeholder {
@@ -1246,23 +1296,23 @@ body {
 }
 
 .page-item.active .page-link {
-  background-color: var(--brand-dark-blue);
-  border-color: var(--brand-dark-blue);
+  background-color: var(--accent-energy);
+  border-color: var(--accent-energy);
   color: white;
-  box-shadow: var(--shadow-sm);
+  box-shadow: 0 2px 8px rgba(252, 82, 0, 0.25);
 }
 
 .page-item.active .page-link:hover,
 .page-item.active .page-link:focus {
-  background-color: var(--brand-blue);
-  border-color: var(--brand-blue);
+  background-color: var(--accent-energy-hover);
+  border-color: var(--accent-energy-hover);
   color: white;
 }
 
 [data-theme="dark"] .page-item.active .page-link {
-  background-color: var(--secondary-accent);
-  border-color: var(--secondary-accent);
-  color: #0f172a;
+  background-color: var(--accent-energy);
+  border-color: var(--accent-energy);
+  color: #ffffff;
 }
 
 .page-item.disabled .page-link {
