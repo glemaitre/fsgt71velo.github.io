@@ -39,8 +39,8 @@ PAGINATION_PATTERNS = (
     (2, "{base_name}/page/{number}/", "{base_name}/page/{number}/index.html"),
 )
 
-# Uncomment following line if you want document-relative URLs when developing
-# RELATIVE_URLS = True
+# Use relative URLs so that the site works when opened locally via file://
+RELATIVE_URLS = True
 
 # The articles are related to the news feed.
 ARTICLE_PATHS = ["news", "cyclotourism"]
