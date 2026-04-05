@@ -65,12 +65,12 @@
 
 /* --- Dark mode tokens --- */
 [data-theme="dark"] {
-  --primary-accent: var(--brand-light-blue);
-  --secondary-accent: #6baec5;
+  --primary-accent: #e8edf5;
+  --secondary-accent: #7cc0d8;
   --bg-primary: #0f172a;
   --bg-secondary: #1e293b;
   --bg-tertiary: #334155;
-  --text-primary: #f1f5f9;
+  --text-primary: #e2e8f0;
   --text-secondary: #94a3b8;
   --border-color: #334155;
   --hover-bg: rgba(168, 218, 220, 0.06);
@@ -177,12 +177,12 @@ body {
 .card-title {
   color: var(--primary-accent);
   font-weight: 700;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.02em;
 }
 
-.content h1 { font-size: var(--font-size-3xl); }
-.content h2 { font-size: var(--font-size-2xl); }
-.content h3 { font-size: var(--font-size-xl); }
+.content h1 { font-size: var(--font-size-3xl); line-height: 1.15; }
+.content h2 { font-size: var(--font-size-2xl); line-height: 1.25; }
+.content h3 { font-size: var(--font-size-xl); line-height: 1.3; }
 
 .content h2 {
   padding-bottom: 0.5rem;
@@ -333,10 +333,30 @@ body {
   position: relative;
 }
 
+/* Underline slide-in from left on hover */
+.navbar-nav > .nav-item > .nav-link::before {
+  content: '';
+  position: absolute;
+  bottom: 2px;
+  left: 0.85rem;
+  right: 0.85rem;
+  height: 2px;
+  background: var(--accent-energy);
+  border-radius: 1px;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.25s ease-out;
+}
+
+.navbar-nav > .nav-item > .nav-link:hover::before,
+.navbar-nav > .nav-item.show > .nav-link::before {
+  transform: scaleX(1);
+}
+
 .nav-link:hover,
 .nav-link:active {
   color: var(--accent-energy);
-  background-color: var(--hover-bg);
+  background-color: transparent;
 }
 
 .nav-link.dropdown-toggle::after {
@@ -413,11 +433,12 @@ body {
 
 .dropdown-menu.show {
   animation: dropdownFade 0.15s ease-out;
+  transform-origin: top center;
 }
 
 @keyframes dropdownFade {
-  from { opacity: 0; transform: translateY(-4px); }
-  to   { opacity: 1; transform: translateY(0); }
+  from { opacity: 0; transform: scaleY(0.96); }
+  to   { opacity: 1; transform: scaleY(1); }
 }
 
 .content table .dropdown-menu {
@@ -475,47 +496,73 @@ body {
   padding-left: 1rem;
 }
 
-/* Calendar PDF dropdown — self-contained */
-.calendar-pdf-dropdown .dropdown-toggle {
-  background-color: var(--bg-primary) !important;
+/* Calendar PDF button — own class, no conflicts */
+.btn-pdf-menu {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  padding: 0.4rem 0.75rem;
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  gap: 0.3rem;
+  line-height: 1.4;
+  box-shadow: var(--shadow-xs);
+  transition: border-color var(--transition-fast), background-color var(--transition-fast), box-shadow var(--transition-fast);
+  /* Override Bootstrap's internal btn CSS variables */
+  --bs-btn-active-bg: var(--bg-secondary);
+  --bs-btn-active-color: var(--text-primary);
+  --bs-btn-active-border-color: var(--secondary-accent);
+  --bs-btn-hover-bg: var(--bg-secondary);
+  --bs-btn-hover-color: var(--text-primary);
+  --bs-btn-hover-border-color: var(--secondary-accent);
+  --bs-btn-focus-box-shadow: 0 0 0 3px rgba(69, 123, 157, 0.12);
+}
+
+.btn-pdf-menu:hover {
+  background-color: var(--bg-secondary);
+  border-color: var(--secondary-accent);
+  color: var(--text-primary);
+  box-shadow: var(--shadow-sm);
+}
+
+.btn-pdf-menu:focus,
+.btn-pdf-menu:focus-visible,
+.btn-pdf-menu:active,
+.btn-pdf-menu.show,
+.btn-pdf-menu:first-child:active {
+  background-color: var(--bg-secondary) !important;
+  border-color: var(--secondary-accent) !important;
   color: var(--text-primary) !important;
-  border: 1px solid var(--border-color) !important;
-  border-radius: var(--radius-sm) !important;
-  padding: 0.4rem 0.75rem !important;
-  font-size: var(--font-size-sm) !important;
-  font-weight: 500 !important;
-  display: inline-flex !important;
-  align-items: center !important;
-  gap: 0.35rem !important;
-  line-height: 1.4 !important;
-  transition: border-color var(--transition-fast), box-shadow var(--transition-fast), background-color var(--transition-fast) !important;
-  transform: none !important;
-  box-shadow: var(--shadow-xs) !important;
-}
-
-.calendar-pdf-dropdown .dropdown-toggle:hover {
-  border-color: var(--secondary-accent) !important;
-  background-color: var(--hover-bg) !important;
-  transform: none !important;
-  box-shadow: var(--shadow-sm) !important;
-}
-
-.calendar-pdf-dropdown .dropdown-toggle:focus {
-  border-color: var(--secondary-accent) !important;
   box-shadow: 0 0 0 3px rgba(69, 123, 157, 0.12) !important;
-  outline: none !important;
+  outline: none;
 }
 
-.calendar-pdf-dropdown .dropdown-toggle::after {
+.btn-pdf-menu::after {
   font-size: 0.65em;
-  margin-left: 0.15rem;
-  vertical-align: 0.15em;
+  margin-left: 0.1rem;
+  vertical-align: 0.12em;
 }
 
+[data-theme="dark"] .btn-pdf-menu {
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
+  border-color: var(--border-color);
+}
+
+[data-theme="dark"] .btn-pdf-menu:hover,
+[data-theme="dark"] .btn-pdf-menu:focus,
+[data-theme="dark"] .btn-pdf-menu:active,
+[data-theme="dark"] .btn-pdf-menu.show {
+  background-color: var(--bg-tertiary);
+  border-color: var(--secondary-accent);
+  color: var(--text-primary);
+}
+
+/* Calendar PDF dropdown menu */
 .calendar-pdf-dropdown .dropdown-menu {
   min-width: 180px;
   padding: 0.3rem;
-  margin-top: 0.35rem !important;
 }
 
 .calendar-pdf-dropdown .dropdown-item {
@@ -529,17 +576,6 @@ body {
   margin-right: 0.5rem;
   width: 1rem;
   text-align: center;
-}
-
-[data-theme="dark"] .calendar-pdf-dropdown .dropdown-toggle {
-  background-color: var(--bg-secondary) !important;
-  color: var(--text-primary) !important;
-  border-color: var(--border-color) !important;
-}
-
-[data-theme="dark"] .calendar-pdf-dropdown .dropdown-toggle:hover {
-  background-color: var(--bg-tertiary) !important;
-  border-color: var(--secondary-accent) !important;
 }
 
 /* Disabled dropdown item */
@@ -1383,4 +1419,122 @@ body {
     display: block;
     overflow-x: auto;
   }
+}
+
+
+/* ========================================================================
+   Scroll-triggered reveal animations
+   ======================================================================== */
+
+/* Elements start hidden, JS adds .is-visible when in viewport */
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+
+.reveal-on-scroll.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stagger children (e.g. cards in a row) */
+.reveal-on-scroll:nth-child(2) { transition-delay: 0.08s; }
+.reveal-on-scroll:nth-child(3) { transition-delay: 0.16s; }
+.reveal-on-scroll:nth-child(4) { transition-delay: 0.24s; }
+.reveal-on-scroll:nth-child(5) { transition-delay: 0.32s; }
+
+
+/* ========================================================================
+   Focus visibility (accessibility)
+   ======================================================================== */
+
+/* Visible focus ring for keyboard navigation only */
+:focus-visible {
+  outline: 2px solid var(--accent-energy);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+/* Remove outline for mouse clicks */
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* Minimum touch target size (44x44) for interactive elements */
+.nav-link,
+.dropdown-item,
+.page-link {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+}
+
+.btn {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4em;
+}
+
+/* .w-100 buttons need flex instead of inline-flex */
+.btn.w-100 {
+  display: flex;
+}
+
+
+/* ========================================================================
+   Accessibility: prefers-reduced-motion
+   ======================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .reveal-on-scroll {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .card:hover {
+    transform: none;
+  }
+
+  .btn-primary:hover,
+  .btn-primary:active {
+    transform: none;
+  }
+
+  .theme-toggle:hover,
+  .theme-toggle:active {
+    transform: none;
+  }
+}
+
+
+/* ========================================================================
+   External link indicator
+   ======================================================================== */
+
+.content a[target="_blank"]:not(.btn)::after {
+  content: '\f35d';
+  font-family: 'Font Awesome 6 Free';
+  font-weight: 900;
+  font-size: 0.65em;
+  margin-left: 0.3em;
+  opacity: 0.5;
+  transition: opacity var(--transition-fast), transform var(--transition-fast);
+  display: inline-block;
+}
+
+.content a[target="_blank"]:not(.btn):hover::after {
+  opacity: 0.8;
+  transform: translate(1px, -1px);
 }
