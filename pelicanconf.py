@@ -40,7 +40,7 @@ PAGINATION_PATTERNS = (
 )
 
 # Use relative URLs so that the site works when opened locally via file://
-RELATIVE_URLS = False
+RELATIVE_URLS = True
 
 # The articles are related to the news feed.
 ARTICLE_PATHS = ["news", "cyclotourism"]
