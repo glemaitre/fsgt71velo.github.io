@@ -1520,6 +1520,161 @@ body {
 
 
 /* ========================================================================
+   Category points — classement tabs (segmented / pill style)
+   ======================================================================== */
+
+.category-points-panel {
+  background: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  margin-block: 1.5rem;
+  overflow: hidden;
+}
+
+.category-points-tabs-toolbar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-block: 1.25rem;
+  padding-inline: 1.25rem;
+  background: var(--bg-tertiary);
+  border-bottom: 1px solid var(--border-color);
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+}
+
+.category-points-tabs-nav {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  gap: 0.5rem;
+  border: none;
+  min-width: min-content;
+  margin: 0;
+  width: max-content;
+  max-width: 100%;
+}
+
+@media (min-width: 768px) {
+  .category-points-tabs-nav {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+
+.category-points-tabs-nav .nav-item {
+  flex-shrink: 0;
+}
+
+.category-points-tabs-nav .nav-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: var(--radius-full);
+  padding: 0.45rem 1rem;
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--text-secondary);
+  background: var(--bg-primary);
+  box-shadow: var(--shadow-xs);
+  white-space: nowrap;
+  transition:
+    color var(--transition-fast),
+    background var(--transition-fast),
+    box-shadow var(--transition-fast),
+    transform var(--transition-fast);
+}
+
+.category-points-tabs-nav .nav-link:hover {
+  color: var(--primary-accent);
+  box-shadow: var(--shadow-sm);
+  transform: translateY(-1px);
+}
+
+.category-points-tabs-nav .nav-link:focus-visible {
+  outline: 2px solid var(--brand-blue);
+  outline-offset: 2px;
+}
+
+.category-points-tabs-nav .nav-link.active {
+  color: #fff;
+  background: linear-gradient(
+    135deg,
+    var(--brand-dark-blue) 0%,
+    var(--brand-blue) 100%
+  );
+  box-shadow: var(--shadow-md);
+  transform: translateY(-1px);
+}
+
+[data-theme="dark"] .category-points-tabs-nav .nav-link {
+  background: var(--bg-secondary);
+  color: var(--text-secondary);
+  box-shadow: none;
+  border: 1px solid var(--border-color);
+}
+
+[data-theme="dark"] .category-points-tabs-nav .nav-link:hover {
+  color: var(--primary-accent);
+  border-color: var(--secondary-accent);
+  box-shadow: var(--shadow-xs);
+}
+
+[data-theme="dark"] .category-points-tabs-nav .nav-link.active {
+  color: #fff;
+  background: linear-gradient(
+    135deg,
+    #1e3a5f 0%,
+    var(--brand-blue) 100%
+  );
+  border-color: transparent;
+  box-shadow: var(--shadow-md);
+}
+
+.category-points-tab-panels {
+  padding-block: 1.25rem;
+  padding-inline: 1.25rem;
+}
+
+@media (min-width: 992px) {
+  .category-points-tab-panels {
+    padding-block: 1.5rem;
+    padding-inline: 1.5rem;
+  }
+}
+
+.category-points-tab-panels .tab-pane {
+  animation: categoryPointsPaneIn 0.25s ease-out;
+}
+
+@keyframes categoryPointsPaneIn {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .category-points-tabs-nav .nav-link,
+  .category-points-tabs-nav .nav-link.active {
+    transform: none;
+  }
+
+  .category-points-tab-panels .tab-pane {
+    animation: none;
+  }
+}
+
+
+/* ========================================================================
    External link indicator
    ======================================================================== */
 
