@@ -51,8 +51,8 @@ template: page
   </tbody>
 </table>
 
-<!-- ### Classement général
+### Classement général
 
 <div class="embed-responsive embed-responsive-16by9 mb-4">
-  <iframe class="embed-responsive-item" src="https://drive.google.com/file/d/1qWXvEY6IRbhefJMmDIvDnxuriDLGzkyt/preview" width="100%" height="600" frameborder="0" allowfullscreen></iframe>
-</div> -->
+  <iframe class="embed-responsive-item" src="https://drive.google.com/file/d/12s6BdyEIELiycyPHxup1bbUtWshN1CkV/preview" width="100%" height="600" frameborder="0" allowfullscreen></iframe>
+</div>

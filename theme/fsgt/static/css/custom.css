@@ -1609,19 +1609,21 @@ body {
 }
 
 .category-points-tabs-nav .nav-link:focus-visible {
-  outline: 2px solid var(--brand-blue);
+  outline: 2px solid var(--accent-energy);
   outline-offset: 2px;
 }
 
 .category-points-tabs-nav .nav-link.active {
   color: #fff;
-  background: linear-gradient(
-    135deg,
-    var(--brand-dark-blue) 0%,
-    var(--brand-blue) 100%
-  );
+  background-color: var(--accent-energy);
+  border-color: transparent;
   box-shadow: var(--shadow-md);
   transform: translateY(-1px);
+}
+
+.category-points-tabs-nav .nav-link.active:hover {
+  background-color: var(--accent-energy-hover);
+  border-color: transparent;
 }
 
 [data-theme="dark"] .category-points-tabs-nav .nav-link {
@@ -1639,13 +1641,14 @@ body {
 
 [data-theme="dark"] .category-points-tabs-nav .nav-link.active {
   color: #fff;
-  background: linear-gradient(
-    135deg,
-    #1e3a5f 0%,
-    var(--brand-blue) 100%
-  );
+  background-color: var(--accent-energy);
   border-color: transparent;
   box-shadow: var(--shadow-md);
+}
+
+[data-theme="dark"] .category-points-tabs-nav .nav-link.active:hover {
+  background-color: var(--accent-energy-hover);
+  border-color: transparent;
 }
 
 .category-points-tab-panels {
