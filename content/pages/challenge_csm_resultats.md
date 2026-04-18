@@ -54,5 +54,5 @@ template: page
 ### Classement général
 
 <div class="embed-responsive embed-responsive-16by9 mb-4">
-  <iframe class="embed-responsive-item" src="https://drive.google.com/file/d/12s6BdyEIELiycyPHxup1bbUtWshN1CkV/preview" width="100%" height="600" frameborder="0" allowfullscreen></iframe>
+  <iframe class="embed-responsive-item" src="https://drive.google.com/file/d/1rt5mfBeURbZDrvAEXESoYyArCmBlGK8C/preview" width="100%" height="600" frameborder="0" allowfullscreen></iframe>
 </div>
