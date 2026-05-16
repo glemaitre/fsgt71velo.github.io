@@ -8,9 +8,9 @@ template: page
 ## <i class="fas fa-book fas-title"></i> Règlement Cyclisme FSGT 71
 
 <div style="text-align: center; margin-bottom: 20px;">
-        <a href="https://drive.google.com/file/d/1HwzeE0hdkGads4x4PwbS4BLMX1BGj32X/view?usp=sharing" class="btn btn-primary">
+        <a href="https://drive.google.com/file/d/1sTwQ8TZiGIiq4jXwAXRq013Iks7ZXmka/view?usp=sharing" class="btn btn-primary">
         📥 Télécharger le règlement (PDF)
     </a>
 </div>
 
-<iframe src="https://drive.google.com/file/d/1HwzeE0hdkGads4x4PwbS4BLMX1BGj32X/preview" width="100%" height="1300px" frameborder="1"></iframe>
+<iframe src="https://drive.google.com/file/d/1sTwQ8TZiGIiq4jXwAXRq013Iks7ZXmka/preview" width="100%" height="1300px" frameborder="1"></iframe>
