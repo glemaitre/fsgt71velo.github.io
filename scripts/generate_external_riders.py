@@ -38,7 +38,6 @@ def generate_html_table(df_licences):
         # "<th rowspan='2' class='align-middle text-center'>Date de naissance</th>"
         "<th rowspan='2' class='align-middle text-center'>Club</th>"
         "<th rowspan='2' class='align-middle text-center'>Département</th>"
-        "<th rowspan='2' class='align-middle text-center'>Licence</th>"
         "<th colspan='5' class='text-center'>Catégories</th>"
         "<th rowspan='2' class='align-middle text-center'>Date d'inscription</th>"
         "</tr>"
@@ -59,7 +58,6 @@ def generate_html_table(df_licences):
         # html_table += f"<td class='text-center'>{birth_date}</td>"
         html_table += f"<td class='text-center'>{row['Club']}</td>"
         html_table += f"<td class='text-center'>{row['Département']}</td>"
-        html_table += f"<td class='text-center'>{row['Numéro de licence FSGT']}</td>"
         if pd.notna(row["Catégorie FFC"]):
             html_table += f"<td class='text-center'>{row['Catégorie FFC']}</td>"
         else:
