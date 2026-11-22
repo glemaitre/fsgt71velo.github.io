@@ -160,7 +160,7 @@ def _generate_table_html(table_id: str, df: pd.DataFrame) -> str:
         rang = int(row["_rang"])
         nom = row["_nom"]
         prenom = row["_prenom"]
-        pts = int(row[COL_POINTS])
+        pts = f"{float(row[COL_POINTS]):.1f}"
         rows_html += (
             f"<tr><td class='text-center'>{rang}</td><td>{nom}</td><td>{prenom}</td>"
             f"<td class='text-end'>{pts}</td></tr>"
