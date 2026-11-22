@@ -47,7 +47,7 @@ template: page
             <td><a href="#assurances">4. Demande d'assurances</a></td>
             <td>Demande d'assurances responsabilité civile</td>
             <td>
-                <a href="https://drive.google.com/file/d/1cvIh8KzCDZ6mQVVG-fLy9p11mtxS7NJ8/view?usp=sharing" class="btn btn-primary btn-sm" download>
+                <a href="https://drive.google.com/file/d/1636F9cXMsrtRtQM9J_nUVDhhwR6zwT9b/view?usp=sharing" class="btn btn-primary btn-sm" download>
                     <i class="fas fa-download"></i> Télécharger
                 </a>
             </td>
@@ -85,7 +85,7 @@ template: page
 <iframe src="https://drive.google.com/file/d/1FlZHq0b3vb9DNf2xjbszWGhhzpqCwKuC/preview" width="100%" height="1300px" frameborder="0"></iframe>
 
 <h4 id="assurances">4. Demande d'assurances</h4>
-<iframe src="https://drive.google.com/file/d/1cvIh8KzCDZ6mQVVG-fLy9p11mtxS7NJ8/preview" width="100%" height="1300px" frameborder="0"></iframe>
+<iframe src="https://drive.google.com/file/d/1636F9cXMsrtRtQM9J_nUVDhhwR6zwT9b/preview" width="100%" height="1300px" frameborder="0"></iframe>
 
 <h4 id="declaration-accident">5. Déclaration d'accident</h4>
 <iframe src="https://drive.google.com/file/d/1kCPFhWU1v4Pqu_sUcrYnBdyBTACILsdB/preview" width="100%" height="1300px" frameborder="0"></iframe>
